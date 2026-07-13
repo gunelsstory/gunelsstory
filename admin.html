@@ -168,6 +168,17 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
+        // Səhifə yüklənəndə brauzer yaddaşını yoxlayan funksiya
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const isAdminLoggedIn = localStorage.getItem('adminLoggedIn');
+            if (isAdminLoggedIn === 'true') {
+                // Əgər brauzerdə giriş məlumatı qeydə alınıbsa, birbaşa paneli aktiv edirik
+                document.getElementById('loginOverlay').style.display = 'none';
+                document.getElementById('adminContainer').style.display = 'block';
+                startListeningOrders();
+            }
+        });
+
         // Giriş Məlumatlarını Yoxlayan Funksiya
         function checkFirestoreLogin() {
             const userInput = document.getElementById('username').value;
@@ -183,6 +194,9 @@
                 if (doc.exists) {
                     const dbData = doc.data();
                     if (userInput === dbData.username && passInput === dbData.password) {
+                        // Giriş uğurludursa brauzerə xatırlama qeydi yazırıq
+                        localStorage.setItem('adminLoggedIn', 'true');
+
                         document.getElementById('loginOverlay').style.display = 'none';
                         document.getElementById('adminContainer').style.display = 'block';
                         startListeningOrders();
@@ -205,6 +219,9 @@
 
         // Çıxış Etmə Funksiyası
         function logoutAdmin() {
+            // Brauzerin yaddaşındakı giriş qeydini tamamilə silirik
+            localStorage.removeItem('adminLoggedIn');
+
             // İdarəetmə panelini gizlət və giriş ekranını göstər
             document.getElementById('adminContainer').style.display = 'none';
             document.getElementById('loginOverlay').style.display = 'flex';
