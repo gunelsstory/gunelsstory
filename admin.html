@@ -15,96 +15,50 @@
             --whatsapp-color: #25D366;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-dark); padding: 30px 20px; }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            padding: 30px 20px;
-        }
-
-        /* Login Ekranı Stili */
         .login-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #03138d;
-            display: flex; justify-content: center; align-items: center;
-            z-index: 9999;
-            transition: all 0.5s ease;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #03138d; display: flex; justify-content: center; align-items: center; z-index: 9999;
         }
 
         .login-box {
             background: white; padding: 40px; border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2); width: 100%; max-width: 400px;
-            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); width: 100%; max-width: 400px; text-align: center;
         }
 
         .login-box h2 { color: #03138d; margin-bottom: 25px; font-weight: 800; }
-
-        .login-input {
-            width: 100%; padding: 14px; margin-bottom: 15px;
-            border: 2px solid #e2e8f0; border-radius: 12px; outline: none; font-size: 1rem;
-        }
-
+        .login-input { width: 100%; padding: 14px; margin-bottom: 15px; border: 2px solid #e2e8f0; border-radius: 12px; outline: none; font-size: 1rem; }
         .login-input:focus { border-color: #ff9f1c; }
+        .login-btn { width: 100%; padding: 14px; background: #ff9f1c; color: white; border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; }
 
-        .login-btn {
-            width: 100%; padding: 14px; background: #ff9f1c; color: white;
-            border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer;
-        }
-
-        /* Əsas Panel */
-        .admin-container {
-            max-width: 1200px; margin: 0 auto; background-color: var(--white);
-            padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            display: none; /* Login olana qədər gizli qalır */
-        }
-
-        .admin-header {
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 2px solid var(--border-color); padding-bottom: 20px; margin-bottom: 30px;
-        }
-
+        .admin-container { max-width: 1200px; margin: 0 auto; background-color: var(--white); padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); display: none; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border-color); padding-bottom: 20px; margin-bottom: 30px; }
         .admin-header h1 { color: var(--primary-blue); font-size: 2rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
-
         .back-btn { text-decoration: none; background-color: #1a1a1a; color: var(--white); padding: 10px 20px; border-radius: 12px; font-weight: 700; font-size: 0.9rem; }
-
         .table-responsive { width: 100%; overflow-x: auto; }
-
         table { width: 100%; border-collapse: collapse; text-align: left; margin-top: 10px; }
-
         th { background-color: #f8fafc; color: #64748b; font-weight: 700; padding: 16px; border-bottom: 2px solid var(--border-color); }
-
         td { padding: 16px; border-bottom: 1px solid var(--border-color); vertical-align: middle; }
-
         tr:hover { background-color: #f8fafc; }
-
         .phone-container { display: flex; align-items: center; gap: 10px; }
-
         .phone-link { color: var(--primary-blue); text-decoration: none; font-weight: 600; }
-
         .whatsapp-btn { display: inline-flex; align-items: center; justify-content: center; background-color: var(--whatsapp-color); color: white; text-decoration: none; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: bold; }
-
         .interests-cell { max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
-
         .interests-cell:hover { white-space: normal; background: #fffdf5; }
     </style>
 </head>
 <body>
 
-    <!-- Təhlükəsiz Login Ekranı -->
+    <!-- Firestore Bağlantılı Login Ekranı -->
     <div class="login-overlay" id="loginOverlay">
         <div class="login-box">
             <h2>Giriş Paneli ⚙️</h2>
             <input type="text" id="username" class="login-input" placeholder="İstifadəçi adı">
             <input type="password" id="password" class="login-input" placeholder="Şifrə">
-            <button onclick="checkLogin()" class="login-btn">Daxil Ol</button>
-            <p id="loginError" style="color: red; margin-top: 10px; display: none;">Məlumatlar yanlışdır!</p>
+            <button onclick="checkFirestoreLogin()" id="loginBtn" class="login-btn">Daxil Ol</button>
+            <p id="loginError" style="color: red; margin-top: 10px; display: none;">Məlumatlar yanlışdır və ya baza bağlantısı qurulmadı!</p>
         </div>
     </div>
 
@@ -141,22 +95,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
     <script>
-        // Giriş Yoxlanışı Funksiyası
-        function checkLogin() {
-            const user = document.getElementById('username').value;
-            const pass = document.getElementById('password').value;
-
-            // Giriş Məlumatları: admin / gunel2026
-            if(user === 'admin' && pass === 'gunel2026') {
-                document.getElementById('loginOverlay').style.display = 'none';
-                document.getElementById('adminContainer').style.display = 'block';
-                startListeningOrders(); // Giriş uğurludursa bazanı dinlə
-            } else {
-                document.getElementById('loginError').style.display = 'block';
-            }
-        }
-
-        // REAL Firebase Config yerləşdirildi
+        // Real Firebase Config
         const firebaseConfig = { 
             apiKey: "AIzaSyDWqLPM2X89vyqOYocw4KEBh65WKMutZOI", 
             authDomain: "gunelsstory-6d3a9.firebaseapp.com", 
@@ -170,6 +109,46 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
+        // Firestore-dan Giriş Məlumatlarını Yoxlayan Funksiya
+        function checkFirestoreLogin() {
+            const userInput = document.getElementById('username').value;
+            const passInput = document.getElementById('password').value;
+            const errorText = document.getElementById('loginError');
+            const loginBtn = document.getElementById('loginBtn');
+
+            errorText.style.display = 'none';
+            loginBtn.innerText = "Yoxlanılır...";
+            loginBtn.disabled = true;
+
+            // Firestore-dan 'adminConfig' kolleksiyasındakı 'credentials' sənədini çəkirik
+            db.collection("adminConfig").doc("credentials").get().then(function(doc) {
+                if (doc.exists) {
+                    const dbData = doc.data();
+                    
+                    // Bazadakı məlumatlarla formadakı məlumatları qarşılaşdırırıq
+                    if (userInput === dbData.username && passInput === dbData.password) {
+                        document.getElementById('loginOverlay').style.display = 'none';
+                        document.getElementById('adminContainer').style.display = 'block';
+                        startListeningOrders(); // Giriş uğurludursa sifarişləri göstər
+                    } else {
+                        errorText.innerText = "İstifadəçi adı və ya şifrə yanlışdır!";
+                        errorText.style.display = 'block';
+                    }
+                } else {
+                    errorText.innerText = "Firestore-da adminConfig kolleksiyası tapılmadı!";
+                    errorText.style.display = 'block';
+                }
+            }).catch(function(error) {
+                console.error("Giriş xətası:", error);
+                errorText.innerText = "Bağlantı xətası: " + error.message;
+                errorText.style.display = 'block';
+            }).finally(function() {
+                loginBtn.innerText = "Daxil Ol";
+                loginBtn.disabled = false;
+            });
+        }
+
+        // Sifarişləri Canlı Dinləyən Funksiya
         function startListeningOrders() {
             const ordersTableBody = document.getElementById('ordersTableBody');
 
