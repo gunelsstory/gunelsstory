@@ -13,10 +13,11 @@
             --white: #ffffff;
             --border-color: #e2e8f0;
             --whatsapp-color: #25D366;
+            --success-color: #10b981;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-dark); padding: 30px 20px; }
+        body { background-color: var(--bg-color); color: var(--text-dark); padding: 20px 10px; }
 
         .login-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -33,20 +34,75 @@
         .login-input:focus { border-color: #ff9f1c; }
         .login-btn { width: 100%; padding: 14px; background: #ff9f1c; color: white; border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; }
 
-        .admin-container { max-width: 1200px; margin: 0 auto; background-color: var(--white); padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); display: none; }
+        .admin-container { max-width: 1200px; margin: 0 auto; background-color: var(--white); padding: 25px 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); display: none; }
         .admin-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border-color); padding-bottom: 20px; margin-bottom: 30px; }
-        .admin-header h1 { color: var(--primary-blue); font-size: 2rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
-        .back-btn { text-decoration: none; background-color: #1a1a1a; color: var(--white); padding: 10px 20px; border-radius: 12px; font-weight: 700; font-size: 0.9rem; }
-        .table-responsive { width: 100%; overflow-x: auto; }
+        .admin-header h1 { color: var(--primary-blue); font-size: 1.6rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+        .back-btn { text-decoration: none; background-color: #1a1a1a; color: var(--white); padding: 10px 16px; border-radius: 12px; font-weight: 700; font-size: 0.85rem; transition: background 0.2s; }
+        .back-btn:hover { background-color: #333; }
+        
+        .table-responsive { width: 100%; }
         table { width: 100%; border-collapse: collapse; text-align: left; margin-top: 10px; }
-        th { background-color: #f8fafc; color: #64748b; font-weight: 700; padding: 16px; border-bottom: 2px solid var(--border-color); }
-        td { padding: 16px; border-bottom: 1px solid var(--border-color); vertical-align: middle; }
+        th { background-color: #f8fafc; color: #64748b; font-weight: 700; padding: 16px; border-bottom: 2px solid var(--border-color); font-size: 0.9rem; }
+        td { padding: 16px; border-bottom: 1px solid var(--border-color); vertical-align: middle; font-size: 0.95rem; }
         tr:hover { background-color: #f8fafc; }
-        .phone-container { display: flex; align-items: center; gap: 10px; }
+        
+        .phone-container { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
         .phone-link { color: var(--primary-blue); text-decoration: none; font-weight: 600; }
-        .whatsapp-btn { display: inline-flex; align-items: center; justify-content: center; background-color: var(--whatsapp-color); color: white; text-decoration: none; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: bold; }
+        .whatsapp-btn { display: inline-flex; align-items: center; justify-content: center; background-color: var(--whatsapp-color); color: white; text-decoration: none; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: bold; }
+        
         .interests-cell { max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
         .interests-cell:hover { white-space: normal; background: #fffdf5; }
+
+        /* Status Düymə Stilləri */
+        .status-btn { border: 2px solid #cbd5e1; background: transparent; color: #64748b; padding: 6px 14px; border-radius: 10px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 5px; }
+        .status-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
+        .status-btn.checked { background-color: #e6fcf5; border-color: var(--success-color); color: var(--success-color); font-weight: 700; }
+
+        /* Mobil Versiya üçün Uyğunlaşdırma (Responsive Minimalist) */
+        @media (max-width: 768px) {
+            body { padding: 10px 5px; }
+            .admin-container { padding: 15px 10px; }
+            .admin-header { flex-direction: column; gap: 15px; text-align: center; }
+            .admin-header h1 { font-size: 1.3rem; }
+            
+            /* Cədvəli Mobil Kartlara Çeviririk */
+            table, thead, tbody, th, td, tr { display: block; }
+            thead { display: none; } /* Başlıqları gizlədirik */
+            
+            tr {
+                background: #fff;
+                border: 1px solid var(--border-color);
+                border-radius: 16px;
+                margin-bottom: 15px;
+                padding: 15px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            }
+            
+            td {
+                text-align: right;
+                padding: 8px 0;
+                border-bottom: 1px dashed #f1f5f9;
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                white-space: normal;
+            }
+            
+            td:last-child { border-bottom: none; padding-top: 12px; }
+
+            /* Mobil kartlarda sol tərəfə etiket əlavə edirik */
+            td::before {
+                content: attr(data-label);
+                float: left;
+                font-weight: 700;
+                color: #64748b;
+                font-size: 0.85rem;
+            }
+
+            .interests-cell { max-width: 100%; text-align: right; }
+            .phone-container { justify-content: flex-end; }
+        }
     </style>
 </head>
 <body>
@@ -65,7 +121,7 @@
     <!-- Sifariş Paneli -->
     <div class="admin-container" id="adminContainer">
         <div class="admin-header">
-            <h1>⚙️ Sifarişlərin İdarə Edilməsi</h1>
+            <h1>⚙️ Sifarişlər</h1>
             <a href="index.html" class="back-btn">← Sayta Qayıt</a>
         </div>
 
@@ -79,11 +135,12 @@
                         <th>Yaşı</th>
                         <th>Maraqları / İstəkləri</th>
                         <th>Sifariş Tarixi</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody id="ordersTableBody">
                     <tr>
-                        <td colspan="6" style="text-align: center; color: #888;">Məlumatlar yüklənir...</td>
+                        <td colspan="7" style="text-align: center; color: #888; padding: 20px;">Məlumatlar yüklənir...</td>
                     </tr>
                 </tbody>
             </table>
@@ -109,7 +166,7 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // Firestore-dan Giriş Məlumatlarını Yoxlayan Funksiya
+        // Giriş Məlumatlarını Yoxlayan Funksiya
         function checkFirestoreLogin() {
             const userInput = document.getElementById('username').value;
             const passInput = document.getElementById('password').value;
@@ -120,16 +177,13 @@
             loginBtn.innerText = "Yoxlanılır...";
             loginBtn.disabled = true;
 
-            // Firestore-dan 'adminConfig' kolleksiyasındakı 'credentials' sənədini çəkirik
             db.collection("adminConfig").doc("credentials").get().then(function(doc) {
                 if (doc.exists) {
                     const dbData = doc.data();
-                    
-                    // Bazadakı məlumatlarla formadakı məlumatları qarşılaşdırırıq
                     if (userInput === dbData.username && passInput === dbData.password) {
                         document.getElementById('loginOverlay').style.display = 'none';
                         document.getElementById('adminContainer').style.display = 'block';
-                        startListeningOrders(); // Giriş uğurludursa sifarişləri göstər
+                        startListeningOrders();
                     } else {
                         errorText.innerText = "İstifadəçi adı və ya şifrə yanlışdır!";
                         errorText.style.display = 'block';
@@ -139,12 +193,20 @@
                     errorText.style.display = 'block';
                 }
             }).catch(function(error) {
-                console.error("Giriş xətası:", error);
                 errorText.innerText = "Bağlantı xətası: " + error.message;
                 errorText.style.display = 'block';
             }).finally(function() {
                 loginBtn.innerText = "Daxil Ol";
                 loginBtn.disabled = false;
+            });
+        }
+
+        // Statusu (Baxıldı tikini) dəyişən yeni funksiya
+        function toggleStatus(docId, currentStatus) {
+            db.collection("orders").doc(docId).update({
+                isViewed: !currentStatus
+            }).catch(function(error) {
+                console.error("Status yenilənmədi:", error);
             });
         }
 
@@ -156,12 +218,15 @@
                 ordersTableBody.innerHTML = ''; 
 
                 if (snapshot.empty) {
-                    ordersTableBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 30px; color: #888;">Hələ heç bir sifariş yoxdur.</td></tr>';
+                    ordersTableBody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 30px; color: #888;">Hələ heç bir sifariş yoxdur.</td></tr>';
                     return;
                 }
 
                 snapshot.forEach(function(doc) {
                     const data = doc.data();
+                    const docId = doc.id;
+                    const isViewed = data.isViewed || false;
+
                     let orderDate = "Gözlənilir...";
                     if (data.createdAt) {
                         orderDate = data.createdAt.toDate().toLocaleString('az-AZ');
@@ -174,18 +239,28 @@
                     }
 
                     const tr = document.createElement('tr');
+                    
+                    // Tik düyməsinin vizual vəziyyəti
+                    const statusClass = isViewed ? 'status-btn checked' : 'status-btn';
+                    const statusText = isViewed ? '✓ Baxıldı' : 'Gözləyir';
+
                     tr.innerHTML = `
-                        <td style="font-weight: 600;">${data.parentName || ''}</td>
-                        <td>
+                        <td data-label="Valideyn: " style="font-weight: 600;">${data.parentName || ''}</td>
+                        <td data-label="Əlaqə: ">
                             <div class="phone-container">
                                 <a href="tel:${data.parentPhone || ''}" class="phone-link">${data.parentPhone || ''}</a>
                                 <a href="${waLink}" target="_blank" class="whatsapp-btn">💬 WhatsApp</a>
                             </div>
                         </td>
-                        <td>${data.childName || ''}</td>
-                        <td><span style="background: #e0f2fe; color: #0369a1; padding: 4px 8px; border-radius: 6px; font-weight: bold;">${data.childAge || '-'}</span></td>
-                        <td class="interests-cell" title="Tam görmək üçün üzərinə gəlin">${data.childInterests || '-'}</td>
-                        <td style="color: #64748b; font-size: 0.9rem;">${orderDate}</td>
+                        <td data-label="Uşaq: ">${data.childName || ''}</td>
+                        <td data-label="Yaş: "><span style="background: #e0f2fe; color: #0369a1; padding: 4px 8px; border-radius: 6px; font-weight: bold;">${data.childAge || '-'}</span></td>
+                        <td data-label="Maraqlar: " class="interests-cell" title="Tam görmək üçün üzərinə gəlin">${data.childInterests || '-'}</td>
+                        <td data-label="Tarix: " style="color: #64748b; font-size: 0.9rem;">${orderDate}</td>
+                        <td data-label="Status: ">
+                            <button class="${statusClass}" onclick="toggleStatus('${docId}', ${isViewed})">
+                                ${statusText}
+                            </button>
+                        </td>
                     `;
                     ordersTableBody.appendChild(tr);
                 });
