@@ -116,9 +116,12 @@
     </table>
 </div>
 
+<!-- admin.html faylının daxilindəki script teqini belə edin: -->
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+  
 
     // Eyni Firebase məlumatlarınızı bura da kopyalayın
     const firebaseConfig = {
