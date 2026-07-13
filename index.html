@@ -261,15 +261,11 @@
 </head>
 <body>
 
-    <div style="display: flex; justify-content: flex-end; gap: 10px; padding: 15px 15px 0 0;">
-        <a href="portfolio.html" style="text-decoration: none; background-color: #1a1a1a; color: #ffffff; padding: 12px 26px; border-radius: 20px; font-weight: 700; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px;">
-            <span>PORTFOLİO</span>
-            <span>↓</span>
-        </a>
-        <a href="admin.html" style="text-decoration: none; background-color: #03138d; color: #ffffff; padding: 12px 26px; border-radius: 20px; font-weight: 700; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px;">
-            <span>ADMİN PANELİ</span>
-            <span>⚙️</span>
-        </a>
+    <!-- Minimalist Keçid Linkləri -->
+    <div style="display: flex; justify-content: flex-end; gap: 15px; padding: 20px 25px 0 0; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px;">
+        <a href="portfolio.html" style="text-decoration: none; color: #555555; border-bottom: 1px solid transparent; transition: border-color 0.2s;" onmouseover="this.style.borderColor='#555'" onmouseout="this.style.borderColor='transparent'">PORTFOLİO</a>
+        <span style="color: #ccc;">|</span>
+        <a href="admin.html" style="text-decoration: none; color: #03138d; border-bottom: 1px solid transparent; transition: border-color 0.2s;" onmouseover="this.style.borderColor='#03138d'" onmouseout="this.style.borderColor='transparent'">ADMİN PANELİ ⚙️</a>
     </div>
 
     <div class="container">
@@ -388,7 +384,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     
     <script>
-        // Bayaq göndərdiyiniz REAL Firebase Config yerləşdirildi
         const firebaseConfig = { 
             apiKey: "AIzaSyDWqLPM2X89vyqOYocw4KEBh65WKMutZOI", 
             authDomain: "gunelsstory-6d3a9.firebaseapp.com", 
