@@ -29,6 +29,10 @@
             justify-content: space-between;
             align-items: center;
         }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
         .refresh-btn {
             background-color: #03138d;
             color: white;
@@ -37,8 +41,23 @@
             border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
+            transition: background 0.2s;
         }
         .refresh-btn:hover { background-color: #020b54; }
+        
+        .back-btn {
+            background-color: #1a1a1a;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        .back-btn:hover { background-color: #444; }
         
         table {
             width: 100%;
@@ -68,6 +87,7 @@
             font-weight: bold;
             font-size: 0.9rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background-color 0.2s, transform 0.2s;
         }
         .whatsapp-btn:hover {
             background-color: #1ebd59;
@@ -94,7 +114,10 @@
 <div class="admin-container">
     <h2>
         <span>Müraciətlər Paneli (Yazıçı Girişi)</span>
-        <button class="refresh-btn" id="loadOrders">Yenilə ↻</button>
+        <div class="btn-group">
+            <a href="index.html" class="back-btn">← Ana Səhifə</a>
+            <button class="refresh-btn" id="loadOrders">Yenilə ↻</button>
+        </div>
     </h2>
 
     <table id="ordersTable">
@@ -116,14 +139,11 @@
     </table>
 </div>
 
-<!-- admin.html faylının daxilindəki script teqini belə edin: -->
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-  
-
-    // Eyni Firebase məlumatlarınızı bura da kopyalayın
+    // Eyni Firebase məlumatlarınızı bura kopyalayın
     const firebaseConfig = {
         apiKey: "YOUR_API_KEY",
         authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
@@ -179,7 +199,7 @@
 
         } catch (error) {
             console.error("Xəta: ", error);
-            ordersList.innerHTML = `<tr><td colspan="6" class="no-data" style="color:red;">Məlumatları yükləmək mümkün olmadı. Konsolu yoxlayın.</td></tr>`;
+            ordersList.innerHTML = `<tr><td colspan="6" class="no-data" style="color:red;">Məlumatları yükləmək mümkün olmadı. Real Firebase məlumatlarını yerləşdirdiyinizdən əmin olun.</td></tr>`;
         }
     }
 
