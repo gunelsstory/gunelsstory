@@ -143,7 +143,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-    // Eyni Firebase məlumatlarınızı bura kopyalayın
+    // Bura öz real Firebase məlumatlarınızı daxil edin
     const firebaseConfig = {
         apiKey: "YOUR_API_KEY",
         authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
@@ -158,14 +158,14 @@
 
     async function fetchOrders() {
         const ordersList = document.getElementById('ordersList');
-        ordersList.innerHTML = `<tr><td colspan="6" class="no-data">Yenilənir...</td></tr>`;
+        ordersList.innerHTML = '<tr><td colspan="6" class="no-data">Yenilənir...</td></tr>';
 
         try {
             const q = query(collection(db, "orders"), orderBy("createdAt", "desc"));
             const querySnapshot = await getDocs(q);
             
             if (querySnapshot.empty) {
-                ordersList.innerHTML = `<tr><td colspan="6" class="no-data">Hələ heç bir müraciət yoxdur.</td></tr>`;
+                ordersList.innerHTML = '<tr><td colspan="6" class="no-data">Hələ heç bir müraciət yoxdur.</td></tr>';
                 return;
             }
 
@@ -175,18 +175,18 @@
                 const data = doc.data();
                 
                 let dateStr = "Qeyd olunmayıb";
-                if(data.createdAt) {
+                if (data.createdAt) {
                     dateStr = data.createdAt.toDate().toLocaleString('az-AZ', { hour12: false });
                 }
 
-                const cleanPhone = data.parentPhone.replace(/[^0-9]/g, '');
+                const cleanPhone = data.parentPhone ? data.parentPhone.replace(/[^0-9]/g, '') : '';
 
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td class="date-text">${dateStr}</td>
-                    <td><strong>${data.parentName}</strong></td>
-                    <td>${data.parentPhone}</td>
-                    <td>${data.childName} (${data.childAge || '-'} yaş)</td>
+                    <td><strong>${data.parentName || ''}</strong></td>
+                    <td>${data.parentPhone || ''}</td>
+                    <td>${data.childName || ''} (${data.childAge || '-'} yaş)</td>
                     <td class="interests-text">${data.childInterests || 'Qeyd edilməyib'}</td>
                     <td>
                         <a href="https://wa.me/${cleanPhone}" target="_blank" class="whatsapp-btn">
@@ -199,7 +199,7 @@
 
         } catch (error) {
             console.error("Xəta: ", error);
-            ordersList.innerHTML = `<tr><td colspan="6" class="no-data" style="color:red;">Məlumatları yükləmək mümkün olmadı. Real Firebase məlumatlarını yerləşdirdiyinizdən əmin olun.</td></tr>`;
+            ordersList.innerHTML = '<tr><td colspan="6" class="no-data" style="color:red;">Məlumatları yükləmək mümkün olmadı. Real Firebase məlumatlarını yoxlayın.</td></tr>';
         }
     }
 
