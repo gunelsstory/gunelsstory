@@ -32,13 +32,16 @@
         .login-box h2 { color: #03138d; margin-bottom: 25px; font-weight: 800; }
         .login-input { width: 100%; padding: 14px; margin-bottom: 15px; border: 2px solid #e2e8f0; border-radius: 12px; outline: none; font-size: 1rem; }
         .login-input:focus { border-color: #ff9f1c; }
-        .login-btn { width: 100%; padding: 14px; background: #ff9f1c; color: white; border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; }
+        .login-btn { width: 100%; padding: 14px; background: #ff9f1c; color: white; border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; margin-bottom: 15px; }
+        
+        .login-back-btn { display: inline-block; text-decoration: none; color: #64748b; font-size: 0.9rem; font-weight: 600; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+        .login-back-btn:hover { border-color: #64748b; }
 
         .admin-container { max-width: 1200px; margin: 0 auto; background-color: var(--white); padding: 25px 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); display: none; }
         .admin-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border-color); padding-bottom: 20px; margin-bottom: 30px; }
         .admin-header h1 { color: var(--primary-blue); font-size: 1.6rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
-        .back-btn { text-decoration: none; background-color: #1a1a1a; color: var(--white); padding: 10px 16px; border-radius: 12px; font-weight: 700; font-size: 0.85rem; transition: background 0.2s; }
-        .back-btn:hover { background-color: #333; }
+        .logout-btn { background-color: #dc2626; color: var(--white); padding: 10px 16px; border: none; border-radius: 12px; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: background 0.2s; }
+        .logout-btn:hover { background-color: #b91c1c; }
         
         .table-responsive { width: 100%; }
         table { width: 100%; border-collapse: collapse; text-align: left; margin-top: 10px; }
@@ -53,21 +56,18 @@
         .interests-cell { max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
         .interests-cell:hover { white-space: normal; background: #fffdf5; }
 
-        /* Status Düymə Stilləri */
         .status-btn { border: 2px solid #cbd5e1; background: transparent; color: #64748b; padding: 6px 14px; border-radius: 10px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 5px; }
         .status-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
         .status-btn.checked { background-color: #e6fcf5; border-color: var(--success-color); color: var(--success-color); font-weight: 700; }
 
-        /* Mobil Versiya üçün Uyğunlaşdırma (Responsive Minimalist) */
         @media (max-width: 768px) {
             body { padding: 10px 5px; }
             .admin-container { padding: 15px 10px; }
             .admin-header { flex-direction: column; gap: 15px; text-align: center; }
             .admin-header h1 { font-size: 1.3rem; }
             
-            /* Cədvəli Mobil Kartlara Çeviririk */
             table, thead, tbody, th, td, tr { display: block; }
-            thead { display: none; } /* Başlıqları gizlədirik */
+            thead { display: none; }
             
             tr {
                 background: #fff;
@@ -91,7 +91,6 @@
             
             td:last-child { border-bottom: none; padding-top: 12px; }
 
-            /* Mobil kartlarda sol tərəfə etiket əlavə edirik */
             td::before {
                 content: attr(data-label);
                 float: left;
@@ -114,7 +113,10 @@
             <input type="text" id="username" class="login-input" placeholder="İstifadəçi adı">
             <input type="password" id="password" class="login-input" placeholder="Şifrə">
             <button onclick="checkFirestoreLogin()" id="loginBtn" class="login-btn">Daxil Ol</button>
-            <p id="loginError" style="color: red; margin-top: 10px; display: none;">Məlumatlar yanlışdır və ya baza bağlantısı qurulmadı!</p>
+            <div>
+                <a href="index.html" class="login-back-btn">← Əsas Səhifəyə Qayıt</a>
+            </div>
+            <p id="loginError" style="color: red; margin-top: 15px; display: none;">Məlumatlar yanlışdır və ya baza bağlantısı qurulmadı!</p>
         </div>
     </div>
 
@@ -122,7 +124,7 @@
     <div class="admin-container" id="adminContainer">
         <div class="admin-header">
             <h1>⚙️ Sifarişlər</h1>
-            <a href="index.html" class="back-btn">← Sayta Qayıt</a>
+            <button onclick="logoutAdmin()" class="logout-btn">Çıxış Et 🚪</button>
         </div>
 
         <div class="table-responsive">
@@ -201,7 +203,19 @@
             });
         }
 
-        // Statusu (Baxıldı tikini) dəyişən yeni funksiya
+        // Çıxış Etmə Funksiyası
+        function logoutAdmin() {
+            // İdarəetmə panelini gizlət və giriş ekranını göstər
+            document.getElementById('adminContainer').style.display = 'none';
+            document.getElementById('loginOverlay').style.display = 'flex';
+            
+            // Giriş xanalarını və xətaları təmizlə
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('loginError').style.display = 'none';
+        }
+
+        // Statusu (Baxıldı tikini) dəyişən funksiya
         function toggleStatus(docId, currentStatus) {
             db.collection("orders").doc(docId).update({
                 isViewed: !currentStatus
@@ -240,7 +254,6 @@
 
                     const tr = document.createElement('tr');
                     
-                    // Tik düyməsinin vizual vəziyyəti
                     const statusClass = isViewed ? 'status-btn checked' : 'status-btn';
                     const statusText = isViewed ? '✓ Baxıldı' : 'Gözləyir';
 
