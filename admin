@@ -1,149 +1,9 @@
-<!DOCTYPE html>
-<html lang="az">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gunel's Story - Yazıçı Admin Paneli</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f6f9;
-            margin: 0;
-            padding: 30px;
-            color: #333;
-        }
-        .admin-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-        h2 {
-            color: #03138d;
-            margin-top: 0;
-            border-bottom: 2px solid #efefef;
-            padding-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .btn-group {
-            display: flex;
-            gap: 10px;
-        }
-        .refresh-btn {
-            background-color: #03138d;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.2s;
-        }
-        .refresh-btn:hover { background-color: #020b54; }
-        
-        .back-btn {
-            background-color: #1a1a1a;
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            transition: background 0.2s;
-        }
-        .back-btn:hover { background-color: #444; }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-        th {
-            background-color: #ffe893;
-            color: #2b2b2b;
-            font-weight: bold;
-        }
-        tr:hover { background-color: #fffdf5; }
-        
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            background-color: #25D366;
-            color: white;
-            text-decoration: none;
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: background-color 0.2s, transform 0.2s;
-        }
-        .whatsapp-btn:hover {
-            background-color: #1ebd59;
-            transform: translateY(-1px);
-        }
-        .no-data {
-            text-align: center;
-            padding: 40px;
-            color: #888;
-            font-size: 1.1rem;
-        }
-        .date-text {
-            font-size: 0.85rem;
-            color: #666;
-        }
-        .interests-text {
-            font-size: 0.9rem;
-            color: #555;
-        }
-    </style>
-</head>
-<body>
+<!-- Firebase Kitabxanaları -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
-<div class="admin-container">
-    <h2>
-        <span>Müraciətlər Paneli (Yazıçı Girişi)</span>
-        <div class="btn-group">
-            <a href="index.html" class="back-btn">← Ana Səhifə</a>
-            <button class="refresh-btn" id="loadOrders">Yenilə ↻</button>
-        </div>
-    </h2>
-
-    <table id="ordersTable">
-        <thead>
-            <tr>
-                <th>Tarix</th>
-                <th>Valideyn</th>
-                <th>Telefon</th>
-                <th>Uşağın Adı / Yaşı</th>
-                <th>Maraq Dünyası</th>
-                <th>Əməliyyat</th>
-            </tr>
-        </thead>
-        <tbody id="ordersList">
-            <tr>
-                <td colspan="6" class="no-data">Məlumatlar yüklənir...</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-    // Bura öz real Firebase məlumatlarınızı daxil edin
+<script>
+    // Bura real Firebase məlumatlarınızı daxil edin (index.html ilə eyni olmalıdır)
     const firebaseConfig = {
         apiKey: "YOUR_API_KEY",
         authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
@@ -153,58 +13,42 @@
         appId: "YOUR_APP_ID"
     };
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+    // Firebase-i başladırıq
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
 
-    async function fetchOrders() {
-        const ordersList = document.getElementById('ordersList');
-        ordersList.innerHTML = '<tr><td colspan="6" class="no-data">Yenilənir...</td></tr>';
+    const ordersTableBody = document.getElementById('ordersTableBody');
 
-        try {
-            const q = query(collection(db, "orders"), orderBy("createdAt", "desc"));
-            const querySnapshot = await getDocs(q);
+    // Məlumatları Firestore-dan real vaxt rejimində çəkirik
+    db.collection("orders").orderBy("createdAt", "desc").onSnapshot(function(snapshot) {
+        ordersTableBody.innerHTML = ''; // Cədvəli təmizləyirik
+
+        if (snapshot.empty) {
+            ordersTableBody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Hələ heç bir sifariş yoxdur.</td></tr>';
+            return;
+        }
+
+        snapshot.forEach(function(doc) {
+            const data = doc.data();
             
-            if (querySnapshot.empty) {
-                ordersList.innerHTML = '<tr><td colspan="6" class="no-data">Hələ heç bir müraciət yoxdur.</td></tr>';
-                return;
+            // Tarixi oxunaqlı formata salırıq
+            let orderDate = "Gözlənilir...";
+            if (data.createdAt) {
+                orderDate = data.createdAt.toDate().toLocaleString('az-AZ');
             }
 
-            ordersList.innerHTML = "";
-
-            querySnapshot.forEach((doc) => {
-                const data = doc.data();
-                
-                let dateStr = "Qeyd olunmayıb";
-                if (data.createdAt) {
-                    dateStr = data.createdAt.toDate().toLocaleString('az-AZ', { hour12: false });
-                }
-
-                const cleanPhone = data.parentPhone ? data.parentPhone.replace(/[^0-9]/g, '') : '';
-
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td class="date-text">${dateStr}</td>
-                    <td><strong>${data.parentName || ''}</strong></td>
-                    <td>${data.parentPhone || ''}</td>
-                    <td>${data.childName || ''} (${data.childAge || '-'} yaş)</td>
-                    <td class="interests-text">${data.childInterests || 'Qeyd edilməyib'}</td>
-                    <td>
-                        <a href="https://wa.me/${cleanPhone}" target="_blank" class="whatsapp-btn">
-                            💬 WhatsApp-da yaz
-                        </a>
-                    </td>
-                `;
-                ordersList.appendChild(tr);
-            });
-
-        } catch (error) {
-            console.error("Xəta: ", error);
-            ordersList.innerHTML = '<tr><td colspan="6" class="no-data" style="color:red;">Məlumatları yükləmək mümkün olmadı. Real Firebase məlumatlarını yoxlayın.</td></tr>';
-        }
-    }
-
-    document.getElementById('loadOrders').addEventListener('click', fetchOrders);
-    window.addEventListener('DOMContentLoaded', fetchOrders);
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${data.parentName || ''}</td>
+                <td><a href="tel:${data.parentPhone || ''}">${data.parentPhone || ''}</a></td>
+                <td>${data.childName || ''}</td>
+                <td>${data.childAge || ''}</td>
+                <td>${data.childInterests || ''}</td>
+                <td>${orderDate}</td>
+            `;
+            ordersTableBody.appendChild(tr);
+        });
+    }, function(error) {
+        console.error("Məlumat oxunarkən xəta baş verdi: ", error);
+    });
 </script>
-</body>
-</html>
