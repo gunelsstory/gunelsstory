@@ -15,6 +15,8 @@
             --border-color: #e2e8f0;
             --whatsapp-color: #25D366;
             --success-color: #10b981;
+            --danger-color: #ef4444;
+            --danger-hover: #dc2626;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -69,9 +71,17 @@
         .interests-cell { max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
         .interests-cell:hover { white-space: normal; background: #fffdf5; }
 
+        /* Status və Silmə Düymələrinin Konteyneri */
+        .action-container { display: flex; align-items: center; gap: 10px; }
+
         .status-btn { border: 2px solid #cbd5e1; background: transparent; color: #64748b; padding: 6px 14px; border-radius: 10px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 5px; }
         .status-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
         .status-btn.checked { background-color: #e6fcf5; border-color: var(--success-color); color: var(--success-color); font-weight: 700; }
+
+        /* Silmə düyməsi dizaynı */
+        .delete-btn { background-color: #fef2f2; border: 2px solid #fee2e2; color: var(--danger-color); padding: 6px 10px; border-radius: 10px; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; }
+        .delete-btn:hover { background-color: var(--danger-color); border-color: var(--danger-color); color: white; }
+        .delete-btn svg { width: 16px; height: 16px; fill: currentColor; }
 
         @media (max-width: 768px) {
             body { padding: 10px 5px; }
@@ -117,7 +127,8 @@
 
             .interests-cell { max-width: 100%; text-align: right; }
             .phone-container { justify-content: flex-end; }
-
+            .action-container { justify-content: flex-end; width: 100%; }
+            
             .whatsapp-btn span { display: none; }
             .whatsapp-btn { padding: 8px; border-radius: 8px; }
             .whatsapp-btn svg { width: 18px; height: 18px; }
@@ -168,7 +179,7 @@
                         <th>Yaşı</th>
                         <th>Maraqları / İstəkləri</th>
                         <th>Sifariş Tarixi</th>
-                        <th>Status</th>
+                        <th>Əməliyyatlar / Status</th>
                     </tr>
                 </thead>
                 <tbody id="ordersTableBody">
@@ -292,6 +303,18 @@
             });
         }
 
+        // Sifarişi bazadan silən funksiya
+        function deleteOrder(docId, parentName) {
+            const confirmDelete = confirm(`${parentName} adlı valideynin sifarişini silmək istədiyinizdən əminsiniz?`);
+            if (confirmDelete) {
+                db.collection("orders").doc(docId).delete().then(function() {
+                    console.log("Sifariş uğurla silindi.");
+                }).catch(function(error) {
+                    alert("Silinmə zamanı xəta baş verdi: " + error.message);
+                });
+            }
+        }
+
         // Sifarişləri Canlı Dinləyən Funksiya
         function startListeningOrders() {
             const ordersTableBody = document.getElementById('ordersTableBody');
@@ -308,6 +331,7 @@
                     const data = doc.data();
                     const docId = doc.id;
                     const isViewed = data.isViewed || false;
+                    const parentName = data.parentName || 'Naməlum';
 
                     let orderDate = "Gözlənilir...";
                     if (data.createdAt) {
@@ -326,7 +350,7 @@
                     const statusText = isViewed ? '✓ Baxıldı' : 'Gözləyir';
 
                     tr.innerHTML = `
-                        <td data-label="Valideyn: " style="font-weight: 600;">${data.parentName || ''}</td>
+                        <td data-label="Valideyn: " style="font-weight: 600;">${parentName}</td>
                         <td data-label="Əlaqə: ">
                             <div class="phone-container">
                                 <a href="tel:${data.parentPhone || ''}" class="phone-link">${data.parentPhone || ''}</a>
@@ -341,9 +365,16 @@
                         <td data-label="Maraqlar: " class="interests-cell" title="Tam görmək üçün üzərinə gəlin">${data.childInterests || '-'}</td>
                         <td data-label="Tarix: " style="color: #64748b; font-size: 0.9rem;">${orderDate}</td>
                         <td data-label="Status: ">
-                            <button class="${statusClass}" onclick="toggleStatus('${docId}', ${isViewed})">
-                                ${statusText}
-                            </button>
+                            <div class="action-container">
+                                <!-- Silmə düyməsi -->
+                                <button class="delete-btn" onclick="deleteOrder('${docId}', '${parentName}')" title="Sifarişi sil">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                                </button>
+                                <!-- Status düyməsi -->
+                                <button class="${statusClass}" onclick="toggleStatus('${docId}', ${isViewed})">
+                                    ${statusText}
+                                </button>
+                            </div>
                         </td>
                     `;
                     ordersTableBody.appendChild(tr);
