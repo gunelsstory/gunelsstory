@@ -34,6 +34,14 @@
         .login-box h2 { color: #03138d; margin-bottom: 25px; font-weight: 800; }
         .login-input { width: 100%; padding: 14px; margin-bottom: 15px; border: 2px solid #e2e8f0; border-radius: 12px; outline: none; font-size: 1rem; }
         .login-input:focus { border-color: #ff9f1c; }
+        
+        /* Şifrə sahəsi üçün konteyner və göz düyməsi */
+        .password-container { position: relative; width: 100%; margin-bottom: 15px; }
+        .password-container .login-input { margin-bottom: 0; padding-right: 45px; }
+        .toggle-password { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; padding: 5px; }
+        .toggle-password:hover { color: var(--primary-blue); }
+        .toggle-password svg { width: 20px; height: 20px; fill: currentColor; }
+
         .login-btn { width: 100%; padding: 14px; background: #ff9f1c; color: white; border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; margin-bottom: 15px; }
         
         .login-back-btn { display: inline-block; text-decoration: none; color: #64748b; font-size: 0.9rem; font-weight: 600; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
@@ -54,7 +62,6 @@
         .phone-container { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
         .phone-link { color: var(--primary-blue); text-decoration: none; font-weight: 600; }
         
-        /* Orijinal WhatsApp Düyməsi və SVG İkonu */
         .whatsapp-btn { display: inline-flex; align-items: center; justify-content: center; background-color: var(--whatsapp-color); color: white; text-decoration: none; padding: 6px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: bold; gap: 6px; transition: background 0.2s; }
         .whatsapp-btn:hover { background-color: #20ba5a; }
         .whatsapp-btn svg { width: 16px; height: 16px; fill: currentColor; display: block; }
@@ -111,18 +118,9 @@
             .interests-cell { max-width: 100%; text-align: right; }
             .phone-container { justify-content: flex-end; }
 
-            /* Mobildə mətni gizlət, düyməni ikon ölçüsünə uyğun kvadrat et */
-            .whatsapp-btn span {
-                display: none;
-            }
-            .whatsapp-btn {
-                padding: 8px;
-                border-radius: 8px;
-            }
-            .whatsapp-btn svg {
-                width: 18px;
-                height: 18px;
-            }
+            .whatsapp-btn span { display: none; }
+            .whatsapp-btn { padding: 8px; border-radius: 8px; }
+            .whatsapp-btn svg { width: 18px; height: 18px; }
         }
     </style>
 </head>
@@ -133,7 +131,18 @@
         <div class="login-box">
             <h2>Giriş Paneli ⚙️</h2>
             <input type="text" id="username" class="login-input" placeholder="İstifadəçi adı">
-            <input type="password" id="password" class="login-input" placeholder="Şifrə">
+            
+            <!-- Göz simvolu əlavə edilmiş şifrə sahəsi -->
+            <div class="password-container">
+                <input type="password" id="password" class="login-input" placeholder="Şifrə">
+                <button type="button" onclick="togglePasswordVisibility()" class="toggle-password" id="togglePasswordBtn" title="Şifrəni göstər">
+                    <!-- Bağlı göz simvolu (Standart olaraq bu görünür) -->
+                    <svg id="eyeClosedIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                    <!-- Açıq göz simvolu (Gizlidir) -->
+                    <svg id="eyeOpenIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none;"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-4.5c-5 0-9.27 3.11-11 7.5 1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 16.5c-2.48 0-4.5-2.02-4.5-4.5S9.52 7.5 12 7.5s4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5z"/></svg>
+                </button>
+            </div>
+
             <button onclick="checkFirestoreLogin()" id="loginBtn" class="login-btn">Daxil Ol</button>
             <div>
                 <a href="index.html" class="login-back-btn">← Əsas Səhifəyə Qayıt</a>
@@ -190,6 +199,26 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
+        // Şifrəni göstərib gizlədən funksiya
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const eyeOpenIcon = document.getElementById('eyeOpenIcon');
+            const eyeClosedIcon = document.getElementById('eyeClosedIcon');
+            const toggleBtn = document.getElementById('togglePasswordBtn');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeOpenIcon.style.display = 'block';
+                eyeClosedIcon.style.display = 'none';
+                toggleBtn.setAttribute('title', 'Şifrəni gizlə');
+            } else {
+                passwordInput.type = 'password';
+                eyeOpenIcon.style.display = 'none';
+                eyeClosedIcon.style.display = 'block';
+                toggleBtn.setAttribute('title', 'Şifrəni göstər');
+            }
+        }
+
         // Səhifə yüklənəndə brauzer yaddaşını yoxlayan funksiya
         window.addEventListener('DOMContentLoaded', (event) => {
             const isAdminLoggedIn = localStorage.getItem('adminLoggedIn');
@@ -244,6 +273,13 @@
             
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
+            
+            // Çıxış edərkən sahəni yenidən gizli növünə qaytarırıq
+            const passwordInput = document.getElementById('password');
+            passwordInput.type = 'password';
+            document.getElementById('eyeOpenIcon').style.display = 'none';
+            document.getElementById('eyeClosedIcon').style.display = 'block';
+
             document.getElementById('loginError').style.display = 'none';
         }
 
@@ -289,7 +325,6 @@
                     const statusClass = isViewed ? 'status-btn checked' : 'status-btn';
                     const statusText = isViewed ? '✓ Baxıldı' : 'Gözləyir';
 
-                    // Orijinal SVG WhatsApp loqosu daxil edildi
                     tr.innerHTML = `
                         <td data-label="Valideyn: " style="font-weight: 600;">${data.parentName || ''}</td>
                         <td data-label="Əlaqə: ">
