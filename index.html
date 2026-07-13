@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="az">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gunel's story</title>
-
     <link rel="icon" type="image/png" href="image/favicon.png">
     <style>
         :root {
             --bg-color: #fff3b9;
-            /* Yumşaq, açıq şirin sarı fon */
             --accent-yellow: #fcc419;
-            /* Şəkillərdəki parlaq sarı ton */
             --card-yellow: #ffe893;
-            /* Blokların sarı arxa fonu */
             --text-dark: #2b2b2b;
             --text-muted: #555555;
             --white: #ffffff;
@@ -39,7 +34,6 @@
             padding: 20px;
         }
 
-        /* Header Bölməsi */
         header {
             text-align: center;
             padding: 40px 20px;
@@ -82,7 +76,6 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
-        /* Addım Kartları (1, 2, 3, 4) */
         .step-card {
             background-color: var(--card-yellow);
             border-radius: 28px;
@@ -124,7 +117,6 @@
             line-height: 1.6;
         }
 
-        /* Kart Daxili Struktur */
         .step-body {
             display: flex;
             gap: 20px;
@@ -180,7 +172,6 @@
             line-height: 1.3;
         }
 
-        /* Paket və Form Kartı (Blok 5) */
         .package-card {
             background-color: #fffdf5;
             border-radius: 35px;
@@ -233,7 +224,6 @@
             top: 0;
         }
 
-        /* Müraciət Formu Dizaynı */
         .order-form-container {
             max-width: 500px;
             margin: 40px auto 20px;
@@ -300,54 +290,37 @@
             margin-top: 25px;
         }
 
-        /* Responsive Dizayn */
         @media (max-width: 768px) {
             .step-body {
                 flex-direction: column;
             }
-
             .step-features-side {
                 flex-direction: column;
             }
-
             .feature-sub-card {
                 padding: 15px;
             }
         }
     </style>
+</head>
+<body>
 
-    <!-- Yuxarı Naviqasiya Düymələri -->
     <div style="display: flex; justify-content: flex-end; gap: 10px; padding: 15px 15px 0 0;">
-        <!-- PORTFOLİO (Olduğu kimi qalır) -->
-        <a href="portfolio.html"
-            style="text-decoration: none; background-color: #1a1a1a; color: #ffffff; padding: 12px 26px; border-radius: 20px; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); transition: all 0.3s;"
-            onmouseover="this.style.background='#fcc419'; this.style.color='#1a1a1a'; this.style.transform='translateY(-2px)';"
-            onmouseout="this.style.background='#1a1a1a'; this.style.color='#ffffff'; this.style.transform='translateY(0)';">
+        <a href="portfolio.html" style="text-decoration: none; background-color: #1a1a1a; color: #ffffff; padding: 12px 26px; border-radius: 20px; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); transition: all 0.3s;" onmouseover="this.style.background='#fcc419'; this.style.color='#1a1a1a'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='#1a1a1a'; this.style.color='#ffffff'; this.style.transform='translateY(0)';">
             <span>PORTFOLİO</span>
             <span style="font-size: 1rem;">↓</span>
         </a>
 
-        <!-- ADMİN (Yeni əlavə olunan ayrıca düymə - bura admin reponuzun Pages linkini yazın) -->
-        <!-- ADMİN (Artıq eyni repoda olduğu üçün birbaşa faylın adını yazırıq) -->
-<a href="admin.html"
-    style="text-decoration: none; background-color: #03138d; color: #ffffff; padding: 12px 26px; border-radius: 20px; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 6px 16px rgba(3, 19, 141, 0.2); transition: all 0.3s;"
-    onmouseover="this.style.background='#ff9f1c'; this.style.color='#ffffff'; this.style.transform='translateY(-2px)';"
-    onmouseout="this.style.background='#03138d'; this.style.color='#ffffff'; this.style.transform='translateY(0)';">
-    <span>ADMİN PANELİ</span>
-    <span style="font-size: 1rem;">⚙️</span>
-</a>
+        <a href="admin.html" style="text-decoration: none; background-color: #03138d; color: #ffffff; padding: 12px 26px; border-radius: 20px; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 6px 16px rgba(3, 19, 141, 0.2); transition: all 0.3s;" onmouseover="this.style.background='#ff9f1c'; this.style.color='#ffffff'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='#03138d'; this.style.color='#ffffff'; this.style.transform='translateY(0)';">
+            <span>ADMİN PANELİ</span>
+            <span style="font-size: 1rem;">⚙️</span>
+        </a>
     </div>
 
-</head>
-
-<body>
-
     <div class="container">
-
         <header>
             <div class="logo-box">
-                <img src="image/logo.png" alt="Gunelsstory" 
-                    style="max-width: 100%; max-height: 100%; border-radius: 20px;" >
+                <img src="image/logo.png" alt="Gunelsstory" style="max-width: 100%; max-height: 100%; border-radius: 20px;">
             </div>
             <h1>Gunel's story</h1>
             <div class="subtitle">Uşağınız Hekayənin Baş Qəhrəmanıdır!</div>
@@ -358,19 +331,13 @@
         <div class="step-card">
             <div class="step-header">
                 <div class="step-number">1</div>
-                <div class="step-title">
-                    <h2>Uşağınız Üçün Xüsusi Hekayə</h2>
-                </div>
+                <div class="step-title"><h2>Uşağınız Üçün Xüsusi Hekayə</h2></div>
             </div>
-            <div class="step-desc">
-                Uşağınızın adı, sevimli heyvanları, xəyalları və arzuları əsasında tam fərdi hekayə hazırlanır. Hər
-                cümlə, hər səhifə yalnız sizin övladınız üçün xüsusi olaraq yazılır.
-            </div>
+            <div class="step-desc">Uşağınızın adı, sevimli heyvanları, xəyalları və arzuları əsasında tam fərdi hekayə hazırlanır. Hər cümlə, hər səhifə yalnız sizin övladınız üçün xüsusi olaraq yazılır.</div>
             <div class="step-body">
                 <div class="step-img-side">
                     <div class="step-img-box">
-                        <img src="image/step1.png" alt="Addım 1 Şəkli"
-                            style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+                        <img src="image/step1.png" alt="Addım 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
                     </div>
                 </div>
                 <div class="step-features-side">
@@ -394,19 +361,13 @@
         <div class="step-card">
             <div class="step-header">
                 <div class="step-number">2</div>
-                <div class="step-title">
-                    <h2>Uşağınızın Şəkli ilə Dizayn</h2>
-                </div>
+                <div class="step-title"><h2>Uşağınızın Şəkli ilə Dizayn</h2></div>
             </div>
-            <div class="step-desc">
-                Uşağınızın real şəkli hekayənin səhifələrinə inteqrasiya olunur və o, kitabın əsl baş qəhrəmanına
-                çevrilir. Hər səhifə peşəkar dizaynerlər tərəfindən xüsusi olaraq tərtib edilir.
-            </div>
+            <div class="step-desc">Uşağınızın real şəkli hekayənin səhifələrinə inteqrasiya olunur və o, kitabın əsl baş qəhrəmanına çevrilir. Hər səhifə peşəkar dizaynerlər tərəfindən xüsusi olaraq tərtib edilir.</div>
             <div class="step-body">
                 <div class="step-img-side">
                     <div class="step-img-box">
-                        <img src="image/step2.png" alt="Addım 2 Şəkli"
-                            style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+                        <img src="image/step2.png" alt="Addım 2" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
                     </div>
                 </div>
                 <div class="step-features-side">
@@ -430,19 +391,13 @@
         <div class="step-card">
             <div class="step-header">
                 <div class="step-number">3</div>
-                <div class="step-title">
-                    <h2>Premium Keyfiyyətli Çap</h2>
-                </div>
+                <div class="step-title"><h2>Premium Keyfiyyətli Çap</h2></div>
             </div>
-            <div class="step-desc">
-                Yüksək sıxlıqlı premium kağız, parlaq və canlı rənglər, möhkəm cild – bütün bunlar kitabınızı həm
-                oxumaq, həm də illərlə saxlanılacaq xatirə kimi mükəmməl edir.
-            </div>
+            <div class="step-desc">Yüksək sıxlıqlı premium kağız, parlaq və canlı rənglər, möhkəm cild – bütün bunlar kitabınızı həm oxumaq, həm də illərlə saxlanılacaq xatirə kimi mükəmməl edir.</div>
             <div class="step-body">
                 <div class="step-img-side">
                     <div class="step-img-box">
-                        <img src="image/step3.png" alt="Addım 3 Şəkli"
-                            style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+                        <img src="image/step3.png" alt="Addım 3" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
                     </div>
                 </div>
                 <div class="step-features-side">
@@ -466,19 +421,13 @@
         <div class="step-card">
             <div class="step-header">
                 <div class="step-number">4</div>
-                <div class="step-title">
-                    <h2>Xüsusi Hədiyyə Qablaşdırma</h2>
-                </div>
+                <div class="step-title"><h2>Xüsusi Hədiyyə Qablaşdırma</h2></div>
             </div>
-            <div class="step-desc">
-                Kitab hədiyyə paketi ilə təqdim olunur. Paketin açılması belə uşağınız üçün
-                unudulmaz bir an və kiçik bayrama çevrilir.
-            </div>
+            <div class="step-desc">Kitab hədiyyə paketi ilə təqdim olunur. Paketin açılması belə uşağınız üçün unudulmaz bir an və kiçik bayrama çevrilir.</div>
             <div class="step-body">
                 <div class="step-img-side">
                     <div class="step-img-box">
-                        <img src="image/step5.png" alt="Addım 4 Şəkli"
-                            style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+                        <img src="image/step5.png" alt="Addım 4" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
                     </div>
                 </div>
                 <div class="step-features-side">
@@ -502,9 +451,7 @@
         <div class="package-card">
             <h3>Xüsusi Fərdi Hekayə Kitabı</h3>
             <p class="pack-desc">Premium karton üzlük və ikiqat cildlənmə ilə uzun illər istifadə üçün hazırlanır.</p>
-
             <div class="package-headline">Sizin üçün fərdi hazırlanır</div>
-
             <ul class="package-list">
                 <li>100% fərdi və xüsusi yazılmış hekayə</li>
                 <li>Uşağınızın real şəkli ilə illüstrasiya</li>
@@ -513,51 +460,41 @@
                 <li>Uzun illər istifadə üçün möhkəm və dayanıqlı</li>
             </ul>
 
-            <!-- Form Kontenti -->
             <div class="order-form-container">
                 <h4 style="margin-bottom: 20px; color: #03138d; font-size: 1.4rem; font-weight: 800; text-align: center;">Sifariş Müraciəti</h4>
-                
                 <form id="firebaseOrderForm">
                     <div class="form-group">
                         <label>Valideynin Adı və Soyadı *</label>
                         <input type="text" id="parentName" required placeholder="Məs: Aysel Məmmədova">
                     </div>
-
                     <div class="form-group">
                         <label>Telefon Nömrəniz *</label>
                         <input type="tel" id="parentPhone" required placeholder="Məs: +994 50 123 45 67">
                     </div>
-
                     <div class="form-group">
                         <label>Uşağın Adı *</label>
                         <input type="text" id="childName" required placeholder="Məs: Yusif">
                     </div>
-
                     <div class="form-group">
                         <label>Uşağın Yaşı</label>
                         <input type="number" id="childAge" placeholder="Məs: 5">
                     </div>
-
                     <div class="form-group">
                         <label>Uşağın Sevimli Personajları / Maraqları</label>
                         <textarea id="childInterests" rows="3" placeholder="Məsələn: Kosmos, dinozavrlar, pişiklər və s."></textarea>
                     </div>
-
                     <button type="submit" class="order-btn">MÜRACİƏTİ TAMAMLA ✨</button>
                 </form>
             </div>
-
             <p class="pack-footer">Sifarişdən sonra detallar bazamızda yoxlanılacaq və sizinlə əlaqə saxlanılacaq.</p>
         </div>
-
     </div>
 
-    <!-- Firebase və Firestore İnteqrasiyası -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // Məlumatlarınızı bura daxil edin
+        // Bura real Firebase məlumatlarınızı daxil edin
         const firebaseConfig = {
             apiKey: "YOUR_API_KEY",
             authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
@@ -572,7 +509,6 @@
 
         document.getElementById('firebaseOrderForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            
             const submitBtn = e.target.querySelector('.order-btn');
             submitBtn.disabled = true;
             submitBtn.innerText = "GÖNDƏRİLİR...";
@@ -600,5 +536,4 @@
         });
     </script>
 </body>
-
 </html>
