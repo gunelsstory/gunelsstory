@@ -7,90 +7,382 @@
     <link rel="icon" type="image/png" href="image/favicon.png">
     <style>
         :root {
-            --bg-color: #f4f6f9;
-            --primary-blue: #03138d;
-            --accent-orange: #ff9f1c;
-            --text-dark: #2b2b2b;
+            --bg-color: #FAF6EE; /* Premium yumşaq krem tonu */
+            --primary-blue: #1E2A78; /* Lüks göy rəng */
+            --accent-gold: #E67E22; /* Premium qızılı-narıncı ton */
+            --text-dark: #2D2D2D;
+            --text-muted: #666666;
             --white: #ffffff;
-            --border-color: #e2e8f0;
+            --border-color: rgba(30, 42, 120, 0.08);
             --whatsapp-color: #25D366;
             --success-color: #10b981;
             --danger-color: #ef4444;
-            --danger-hover: #dc2626;
+            --border-radius-lg: 30px;
+            --border-radius-sm: 16px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-dark); padding: 20px 10px; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        }
+        
+        body { 
+            background-color: var(--bg-color); 
+            color: var(--text-dark); 
+            padding: 40px 15px; 
+            background-image: radial-gradient(#F5EFE4 1.5px, transparent 1.5px);
+            background-size: 24px 24px; /* Zərif nöqtəli premium arxa fon */
+        }
 
+        /* Müasir Giriş Ekranı (Login Screen) */
         .login-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #03138d; display: flex; justify-content: center; align-items: center; z-index: 9999;
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background: linear-gradient(135deg, #1E2A78 0%, #10184D 100%); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            z-index: 9999;
             padding: 20px;
         }
 
         .login-box {
-            background: white; padding: 40px; border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2); width: 100%; max-width: 400px; text-align: center;
+            background: var(--white); 
+            padding: 50px 40px; 
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); 
+            width: 100%; 
+            max-width: 440px; 
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .login-box h2 { color: #03138d; margin-bottom: 25px; font-weight: 800; }
-        .login-input { width: 100%; padding: 14px; margin-bottom: 15px; border: 2px solid #e2e8f0; border-radius: 12px; outline: none; font-size: 1rem; }
-        .login-input:focus { border-color: #ff9f1c; }
-        
-        /* Şifrə sahəsi üçün konteyner və göz düyməsi */
-        .password-container { position: relative; width: 100%; margin-bottom: 15px; }
-        .password-container .login-input { margin-bottom: 0; padding-right: 45px; }
-        .toggle-password { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b; padding: 5px; }
-        .toggle-password:hover { color: var(--primary-blue); }
-        .toggle-password svg { width: 20px; height: 20px; fill: currentColor; }
+        .login-box h2 { 
+            color: var(--primary-blue); 
+            margin-bottom: 30px; 
+            font-weight: 900; 
+            font-size: 1.8rem;
+            letter-spacing: -0.5px;
+        }
 
-        .login-btn { width: 100%; padding: 14px; background: #ff9f1c; color: white; border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; margin-bottom: 15px; }
-        
-        .login-back-btn { display: inline-block; text-decoration: none; color: #64748b; font-size: 0.9rem; font-weight: 600; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
-        .login-back-btn:hover { border-color: #64748b; }
+        .login-input { 
+            width: 100%; 
+            padding: 16px 18px; 
+            margin-bottom: 18px; 
+            border: 2px solid #EAEAEA; 
+            border-radius: var(--border-radius-sm); 
+            outline: none; 
+            font-size: 1rem; 
+            transition: all 0.3s ease;
+            background-color: #FAFAFA;
+        }
 
-        .admin-container { max-width: 1200px; margin: 0 auto; background-color: var(--white); padding: 25px 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); display: none; }
-        .admin-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border-color); padding-bottom: 20px; margin-bottom: 30px; }
-        .admin-header h1 { color: var(--primary-blue); font-size: 1.6rem; font-weight: 800; display: flex; align-items: center; gap: 10px; }
-        .logout-btn { background-color: #dc2626; color: var(--white); padding: 10px 16px; border: none; border-radius: 12px; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: background 0.2s; }
-        .logout-btn:hover { background-color: #b91c1c; }
+        .login-input:focus { 
+            border-color: var(--primary-blue); 
+            background-color: var(--white);
+            box-shadow: 0 0 0 4px rgba(30, 42, 120, 0.08);
+        }
         
-        .table-responsive { width: 100%; }
-        table { width: 100%; border-collapse: collapse; text-align: left; margin-top: 10px; }
-        th { background-color: #f8fafc; color: #64748b; font-weight: 700; padding: 16px; border-bottom: 2px solid var(--border-color); font-size: 0.9rem; }
-        td { padding: 16px; border-bottom: 1px solid var(--border-color); vertical-align: middle; font-size: 0.95rem; }
-        tr:hover { background-color: #f8fafc; }
+        /* Şifrə Sahəsi */
+        .password-container { 
+            position: relative; 
+            width: 100%; 
+            margin-bottom: 18px; 
+        }
         
-        .phone-container { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .phone-link { color: var(--primary-blue); text-decoration: none; font-weight: 600; }
+        .password-container .login-input { 
+            margin-bottom: 0; 
+            padding-right: 50px; 
+        }
+
+        .toggle-password { 
+            position: absolute; 
+            right: 16px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            background: none; 
+            border: none; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: #8E8E93; 
+            padding: 5px; 
+            transition: color 0.2s;
+        }
+
+        .toggle-password:hover { 
+            color: var(--primary-blue); 
+        }
+
+        .toggle-password svg { 
+            width: 22px; 
+            height: 22px; 
+            fill: currentColor; 
+        }
+
+        .login-btn { 
+            width: 100%; 
+            padding: 16px; 
+            background: var(--accent-gold); 
+            color: var(--white); 
+            border: none; 
+            border-radius: var(--border-radius-sm); 
+            font-weight: 800; 
+            font-size: 1.1rem; 
+            cursor: pointer; 
+            margin-bottom: 20px; 
+            box-shadow: 0 8px 20px rgba(230, 126, 34, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(230, 126, 34, 0.35);
+            background: #D35400;
+        }
         
-        .whatsapp-btn { display: inline-flex; align-items: center; justify-content: center; background-color: var(--whatsapp-color); color: white; text-decoration: none; padding: 6px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: bold; gap: 6px; transition: background 0.2s; }
-        .whatsapp-btn:hover { background-color: #20ba5a; }
-        .whatsapp-btn svg { width: 16px; height: 16px; fill: currentColor; display: block; }
+        .login-back-btn { 
+            display: inline-block; 
+            text-decoration: none; 
+            color: var(--text-muted); 
+            font-size: 0.95rem; 
+            font-weight: 700; 
+            border-bottom: 2px solid transparent; 
+            transition: all 0.2s; 
+        }
+
+        .login-back-btn:hover { 
+            color: var(--primary-blue);
+            border-color: var(--primary-blue); 
+        }
+
+        /* Əsas İdarəetmə Paneli Konteyneri */
+        .admin-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background-color: var(--white); 
+            padding: 35px 30px; 
+            border-radius: var(--border-radius-lg); 
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.03); 
+            border: 1px solid rgba(0, 0, 0, 0.01);
+            display: none; 
+        }
+
+        .admin-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 2px solid var(--border-color); 
+            padding-bottom: 25px; 
+            margin-bottom: 35px; 
+        }
+
+        .admin-header h1 { 
+            color: var(--primary-blue); 
+            font-size: 1.8rem; 
+            font-weight: 900; 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+        }
+
+        .logout-btn { 
+            background-color: rgba(239, 68, 68, 0.08); 
+            color: var(--danger-color); 
+            padding: 12px 22px; 
+            border: 2px solid transparent; 
+            border-radius: var(--border-radius-sm); 
+            font-weight: 800; 
+            font-size: 0.9rem; 
+            cursor: pointer; 
+            transition: all 0.2s ease; 
+        }
+
+        .logout-btn:hover { 
+            background-color: var(--danger-color); 
+            color: var(--white);
+            box-shadow: 0 6px 15px rgba(239, 68, 68, 0.2);
+        }
         
-        .interests-cell { max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
-        .interests-cell:hover { white-space: normal; background: #fffdf5; }
+        /* Cədvəl Dizaynı */
+        .table-responsive { 
+            width: 100%; 
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
 
-        /* Status və Silmə Düymələrinin Konteyneri */
-        .action-container { display: flex; align-items: center; gap: 10px; }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            text-align: left; 
+        }
 
-        .status-btn { border: 2px solid #cbd5e1; background: transparent; color: #64748b; padding: 6px 14px; border-radius: 10px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 5px; }
-        .status-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
-        .status-btn.checked { background-color: #e6fcf5; border-color: var(--success-color); color: var(--success-color); font-weight: 700; }
+        th { 
+            background-color: #FAFBFD; 
+            color: #7A869A; 
+            font-weight: 800; 
+            padding: 18px; 
+            border-bottom: 2px solid var(--border-color); 
+            font-size: 0.85rem; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-        /* Silmə düyməsi dizaynı */
-        .delete-btn { background-color: #fef2f2; border: 2px solid #fee2e2; color: var(--danger-color); padding: 6px 10px; border-radius: 10px; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; }
-        .delete-btn:hover { background-color: var(--danger-color); border-color: var(--danger-color); color: white; }
-        .delete-btn svg { width: 16px; height: 16px; fill: currentColor; }
+        td { 
+            padding: 18px; 
+            border-bottom: 1px solid var(--border-color); 
+            vertical-align: middle; 
+            font-size: 0.95rem; 
+            color: var(--text-dark);
+        }
 
+        tr {
+            transition: background-color 0.2s ease;
+        }
+
+        tr:hover { 
+            background-color: #FAFBFD; 
+        }
+        
+        /* Telefon və WhatsApp */
+        .phone-container { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            flex-wrap: wrap; 
+        }
+
+        .phone-link { 
+            color: var(--primary-blue); 
+            text-decoration: none; 
+            font-weight: 700; 
+        }
+        
+        .whatsapp-btn { 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            background-color: var(--whatsapp-color); 
+            color: white; 
+            text-decoration: none; 
+            padding: 8px 16px; 
+            border-radius: 10px; 
+            font-size: 0.85rem; 
+            font-weight: 800; 
+            gap: 6px; 
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+            transition: all 0.2s ease; 
+        }
+
+        .whatsapp-btn:hover { 
+            background-color: #1ebe57; 
+            transform: translateY(-1px);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn svg { 
+            width: 16px; 
+            height: 16px; 
+            fill: currentColor; 
+            display: block; 
+        }
+        
+        /* Maraqlar/İstəklər Bölməsi */
+        .interests-cell { 
+            max-width: 250px; 
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+            cursor: pointer; 
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        .interests-cell:hover { 
+            white-space: normal; 
+            background: #FFFDF5; 
+            color: var(--text-dark);
+        }
+
+        /* Əməliyyat Düymələri */
+        .action-container { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+        }
+
+        /* Status (Gözləyir/Baxıldı) */
+        .status-btn { 
+            border: 2px solid #E2E8F0; 
+            background: var(--white); 
+            color: var(--text-muted); 
+            padding: 8px 16px; 
+            border-radius: 12px; 
+            font-weight: 700; 
+            font-size: 0.85rem; 
+            cursor: pointer; 
+            transition: all 0.2s ease; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 5px; 
+        }
+
+        .status-btn:hover { 
+            border-color: var(--accent-gold); 
+            color: var(--accent-gold); 
+        }
+
+        .status-btn.checked { 
+            background-color: #EBFDF5; 
+            border-color: var(--success-color); 
+            color: var(--success-color); 
+            font-weight: 800; 
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.1);
+        }
+
+        /* Silmə Düyməsi */
+        .delete-btn { 
+            background-color: #FEF2F2; 
+            border: 2px solid #FEE2E2; 
+            color: var(--danger-color); 
+            padding: 8px 12px; 
+            border-radius: 12px; 
+            cursor: pointer; 
+            transition: all 0.2s ease; 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+
+        .delete-btn:hover { 
+            background-color: var(--danger-color); 
+            border-color: var(--danger-color); 
+            color: var(--white); 
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+        }
+
+        .delete-btn svg { 
+            width: 18px; 
+            height: 18px; 
+            fill: currentColor; 
+        }
+
+        /* MOBİL RESPONSİVLİK */
         @media (max-width: 768px) {
-            body { padding: 10px 5px; }
+            body { padding: 15px 10px; }
             
-            .login-box { padding: 30px 20px; border-radius: 16px; }
+            .login-box { padding: 35px 20px; border-radius: 24px; }
             
-            .admin-container { padding: 15px 10px; }
+            .admin-container { padding: 20px 15px; border-radius: 24px; }
             .admin-header { flex-direction: column; gap: 15px; text-align: center; }
-            .admin-header h1 { font-size: 1.3rem; }
+            .admin-header h1 { font-size: 1.4rem; }
             
             table, thead, tbody, th, td, tr { display: block; }
             thead { display: none; }
@@ -98,16 +390,16 @@
             tr {
                 background: #fff;
                 border: 1px solid var(--border-color);
-                border-radius: 16px;
-                margin-bottom: 15px;
-                padding: 15px;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+                border-radius: 20px;
+                margin-bottom: 20px;
+                padding: 18px;
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.01);
             }
             
             td {
                 text-align: right;
-                padding: 8px 0;
-                border-bottom: 1px dashed #f1f5f9;
+                padding: 10px 0;
+                border-bottom: 1px dashed rgba(30, 42, 120, 0.06);
                 position: relative;
                 display: flex;
                 justify-content: space-between;
@@ -115,13 +407,13 @@
                 white-space: normal;
             }
             
-            td:last-child { border-bottom: none; padding-top: 12px; }
+            td:last-child { border-bottom: none; padding-top: 15px; }
 
             td::before {
                 content: attr(data-label);
                 float: left;
-                font-weight: 700;
-                color: #64748b;
+                font-weight: 800;
+                color: #7A869A;
                 font-size: 0.85rem;
             }
 
@@ -130,7 +422,7 @@
             .action-container { justify-content: flex-end; width: 100%; }
             
             .whatsapp-btn span { display: none; }
-            .whatsapp-btn { padding: 8px; border-radius: 8px; }
+            .whatsapp-btn { padding: 8px 12px; border-radius: 8px; }
             .whatsapp-btn svg { width: 18px; height: 18px; }
         }
     </style>
@@ -143,13 +435,10 @@
             <h2>Giriş Paneli ⚙️</h2>
             <input type="text" id="username" class="login-input" placeholder="İstifadəçi adı">
             
-            <!-- Göz simvolu əlavə edilmiş şifrə sahəsi -->
             <div class="password-container">
                 <input type="password" id="password" class="login-input" placeholder="Şifrə">
                 <button type="button" onclick="togglePasswordVisibility()" class="toggle-password" id="togglePasswordBtn" title="Şifrəni göstər">
-                    <!-- Bağlı göz simvolu (Standart olaraq bu görünür) -->
                     <svg id="eyeClosedIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                    <!-- Açıq göz simvolu (Gizlidir) -->
                     <svg id="eyeOpenIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none;"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-4.5c-5 0-9.27 3.11-11 7.5 1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 16.5c-2.48 0-4.5-2.02-4.5-4.5S9.52 7.5 12 7.5s4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5z"/></svg>
                 </button>
             </div>
@@ -158,7 +447,7 @@
             <div>
                 <a href="index.html" class="login-back-btn">← Əsas Səhifəyə Qayıt</a>
             </div>
-            <p id="loginError" style="color: red; margin-top: 15px; display: none;">Məlumatlar yanlışdır və ya baza bağlantısı qurulmadı!</p>
+            <p id="loginError" style="color: var(--danger-color); font-weight: 700; margin-top: 15px; display: none; font-size: 0.9rem;">Məlumatlar yanlışdır və ya baza bağlantısı qurulmadı!</p>
         </div>
     </div>
 
@@ -184,7 +473,7 @@
                 </thead>
                 <tbody id="ordersTableBody">
                     <tr>
-                        <td colspan="7" style="text-align: center; color: #888; padding: 20px;">Məlumatlar yüklənir...</td>
+                        <td colspan="7" style="text-align: center; color: #888; padding: 30px; font-weight: 700;">Məlumatlar yüklənir...</td>
                     </tr>
                 </tbody>
             </table>
@@ -323,7 +612,7 @@
                 ordersTableBody.innerHTML = ''; 
 
                 if (snapshot.empty) {
-                    ordersTableBody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 30px; color: #888;">Hələ heç bir sifariş yoxdur.</td></tr>';
+                    ordersTableBody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 40px; color: #888; font-weight: 700;">Hələ heç bir müraciət yoxdur.</td></tr>';
                     return;
                 }
 
@@ -350,7 +639,7 @@
                     const statusText = isViewed ? '✓ Baxıldı' : 'Gözləyir';
 
                     tr.innerHTML = `
-                        <td data-label="Valideyn: " style="font-weight: 600;">${parentName}</td>
+                        <td data-label="Valideyn: " style="font-weight: 700; color: var(--primary-blue);">${parentName}</td>
                         <td data-label="Əlaqə: ">
                             <div class="phone-container">
                                 <a href="tel:${data.parentPhone || ''}" class="phone-link">${data.parentPhone || ''}</a>
@@ -360,10 +649,10 @@
                                 </a>
                             </div>
                         </td>
-                        <td data-label="Uşaq: ">${data.childName || ''}</td>
-                        <td data-label="Yaş: "><span style="background: #e0f2fe; color: #0369a1; padding: 4px 8px; border-radius: 6px; font-weight: bold;">${data.childAge || '-'}</span></td>
+                        <td data-label="Uşaq: " style="font-weight: 600;">${data.childName || ''}</td>
+                        <td data-label="Yaş: "><span style="background: rgba(30, 42, 120, 0.06); color: var(--primary-blue); padding: 6px 12px; border-radius: 8px; font-weight: 800;">${data.childAge || '-'}</span></td>
                         <td data-label="Maraqlar: " class="interests-cell" title="Tam görmək üçün üzərinə gəlin">${data.childInterests || '-'}</td>
-                        <td data-label="Tarix: " style="color: #64748b; font-size: 0.9rem;">${orderDate}</td>
+                        <td data-label="Tarix: " style="color: var(--text-muted); font-size: 0.9rem; font-weight: 600;">${orderDate}</td>
                         <td data-label="Status: ">
                             <div class="action-container">
                                 <!-- Silmə düyməsi -->
