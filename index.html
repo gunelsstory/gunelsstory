@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gunel's story</title>
+    <title>Gunel's story - Uşağınız Hekayənin Baş Qəhrəmanıdır!</title>
     <link rel="icon" type="image/png" href="image/favicon.png">
     <style>
         :root {
-            --bg-color: #fff3b9;
+            --bg-color: #FAF6EE; /* Premium yumşaq krem tonu */
+            --primary-blue: #1E2A78; /* Lüks göy rəng */
             --accent-yellow: #fcc419;
-            --card-yellow: #ffe893;
-            --text-dark: #2b2b2b;
-            --text-muted: #555555;
-            --white: #ffffff;
+            --accent-orange: #FF7675;
+            --card-white: #ffffff;
+            --text-dark: #2D2D2D;
+            --text-muted: #666666;
+            --border-radius-lg: 32px;
+            --border-radius-sm: 16px;
         }
 
         * {
@@ -25,330 +28,396 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-dark);
-            padding-bottom: 60px;
+            padding-bottom: 80px;
+            overflow-x: hidden;
+            background-image: radial-gradient(#F5EFE4 1.5px, transparent 1.5px);
+            background-size: 24px 24px; /* Zərif nöqtəli premium arxa fon */
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 24px;
         }
 
+        /* Müasir Üst Naviqasiya (Header) */
+        nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            margin-bottom: 30px;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 24px;
+        }
+
+        .nav-logo {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            transition: color 0.2s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links .admin-link {
+            color: var(--primary-blue);
+            background: rgba(30, 42, 120, 0.06);
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        /* Hero / Başlıq Bölməsi */
         header {
             text-align: center;
-            padding: 40px 20px 20px;
+            padding: 50px 20px 60px;
+            position: relative;
         }
 
         .logo-box {
-            width: 140px;
-            height: 140px;
-            background-color: var(--white);
-            border-radius: 24px;
-            margin: 0 auto 20px;
+            width: 145px;
+            height: 145px;
+            background-color: var(--card-white);
+            border-radius: 36px;
+            margin: 0 auto 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
-            border: 2px solid #fff;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+            border: 4px solid var(--card-white);
+            transform: rotate(-2deg); /* Şirin nağıl ab-havası vermək üçün */
+            transition: transform 0.3s ease;
+        }
+
+        .logo-box:hover {
+            transform: rotate(0deg) scale(1.05);
         }
 
         header h1 {
-            font-size: 2.6rem;
-            font-weight: 800;
-            margin-bottom: 6px;
-            color: #03138d;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+            letter-spacing: -1px;
         }
 
         header .subtitle {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 20px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 24px;
         }
 
         .main-badge {
             display: inline-block;
-            background-color: var(--white);
-            padding: 10px 24px;
-            border-radius: 30px;
-            font-weight: bold;
+            background-color: var(--card-white);
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 800;
             font-size: 0.95rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            color: var(--primary-blue);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0,0,0,0.02);
         }
 
-        /* Uşaq jurnalı/hekayəsi üçün yumşaq minimalist addım kartları */
+        /* Müasir və Minimalist Addım Kartları */
         .step-card {
-            background-color: var(--card-yellow);
-            border-radius: 28px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(252, 196, 25, 0.12);
+            background-color: var(--card-white);
+            border-radius: var(--border-radius-lg);
+            padding: 40px;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.04);
         }
 
         .step-header {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
         .step-number {
-            background-color: var(--white);
-            color: var(--text-dark);
-            font-weight: bold;
-            font-size: 1.3rem;
-            width: 45px;
-            height: 45px;
+            background-color: var(--primary-blue);
+            color: var(--card-white);
+            font-weight: 800;
+            font-size: 1.4rem;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
             flex-shrink: 0;
+            box-shadow: 0 6px 15px rgba(30, 42, 120, 0.15);
         }
 
         .step-title h2 {
-            font-size: 1.6rem;
-            font-weight: 700;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-blue);
         }
 
         .step-desc {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: var(--text-muted);
-            margin-bottom: 25px;
-            line-height: 1.6;
+            margin-bottom: 30px;
+            line-height: 1.7;
         }
 
         .step-body {
             display: flex;
-            gap: 20px;
+            gap: 30px;
+            align-items: center;
         }
 
         .step-img-side {
-            flex: 1.4;
+            flex: 1.3;
         }
 
         .step-img-box {
             width: 100%;
             aspect-ratio: 16 / 10;
-            background-color: #eaeaea;
-            border-radius: 22px;
+            background-color: #f5f5f5;
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 4px solid var(--white);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-            font-weight: bold;
-            color: #888;
+            border: 1px solid rgba(0,0,0,0.04);
             overflow: hidden;
         }
 
         .step-features-side {
             flex: 1;
             display: flex;
-            gap: 12px;
+            gap: 16px;
         }
 
         .feature-sub-card {
             flex: 1;
-            background-color: var(--white);
-            border-radius: 20px;
-            padding: 20px 10px;
+            background-color: var(--bg-color);
+            border-radius: 24px;
+            padding: 25px 15px;
             text-align: center;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.02);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            border: 1px solid rgba(0,0,0,0.02);
+            transition: transform 0.2s ease;
+        }
+
+        .feature-sub-card:hover {
+            transform: scale(1.03);
         }
 
         .feature-icon {
-            font-size: 2.2rem;
-            margin-bottom: 8px;
+            font-size: 2.6rem;
+            margin-bottom: 12px;
         }
 
         .feature-sub-card p {
-            font-size: 0.9rem;
-            font-weight: bold;
+            font-size: 0.95rem;
+            font-weight: 800;
             color: var(--text-dark);
             line-height: 1.3;
         }
 
-        /* Böyük Forma Kartı */
+        /* Lüks Sifariş Bölməsi */
         .package-card {
-            background-color: #fffdf5;
-            border-radius: 35px;
-            padding: 40px 20px;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.05);
+            background-color: var(--card-white);
+            border-radius: 40px;
+            padding: 60px 40px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.04);
             position: relative;
-            margin-top: 50px;
-            border: 3px solid #fff;
+            margin-top: 60px;
+            border: 1px solid rgba(0,0,0,0.02);
             text-align: center;
         }
 
         .package-card h3 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 5px;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
         }
 
-        /* Minimalist Sifariş Formu */
+        /* Lüks Forma Kartı */
         .order-form-container {
-            max-width: 480px;
-            margin: 30px auto 15px;
+            max-width: 500px;
+            margin: 40px auto 20px;
             text-align: left;
             background: #fff;
-            padding: 25px;
-            border-radius: 24px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.02);
-            border: 1px solid #ffe893;
+            padding: 35px;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03);
+            border: 2px solid rgba(30, 42, 120, 0.05);
         }
 
         .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-size: 0.9rem;
-            color: var(--text-dark);
+            color: var(--primary-blue);
         }
 
         .form-group input, .form-group textarea {
             width: 100%;
-            padding: 12px 14px;
-            border-radius: 14px;
-            border: 2px solid #f0f0f0;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
+            padding: 14px 18px;
+            border-radius: 16px;
+            border: 2px solid #EAEAEA;
+            font-size: 1rem;
+            transition: all 0.3s ease;
             outline: none;
-            background-color: #fafafa;
+            background-color: #FAFAFA;
         }
 
         .form-group input:focus, .form-group textarea:focus {
-            border-color: var(--accent-yellow);
+            border-color: var(--primary-blue);
             background-color: #fff;
-            box-shadow: 0 0 0 3px rgba(252, 196, 25, 0.15);
+            box-shadow: 0 0 0 4px rgba(30, 42, 120, 0.08);
         }
 
+        /* İnteraktiv Premium Düymə */
         .order-btn {
             display: block;
             width: 100%;
             border: none;
-            background-color: #fcc419;
-            color: #000;
-            padding: 16px;
-            font-size: 1.2rem;
-            font-weight: bold;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 18px;
+            font-size: 1.1rem;
+            font-weight: 800;
             border-radius: 20px;
             cursor: pointer;
-            box-shadow: 0 8px 24px rgba(252, 196, 25, 0.35);
-            transition: all 0.2s ease;
+            box-shadow: 0 8px 25px rgba(30, 42, 120, 0.2);
+            transition: all 0.3s ease;
             text-align: center;
+            letter-spacing: 0.5px;
         }
 
         .order-btn:hover {
+            background-color: #151e58;
             transform: translateY(-2px);
-            box-shadow: 0 10px 28px rgba(252, 196, 25, 0.45);
+            box-shadow: 0 12px 30px rgba(30, 42, 120, 0.3);
         }
         
         .whatsapp-note {
-            font-size: 0.85rem; 
+            font-size: 0.9rem; 
             font-weight: 700; 
             color: var(--text-muted); 
-            margin-top: 15px;
+            margin-top: 20px;
         }
 
-        /* MOBİL UYUMLULUQ VƏ MİNİMALİZM (Responsive Media Query) */
+        /* MOBİL RESPONSİVLİK */
         @media (max-width: 768px) {
+            .nav-container {
+                padding: 15px;
+            }
             header {
-                padding: 20px 10px;
+                padding: 40px 10px;
             }
             header h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             header .subtitle {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
             .step-card {
-                padding: 20px;
-                border-radius: 22px;
-                margin-bottom: 20px;
+                padding: 24px;
+                border-radius: var(--border-radius-sm);
             }
             .step-title h2 {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
             }
             .step-desc {
-                font-size: 0.95rem;
-                margin-bottom: 15px;
+                font-size: 1rem;
             }
             .step-body {
                 flex-direction: column;
-                gap: 12px;
+                gap: 20px;
+            }
+            .step-img-side {
+                width: 100%;
             }
             .step-features-side {
-                flex-direction: row; /* Mobildə yan-yana daha səliqəli durur */
-                gap: 8px;
+                width: 100%;
+                flex-direction: row;
+                gap: 10px;
             }
             .feature-sub-card {
-                padding: 12px 6px;
-                border-radius: 16px;
+                padding: 15px 10px;
+                border-radius: 20px;
             }
             .feature-icon {
-                font-size: 1.7rem;
-                margin-bottom: 4px;
-            }
-            .feature-sub-card p {
-                font-size: 0.8rem;
+                font-size: 2.2rem;
             }
             .package-card {
-                margin-top: 30px;
-                padding: 30px 15px;
-                border-radius: 26px;
-            }
-            .package-card h3 {
-                font-size: 1.5rem;
+                padding: 40px 20px;
+                border-radius: 30px;
             }
             .order-form-container {
-                padding: 16px;
-                margin-top: 20px;
-                border-radius: 18px;
-            }
-            .form-group input, .form-group textarea {
-                padding: 10px 12px;
-                font-size: 0.9rem;
-                border-radius: 10px;
-            }
-            .order-btn {
-                padding: 14px;
-                font-size: 1.1rem;
-                border-radius: 14px;
-            }
-            .whatsapp-note {
-                font-size: 0.8rem;
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Minimalist Keçid Linkləri -->
-    <div style="display: flex; justify-content: flex-end; gap: 15px; padding: 20px 25px 0 0; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px;">
-        <a href="portfolio.html" style="text-decoration: none; color: #555555; border-bottom: 1px solid transparent; transition: border-color 0.2s;" onmouseover="this.style.borderColor='#555'" onmouseout="this.style.borderColor='transparent'">PORTFOLİO</a>
-        <span style="color: #ccc;">|</span>
-        <a href="admin.html" style="text-decoration: none; color: #03138d; border-bottom: 1px solid transparent; transition: border-color 0.2s;" onmouseover="this.style.borderColor='#03138d'" onmouseout="this.style.borderColor='transparent'">ADMİN PANELİ ⚙️</a>
-    </div>
+    <!-- Premium Üst Menyu -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Gunel's story</a>
+            <div class="nav-links">
+                <a href="portfolio.html">PORTFOLİO</a>
+                <a href="admin.html" class="admin-link">⚙️ ADMİN</a>
+            </div>
+        </div>
+    </nav>
 
     <div class="container">
         <header>
             <div class="logo-box">
-                <img src="image/logo.png" alt="Gunelsstory" style="max-width: 100%; max-height: 100%; border-radius: 20px;">
+                <img src="image/logo.png" alt="Gunelsstory" style="max-width: 100%; max-height: 100%; border-radius: 26px; object-fit: cover;">
             </div>
             <h1>Gunel's story</h1>
             <div class="subtitle">Uşağınız Hekayənin Baş Qəhrəmanıdır!</div>
-            <div class="main-badge">🌟 100% xüsusi və fərdi hekayə kitabları</div>
+            <div class="main-badge">✨ 100% xüsusi və fərdi hekayə kitabları</div>
         </header>
 
         <!-- Addımlar -->
@@ -357,10 +426,12 @@
                 <div class="step-number">1</div>
                 <div class="step-title"><h2>Uşağınız Üçün Xüsusi Hekayə</h2></div>
             </div>
-            <div class="step-desc">Uşağınızın adı, sevimli heyvanları və xəyalları əsasında tam fərdi hekayə hazırlanır.</div>
+            <p class="step-desc">Uşağınızın adı, sevimli heyvanları və xəyalları əsasında tam fərdi hekayə hazırlanır.</p>
             <div class="step-body">
                 <div class="step-img-side">
-                    <div class="step-img-box"><img src="image/step1.png" style="width:100%; height:100%; object-fit:cover;" alt="Step 1"></div>
+                    <div class="step-img-box">
+                        <img src="image/step1.png" style="width:100%; height:100%; object-fit:cover;" alt="Uşaq üçün fərdi hekayə">
+                    </div>
                 </div>
                 <div class="step-features-side">
                     <div class="feature-sub-card"><div class="feature-icon">👶</div><p>Uşağınızın adı</p></div>
@@ -374,10 +445,12 @@
                 <div class="step-number">2</div>
                 <div class="step-title"><h2>Uşağınızın Şəkli ilə Dizayn</h2></div>
             </div>
-            <div class="step-desc">Uşağınızın real şəkli hekayənin səhifələrinə peşəkar şəkildə inteqrasiya olunur.</div>
+            <p class="step-desc">Uşağınızın real şəkli hekayənin səhifələrinə peşəkar şəkildə inteqrasiya olunur.</p>
             <div class="step-body">
                 <div class="step-img-side">
-                    <div class="step-img-box"><img src="image/step2.png" style="width:100%; height:100%; object-fit:cover;" alt="Step 2"></div>
+                    <div class="step-img-box">
+                        <img src="image/step2.png" style="width:100%; height:100%; object-fit:cover;" alt="Şəkilli kitab dizaynı">
+                    </div>
                 </div>
                 <div class="step-features-side">
                     <div class="feature-sub-card"><div class="feature-icon">📷</div><p>Real foto</p></div>
@@ -391,10 +464,12 @@
                 <div class="step-number">3</div>
                 <div class="step-title"><h2>Premium Keyfiyyətli Çap</h2></div>
             </div>
-            <div class="step-desc">Yüksək sıxlıqlı premium kağız, parlaq və HD canlı rənglər.</div>
+            <p class="step-desc">Yüksək sıxlıqlı premium kağız, parlaq və HD canlı rənglər.</p>
             <div class="step-body">
                 <div class="step-img-side">
-                    <div class="step-img-box"><img src="image/step3.png" style="width:100%; height:100%; object-fit:cover;" alt="Step 3"></div>
+                    <div class="step-img-box">
+                        <img src="image/step3.png" style="width:100%; height:100%; object-fit:cover;" alt="Premium çap">
+                    </div>
                 </div>
                 <div class="step-features-side">
                     <div class="feature-sub-card"><div class="feature-icon">📄</div><p>Premium kağız</p></div>
@@ -408,10 +483,12 @@
                 <div class="step-number">4</div>
                 <div class="step-title"><h2>Xüsusi Hədiyyə Qablaşdırma</h2></div>
             </div>
-            <div class="step-desc">Kitab xüsusi dizaynlı zərif hədiyyə paketi ilə təqdim olunur.</div>
+            <p class="step-desc">Kitab xüsusi dizaynlı zərif hədiyyə paketi ilə təqdim olunur.</p>
             <div class="step-body">
                 <div class="step-img-side">
-                    <div class="step-img-box"><img src="image/step5.png" style="width:100%; height:100%; object-fit:cover;" alt="Step 4"></div>
+                    <div class="step-img-box">
+                        <img src="image/step5.png" style="width:100%; height:100%; object-fit:cover;" alt="Hədiyyə paketlənməsi">
+                    </div>
                 </div>
                 <div class="step-features-side">
                     <div class="feature-sub-card"><div class="feature-icon">🎀</div><p>Dizayn paketləmə</p></div>
@@ -420,36 +497,36 @@
             </div>
         </div>
 
-        <!-- Forma -->
-        <div class="package-card">
-            <h3>Xüsusi Fərdi Hekayə Kitabı</h3>
+        <!-- Sifariş Bölməsi -->
+        <div class="package-card" id="order-section">
+            <h3>Sehrli Kitabı İndi Sifariş Edin</h3>
             <div class="order-form-container">
-                <h4 style="margin-bottom: 15px; color: #03138d; font-size: 1.2rem; text-align: center;">Sifariş Müraciəti</h4>
+                <h4 style="margin-bottom: 20px; color: var(--primary-blue); font-size: 1.3rem; text-align: center; font-weight: 800;">Sifariş Müraciəti</h4>
                 <form id="firebaseOrderForm">
                     <div class="form-group">
                         <label>Valideynin Adı və Soyadı *</label>
-                        <input type="text" id="parentName" required>
+                        <input type="text" id="parentName" required placeholder="Nümunə: Aysel Məmmədova">
                     </div>
                     <div class="form-group">
                         <label>Telefon Nömrəniz *</label>
-                        <input type="tel" id="parentPhone" required>
+                        <input type="tel" id="parentPhone" required placeholder="Nümunə: +994 50 123 45 67">
                     </div>
                     <div class="form-group">
                         <label>Uşağın Adı *</label>
-                        <input type="text" id="childName" required>
+                        <input type="text" id="childName" required placeholder="Nümunə: Ömər">
                     </div>
                     <div class="form-group">
                         <label>Uşağın Yaşı</label>
-                        <input type="number" id="childAge">
+                        <input type="number" id="childAge" placeholder="Nümunə: 5">
                     </div>
                     <div class="form-group">
                         <label>Uşağın Sevimli Personajları / Maraqları</label>
-                        <textarea id="childInterests" rows="3"></textarea>
+                        <textarea id="childInterests" rows="3" placeholder="Nümunə: Dinozavrlar, kosmos və sevimli iti Bobbi..."></textarea>
                     </div>
                     <button type="submit" class="order-btn">MÜRACİƏTİ TAMAMLA ✨</button>
                 </form>
             </div>
-            <p class="whatsapp-note">* Əlaqə nömrəsi bölməsində Whatsapp olan nömrəni qeyd edin.</p>
+            <p class="whatsapp-note">* Əlaqə nömrəsi bölməsində WhatsApp aktiv olan nömrəni qeyd edin.</p>
         </div>
     </div>
 
