@@ -76,7 +76,7 @@
             overflow: hidden;
         }
 
-        /* Abstrakt Premium Kürələr (Arxa fon bəzəyi üçün) */
+        /* Abstrakt Premium Kürələr */
         .login-overlay::before, .login-overlay::after {
             content: '';
             position: absolute;
@@ -327,14 +327,12 @@
         tr { transition: var(--transition); }
         tr:hover { background-color: rgba(250, 248, 245, 0.6); }
         
-        /* Sifarişçi Hüceyrə Müasirləşdirməsi */
         .parent-name-cell {
             font-weight: 700; 
             color: var(--primary-lux);
             font-size: 1rem;
         }
 
-        /* Telefon və WhatsApp düymələri */
         .phone-container { 
             display: flex; 
             flex-direction: column;
@@ -374,7 +372,6 @@
 
         .whatsapp-btn svg { width: 14px; height: 14px; fill: currentColor; }
         
-        /* Yaş Hüceyrəsi Badge */
         .age-badge {
             background: rgba(15, 26, 92, 0.05); 
             color: var(--primary-lux); 
@@ -384,7 +381,6 @@
             font-size: 0.85rem;
         }
 
-        /* Maraqlar/İstəklər zərif mətn sahəsi */
         .interests-cell { 
             max-width: 260px; 
             white-space: nowrap; 
@@ -401,7 +397,6 @@
             color: var(--text-main);
         }
 
-        /* Tarix Hüceyrəsi */
         .date-cell {
             color: var(--text-muted); 
             font-size: 0.85rem; 
@@ -414,7 +409,6 @@
             gap: 12px; 
         }
 
-        /* Yeni Nəsil Status Düymələri */
         .status-btn { 
             border: none;
             background: var(--pending-bg); 
@@ -438,7 +432,6 @@
         }
         .status-btn.checked:hover { background: rgba(5, 150, 105, 0.2); }
 
-        /* Silmə Düyməsi */
         .delete-btn { 
             background-color: transparent; 
             border: 1.5px solid rgba(220, 38, 38, 0.15); 
@@ -504,6 +497,56 @@
             .phone-container { align-items: flex-end; }
             .action-container { justify-content: flex-end; width: 100%; }
             .whatsapp-btn { width: auto; }
+        }
+
+        /* GİRİŞ EKRANININ MOBİL MİNİMALİZM OPTİMİZASİYASI */
+        @media (max-width: 480px) {
+            .login-overlay {
+                padding: 16px;
+                background: #090e32; /* Mobil batareya və performans üçün qradiyent sadələşdirildi */
+            }
+            .login-overlay::before, .login-overlay::after {
+                display: none; /* Mobildə arxa fon ləkələrini gizlədib minimalist edirik */
+            }
+            .login-box {
+                padding: 32px 24px; /* Daxili boşluqlar kiçildildi */
+                border-radius: var(--radius-md);
+                background: rgba(255, 255, 255, 0.92); /* Oxunurluq artırıldı */
+            }
+            .login-box h2 {
+                font-size: 1.6rem; /* Başlıq kiçildildi */
+                margin-bottom: 4px;
+            }
+            .login-subtitle {
+                font-size: 0.85rem;
+                margin-bottom: 24px; /* Boşluq daraldıldı */
+            }
+            .input-group {
+                margin-bottom: 16px;
+            }
+            .input-label {
+                font-size: 0.75rem;
+                margin-bottom: 6px;
+            }
+            .login-input {
+                padding: 12px 16px; /* İnput ölçüləri zərifləşdirildi */
+                font-size: 0.95rem;
+            }
+            .password-container .login-input {
+                padding-right: 48px;
+            }
+            .toggle-password {
+                right: 14px;
+            }
+            .login-btn {
+                padding: 14px;
+                font-size: 0.95rem;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+            .login-back-btn {
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
