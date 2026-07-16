@@ -16,14 +16,20 @@
             --bg-base: #FAF8F5; /* Premium Ultra-soft Krem tonu */
             --primary-lux: #0F1A5C; /* Dərin Kral Göyü */
             --accent-gold: #D97706; /* Müasir Premium Qızılı-Kəhrəba */
-            --accent-gold-bg: rgba(217, 119, 6, 0.03); /* Gözləyən üçün premium fon */
             --text-main: #1E293B; /* Soft Tünd Boz */
             --text-muted: #64748B; /* Kübar Boz */
             --white: #ffffff;
             
-            /* Sistem Status Rəngləri */
-            --success: #10B981; /* Canlı Yaşıl (Baxıldı üçün) */
-            --success-bg: #ECFDF5;
+            /* TAMAMİLƏ FƏRQLİ STATUS RƏNGLƏRİ */
+            /* 1. Gözləyir statusu üçün Bənövşəyi tonlar */
+            --status-pending-color: #8B5CF6; 
+            --status-pending-bg: rgba(139, 92, 246, 0.04);
+            --status-pending-hover: rgba(139, 92, 246, 0.08);
+
+            /* 2. Baxıldı statusu üçün Firuzəyi/Nanə tonları */
+            --status-viewed-color: #0D9488; 
+            --status-viewed-bg: rgba(13, 148, 136, 0.03);
+            --status-viewed-hover: rgba(13, 148, 136, 0.06);
             
             --danger: #DC2626;
             --danger-bg: #FEE2E2;
@@ -320,38 +326,38 @@
             vertical-align: middle; 
             font-size: 0.95rem; 
             color: var(--text-main);
-            transition: var(--transition); /* Yumşaq keçid üçün */
+            transition: var(--transition);
         }
 
         tr { transition: var(--transition); }
 
-        /* ==================== STATUS-A GÖRƏ ZOLAQLARIN DƏYİŞMƏSİ ==================== */
+        /* ==================== TAMAMİLƏ FƏRQLİ STATUS ZOLAQLARI VƏ SƏTİR FONLARI ==================== */
         
-        /* 1. Gözləyir (Kəhrəba Qızılı Ton) */
+        /* 1. GÖZLƏYİR: Şık Bənövşəyi Zolaq və Fon */
         tr.row-pending {
-            background-color: var(--accent-gold-bg);
+            background-color: var(--status-pending-bg);
         }
         tr.row-pending td:first-child {
-            border-left: 5px solid var(--accent-gold);
+            border-left: 5px solid var(--status-pending-color);
             padding-left: 19px;
         }
         tr.row-pending:hover {
-            background-color: rgba(217, 119, 6, 0.06);
+            background-color: var(--status-pending-hover);
         }
 
-        /* 2. Baxıldı (Canlı Zərif Yaşıl Ton) */
+        /* 2. BAXILDI: Zərif Firuzəyi/Nanə Zolaq və Fon */
         tr.row-viewed {
-            background-color: rgba(16, 185, 129, 0.01);
+            background-color: var(--status-viewed-bg);
         }
         tr.row-viewed td:first-child {
-            border-left: 5px solid var(--success);
+            border-left: 5px solid var(--status-viewed-color);
             padding-left: 19px;
         }
         tr.row-viewed:hover {
-            background-color: rgba(16, 185, 129, 0.03);
+            background-color: var(--status-viewed-hover);
         }
         
-        /* ========================================================================= */
+        /* ========================================================================================== */
 
         .parent-name-cell {
             font-weight: 700; 
@@ -435,11 +441,11 @@
             gap: 12px; 
         }
 
-        /* Düymələrin rəng uyğunluğu */
+        /* Dynamic Status Buttons */
         .status-btn { 
             border: none;
-            background: rgba(217, 119, 6, 0.1); 
-            color: var(--accent-gold); 
+            background: rgba(139, 92, 246, 0.12); 
+            color: var(--status-pending-color); 
             padding: 8px 16px; 
             border-radius: var(--radius-sm); 
             font-weight: 700; 
@@ -451,13 +457,13 @@
             gap: 6px; 
         }
 
-        .status-btn:hover { background: rgba(217, 119, 6, 0.2); }
+        .status-btn:hover { background: rgba(139, 92, 246, 0.22); }
 
         .status-btn.checked { 
-            background-color: var(--success-bg); 
-            color: var(--success); 
+            background-color: rgba(13, 148, 136, 0.12); 
+            color: var(--status-viewed-color); 
         }
-        .status-btn.checked:hover { background: rgba(16, 185, 129, 0.2); }
+        .status-btn.checked:hover { background: rgba(13, 148, 136, 0.22); }
 
         .delete-btn { 
             background-color: transparent; 
@@ -496,12 +502,12 @@
                 box-shadow: var(--shadow-sm);
             }
 
-            /* Mobildə status zolağını sol tərəfdə bütöv sətir boyu göstəririk */
+            /* Mobildə bütöv sol tərəf zolaqlarının təyini */
             tr.row-pending {
-                border-left: 6px solid var(--accent-gold) !important;
+                border-left: 6px solid var(--status-pending-color) !important;
             }
             tr.row-viewed {
-                border-left: 6px solid var(--success) !important;
+                border-left: 6px solid var(--status-viewed-color) !important;
             }
             tr.row-pending td:first-child, tr.row-viewed td:first-child {
                 border-left: none;
@@ -538,7 +544,7 @@
             .whatsapp-btn { width: auto; }
         }
 
-        /* GİRİŞ EKRANININ MOBİL MİNİMALİZM OPTİMİZASİYASI */
+        /* GİRİŞ EKRANININ MOBİL OPTİMİZASİYASI */
         @media (max-width: 480px) {
             .login-overlay {
                 padding: 16px;
@@ -798,7 +804,7 @@
 
                     const tr = document.createElement('tr');
                     
-                    // Sətirlərə dinamik olaraq kəskin fərqli status sinifləri əlavə olunur
+                    // Dinamik status sinifləri (Bənövşəyi / Firuzəyi sistem)
                     tr.className = isViewed ? 'row-viewed' : 'row-pending';
 
                     const statusClass = isViewed ? 'status-btn checked' : 'status-btn';
