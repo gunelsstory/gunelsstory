@@ -16,18 +16,17 @@
             --bg-base: #FAF8F5; /* Premium Ultra-soft Krem tonu */
             --primary-lux: #0F1A5C; /* Dərin Kral Göyü */
             --accent-gold: #D97706; /* Müasir Premium Qızılı-Kəhrəba */
-            --accent-gold-hover: #B45309;
+            --accent-gold-bg: rgba(217, 119, 6, 0.03); /* Gözləyən üçün premium fon */
             --text-main: #1E293B; /* Soft Tünd Boz */
             --text-muted: #64748B; /* Kübar Boz */
             --white: #ffffff;
             
-            /* Sistem Status Rəngləri (Zərif və Müasir) */
-            --success: #059669;
-            --success-bg: #E6F4EA;
+            /* Sistem Status Rəngləri */
+            --success: #10B981; /* Canlı Yaşıl (Baxıldı üçün) */
+            --success-bg: #ECFDF5;
+            
             --danger: #DC2626;
             --danger-bg: #FEE2E2;
-            --pending: #3B82F6;
-            --pending-bg: #EFF6FF;
 
             --whatsapp: #16A34A;
             --whatsapp-bg: #DCFCE7;
@@ -76,7 +75,6 @@
             overflow: hidden;
         }
 
-        /* Abstrakt Premium Kürələr */
         .login-overlay::before, .login-overlay::after {
             content: '';
             position: absolute;
@@ -322,29 +320,39 @@
             vertical-align: middle; 
             font-size: 0.95rem; 
             color: var(--text-main);
+            transition: var(--transition); /* Yumşaq keçid üçün */
         }
 
         tr { transition: var(--transition); }
-        tr:hover { background-color: rgba(250, 248, 245, 0.6); }
 
-        /* STATUS ZOLAQLARI (Yeni Əlavə) */
-        tr.row-pending td:first-child {
-            border-left: 5px solid var(--pending); /* Gözləyir statusu üçün zərif mavi zolaq */
-            padding-left: 19px; /* Zolaq gələndə yazının vizual balansını qorumaq üçün padding */
+        /* ==================== STATUS-A GÖRƏ ZOLAQLARIN DƏYİŞMƏSİ ==================== */
+        
+        /* 1. Gözləyir (Kəhrəba Qızılı Ton) */
+        tr.row-pending {
+            background-color: var(--accent-gold-bg);
         }
-        tr.row-viewed td:first-child {
-            border-left: 5px solid var(--success); /* Baxıldı statusu üçün zərif yaşıl zolaq */
+        tr.row-pending td:first-child {
+            border-left: 5px solid var(--accent-gold);
             padding-left: 19px;
         }
-
-        /* Gözləyən müraciətləri bir az daha diqqətçəkən etmək üçün çox zərif fon rəngi */
-        tr.row-pending {
-            background-color: rgba(59, 130, 246, 0.01);
-        }
         tr.row-pending:hover {
-            background-color: rgba(59, 130, 246, 0.03);
+            background-color: rgba(217, 119, 6, 0.06);
+        }
+
+        /* 2. Baxıldı (Canlı Zərif Yaşıl Ton) */
+        tr.row-viewed {
+            background-color: rgba(16, 185, 129, 0.01);
+        }
+        tr.row-viewed td:first-child {
+            border-left: 5px solid var(--success);
+            padding-left: 19px;
+        }
+        tr.row-viewed:hover {
+            background-color: rgba(16, 185, 129, 0.03);
         }
         
+        /* ========================================================================= */
+
         .parent-name-cell {
             font-weight: 700; 
             color: var(--primary-lux);
@@ -427,10 +435,11 @@
             gap: 12px; 
         }
 
+        /* Düymələrin rəng uyğunluğu */
         .status-btn { 
             border: none;
-            background: var(--pending-bg); 
-            color: var(--pending); 
+            background: rgba(217, 119, 6, 0.1); 
+            color: var(--accent-gold); 
             padding: 8px 16px; 
             border-radius: var(--radius-sm); 
             font-weight: 700; 
@@ -442,13 +451,13 @@
             gap: 6px; 
         }
 
-        .status-btn:hover { background: rgba(59, 130, 246, 0.2); }
+        .status-btn:hover { background: rgba(217, 119, 6, 0.2); }
 
         .status-btn.checked { 
             background-color: var(--success-bg); 
             color: var(--success); 
         }
-        .status-btn.checked:hover { background: rgba(5, 150, 105, 0.2); }
+        .status-btn.checked:hover { background: rgba(16, 185, 129, 0.2); }
 
         .delete-btn { 
             background-color: transparent; 
@@ -489,10 +498,10 @@
 
             /* Mobildə status zolağını sol tərəfdə bütöv sətir boyu göstəririk */
             tr.row-pending {
-                border-left: 6px solid var(--pending);
+                border-left: 6px solid var(--accent-gold) !important;
             }
             tr.row-viewed {
-                border-left: 6px solid var(--success);
+                border-left: 6px solid var(--success) !important;
             }
             tr.row-pending td:first-child, tr.row-viewed td:first-child {
                 border-left: none;
@@ -533,23 +542,23 @@
         @media (max-width: 480px) {
             .login-overlay {
                 padding: 16px;
-                background: #090e32; /* Mobil batareya və performans üçün qradiyent sadələşdirildi */
+                background: #090e32;
             }
             .login-overlay::before, .login-overlay::after {
-                display: none; /* Mobildə arxa fon ləkələrini gizlədib minimalist edirik */
+                display: none;
             }
             .login-box {
-                padding: 32px 24px; /* Daxili boşluqlar kiçildildi */
+                padding: 32px 24px;
                 border-radius: var(--radius-md);
-                background: rgba(255, 255, 255, 0.92); /* Oxunurluq artırıldı */
+                background: rgba(255, 255, 255, 0.92);
             }
             .login-box h2 {
-                font-size: 1.6rem; /* Başlıq kiçildildi */
+                font-size: 1.6rem;
                 margin-bottom: 4px;
             }
             .login-subtitle {
                 font-size: 0.85rem;
-                margin-bottom: 24px; /* Boşluq daraldıldı */
+                margin-bottom: 24px;
             }
             .input-group {
                 margin-bottom: 16px;
@@ -559,7 +568,7 @@
                 margin-bottom: 6px;
             }
             .login-input {
-                padding: 12px 16px; /* İnput ölçüləri zərifləşdirildi */
+                padding: 12px 16px;
                 font-size: 0.95rem;
             }
             .password-container .login-input {
@@ -789,7 +798,7 @@
 
                     const tr = document.createElement('tr');
                     
-                    // Sətirlərə statusuna görə siniflər (class) təyin edirik
+                    // Sətirlərə dinamik olaraq kəskin fərqli status sinifləri əlavə olunur
                     tr.className = isViewed ? 'row-viewed' : 'row-pending';
 
                     const statusClass = isViewed ? 'status-btn checked' : 'status-btn';
