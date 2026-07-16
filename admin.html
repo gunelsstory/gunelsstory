@@ -777,7 +777,8 @@
         function startListeningOrders() {
             const ordersTableBody = document.getElementById('ordersTableBody');
 
-            db.collection("orders").orderBy("createdAt", "desc").onSnapshot(function(snapshot) {
+            // Baza səviyyəsində deyil, JS daxilində sıralayırıq ki, Index xətası verməsin və məlumatlar dərhal gəlsin.
+            db.collection("orders").onSnapshot(function(snapshot) {
                 ordersTableBody.innerHTML = ''; 
 
                 if (snapshot.empty) {
@@ -785,9 +786,23 @@
                     return;
                 }
 
+                // Sənədləri massivə toplayırıq
+                let ordersArray = [];
                 snapshot.forEach(function(doc) {
-                    const data = doc.data();
-                    const docId = doc.id;
+                    ordersArray.push({ id: doc.id, data: doc.data() });
+                });
+
+                // JavaScript daxilində tarixə görə sıralayırıq (Yenidən köhnəyə)
+                ordersArray.sort((a, b) => {
+                    const timeA = a.data.createdAt ? (a.data.createdAt.seconds || 0) : 0;
+                    const timeB = b.data.createdAt ? (b.data.createdAt.seconds || 0) : 0;
+                    return timeB - timeA; 
+                });
+
+                // Cədvəli qururuq
+                ordersArray.forEach(function(item) {
+                    const data = item.data;
+                    const docId = item.id;
                     const isViewed = data.isViewed || false;
                     const parentName = data.parentName || 'Qeyd edilməyib';
 
@@ -803,8 +818,6 @@
                     }
 
                     const tr = document.createElement('tr');
-                    
-                    // Dinamik status sinifləri (Bənövşəyi / Firuzəyi sistem)
                     tr.className = isViewed ? 'row-viewed' : 'row-pending';
 
                     const statusClass = isViewed ? 'status-btn checked' : 'status-btn';
