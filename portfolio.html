@@ -7,38 +7,52 @@
     <title>Gunel's story - Hazırladığımız Sehrli Kitablar</title>
 
     <link rel="icon" type="image/png" href="image/favicon.png">
+    
+    <!-- Google Fonts - Premium Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bg-color: #FAF6EE; /* Lüks kremli pastel fon */
-            --primary-blue: #1E2A78; /* Kral göyü */
-            --accent-gold: #E67E22; /* Premium qızılı-narıncı */
-            --text-dark: #2D2D2D;
-            --text-muted: #666666;
+            --bg-color: #FAF8F5; /* Premium lüks kremli soft ton */
+            --primary-blue: #0F1A5C; /* Dərin Kral Göyü */
+            --accent-gold: #D97706; /* Müasir Premium Qızılı-Kəhrəba */
+            --text-dark: #1E293B; /* Soft tünd boz */
+            --text-muted: #64748B; /* Kübar boz */
             --white: #ffffff;
-            --border-radius-lg: 30px;
-            --border-radius-sm: 16px;
-            --border-color: rgba(30, 42, 120, 0.08);
+            
+            --border-radius-lg: 24px;
+            --border-radius-sm: 14px;
+            --border-color: rgba(15, 26, 92, 0.04);
+            
+            /* İkiqat Soft Kölgə Sistemi */
+            --shadow-sm: 0 4px 20px rgba(15, 26, 92, 0.02);
+            --shadow-md: 0 20px 40px rgba(15, 26, 92, 0.04);
+            --shadow-lg: 0 30px 60px rgba(15, 26, 92, 0.08);
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-dark);
-            padding-bottom: 80px;
-            background-image: radial-gradient(#F5EFE4 1.5px, transparent 1.5px);
-            background-size: 24px 24px; /* Zərif nöqtəli fon */
+            padding-bottom: 100px;
+            background-image: radial-gradient(rgba(15, 26, 92, 0.02) 1.5px, transparent 1.5px);
+            background-size: 32px 32px; /* Daha modern zərif nöqtəli arxa fon */
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 24px;
         }
 
         /* Premium Naviqasiya */
@@ -46,7 +60,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 0;
+            padding: 35px 0;
             margin-bottom: 20px;
         }
 
@@ -57,27 +71,32 @@
             background-color: var(--white);
             color: var(--primary-blue);
             text-decoration: none;
-            padding: 12px 24px;
-            border-radius: var(--border-radius-lg);
-            font-weight: 800;
-            font-size: 0.95rem;
-            box-shadow: 0 8px 20px rgba(30, 42, 120, 0.04);
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-sm);
             border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
         .back-btn svg {
             width: 18px;
             height: 18px;
-            fill: currentColor;
-            transition: transform 0.2s;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.3s var(--transition);
         }
 
         .back-btn:hover {
             background-color: var(--primary-blue);
             color: var(--white);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(30, 42, 120, 0.15);
+            box-shadow: 0 12px 30px rgba(15, 26, 92, 0.15);
+            border-color: transparent;
         }
 
         .back-btn:hover svg {
@@ -87,55 +106,66 @@
         /* Zərif Başlıq Bölməsi */
         header {
             text-align: center;
-            padding: 30px 0 50px;
+            padding: 40px 0 70px;
         }
 
         header h1 {
-            font-size: 2.8rem;
-            font-weight: 900;
-            margin-bottom: 15px;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 18px;
             color: var(--primary-blue);
-            letter-spacing: -0.5px;
+            letter-spacing: -1px;
         }
 
         header p {
             font-size: 1.15rem;
             color: var(--text-muted);
-            max-width: 650px;
+            max-width: 680px;
             margin: 0 auto;
-            line-height: 1.6;
+            line-height: 1.7;
             font-weight: 500;
         }
 
-        /* Qalereya Grid Sistemi */
+        /* Qalereya Grid Sistemi (Asimmetrik Lüks Düzülüş) */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
+            gap: 48px;
         }
 
-        /* Kitab Kartı (Lüks Dizayn) */
+        /* Kitab Kartı (Premium Minimalist) */
         .book-card {
             background-color: var(--white);
             border-radius: var(--border-radius-lg);
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(30, 42, 120, 0.03);
+            box-shadow: var(--shadow-md);
             border: 1px solid var(--border-color);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
+            position: relative;
+        }
+
+        /* UX Dinamikası: Şahmat effekti yaratmaq üçün hər ikinci kartı bir az aşağı sürüşdürürük */
+        @media (min-width: 769px) {
+            .book-card:nth-child(even) {
+                transform: translateY(35px);
+            }
+            .gallery-grid {
+                padding-bottom: 45px;
+            }
         }
 
         .book-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(30, 42, 120, 0.08);
-            border-color: rgba(30, 42, 120, 0.15);
+            transform: translateY(-10px) !important; /* Şahmat effektini hover zamanı üstələmək üçün */
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(15, 26, 92, 0.08);
         }
 
         .book-img-box {
             width: 100%;
-            aspect-ratio: 16 / 10;
-            background-color: #F8F9FA;
+            aspect-ratio: 16 / 11;
+            background-color: #F8FAFC;
             overflow: hidden;
             position: relative;
         }
@@ -144,125 +174,147 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .book-card:hover .book-img-box img {
-            transform: scale(1.04);
+            transform: scale(1.05);
+        }
+
+        /* Şəkil üzərində premium overlay kölgə */
+        .book-img-box::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(15, 26, 92, 0.02));
+            pointer-events: none;
         }
 
         /* Kitab Məlumatı */
         .book-info {
-            padding: 25px 30px;
+            padding: 35px 40px;
             background-color: var(--white);
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
+            gap: 20px;
+            border-top: 1px solid rgba(15, 26, 92, 0.02);
         }
 
         .book-info h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            margin-bottom: 8px;
             color: var(--primary-blue);
-            line-height: 1.3;
+            line-height: 1.4;
+            letter-spacing: -0.3px;
         }
 
+        /* Müəllif Nişanı (Tag Stilində) */
         .book-author-badge {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             color: var(--accent-gold);
-            font-size: 0.95rem;
+            background-color: rgba(217, 119, 6, 0.06);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.85rem;
             font-weight: 700;
-            margin-top: auto;
+            width: fit-content;
         }
 
         .book-author-badge svg {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             fill: currentColor;
         }
 
-        /* Səhifənin Altındakı Müraciət Bloku (Premium CTA) */
+        /* Səhifənin Altındakı Müraciət Bloku (Premium Glassmorphic CTA) */
         .gallery-footer {
             text-align: center;
-            margin-top: 70px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, #10184D 100%);
-            padding: 50px 40px;
+            margin-top: 120px;
+            background: radial-gradient(circle at top right, #1E2A78 0%, #0F1A5C 100%);
+            padding: 70px 40px;
             border-radius: var(--border-radius-lg);
-            box-shadow: 0 20px 40px rgba(30, 42, 120, 0.15);
+            box-shadow: 0 30px 70px rgba(15, 26, 92, 0.25);
             position: relative;
             overflow: hidden;
         }
 
-        /* Arxa fonda zərif lüks dairəvi naxış */
+        /* Arxa fonda zərif soft-light kürələr */
         .gallery-footer::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 300px;
-            height: 300px;
+            top: -40%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
             border-radius: 50%;
-            background: rgba(230, 126, 34, 0.1);
-            filter: blur(50px);
+            background: rgba(217, 119, 6, 0.15);
+            filter: blur(80px);
         }
 
         .gallery-footer h2 {
-            font-size: 2rem;
-            font-weight: 900;
-            margin-bottom: 12px;
+            font-size: 2.3rem;
+            font-weight: 800;
+            margin-bottom: 14px;
             color: var(--white);
             position: relative;
             z-index: 1;
+            letter-spacing: -0.5px;
         }
 
         .gallery-footer p {
             font-size: 1.15rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 35px;
             position: relative;
             z-index: 1;
             font-weight: 500;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-btn {
             display: inline-flex;
             align-items: center;
-            background-color: var(--accent-gold);
-            color: var(--white);
+            background-color: var(--white);
+            color: var(--primary-blue);
             text-decoration: none;
-            padding: 15px 35px;
+            padding: 18px 45px;
             border-radius: var(--border-radius-sm);
             font-weight: 800;
-            font-size: 1.05rem;
-            box-shadow: 0 8px 25px rgba(230, 126, 34, 0.3);
-            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
             position: relative;
             z-index: 1;
         }
 
         .cta-btn:hover {
-            background-color: #D35400;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(230, 126, 34, 0.45);
+            background-color: var(--accent-gold);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(217, 119, 6, 0.3);
         }
 
-        /* Mobil Cihazlar Üçün Mükəmməl Uyğunlaşdırma */
+        /* Mobil Cihazlar Üçün Tam Optimallıq */
         @media (max-width: 768px) {
             .gallery-grid {
                 grid-template-columns: 1fr;
-                gap: 25px;
+                gap: 30px;
             }
 
+            body { padding-bottom: 60px; }
+
             header {
-                padding: 20px 0 35px;
+                padding: 20px 0 40px;
             }
 
             header h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             header p {
@@ -270,24 +322,25 @@
             }
 
             .book-card {
-                border-radius: 24px;
+                border-radius: 20px;
             }
 
             .book-info {
-                padding: 20px;
+                padding: 25px;
             }
 
             .book-info h3 {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
 
             .gallery-footer {
-                padding: 40px 20px;
-                border-radius: 24px;
+                margin-top: 70px;
+                padding: 50px 24px;
+                border-radius: 20px;
             }
 
             .gallery-footer h2 {
-                font-size: 1.6rem;
+                font-size: 1.7rem;
             }
 
             .gallery-footer p {
@@ -297,6 +350,7 @@
             .cta-btn {
                 width: 100%;
                 justify-content: center;
+                padding: 16px;
             }
         }
     </style>
@@ -309,8 +363,9 @@
         <!-- Üst Naviqasiya -->
         <div class="nav-bar">
             <a href="index.html" class="back-btn">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
                 </svg>
                 Əsas Səhifəyə Qayıt
             </a>
@@ -330,7 +385,7 @@
                     <img src="image/cild.png" alt="Xüsusi Kitab Nümunəsi 1">
                 </div>
                 <div class="book-info">
-                    <h3>Ürəyimdə yaşayan ailə</h3>
+                    <h3>Anlamaq və Sevmək: Ürəyimdə yaşayan ailə</h3>
                     <div class="book-author-badge">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
@@ -346,7 +401,7 @@
                     <img src="image/İsimsiz-1.png" alt="Xüsusi Kitab Nümunəsi 2">
                 </div>
                 <div class="book-info">
-                    <h3>Çiçəkdən şahzadəyə</h3>
+                    <h3>Özünəinam Hekayəsi: Çiçəkdən şahzadəyə</h3>
                     <div class="book-author-badge">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
@@ -371,6 +426,7 @@
                     </div>
                 </div>
             </div>
+            
         </div>
 
         <!-- Səhifənin Altındakı Məlumat Bloku (CTA) -->
