@@ -3,106 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Paneli - Gunel's story</title>
+    <title>Premium Admin Panel - Gunel's Story</title>
     <link rel="icon" type="image/png" href="image/favicon.png">
+    
+    <!-- Google Fonts - Premium Inter & Plus Jakarta Sans Google şriftləri -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bg-color: #FAF6EE; /* Premium yumşaq krem tonu */
-            --primary-blue: #1E2A78; /* Lüks göy rəng */
-            --accent-gold: #E67E22; /* Premium qızılı-narıncı ton */
-            --text-dark: #2D2D2D;
-            --text-muted: #666666;
+            --bg-base: #FAF8F5; /* Premium Ultra-soft Krem tonu */
+            --primary-lux: #0F1A5C; /* Dərin Kral Göyü */
+            --accent-gold: #D97706; /* Müasir Premium Qızılı-Kəhrəba */
+            --accent-gold-hover: #B45309;
+            --text-main: #1E293B; /* Soft Tünd Boz */
+            --text-muted: #64748B; /* Kübar Boz */
             --white: #ffffff;
-            --border-color: rgba(30, 42, 120, 0.08);
-            --whatsapp-color: #25D366;
-            --success-color: #10b981;
-            --danger-color: #ef4444;
-            --border-radius-lg: 30px;
-            --border-radius-sm: 16px;
+            
+            /* Sistem Status Rəngləri (Zərif və Müasir) */
+            --success: #059669;
+            --success-bg: #E6F4EA;
+            --danger: #DC2626;
+            --danger-bg: #FEE2E2;
+            --pending: #3B82F6;
+            --pending-bg: #EFF6FF;
+
+            --whatsapp: #16A34A;
+            --whatsapp-bg: #DCFCE7;
+
+            /* Kölgələr və Struktur */
+            --shadow-sm: 0 2px 8px rgba(15, 26, 92, 0.04);
+            --shadow-md: 0 12px 34px rgba(15, 26, 92, 0.06);
+            --shadow-lg: 0 30px 70px rgba(15, 26, 92, 0.12);
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * { 
             margin: 0; 
             padding: 0; 
             box-sizing: border-box; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
         }
         
         body { 
-            background-color: var(--bg-color); 
-            color: var(--text-dark); 
-            padding: 40px 15px; 
-            background-image: radial-gradient(#F5EFE4 1.5px, transparent 1.5px);
-            background-size: 24px 24px; /* Zərif nöqtəli premium arxa fon */
+            background-color: var(--bg-base); 
+            color: var(--text-main); 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: radial-gradient(rgba(15, 26, 92, 0.03) 1.5px, transparent 1.5px);
+            background-size: 32px 32px;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Müasir Giriş Ekranı (Login Screen) */
+        /* PREMIUM LOGIN OVERLAY (Giriş Ekranı) */
         .login-overlay {
             position: fixed; 
             top: 0; 
             left: 0; 
             width: 100%; 
             height: 100%;
-            background: linear-gradient(135deg, #1E2A78 0%, #10184D 100%); 
+            background: radial-gradient(circle at 10% 20%, rgba(15, 26, 92, 0.98) 0%, rgba(5, 10, 40, 1) 90%);
             display: flex; 
             justify-content: center; 
             align-items: center; 
             z-index: 9999;
-            padding: 20px;
+            padding: 24px;
+            overflow: hidden;
         }
 
+        /* Abstrakt Premium Kürələr (Arxa fon bəzəyi üçün) */
+        .login-overlay::before, .login-overlay::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-gold), rgba(217,119,6,0));
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: 1;
+        }
+        .login-overlay::before { top: -10%; left: -10%; }
+        .login-overlay::after { bottom: -10%; right: -10%; background: linear-gradient(135deg, #3B82F6, rgba(0,0,0,0)); }
+
         .login-box {
-            background: var(--white); 
-            padding: 50px 40px; 
-            border-radius: var(--border-radius-lg);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); 
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 50px 45px; 
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg); 
             width: 100%; 
-            max-width: 440px; 
+            max-width: 460px; 
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            z-index: 2;
+            transform: translateY(0);
+            transition: var(--transition);
         }
 
         .login-box h2 { 
-            color: var(--primary-blue); 
-            margin-bottom: 30px; 
-            font-weight: 900; 
-            font-size: 1.8rem;
+            color: var(--primary-lux); 
+            margin-bottom: 8px; 
+            font-weight: 800; 
+            font-size: 2rem;
             letter-spacing: -0.5px;
+        }
+
+        .login-subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 35px;
+            font-weight: 500;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary-lux);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding-left: 4px;
         }
 
         .login-input { 
             width: 100%; 
-            padding: 16px 18px; 
-            margin-bottom: 18px; 
-            border: 2px solid #EAEAEA; 
-            border-radius: var(--border-radius-sm); 
+            padding: 16px 20px; 
+            border: 1.5px solid rgba(15, 26, 92, 0.08); 
+            border-radius: var(--radius-sm); 
             outline: none; 
             font-size: 1rem; 
-            transition: all 0.3s ease;
-            background-color: #FAFAFA;
+            font-weight: 500;
+            color: var(--text-main);
+            transition: var(--transition);
+            background-color: rgba(248, 250, 252, 0.8);
         }
 
         .login-input:focus { 
-            border-color: var(--primary-blue); 
+            border-color: var(--primary-lux); 
             background-color: var(--white);
-            box-shadow: 0 0 0 4px rgba(30, 42, 120, 0.08);
+            box-shadow: 0 0 0 4px rgba(15, 26, 92, 0.06);
         }
         
-        /* Şifrə Sahəsi */
         .password-container { 
             position: relative; 
             width: 100%; 
-            margin-bottom: 18px; 
         }
         
         .password-container .login-input { 
-            margin-bottom: 0; 
-            padding-right: 50px; 
+            padding-right: 55px; 
         }
 
         .toggle-password { 
             position: absolute; 
-            right: 16px; 
+            right: 18px; 
             top: 50%; 
             transform: translateY(-50%); 
             background: none; 
@@ -111,295 +178,308 @@
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            color: #8E8E93; 
-            padding: 5px; 
-            transition: color 0.2s;
+            color: var(--text-muted); 
+            padding: 6px; 
+            transition: var(--transition);
         }
 
-        .toggle-password:hover { 
-            color: var(--primary-blue); 
-        }
-
-        .toggle-password svg { 
-            width: 22px; 
-            height: 22px; 
-            fill: currentColor; 
-        }
+        .toggle-password:hover { color: var(--primary-lux); }
+        .toggle-password svg { width: 20px; height: 20px; fill: currentColor; }
 
         .login-btn { 
             width: 100%; 
             padding: 16px; 
-            background: var(--accent-gold); 
+            background: var(--primary-lux); 
             color: var(--white); 
             border: none; 
-            border-radius: var(--border-radius-sm); 
-            font-weight: 800; 
-            font-size: 1.1rem; 
+            border-radius: var(--radius-sm); 
+            font-weight: 700; 
+            font-size: 1.05rem; 
             cursor: pointer; 
-            margin-bottom: 20px; 
-            box-shadow: 0 8px 20px rgba(230, 126, 34, 0.25);
-            transition: all 0.3s ease;
+            margin-top: 15px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 25px rgba(15, 26, 92, 0.15);
+            transition: var(--transition);
         }
 
         .login-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(230, 126, 34, 0.35);
-            background: #D35400;
+            box-shadow: 0 15px 30px rgba(15, 26, 92, 0.25);
+            background: #09103b;
         }
-        
+
         .login-back-btn { 
-            display: inline-block; 
+            display: inline-flex; 
+            align-items: center;
+            gap: 8px;
             text-decoration: none; 
             color: var(--text-muted); 
-            font-size: 0.95rem; 
-            font-weight: 700; 
-            border-bottom: 2px solid transparent; 
-            transition: all 0.2s; 
+            font-size: 0.9rem; 
+            font-weight: 600; 
+            transition: var(--transition); 
         }
 
-        .login-back-btn:hover { 
-            color: var(--primary-blue);
-            border-color: var(--primary-blue); 
+        .login-back-btn:hover { color: var(--accent-gold); }
+
+        #loginError {
+            background-color: var(--danger-bg);
+            color: var(--danger);
+            padding: 12px var(--radius-sm);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            margin-top: 20px;
+            display: none;
+            font-size: 0.85rem;
+            border: 1px solid rgba(220, 38, 38, 0.1);
         }
 
-        /* Əsas İdarəetmə Paneli Konteyneri */
+        /* ƏSAS İDARƏETMƏ PANELİ (Dashboard) */
         .admin-container { 
-            max-width: 1200px; 
-            margin: 0 auto; 
+            max-width: 1340px; 
+            width: 100%;
+            margin: 40px auto; 
             background-color: var(--white); 
-            padding: 35px 30px; 
-            border-radius: var(--border-radius-lg); 
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.03); 
-            border: 1px solid rgba(0, 0, 0, 0.01);
+            padding: 40px; 
+            border-radius: var(--radius-lg); 
+            box-shadow: var(--shadow-md); 
+            border: 1px solid rgba(15, 26, 92, 0.03);
             display: none; 
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .admin-header { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            border-bottom: 2px solid var(--border-color); 
-            padding-bottom: 25px; 
+            border-bottom: 1px solid rgba(15, 26, 92, 0.06); 
+            padding-bottom: 30px; 
             margin-bottom: 35px; 
         }
 
         .admin-header h1 { 
-            color: var(--primary-blue); 
-            font-size: 1.8rem; 
-            font-weight: 900; 
+            color: var(--primary-lux); 
+            font-size: 2.1rem; 
+            font-weight: 800; 
             display: flex; 
             align-items: center; 
-            gap: 12px; 
+            gap: 14px; 
+            letter-spacing: -0.5px;
         }
 
         .logout-btn { 
-            background-color: rgba(239, 68, 68, 0.08); 
-            color: var(--danger-color); 
-            padding: 12px 22px; 
-            border: 2px solid transparent; 
-            border-radius: var(--border-radius-sm); 
-            font-weight: 800; 
+            background-color: var(--danger-bg); 
+            color: var(--danger); 
+            padding: 12px 24px; 
+            border: none; 
+            border-radius: var(--radius-sm); 
+            font-weight: 700; 
             font-size: 0.9rem; 
             cursor: pointer; 
-            transition: all 0.2s ease; 
+            transition: var(--transition); 
         }
 
         .logout-btn:hover { 
-            background-color: var(--danger-color); 
+            background-color: var(--danger); 
             color: var(--white);
-            box-shadow: 0 6px 15px rgba(239, 68, 68, 0.2);
+            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.15);
         }
         
-        /* Cədvəl Dizaynı */
+        /* Premium Kart Cədvəl Strukturu */
         .table-responsive { 
             width: 100%; 
-            border-radius: 20px;
+            border-radius: var(--radius-md);
             overflow: hidden;
-            border: 1px solid var(--border-color);
+            border: 1px solid rgba(15, 26, 92, 0.05);
+            box-shadow: var(--shadow-sm);
         }
 
         table { 
             width: 100%; 
             border-collapse: collapse; 
             text-align: left; 
+            background-color: var(--white);
         }
 
         th { 
-            background-color: #FAFBFD; 
-            color: #7A869A; 
-            font-weight: 800; 
-            padding: 18px; 
-            border-bottom: 2px solid var(--border-color); 
-            font-size: 0.85rem; 
+            background-color: #F8FAFC; 
+            color: var(--text-muted); 
+            font-weight: 700; 
+            padding: 20px 24px; 
+            border-bottom: 1px solid rgba(15, 26, 92, 0.06); 
+            font-size: 0.8rem; 
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
         }
 
         td { 
-            padding: 18px; 
-            border-bottom: 1px solid var(--border-color); 
+            padding: 22px 24px; 
+            border-bottom: 1px solid rgba(15, 26, 92, 0.04); 
             vertical-align: middle; 
             font-size: 0.95rem; 
-            color: var(--text-dark);
+            color: var(--text-main);
         }
 
-        tr {
-            transition: background-color 0.2s ease;
-        }
-
-        tr:hover { 
-            background-color: #FAFBFD; 
-        }
+        tr { transition: var(--transition); }
+        tr:hover { background-color: rgba(250, 248, 245, 0.6); }
         
-        /* Telefon və WhatsApp */
+        /* Sifarişçi Hüceyrə Müasirləşdirməsi */
+        .parent-name-cell {
+            font-weight: 700; 
+            color: var(--primary-lux);
+            font-size: 1rem;
+        }
+
+        /* Telefon və WhatsApp düymələri */
         .phone-container { 
             display: flex; 
-            align-items: center; 
-            gap: 10px; 
-            flex-wrap: wrap; 
+            flex-direction: column;
+            gap: 6px; 
         }
 
         .phone-link { 
-            color: var(--primary-blue); 
+            color: var(--text-main); 
             text-decoration: none; 
-            font-weight: 700; 
+            font-weight: 600; 
+            font-size: 0.9rem;
+            transition: var(--transition);
         }
+        .phone-link:hover { color: var(--primary-lux); }
         
         .whatsapp-btn { 
             display: inline-flex; 
             align-items: center; 
             justify-content: center; 
-            background-color: var(--whatsapp-color); 
-            color: white; 
+            background-color: var(--whatsapp-bg); 
+            color: var(--whatsapp); 
             text-decoration: none; 
-            padding: 8px 16px; 
-            border-radius: 10px; 
-            font-size: 0.85rem; 
-            font-weight: 800; 
+            padding: 6px 12px; 
+            border-radius: 8px; 
+            font-size: 0.8rem; 
+            font-weight: 700; 
             gap: 6px; 
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
-            transition: all 0.2s ease; 
+            width: fit-content;
+            transition: var(--transition); 
         }
 
         .whatsapp-btn:hover { 
-            background-color: #1ebe57; 
+            background-color: var(--whatsapp); 
+            color: var(--white);
             transform: translateY(-1px);
-            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3);
         }
 
-        .whatsapp-btn svg { 
-            width: 16px; 
-            height: 16px; 
-            fill: currentColor; 
-            display: block; 
-        }
+        .whatsapp-btn svg { width: 14px; height: 14px; fill: currentColor; }
         
-        /* Maraqlar/İstəklər Bölməsi */
+        /* Yaş Hüceyrəsi Badge */
+        .age-badge {
+            background: rgba(15, 26, 92, 0.05); 
+            color: var(--primary-lux); 
+            padding: 6px 12px; 
+            border-radius: var(--radius-sm); 
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        /* Maraqlar/İstəklər zərif mətn sahəsi */
         .interests-cell { 
-            max-width: 250px; 
+            max-width: 260px; 
             white-space: nowrap; 
             overflow: hidden; 
             text-overflow: ellipsis; 
-            cursor: pointer; 
             color: var(--text-muted);
-            transition: color 0.2s;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
         }
 
-        .interests-cell:hover { 
+        tr:hover .interests-cell {
             white-space: normal; 
-            background: #FFFDF5; 
-            color: var(--text-dark);
+            color: var(--text-main);
         }
 
-        /* Əməliyyat Düymələri */
+        /* Tarix Hüceyrəsi */
+        .date-cell {
+            color: var(--text-muted); 
+            font-size: 0.85rem; 
+            font-weight: 500;
+        }
+
         .action-container { 
             display: flex; 
             align-items: center; 
-            gap: 10px; 
+            gap: 12px; 
         }
 
-        /* Status (Gözləyir/Baxıldı) */
+        /* Yeni Nəsil Status Düymələri */
         .status-btn { 
-            border: 2px solid #E2E8F0; 
-            background: var(--white); 
-            color: var(--text-muted); 
+            border: none;
+            background: var(--pending-bg); 
+            color: var(--pending); 
             padding: 8px 16px; 
-            border-radius: 12px; 
+            border-radius: var(--radius-sm); 
             font-weight: 700; 
             font-size: 0.85rem; 
             cursor: pointer; 
-            transition: all 0.2s ease; 
+            transition: var(--transition); 
             display: inline-flex; 
             align-items: center; 
-            gap: 5px; 
+            gap: 6px; 
         }
 
-        .status-btn:hover { 
-            border-color: var(--accent-gold); 
-            color: var(--accent-gold); 
-        }
+        .status-btn:hover { background: rgba(59, 130, 246, 0.2); }
 
         .status-btn.checked { 
-            background-color: #EBFDF5; 
-            border-color: var(--success-color); 
-            color: var(--success-color); 
-            font-weight: 800; 
-            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.1);
+            background-color: var(--success-bg); 
+            color: var(--success); 
         }
+        .status-btn.checked:hover { background: rgba(5, 150, 105, 0.2); }
 
         /* Silmə Düyməsi */
         .delete-btn { 
-            background-color: #FEF2F2; 
-            border: 2px solid #FEE2E2; 
-            color: var(--danger-color); 
-            padding: 8px 12px; 
-            border-radius: 12px; 
+            background-color: transparent; 
+            border: 1.5px solid rgba(220, 38, 38, 0.15); 
+            color: var(--danger); 
+            padding: 8px; 
+            border-radius: var(--radius-sm); 
             cursor: pointer; 
-            transition: all 0.2s ease; 
+            transition: var(--transition); 
             display: inline-flex; 
             align-items: center; 
             justify-content: center; 
         }
 
         .delete-btn:hover { 
-            background-color: var(--danger-color); 
-            border-color: var(--danger-color); 
-            color: var(--white); 
-            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+            background-color: var(--danger-bg); 
+            border-color: transparent;
         }
 
-        .delete-btn svg { 
-            width: 18px; 
-            height: 18px; 
-            fill: currentColor; 
-        }
+        .delete-btn svg { width: 18px; height: 18px; fill: currentColor; }
 
-        /* MOBİL RESPONSİVLİK */
-        @media (max-width: 768px) {
-            body { padding: 15px 10px; }
-            
-            .login-box { padding: 35px 20px; border-radius: 24px; }
-            
-            .admin-container { padding: 20px 15px; border-radius: 24px; }
-            .admin-header { flex-direction: column; gap: 15px; text-align: center; }
-            .admin-header h1 { font-size: 1.4rem; }
+        /* MOBİL RESPONSİVLİK OPTİMALLAŞDIRILMASI */
+        @media (max-width: 1024px) {
+            body { padding: 0; }
+            .admin-container { margin: 0; border-radius: 0; padding: 24px 16px; }
             
             table, thead, tbody, th, td, tr { display: block; }
             thead { display: none; }
             
             tr {
                 background: #fff;
-                border: 1px solid var(--border-color);
-                border-radius: 20px;
+                border: 1px solid rgba(15, 26, 92, 0.06);
+                border-radius: var(--radius-md);
                 margin-bottom: 20px;
-                padding: 18px;
-                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.01);
+                padding: 20px;
+                box-shadow: var(--shadow-sm);
             }
             
             td {
                 text-align: right;
-                padding: 10px 0;
-                border-bottom: 1px dashed rgba(30, 42, 120, 0.06);
+                padding: 12px 0;
+                border-bottom: 1px dashed rgba(15, 26, 92, 0.05);
                 position: relative;
                 display: flex;
                 justify-content: space-between;
@@ -407,55 +487,67 @@
                 white-space: normal;
             }
             
-            td:last-child { border-bottom: none; padding-top: 15px; }
+            td:last-child { border-bottom: none; padding-top: 16px; }
 
             td::before {
                 content: attr(data-label);
                 float: left;
-                font-weight: 800;
-                color: #7A869A;
-                font-size: 0.85rem;
+                font-weight: 700;
+                color: var(--text-muted);
+                font-size: 0.8rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
             }
 
+            .parent-name-cell { text-align: right; }
             .interests-cell { max-width: 100%; text-align: right; }
-            .phone-container { justify-content: flex-end; }
+            .phone-container { align-items: flex-end; }
             .action-container { justify-content: flex-end; width: 100%; }
-            
-            .whatsapp-btn span { display: none; }
-            .whatsapp-btn { padding: 8px 12px; border-radius: 8px; }
-            .whatsapp-btn svg { width: 18px; height: 18px; }
+            .whatsapp-btn { width: auto; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Firestore Bağlantılı Login Ekranı -->
+    <!-- Premium Login Ekranı -->
     <div class="login-overlay" id="loginOverlay">
         <div class="login-box">
-            <h2>Giriş Paneli ⚙️</h2>
-            <input type="text" id="username" class="login-input" placeholder="İstifadəçi adı">
+            <h2>Xoş Gəldiniz ✨</h2>
+            <p class="login-subtitle">Gunel's Story Admin Panelinə giriş edin</p>
             
-            <div class="password-container">
-                <input type="password" id="password" class="login-input" placeholder="Şifrə">
-                <button type="button" onclick="togglePasswordVisibility()" class="toggle-password" id="togglePasswordBtn" title="Şifrəni göstər">
-                    <svg id="eyeClosedIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                    <svg id="eyeOpenIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none;"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-4.5c-5 0-9.27 3.11-11 7.5 1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 16.5c-2.48 0-4.5-2.02-4.5-4.5S9.52 7.5 12 7.5s4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5z"/></svg>
-                </button>
+            <div class="input-group">
+                <label class="input-label">İstifadəçi Adı</label>
+                <input type="text" id="username" class="login-input" placeholder="admin">
+            </div>
+            
+            <div class="input-group">
+                <label class="input-label">Şifrə</label>
+                <div class="password-container">
+                    <input type="password" id="password" class="login-input" placeholder="••••••••">
+                    <button type="button" onclick="togglePasswordVisibility()" class="toggle-password" id="togglePasswordBtn" title="Şifrəni göstər">
+                        <svg id="eyeClosedIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                        <svg id="eyeOpenIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none;"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-4.5c-5 0-9.27 3.11-11 7.5 1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 16.5c-2.48 0-4.5-2.02-4.5-4.5S9.52 7.5 12 7.5s4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5z"/></svg>
+                    </button>
+                </div>
             </div>
 
-            <button onclick="checkFirestoreLogin()" id="loginBtn" class="login-btn">Daxil Ol</button>
+            <button onclick="checkFirestoreLogin()" id="loginBtn" class="login-btn">Sistemə Daxil Ol</button>
+            
             <div>
-                <a href="index.html" class="login-back-btn">← Əsas Səhifəyə Qayıt</a>
+                <a href="index.html" class="login-back-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    Əsas Səhifəyə Qayıt
+                </a>
             </div>
-            <p id="loginError" style="color: var(--danger-color); font-weight: 700; margin-top: 15px; display: none; font-size: 0.9rem;">Məlumatlar yanlışdır və ya baza bağlantısı qurulmadı!</p>
+            <div id="loginError">Məlumatlar yanlışdır və ya baza bağlantısı qurulmadı!</div>
         </div>
     </div>
 
     <!-- Sifariş Paneli -->
     <div class="admin-container" id="adminContainer">
         <div class="admin-header">
-            <h1>📝 Sifarişlər</h1>
-            <button onclick="logoutAdmin()" class="logout-btn">Çıxış Et</button>
+            <h1>✨ İdarəetmə Paneli</h1>
+            <button onclick="logoutAdmin()" class="logout-btn">Bizdən Çıxış</button>
         </div>
 
         <div class="table-responsive">
@@ -463,17 +555,17 @@
                 <thead>
                     <tr>
                         <th>Valideynin Adı</th>
-                        <th>Telefon / WhatsApp</th>
+                        <th>Əlaqə Kanalları</th>
                         <th>Uşağın Adı</th>
-                        <th>Yaşı</th>
-                        <th>Maraqları / İstəkləri</th>
+                        <th>Yaş</th>
+                        <th>Maraq və İstəklər</th>
                         <th>Sifariş Tarixi</th>
-                        <th>Əməliyyatlar / Status</th>
+                        <th>Əməliyyat / Status</th>
                     </tr>
                 </thead>
                 <tbody id="ordersTableBody">
                     <tr>
-                        <td colspan="7" style="text-align: center; color: #888; padding: 30px; font-weight: 700;">Məlumatlar yüklənir...</td>
+                        <td colspan="7" style="text-align: center; color: var(--text-muted); padding: 40px; font-weight: 600;">Məlumatlar təhlükəsiz şəkildə yüklənir...</td>
                     </tr>
                 </tbody>
             </table>
@@ -499,7 +591,6 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // Şifrəni göstərib gizlədən funksiya
         function togglePasswordVisibility() {
             const passwordInput = document.getElementById('password');
             const eyeOpenIcon = document.getElementById('eyeOpenIcon');
@@ -519,8 +610,7 @@
             }
         }
 
-        // Səhifə yüklənəndə brauzer yaddaşını yoxlayan funksiya
-        window.addEventListener('DOMContentLoaded', (event) => {
+        window.addEventListener('DOMContentLoaded', () => {
             const isAdminLoggedIn = localStorage.getItem('adminLoggedIn');
             if (isAdminLoggedIn === 'true') {
                 document.getElementById('loginOverlay').style.display = 'none';
@@ -529,7 +619,6 @@
             }
         });
 
-        // Giriş Məlumatlarını Yoxlayan Funksiya
         function checkFirestoreLogin() {
             const userInput = document.getElementById('username').value;
             const passInput = document.getElementById('password').value;
@@ -537,7 +626,7 @@
             const loginBtn = document.getElementById('loginBtn');
 
             errorText.style.display = 'none';
-            loginBtn.innerText = "Yoxlanılır...";
+            loginBtn.innerText = "Doğrulanır...";
             loginBtn.disabled = true;
 
             db.collection("adminConfig").doc("credentials").get().then(function(doc) {
@@ -553,19 +642,18 @@
                         errorText.style.display = 'block';
                     }
                 } else {
-                    errorText.innerText = "Firestore-da adminConfig kolleksiyası tapılmadı!";
+                    errorText.innerText = "Sistem konfiqurasiyası tapılmadı!";
                     errorText.style.display = 'block';
                 }
             }).catch(function(error) {
-                errorText.innerText = "Bağlantı xətası: " + error.message;
+                errorText.innerText = "Xəta baş verdi: " + error.message;
                 errorText.style.display = 'block';
             }).finally(function() {
-                loginBtn.innerText = "Daxil Ol";
+                loginBtn.innerText = "Sistemə Daxil Ol";
                 loginBtn.disabled = false;
             });
         }
 
-        // Çıxış Etmə Funksiyası
         function logoutAdmin() {
             localStorage.removeItem('adminLoggedIn');
             document.getElementById('adminContainer').style.display = 'none';
@@ -574,37 +662,30 @@
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
             
-            // Çıxış edərkən sahəni yenidən gizli növünə qaytarırıq
             const passwordInput = document.getElementById('password');
             passwordInput.type = 'password';
             document.getElementById('eyeOpenIcon').style.display = 'none';
             document.getElementById('eyeClosedIcon').style.display = 'block';
-
             document.getElementById('loginError').style.display = 'none';
         }
 
-        // Statusu (Baxıldı tikini) dəyişən funksiya
         function toggleStatus(docId, currentStatus) {
             db.collection("orders").doc(docId).update({
                 isViewed: !currentStatus
             }).catch(function(error) {
-                console.error("Status yenilənmədi:", error);
+                console.error("Status güncellenirken hata:", error);
             });
         }
 
-        // Sifarişi bazadan silən funksiya
         function deleteOrder(docId, parentName) {
-            const confirmDelete = confirm(`${parentName} adlı valideynin sifarişini silmək istədiyinizdən əminsiniz?`);
+            const confirmDelete = confirm(`${parentName} adlı müraciəti tamamilə silmək istəyirsiniz?`);
             if (confirmDelete) {
-                db.collection("orders").doc(docId).delete().then(function() {
-                    console.log("Sifariş uğurla silindi.");
-                }).catch(function(error) {
-                    alert("Silinmə zamanı xəta baş verdi: " + error.message);
+                db.collection("orders").doc(docId).delete().catch(function(error) {
+                    alert("Silinmə xətası: " + error.message);
                 });
             }
         }
 
-        // Sifarişləri Canlı Dinləyən Funksiya
         function startListeningOrders() {
             const ordersTableBody = document.getElementById('ordersTableBody');
 
@@ -612,7 +693,7 @@
                 ordersTableBody.innerHTML = ''; 
 
                 if (snapshot.empty) {
-                    ordersTableBody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 40px; color: #888; font-weight: 700;">Hələ heç bir müraciət yoxdur.</td></tr>';
+                    ordersTableBody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 50px; color: var(--text-muted); font-weight: 600;">Hələ ki heç bir müraciət qeydə alınmayıb.</td></tr>';
                     return;
                 }
 
@@ -620,11 +701,11 @@
                     const data = doc.data();
                     const docId = doc.id;
                     const isViewed = data.isViewed || false;
-                    const parentName = data.parentName || 'Naməlum';
+                    const parentName = data.parentName || 'Qeyd edilməyib';
 
-                    let orderDate = "Gözlənilir...";
+                    let orderDate = "Gözlənilir";
                     if (data.createdAt) {
-                        orderDate = data.createdAt.toDate().toLocaleString('az-AZ');
+                        orderDate = data.createdAt.toDate().toLocaleString('az-AZ', { hour: '2-digit', minute:'2-digit', day: '2-digit', month: '2-digit', year: 'numeric' });
                     }
 
                     const cleanPhone = (data.parentPhone || '').replace(/\D/g, '');
@@ -634,32 +715,30 @@
                     }
 
                     const tr = document.createElement('tr');
-                    
                     const statusClass = isViewed ? 'status-btn checked' : 'status-btn';
-                    const statusText = isViewed ? '✓ Baxıldı' : 'Gözləyir';
+                    const statusText = isViewed ? '✓ Baxıldı' : '• Gözləyir';
 
                     tr.innerHTML = `
-                        <td data-label="Valideyn: " style="font-weight: 700; color: var(--primary-blue);">${parentName}</td>
-                        <td data-label="Əlaqə: ">
+                        <td data-label="Valideyn" class="parent-name-cell">${parentName}</td>
+                        <td data-label="Əlaqə">
                             <div class="phone-container">
-                                <a href="tel:${data.parentPhone || ''}" class="phone-link">${data.parentPhone || ''}</a>
+                                <a href="tel:${data.parentPhone || ''}" class="phone-link">${data.parentPhone || 'Qeyd yoxdur'}</a>
+                                ${data.parentPhone ? `
                                 <a href="${waLink}" target="_blank" class="whatsapp-btn">
                                     <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
                                     <span>WhatsApp</span>
-                                </a>
+                                </a>` : ''}
                             </div>
                         </td>
-                        <td data-label="Uşaq: " style="font-weight: 600;">${data.childName || ''}</td>
-                        <td data-label="Yaş: "><span style="background: rgba(30, 42, 120, 0.06); color: var(--primary-blue); padding: 6px 12px; border-radius: 8px; font-weight: 800;">${data.childAge || '-'}</span></td>
-                        <td data-label="Maraqlar: " class="interests-cell" title="Tam görmək üçün üzərinə gəlin">${data.childInterests || '-'}</td>
-                        <td data-label="Tarix: " style="color: var(--text-muted); font-size: 0.9rem; font-weight: 600;">${orderDate}</td>
-                        <td data-label="Status: ">
+                        <td data-label="Uşaq" style="font-weight: 600; color: var(--text-main);">${data.childName || 'Qeyd edilməyib'}</td>
+                        <td data-label="Yaş"><span class="age-badge">${data.childAge || '-'} yaş</span></td>
+                        <td data-label="Maraqlar" class="interests-cell" title="${data.childInterests || ''}">${data.childInterests || 'Qeyd yoxdur'}</td>
+                        <td data-label="Tarix" class="date-cell">${orderDate}</td>
+                        <td data-label="Status">
                             <div class="action-container">
-                                <!-- Silmə düyməsi -->
-                                <button class="delete-btn" onclick="deleteOrder('${docId}', '${parentName}')" title="Sifarişi sil">
+                                <button class="delete-btn" onclick="deleteOrder('${docId}', '${parentName}')" title="Sil">
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
                                 </button>
-                                <!-- Status düyməsi -->
                                 <button class="${statusClass}" onclick="toggleStatus('${docId}', ${isViewed})">
                                     ${statusText}
                                 </button>
