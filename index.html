@@ -6,27 +6,26 @@
     <title>Gunel's story - Uşağınız Hekayənin Baş Qəhrəmanıdır!</title>
     <link rel="icon" type="image/png" href="image/favicon.png">
     
-    <!-- Müasir, Soft və Premium Şriftlər -->
+    <!-- Müasir və Zərif Premium Tipoqrafiya -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #fbfaff 0%, #f5faf8 100%);
-            --primary-magic: #6c5ce7;
-            --primary-soft: #eeebff;
-            --accent-mint: #00b894;
+            --bg-color: #fafbfc; /* Minimalist və təmiz arxa fon */
+            --primary-magic: #4f46e5; /* Müasir Royal İndigo */
+            --primary-soft: #f0f0ff;
             --accent-rose: #ff7675;
             --gold-gradient: linear-gradient(135deg, #ff9f43 0%, #ff6b6b 100%);
-            --card-bg: rgba(255, 255, 255, 0.88);
-            --text-main: #2d3436;
-            --text-sub: #636e72;
+            --card-bg: #ffffff;
+            --text-main: #1a1a24;
+            --text-sub: #64748b;
             --white: #ffffff;
-            --radius-xl: 32px;
-            --radius-md: 20px;
-            --shadow-soft: 0 10px 40px rgba(108, 92, 231, 0.04);
-            --shadow-hover: 0 20px 50px rgba(108, 92, 231, 0.1);
+            --radius-xl: 24px;
+            --radius-md: 16px;
+            --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.02);
+            --shadow-hover: 0 16px 40px rgba(79, 70, 229, 0.08);
         }
 
         * {
@@ -37,99 +36,26 @@
         }
 
         body {
-            background: var(--bg-gradient);
+            background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
             padding-bottom: 80px;
             min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
         }
 
         h1, h2, h3, .subtitle, .step-number {
             font-family: 'Quicksand', sans-serif;
         }
 
-        /* --- SEHRLİ PASTEL ARXA FON İŞIQLARI --- */
-        .bg-glow-1 {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: rgba(108, 92, 231, 0.08);
-            border-radius: 50%;
-            filter: blur(100px);
-            top: 5%;
-            left: -150px;
-            z-index: -2;
-        }
-
-        .bg-glow-2 {
-            position: absolute;
-            width: 350px;
-            height: 350px;
-            background: rgba(255, 118, 117, 0.06);
-            border-radius: 50%;
-            filter: blur(90px);
-            bottom: 20%;
-            right: -150px;
-            z-index: -2;
-        }
-
-        /* --- MÜASİR VEKTOR DEKORLAR --- */
-        .vector-decor {
-            position: absolute;
-            z-index: -1;
-            user-select: none;
-            pointer-events: none;
-            max-width: 80px;
-            height: auto;
-            filter: drop-shadow(0 6px 12px rgba(108, 92, 231, 0.1));
-            transition: all 0.3s ease;
-        }
-
-        @keyframes vectorFloat {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-10px) scale(1.03); }
-        }
-
-        @keyframes vectorTwinkle {
-            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
-            50% { transform: scale(1.1) rotate(10deg); opacity: 1; }
-        }
-
-        @keyframes vectorRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .v-cloud-1   { top: 7%; left: 3%; max-width: 95px; animation: vectorFloat 6s ease-in-out infinite; }
-        .v-star-1    { top: 16%; right: 4%; max-width: 50px; animation: vectorTwinkle 4s ease-in-out infinite; }
-        .v-rocket    { top: 35%; left: 2%; max-width: 75px; animation: vectorFloat 8s ease-in-out infinite 0.5s; }
-        .v-star-2    { top: 52%; right: 3%; max-width: 45px; animation: vectorTwinkle 5s ease-in-out infinite 1s; }
-        .v-moon      { top: 68%; left: 3%; max-width: 70px; animation: vectorFloat 7s ease-in-out infinite; }
-        .v-rainbow   { bottom: 8%; right: 3%; max-width: 110px; animation: vectorFloat 9s ease-in-out infinite; }
-
-        .mobile-vector-decor {
-            position: fixed;
-            max-width: 40px;
-            height: auto;
-            z-index: 10;
-            pointer-events: none;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06));
-            display: none;
-        }
-        .mob-v-star { top: 15px; right: 15px; animation: vectorTwinkle 3s ease-in-out infinite; }
-        .mob-v-cloud { bottom: 15px; left: 15px; max-width: 48px; animation: vectorFloat 5s ease-in-out infinite; }
-
         /* Üst Menyu */
         nav {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid rgba(108, 92, 231, 0.05);
+            border-bottom: 1px solid #e2e8f0;
         }
 
         .nav-container {
@@ -138,21 +64,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 24px;
+            padding: 18px 24px;
         }
 
         .nav-logo {
-            font-size: 1.2rem;
-            font-weight: 800;
+            font-size: 1.25rem;
+            font-weight: 700;
             color: var(--text-main);
             text-decoration: none;
-            font-family: 'Quicksand', sans-serif;
+            letter-spacing: -0.5px;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
         }
 
         .nav-links a {
@@ -171,120 +97,101 @@
         .nav-links .admin-link {
             color: var(--white);
             background: var(--primary-magic);
-            padding: 8px 16px;
+            padding: 9px 18px;
             border-radius: 50px;
-            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.15);
+            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.2);
         }
 
         .container {
-            max-width: 960px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
-            position: relative;
-            z-index: 2;
         }
 
-        /* Header (Yeniləndi: Loqo Ətrafı Ağ Çərçivə Silindi) */
+        /* Header Bölməsi (Tam Şəffaf Loqo Effekti) */
         header {
             text-align: center;
-            padding: 40px 10px 50px;
+            padding: 50px 10px 45px;
         }
 
         .logo-box {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 16px;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.3s ease;
         }
 
         .logo-box:hover {
-            transform: scale(1.08) rotate(3deg);
+            transform: scale(1.05);
         }
 
         .logo-box img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            /* Ağ çərçivə yerinə loqonun özünə çox zərif premium kölgə */
-            filter: drop-shadow(0 8px 16px rgba(108, 92, 231, 0.12));
+            /* Ağ çərçivə tamamilə ləğv edilib, loqo şəffafdır */
         }
 
         header h1 {
-            font-size: 3rem;
-            font-weight: 800;
+            font-size: 2.8rem;
+            font-weight: 700;
             color: var(--text-main);
             margin-bottom: 8px;
             letter-spacing: -1px;
         }
 
         header .subtitle {
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: 1.25rem;
+            font-weight: 600;
             color: var(--primary-magic);
             margin-bottom: 24px;
         }
 
         .main-badge {
             display: inline-block;
-            background: rgba(108, 92, 231, 0.05);
+            background: var(--primary-soft);
             color: var(--primary-magic);
-            padding: 10px 24px;
+            padding: 8px 20px;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 0.9rem;
-            border: 1px solid rgba(108, 92, 231, 0.08);
+            font-size: 0.88rem;
         }
 
-        /* Müasir Şüşə Efektli Kartlar */
+        /* Müasir, Təmiz Minimalist Kartlar */
         .step-card {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border-radius: var(--radius-xl);
             padding: 40px;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
             box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            position: relative;
-            overflow: hidden;
+            border: 1px solid #edf2f7;
             transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        .step-card .card-vector-star {
-            position: absolute;
-            bottom: 18px;
-            right: 18px;
-            width: 20px;
-            height: auto;
-            opacity: 0.15;
-            animation: vectorRotate 15s linear infinite;
-            pointer-events: none;
-        }
-
         .step-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow-hover);
-            border-color: rgba(108, 92, 231, 0.12);
+            border-color: rgba(79, 70, 229, 0.15);
         }
 
         .step-header {
             display: flex;
             align-items: center;
-            gap: 18px;
-            margin-bottom: 18px;
+            gap: 16px;
+            margin-bottom: 16px;
         }
 
         .step-number {
             background: var(--primary-soft);
             color: var(--primary-magic);
             font-weight: 700;
-            font-size: 1.3rem;
-            width: 46px;
-            height: 46px;
-            border-radius: 16px;
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -292,13 +199,14 @@
         }
 
         .step-title h2 {
-            font-size: 1.6rem;
+            font-size: 1.45rem;
             font-weight: 700;
             color: var(--text-main);
+            letter-spacing: -0.3px;
         }
 
         .step-desc {
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: var(--text-sub);
             margin-bottom: 28px;
             line-height: 1.6;
@@ -311,98 +219,95 @@
         }
 
         .step-img-side {
-            flex: 1.2;
+            flex: 1.3;
         }
 
         .step-img-box {
             width: 100%;
             aspect-ratio: 16 / 10;
-            background-color: #f1f3f6;
+            background-color: #f7fafc;
             border-radius: var(--radius-md);
             overflow: hidden;
-            border: 4px solid var(--white);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
         }
 
         .step-features-side {
             flex: 1;
             display: flex;
-            gap: 15px;
+            gap: 16px;
         }
 
         .feature-sub-card {
             flex: 1;
-            background: var(--white);
-            border-radius: 18px;
+            background: #f8fafc;
+            border-radius: var(--radius-md);
             padding: 24px 12px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.01);
-            border: 1px solid rgba(108, 92, 231, 0.02);
-            transition: transform 0.2s ease;
+            border: 1px solid #edf2f7;
+            transition: background 0.2s ease;
         }
 
         .feature-sub-card:hover {
-            transform: scale(1.04);
+            background: #f1f5f9;
         }
 
         .feature-icon {
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             margin-bottom: 8px;
             display: inline-block;
         }
 
         .feature-sub-card p {
             font-size: 0.88rem;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--text-main);
             line-height: 1.3;
         }
 
-        /* Paket və Sifariş */
+        /* Paket və Sifariş Kartı */
         .package-card {
             background: var(--white);
-            border-radius: 36px;
-            padding: 60px 20px;
-            box-shadow: 0 25px 60px rgba(108, 92, 231, 0.04);
-            margin-top: 60px;
-            border: 1px solid rgba(108, 92, 231, 0.03);
+            border-radius: var(--radius-xl);
+            padding: 50px 20px;
+            box-shadow: var(--shadow-soft);
+            margin-top: 50px;
+            border: 1px solid #edf2f7;
             text-align: center;
         }
 
         .package-card h3 {
-            font-size: 2.1rem;
+            font-size: 1.85rem;
             font-weight: 700;
             margin-bottom: 8px;
             color: var(--text-main);
         }
 
-        /* Premium Form */
+        /* Müasir Premium Form elementləri */
         .order-form-container {
-            max-width: 480px;
-            margin: 35px auto 20px;
+            max-width: 460px;
+            margin: 30px auto 0;
             text-align: left;
             background: #ffffff;
-            padding: 35px;
-            border-radius: 24px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.01);
-            border: 1px solid rgba(108, 92, 231, 0.06);
+            padding: 30px;
+            border-radius: var(--radius-md);
+            border: 1px solid #e2e8f0;
         }
 
         .order-form-container h4 {
-            margin-bottom: 25px;
+            margin-bottom: 24px;
             color: var(--primary-magic);
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             font-weight: 700;
             text-align: center;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .form-group label {
             display: block;
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 8px;
             font-size: 0.85rem;
             color: var(--text-main);
@@ -410,20 +315,20 @@
 
         .form-group input, .form-group textarea {
             width: 100%;
-            padding: 14px 16px;
-            border-radius: 14px;
-            border: 2px solid #eef2f5;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
             font-size: 0.95rem;
             outline: none;
-            background-color: #f9fafb;
+            background-color: #fff;
             color: var(--text-main);
             font-family: inherit;
+            transition: border-color 0.2s;
         }
 
         .form-group input:focus, .form-group textarea:focus {
             border-color: var(--primary-magic);
-            background-color: var(--white);
-            box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.06);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
         }
 
         .order-btn {
@@ -432,76 +337,57 @@
             border: none;
             background: var(--gold-gradient);
             color: var(--white);
-            padding: 18px;
-            font-size: 1.1rem;
+            padding: 16px;
+            font-size: 1.05rem;
             font-weight: 700;
             font-family: 'Quicksand', sans-serif;
-            border-radius: 16px;
+            border-radius: 12px;
             cursor: pointer;
-            box-shadow: 0 8px 24px rgba(255, 107, 107, 0.2);
-            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.2);
+            transition: all 0.2s ease;
         }
 
         .order-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(255, 107, 107, 0.3);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.25);
         }
         
         .whatsapp-note {
             font-size: 0.85rem; 
-            font-weight: 600; 
+            font-weight: 500; 
             color: var(--text-sub); 
             margin-top: 20px;
         }
 
-        /* RESPONSİVLİK APDEYTİ */
+        /* Mobil Adaptasiya */
         @media (max-width: 768px) {
-            .vector-decor { display: none !important; }
-            .mobile-vector-decor { display: block; }
-            
-            .nav-container { padding: 15px; }
+            .nav-container { padding: 14px 16px; }
             .container { padding: 0 16px; }
 
-            header { padding: 25px 5px 35px; }
-            header h1 { font-size: 2.2rem; }
-            header .subtitle { font-size: 1.15rem; }
+            header { padding: 35px 5px; }
+            header h1 { font-size: 2.1rem; }
+            header .subtitle { font-size: 1.1rem; }
 
-            .step-card { padding: 24px 18px; border-radius: 24px; margin-bottom: 20px; }
-            .step-title h2 { font-size: 1.3rem; }
-            .step-desc { font-size: 0.98rem; }
+            .step-card { padding: 24px 20px; border-radius: 20px; margin-bottom: 16px; }
+            .step-title h2 { font-size: 1.25rem; }
+            .step-desc { font-size: 0.95rem; margin-bottom: 20px; }
             
-            .step-body { flex-direction: column; gap: 18px; }
+            .step-body { flex-direction: column; gap: 20px; }
             .step-img-side { width: 100%; }
 
-            .step-features-side { width: 100%; flex-direction: row; gap: 10px; }
-            .feature-sub-card { padding: 15px 8px; border-radius: 14px; }
-            .feature-icon { font-size: 1.9rem; margin-bottom: 6px; }
+            .step-features-side { width: 100%; gap: 12px; }
+            .feature-sub-card { padding: 16px 8px; border-radius: 12px; }
+            .feature-icon { font-size: 1.8rem; }
             .feature-sub-card p { font-size: 0.78rem; }
 
-            .package-card { padding: 40px 12px; }
-            .order-form-container { padding: 24px 16px; }
+            .package-card { padding: 35px 16px; margin-top: 35px; }
+            .order-form-container { padding: 20px 14px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Zərif Pastel Arxa Fon İşıqları -->
-    <div class="bg-glow-1"></div>
-    <div class="bg-glow-2"></div>
-
-    <!-- 💻 VEKTOR İLLÜSTRASİYALAR (Böyük Ekranlar) -->
-    <img src="image/vector-cloud.svg" class="vector-decor v-cloud-1" alt="Vektor Bulud">
-    <img src="image/vector-star.svg" class="vector-decor v-star-1" alt="Vektor Ulduz">
-    <img src="image/vector-rocket.svg" class="vector-decor v-rocket" alt="Vektor Raket">
-    <img src="image/vector-star-soft.svg" class="vector-decor v-star-2" alt="Zərif Ulduz">
-    <img src="image/vector-moon.svg" class="vector-decor v-moon" alt="Vektor Ay">
-    <img src="image/vector-rainbow.svg" class="vector-decor v-rainbow" alt="Vektor Göyqurşağı">
-
-    <!-- 📱 VEKTOR İLLÜSTRASİYALAR (Mobil Cihazlar) -->
-    <img src="image/vector-star.svg" class="mobile-vector-decor mob-v-star" alt="Mobil Vektor Ulduz">
-    <img src="image/vector-cloud.svg" class="mobile-vector-decor mob-v-cloud" alt="Mobil Vektor Bulud">
-
-    <!-- Premium Üst Menyu -->
+    <!-- Üst Menyu -->
     <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-logo">Gunel's story</a>
@@ -514,7 +400,6 @@
 
     <div class="container">
         <header>
-            <!-- Ağ çərçivəsi silinmiş mərkəzi loqo sahəsi -->
             <div class="logo-box">
                 <img src="image/logo.png" alt="Gunelsstory">
             </div>
@@ -525,7 +410,6 @@
 
         <!-- Addımlar -->
         <div class="step-card">
-            <img src="image/vector-star.svg" class="card-vector-star" alt="star">
             <div class="step-header">
                 <div class="step-number">1</div>
                 <div class="step-title"><h2>Uşağınız Üçün Xüsusi Hekayə</h2></div>
@@ -545,7 +429,6 @@
         </div>
 
         <div class="step-card">
-            <img src="image/vector-star.svg" class="card-vector-star" alt="star">
             <div class="step-header">
                 <div class="step-number">2</div>
                 <div class="step-title"><h2>Uşağınızın Şəkli ilə Dizayn</h2></div>
@@ -565,7 +448,6 @@
         </div>
 
         <div class="step-card">
-            <img src="image/vector-star.svg" class="card-vector-star" alt="star">
             <div class="step-header">
                 <div class="step-number">3</div>
                 <div class="step-title"><h2>Premium Keyfiyyətli Çap</h2></div>
@@ -585,7 +467,6 @@
         </div>
 
         <div class="step-card">
-            <img src="image/vector-star.svg" class="card-vector-star" alt="star">
             <div class="step-header">
                 <div class="step-number">4</div>
                 <div class="step-title"><h2>Xüsusi Hədiyyə Qablaşdırma</h2></div>
