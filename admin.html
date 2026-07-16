@@ -326,6 +326,24 @@
 
         tr { transition: var(--transition); }
         tr:hover { background-color: rgba(250, 248, 245, 0.6); }
+
+        /* STATUS ZOLAQLARI (Yeni Əlavə) */
+        tr.row-pending td:first-child {
+            border-left: 5px solid var(--pending); /* Gözləyir statusu üçün zərif mavi zolaq */
+            padding-left: 19px; /* Zolaq gələndə yazının vizual balansını qorumaq üçün padding */
+        }
+        tr.row-viewed td:first-child {
+            border-left: 5px solid var(--success); /* Baxıldı statusu üçün zərif yaşıl zolaq */
+            padding-left: 19px;
+        }
+
+        /* Gözləyən müraciətləri bir az daha diqqətçəkən etmək üçün çox zərif fon rəngi */
+        tr.row-pending {
+            background-color: rgba(59, 130, 246, 0.01);
+        }
+        tr.row-pending:hover {
+            background-color: rgba(59, 130, 246, 0.03);
+        }
         
         .parent-name-cell {
             font-weight: 700; 
@@ -467,6 +485,18 @@
                 margin-bottom: 20px;
                 padding: 20px;
                 box-shadow: var(--shadow-sm);
+            }
+
+            /* Mobildə status zolağını sol tərəfdə bütöv sətir boyu göstəririk */
+            tr.row-pending {
+                border-left: 6px solid var(--pending);
+            }
+            tr.row-viewed {
+                border-left: 6px solid var(--success);
+            }
+            tr.row-pending td:first-child, tr.row-viewed td:first-child {
+                border-left: none;
+                padding-left: 0;
             }
             
             td {
@@ -758,6 +788,10 @@
                     }
 
                     const tr = document.createElement('tr');
+                    
+                    // Sətirlərə statusuna görə siniflər (class) təyin edirik
+                    tr.className = isViewed ? 'row-viewed' : 'row-pending';
+
                     const statusClass = isViewed ? 'status-btn checked' : 'status-btn';
                     const statusText = isViewed ? '✓ Baxıldı' : '• Gözləyir';
 
