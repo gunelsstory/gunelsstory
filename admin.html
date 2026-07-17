@@ -6,7 +6,7 @@
     <title>Premium Admin Panel - Gunel's Story</title>
     <link rel="icon" type="image/png" href="image/favicon.png">
     
-    <!-- Google Fonts - Premium Inter & Plus Jakarta Sans Google şriftləri -->
+    <!-- Google Fonts - Premium Inter & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
             --text-muted: #64748B; /* Kübar Boz */
             --white: #ffffff;
             
-            /* Sistem Status Rəngləri (Zərif və Müasir) */
+            /* Sistem Status Rəngləri */
             --success: #059669;
             --success-bg: #E6F4EA;
             --danger: #DC2626;
@@ -60,7 +60,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* PREMIUM LOGIN OVERLAY (Giriş Ekranı) */
+        /* PREMIUM LOGIN OVERLAY */
         .login-overlay {
             position: fixed; 
             top: 0; 
@@ -76,7 +76,6 @@
             overflow: hidden;
         }
 
-        /* Abstrakt Premium Kürələr */
         .login-overlay::before, .login-overlay::after {
             content: '';
             position: absolute;
@@ -233,7 +232,7 @@
             border: 1px solid rgba(220, 38, 38, 0.1);
         }
 
-        /* ƏSAS İDARƏETMƏ PANELİ (Dashboard) */
+        /* ƏSAS İDARƏETMƏ PANELİ */
         .admin-container { 
             max-width: 1340px; 
             width: 100%;
@@ -289,7 +288,7 @@
             box-shadow: 0 8px 20px rgba(220, 38, 38, 0.15);
         }
         
-        /* Premium Kart Cədvəl Strukturu */
+        /* Cədvəl Strukturu */
         .table-responsive { 
             width: 100%; 
             border-radius: var(--radius-md);
@@ -339,6 +338,12 @@
             gap: 6px; 
         }
 
+        .phone-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         .phone-link { 
             color: var(--text-main); 
             text-decoration: none; 
@@ -347,6 +352,37 @@
             transition: var(--transition);
         }
         .phone-link:hover { color: var(--primary-lux); }
+
+        /* Telefon nömrəsinin blur effekti və düymənin düzülüşü */
+        .phone-link.blurred {
+            filter: blur(5px);
+            pointer-events: none; /* Blur olanda kliklənməsin */
+            user-select: none;    /* Kopyalamaq olmasın */
+        }
+
+        .toggle-blur-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+            padding: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            border-radius: 6px;
+        }
+
+        .toggle-blur-btn:hover {
+            color: var(--primary-lux);
+            background-color: rgba(15, 26, 92, 0.05);
+        }
+
+        .toggle-blur-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
         
         .whatsapp-btn { 
             display: inline-flex; 
@@ -452,7 +488,7 @@
 
         .delete-btn svg { width: 18px; height: 18px; fill: currentColor; }
 
-        /* MOBİL RESPONSİVLİK OPTİMALLAŞDIRILMASI */
+        /* MOBİL RESPONSİVLİK */
         @media (max-width: 1024px) {
             body { padding: 0; }
             .admin-container { margin: 0; border-radius: 0; padding: 24px 16px; }
@@ -495,31 +531,32 @@
             .parent-name-cell { text-align: right; }
             .interests-cell { max-width: 100%; text-align: right; }
             .phone-container { align-items: flex-end; }
+            .phone-wrapper { justify-content: flex-end; }
             .action-container { justify-content: flex-end; width: 100%; }
             .whatsapp-btn { width: auto; }
         }
 
-        /* GİRİŞ EKRANININ MOBİL MİNİMALİZM OPTİMİZASİYASI */
+        /* GİRİŞ EKRANININ MOBİL OPTİMİZASİYASI */
         @media (max-width: 480px) {
             .login-overlay {
                 padding: 16px;
-                background: #090e32; /* Mobil batareya və performans üçün qradiyent sadələşdirildi */
+                background: #090e32;
             }
             .login-overlay::before, .login-overlay::after {
-                display: none; /* Mobildə arxa fon ləkələrini gizlədib minimalist edirik */
+                display: none;
             }
             .login-box {
-                padding: 32px 24px; /* Daxili boşluqlar kiçildildi */
+                padding: 32px 24px;
                 border-radius: var(--radius-md);
-                background: rgba(255, 255, 255, 0.92); /* Oxunurluq artırıldı */
+                background: rgba(255, 255, 255, 0.92);
             }
             .login-box h2 {
-                font-size: 1.6rem; /* Başlıq kiçildildi */
+                font-size: 1.6rem;
                 margin-bottom: 4px;
             }
             .login-subtitle {
                 font-size: 0.85rem;
-                margin-bottom: 24px; /* Boşluq daraldıldı */
+                margin-bottom: 24px;
             }
             .input-group {
                 margin-bottom: 16px;
@@ -529,7 +566,7 @@
                 margin-bottom: 6px;
             }
             .login-input {
-                padding: 12px 16px; /* İnput ölçüləri zərifləşdirildi */
+                padding: 12px 16px;
                 font-size: 0.95rem;
             }
             .password-container .login-input {
@@ -729,6 +766,27 @@
             }
         }
 
+        // Blurlu nömrəni açıb-bağlayan funksiya
+        function togglePhoneBlur(button, docId) {
+            const phoneLink = document.getElementById(`phone-${docId}`);
+            const eyeOpen = button.querySelector('.eye-open');
+            const eyeClosed = button.querySelector('.eye-closed');
+            
+            if (phoneLink.classList.contains('blurred')) {
+                phoneLink.classList.remove('blurred');
+                phoneLink.style.pointerEvents = 'auto'; // İndi kliklənə bilər
+                eyeOpen.style.display = 'block';
+                eyeClosed.style.display = 'none';
+                button.setAttribute('title', 'Nömrəni gizlə');
+            } else {
+                phoneLink.classList.add('blurred');
+                phoneLink.style.pointerEvents = 'none'; // Kliklənməni blokla
+                eyeOpen.style.display = 'none';
+                eyeClosed.style.display = 'block';
+                button.setAttribute('title', 'Nömrəni göstər');
+            }
+        }
+
         function startListeningOrders() {
             const ordersTableBody = document.getElementById('ordersTableBody');
 
@@ -765,7 +823,15 @@
                         <td data-label="Valideyn" class="parent-name-cell">${parentName}</td>
                         <td data-label="Əlaqə">
                             <div class="phone-container">
-                                <a href="tel:${data.parentPhone || ''}" class="phone-link">${data.parentPhone || 'Qeyd yoxdur'}</a>
+                                <div class="phone-wrapper">
+                                    <a href="tel:${data.parentPhone || ''}" id="phone-${docId}" class="phone-link blurred">${data.parentPhone || 'Qeyd yoxdur'}</a>
+                                    ${data.parentPhone ? `
+                                    <button class="toggle-blur-btn" onclick="togglePhoneBlur(this, '${docId}')" title="Nömrəni göstər">
+                                        <svg class="eye-closed" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                                        <svg class="eye-open" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none;"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-4.5c-5 0-9.27 3.11-11 7.5 1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 16.5c-2.48 0-4.5-2.02-4.5-4.5S9.52 7.5 12 7.5s4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5z"/></svg>
+                                    </button>
+                                    ` : ''}
+                                </div>
                                 ${data.parentPhone ? `
                                 <a href="${waLink}" target="_blank" class="whatsapp-btn">
                                     <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
