@@ -29,6 +29,12 @@
             --pending: #3B82F6;
             --pending-bg: #EFF6FF;
 
+            /* Yeni Zolaq Rəngləri (Yumşaq status fonları) */
+            --row-waiting-bg: #FFFBEB; /* Çox yumşaq narıncı fon */
+            --row-waiting-border: #F59E0B; /* Narıncı kənar xətt */
+            --row-viewed-bg: #F0FDF4; /* Çox yumşaq yaşıl fon */
+            --row-viewed-border: #10B981; /* Yaşıl kənar xətt */
+
             --whatsapp: #16A34A;
             --whatsapp-bg: #DCFCE7;
 
@@ -323,8 +329,27 @@
             color: var(--text-main);
         }
 
-        tr { transition: var(--transition); }
-        tr:hover { background-color: rgba(250, 248, 245, 0.6); }
+        tr { 
+            transition: var(--transition); 
+            border-left: 4px solid transparent; /* Kənar xətt effekti üçün zəmin */
+        }
+        
+        /* STATUS ZOLAQLARININ DINAMIK RƏNGLƏRİ */
+        tr.status-waiting {
+            background-color: var(--row-waiting-bg);
+            border-left-color: var(--row-waiting-border);
+        }
+        tr.status-waiting:hover {
+            background-color: #FFF3CD; /* Hover zamanı bir ton daha tünd narıncı */
+        }
+
+        tr.status-viewed {
+            background-color: var(--row-viewed-bg);
+            border-left-color: var(--row-viewed-border);
+        }
+        tr.status-viewed:hover {
+            background-color: #DCFCE7; /* Hover zamanı bir ton daha tünd yaşıl */
+        }
         
         .parent-name-cell {
             font-weight: 700; 
@@ -428,6 +453,7 @@
             transition: var(--transition);
         }
 
+        /* Üstünə gələndə bütün mətni göstərsin */
         tr:hover .interests-cell {
             white-space: normal; 
             color: var(--text-main);
@@ -445,10 +471,11 @@
             gap: 12px; 
         }
 
+        /* Status düymələrinin rənglənməsi */
         .status-btn { 
             border: none;
-            background: var(--pending-bg); 
-            color: var(--pending); 
+            background: #FEF3C7; /* Sarımtıl-Narıncı düymə fonu */
+            color: #D97706; 
             padding: 8px 16px; 
             border-radius: var(--radius-sm); 
             font-weight: 700; 
@@ -460,7 +487,7 @@
             gap: 6px; 
         }
 
-        .status-btn:hover { background: rgba(59, 130, 246, 0.2); }
+        .status-btn:hover { background: #FDE68A; }
 
         .status-btn.checked { 
             background-color: var(--success-bg); 
@@ -497,12 +524,13 @@
             thead { display: none; }
             
             tr {
-                background: #fff;
-                border: 1px solid rgba(15, 26, 92, 0.06);
                 border-radius: var(--radius-md);
                 margin-bottom: 20px;
                 padding: 20px;
                 box-shadow: var(--shadow-sm);
+                border-top: 1px solid rgba(15, 26, 92, 0.06);
+                border-right: 1px solid rgba(15, 26, 92, 0.06);
+                border-bottom: 1px solid rgba(15, 26, 92, 0.06);
             }
             
             td {
@@ -514,6 +542,7 @@
                 justify-content: space-between;
                 align-items: center;
                 white-space: normal;
+                background: transparent !important; /* Mobil görünüşdə fərdi td fonlarını təmizlə */
             }
             
             td:last-child { border-bottom: none; padding-top: 16px; }
@@ -816,6 +845,14 @@
                     }
 
                     const tr = document.createElement('tr');
+                    
+                    // Sətrə statusa görə dinamik sinif (class) təyin edirik
+                    if (isViewed) {
+                        tr.className = 'status-viewed';
+                    } else {
+                        tr.className = 'status-waiting';
+                    }
+
                     const statusClass = isViewed ? 'status-btn checked' : 'status-btn';
                     const statusText = isViewed ? '✓ Baxıldı' : '• Gözləyir';
 
