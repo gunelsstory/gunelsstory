@@ -295,17 +295,18 @@
         }
 
         .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px 14px;
-            border-radius: 10px;
-            border: 1px solid #cbd5e1;
-            font-size: 0.95rem;
-            outline: none;
-            background-color: #fff;
-            color: var(--text-main);
-            font-family: inherit;
-            transition: border-color 0.2s;
-        }
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    font-size: 0.95rem;
+    outline: none;
+    background-color: #fff;
+    color: var(--text-main);
+    font-family: inherit;
+    transition: border-color 0.2s;
+    resize: vertical; /* Sağa doğru uzanmağı bağlayır, yalnız aşağı uzanır */
+}
 
         .form-group input:focus, .form-group textarea:focus {
             border-color: var(--primary-magic);
