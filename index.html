@@ -39,7 +39,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
-            padding-bottom: 100px; /* Futerin kontentlə üst-üstə düşməməsi üçün məsafə */
+            padding-bottom: 110px; /* Futerin kontentlə üst-üstə düşməməsi üçün məsafə */
             min-height: 100vh;
         }
 
@@ -351,11 +351,18 @@
             -webkit-backdrop-filter: blur(10px);
             border-top: 1px solid #e2e8f0;
             text-align: center;
-            padding: 14px 20px;
+            padding: 12px 20px;
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--text-sub);
             z-index: 1000;
+        }
+
+        footer .footer-subtext {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--primary-magic);
+            margin-top: 4px;
         }
 
         /* Mobil Adaptasiya */
@@ -516,8 +523,8 @@
 
     <!-- Sabit Futer -->
     <footer>
-        © 2026 Gunel's story. Bütün hüquqlar qorunur.
-        Fərdi hekayə | Xüsusi paketləmə | Xüsusi dizayn
+        <div>© 2026 Gunel's story. Bütün hüquqlar qorunur.</div>
+        <div class="footer-subtext">Fərdi hekayə | Xüsusi paketləmə | Xüsusi dizayn</div>
     </footer>
 
     <!-- Firebase SDK -->
