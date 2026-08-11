@@ -515,6 +515,279 @@
 
         .delete-btn svg { width: 18px; height: 18px; fill: currentColor; }
 
+
+        /* ================================
+           PORTFOLIO İDARƏETMƏSİ
+           ================================ */
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin: 45px 0 20px;
+        }
+
+        .section-title h2 {
+            color: var(--primary-lux);
+            font-size: 1.35rem;
+            font-weight: 800;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: .88rem;
+            margin-top: 5px;
+        }
+
+        .portfolio-add-box {
+            background: linear-gradient(135deg, #fff, #fafbff);
+            border: 1px solid rgba(15, 26, 92, .07);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 28px;
+        }
+
+        .portfolio-form-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1.8fr 1.2fr;
+            gap: 18px;
+            align-items: end;
+        }
+
+        .portfolio-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .portfolio-field label {
+            font-size: .78rem;
+            font-weight: 800;
+            color: var(--primary-lux);
+            text-transform: uppercase;
+            letter-spacing: .4px;
+        }
+
+        .portfolio-field input[type="text"],
+        .portfolio-field input[type="file"] {
+            width: 100%;
+            min-height: 48px;
+            border: 1px solid rgba(15, 26, 92, .1);
+            border-radius: var(--radius-sm);
+            background: #fff;
+            padding: 12px 14px;
+            outline: none;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .portfolio-field input:focus {
+            border-color: var(--primary-lux);
+            box-shadow: 0 0 0 4px rgba(15, 26, 92, .05);
+        }
+
+        .portfolio-upload-btn {
+            min-height: 48px;
+            border: 0;
+            border-radius: var(--radius-sm);
+            background: var(--primary-lux);
+            color: #fff;
+            font-weight: 800;
+            cursor: pointer;
+            padding: 0 20px;
+            transition: var(--transition);
+        }
+
+        .portfolio-upload-btn:hover {
+            transform: translateY(-2px);
+            background: #09103b;
+            box-shadow: 0 10px 24px rgba(15, 26, 92, .16);
+        }
+
+        .portfolio-upload-btn:disabled {
+            opacity: .55;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .portfolio-preview {
+            display: none;
+            margin-top: 18px;
+            padding: 14px;
+            border-radius: var(--radius-sm);
+            background: #f8fafc;
+            border: 1px dashed rgba(15, 26, 92, .12);
+            align-items: center;
+            gap: 16px;
+        }
+
+        .portfolio-preview img {
+            width: 90px;
+            height: 65px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .portfolio-progress {
+            display: none;
+            margin-top: 16px;
+        }
+
+        .portfolio-progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #eef2f7;
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .portfolio-progress-bar span {
+            display: block;
+            width: 0;
+            height: 100%;
+            background: var(--accent-gold);
+            transition: width .2s ease;
+        }
+
+        .portfolio-progress-text {
+            margin-top: 7px;
+            color: var(--text-muted);
+            font-size: .78rem;
+            font-weight: 700;
+        }
+
+        .portfolio-admin-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .portfolio-admin-card {
+            background: #fff;
+            border: 1px solid rgba(15, 26, 92, .06);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .portfolio-admin-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .portfolio-admin-image {
+            width: 100%;
+            aspect-ratio: 16 / 11;
+            object-fit: cover;
+            display: block;
+            background: #f8fafc;
+        }
+
+        .portfolio-admin-body {
+            padding: 18px;
+        }
+
+        .portfolio-admin-body h3 {
+            color: var(--primary-lux);
+            font-size: 1rem;
+            line-height: 1.45;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-admin-author {
+            color: var(--accent-gold);
+            font-size: .78rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .portfolio-admin-actions {
+            display: flex;
+            gap: 9px;
+        }
+
+        .portfolio-edit-btn,
+        .portfolio-delete-btn {
+            flex: 1;
+            border: 0;
+            border-radius: 10px;
+            min-height: 40px;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: .78rem;
+            transition: var(--transition);
+        }
+
+        .portfolio-edit-btn {
+            background: #eef2ff;
+            color: var(--primary-lux);
+        }
+
+        .portfolio-delete-btn {
+            background: var(--danger-bg);
+            color: var(--danger);
+        }
+
+        .portfolio-edit-btn:hover,
+        .portfolio-delete-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .portfolio-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 45px 20px;
+            border: 1px dashed rgba(15, 26, 92, .12);
+            border-radius: var(--radius-md);
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        .portfolio-notice {
+            display: none;
+            margin-top: 15px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            font-size: .84rem;
+            font-weight: 700;
+        }
+
+        .portfolio-notice.success {
+            display: block;
+            background: var(--success-bg);
+            color: var(--success);
+        }
+
+        .portfolio-notice.error {
+            display: block;
+            background: var(--danger-bg);
+            color: var(--danger);
+        }
+
+        @media (max-width: 1024px) {
+            .portfolio-form-grid {
+                grid-template-columns: 1fr;
+            }
+            .portfolio-admin-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .section-title {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+            .portfolio-add-box {
+                padding: 20px;
+            }
+            .portfolio-admin-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* MOBİL RESPONSİVLİK */
         @media (max-width: 1024px) {
             body { padding: 0; }
@@ -679,11 +952,64 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- PORTFOLIO İDARƏETMƏSİ -->
+        <section id="portfolioSection">
+            <div class="section-title">
+                <div>
+                    <h2>Portfolio idarəetməsi</h2>
+                    <p>Şəkilləri buradan əlavə edin. Dəyişikliklər avtomatik olaraq portfolio səhifəsində görünəcək.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-add-box">
+                <div class="portfolio-form-grid">
+                    <div class="portfolio-field">
+                        <label for="portfolioImage">Şəkil</label>
+                        <input type="file" id="portfolioImage" accept="image/*">
+                    </div>
+
+                    <div class="portfolio-field">
+                        <label for="portfolioTitle">Şəkil altı yazı / başlıq</label>
+                        <input type="text" id="portfolioTitle" placeholder="Məsələn: Sehrli meşədə bir gün">
+                    </div>
+
+                    <div class="portfolio-field">
+                        <label for="portfolioAuthor">Müəllif</label>
+                        <input type="text" id="portfolioAuthor" value="Psixoloq Günel Mahmudqızı">
+                    </div>
+
+                    <button id="portfolioSaveBtn" class="portfolio-upload-btn" onclick="savePortfolioItem()">
+                        + Portfolioya əlavə et
+                    </button>
+                </div>
+
+                <div id="portfolioPreview" class="portfolio-preview">
+                    <img id="portfolioPreviewImage" src="" alt="Önizləmə">
+                    <div>
+                        <strong>Şəkil seçildi</strong>
+                        <div id="portfolioPreviewName" style="color:var(--text-muted);font-size:.8rem;margin-top:4px;"></div>
+                    </div>
+                </div>
+
+                <div id="portfolioProgress" class="portfolio-progress">
+                    <div class="portfolio-progress-bar"><span id="portfolioProgressBar"></span></div>
+                    <div id="portfolioProgressText" class="portfolio-progress-text">Yüklənir: 0%</div>
+                </div>
+
+                <div id="portfolioNotice" class="portfolio-notice"></div>
+            </div>
+
+            <div id="portfolioAdminGrid" class="portfolio-admin-grid">
+                <div class="portfolio-empty">Portfolio məlumatları yüklənir...</div>
+            </div>
+        </section>
     </div>
 
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 
     <script>
         // Real Firebase Config
@@ -699,6 +1025,7 @@
 
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
+        const storage = firebase.storage();
 
         function togglePasswordVisibility() {
             const passwordInput = document.getElementById('password');
@@ -725,6 +1052,7 @@
                 document.getElementById('loginOverlay').style.display = 'none';
                 document.getElementById('adminContainer').style.display = 'block';
                 startListeningOrders();
+                startPortfolioListener();
             }
         });
 
@@ -746,6 +1074,7 @@
                         document.getElementById('loginOverlay').style.display = 'none';
                         document.getElementById('adminContainer').style.display = 'block';
                         startListeningOrders();
+                        startPortfolioListener();
                     } else {
                         errorText.innerText = "İstifadəçi adı və ya şifrə yanlışdır!";
                         errorText.style.display = 'block';
@@ -813,6 +1142,301 @@
                 eyeOpen.style.display = 'none';
                 eyeClosed.style.display = 'block';
                 button.setAttribute('title', 'Nömrəni göstər');
+            }
+        }
+
+
+        // ================================
+        // PORTFOLIO İDARƏETMƏSİ
+        // ================================
+        let portfolioUnsubscribe = null;
+        let portfolioEditId = null;
+        let portfolioEditStoragePath = null;
+        let portfolioEditImageUrl = null;
+
+        document.addEventListener('change', function(event) {
+            if (event.target && event.target.id === 'portfolioImage') {
+                previewPortfolioImage(event.target.files[0]);
+            }
+        });
+
+        function previewPortfolioImage(file) {
+            const preview = document.getElementById('portfolioPreview');
+            const image = document.getElementById('portfolioPreviewImage');
+            const name = document.getElementById('portfolioPreviewName');
+
+            if (!file) {
+                preview.style.display = 'none';
+                return;
+            }
+
+            if (!file.type.startsWith('image/')) {
+                showPortfolioNotice('error', 'Zəhmət olmasa şəkil faylı seçin.');
+                document.getElementById('portfolioImage').value = '';
+                preview.style.display = 'none';
+                return;
+            }
+
+            if (file.size > 10 * 1024 * 1024) {
+                showPortfolioNotice('error', 'Şəkil maksimum 10 MB ola bilər.');
+                document.getElementById('portfolioImage').value = '';
+                preview.style.display = 'none';
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                image.src = e.target.result;
+                name.textContent = file.name;
+                preview.style.display = 'flex';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function showPortfolioNotice(type, message) {
+            const el = document.getElementById('portfolioNotice');
+            el.className = 'portfolio-notice ' + type;
+            el.textContent = message;
+            clearTimeout(window.portfolioNoticeTimer);
+            window.portfolioNoticeTimer = setTimeout(() => {
+                el.className = 'portfolio-notice';
+                el.textContent = '';
+            }, 5000);
+        }
+
+        function resetPortfolioForm() {
+            portfolioEditId = null;
+            portfolioEditStoragePath = null;
+            portfolioEditImageUrl = null;
+
+            document.getElementById('portfolioImage').value = '';
+            document.getElementById('portfolioTitle').value = '';
+            document.getElementById('portfolioAuthor').value = 'Psixoloq Günel Mahmudqızı';
+            document.getElementById('portfolioPreview').style.display = 'none';
+            document.getElementById('portfolioProgress').style.display = 'none';
+
+            const btn = document.getElementById('portfolioSaveBtn');
+            btn.textContent = '+ Portfolioya əlavə et';
+        }
+
+        function startPortfolioListener() {
+            if (portfolioUnsubscribe) portfolioUnsubscribe();
+
+            portfolioUnsubscribe = db.collection('portfolio')
+                .orderBy('createdAt', 'desc')
+                .onSnapshot(function(snapshot) {
+                    const grid = document.getElementById('portfolioAdminGrid');
+                    grid.innerHTML = '';
+
+                    if (snapshot.empty) {
+                        grid.innerHTML = '<div class="portfolio-empty">Hələ portfolio elementi əlavə edilməyib.</div>';
+                        return;
+                    }
+
+                    snapshot.forEach(function(doc) {
+                        const data = doc.data();
+                        const card = document.createElement('div');
+                        card.className = 'portfolio-admin-card';
+
+                        const safeTitle = escapeHtml(data.title || 'Başlıqsız');
+                        const safeAuthor = escapeHtml(data.author || 'Müəllif qeyd edilməyib');
+                        const safeUrl = escapeHtml(data.imageUrl || '');
+
+                        card.innerHTML = `
+                            <img class="portfolio-admin-image" src="${safeUrl}" alt="${safeTitle}">
+                            <div class="portfolio-admin-body">
+                                <h3>${safeTitle}</h3>
+                                <div class="portfolio-admin-author">${safeAuthor}</div>
+                                <div class="portfolio-admin-actions">
+                                    <button class="portfolio-edit-btn" onclick="editPortfolioItem('${doc.id}')">✏️ Düzəliş</button>
+                                    <button class="portfolio-delete-btn" onclick="deletePortfolioItem('${doc.id}')">🗑 Sil</button>
+                                </div>
+                            </div>
+                        `;
+
+                        grid.appendChild(card);
+                    });
+                }, function(error) {
+                    console.error('Portfolio dinləmə xətası:', error);
+                    document.getElementById('portfolioAdminGrid').innerHTML =
+                        '<div class="portfolio-empty">Portfolio yüklənmədi: ' + escapeHtml(error.message) + '</div>';
+                });
+        }
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function createPortfolioFileName(file) {
+            const extension = (file.name.split('.').pop() || 'jpg').toLowerCase().replace(/[^a-z0-9]/g, '');
+            const random = Math.random().toString(36).slice(2, 10);
+            return 'portfolio/' + Date.now() + '_' + random + '.' + extension;
+        }
+
+        function uploadPortfolioFile(file) {
+            return new Promise(function(resolve, reject) {
+                const storagePath = createPortfolioFileName(file);
+                const ref = storage.ref().child(storagePath);
+                const task = ref.put(file, { contentType: file.type });
+
+                document.getElementById('portfolioProgress').style.display = 'block';
+
+                task.on('state_changed',
+                    function(snapshot) {
+                        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                        document.getElementById('portfolioProgressBar').style.width = percent + '%';
+                        document.getElementById('portfolioProgressText').textContent = 'Yüklənir: ' + percent + '%';
+                    },
+                    reject,
+                    function() {
+                        task.snapshot.ref.getDownloadURL().then(function(url) {
+                            resolve({ url: url, path: storagePath });
+                        }).catch(reject);
+                    }
+                );
+            });
+        }
+
+        async function savePortfolioItem() {
+            const imageInput = document.getElementById('portfolioImage');
+            const title = document.getElementById('portfolioTitle').value.trim();
+            const author = document.getElementById('portfolioAuthor').value.trim();
+            const btn = document.getElementById('portfolioSaveBtn');
+
+            if (!title) {
+                showPortfolioNotice('error', 'Şəkil altı yazını daxil edin.');
+                document.getElementById('portfolioTitle').focus();
+                return;
+            }
+
+            if (!portfolioEditId && !imageInput.files[0]) {
+                showPortfolioNotice('error', 'Portfolio üçün şəkil seçin.');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = portfolioEditId ? 'Yenilənir...' : 'Yüklənir...';
+
+            try {
+                let imageUrl = portfolioEditImageUrl;
+                let storagePath = portfolioEditStoragePath;
+
+                if (imageInput.files[0]) {
+                    const uploaded = await uploadPortfolioFile(imageInput.files[0]);
+                    imageUrl = uploaded.url;
+                    storagePath = uploaded.path;
+                }
+
+                const payload = {
+                    title: title,
+                    author: author || 'Psixoloq Günel Mahmudqızı',
+                    imageUrl: imageUrl,
+                    storagePath: storagePath,
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                };
+
+                if (portfolioEditId) {
+                    await db.collection('portfolio').doc(portfolioEditId).update(payload);
+
+                    // Yeni şəkil yüklənibsə, köhnə Storage faylını sil.
+                    if (imageInput.files[0] && portfolioEditStoragePath && portfolioEditStoragePath !== storagePath) {
+                        try {
+                            await storage.ref().child(portfolioEditStoragePath).delete();
+                        } catch (storageError) {
+                            console.warn('Köhnə şəkil silinmədi:', storageError);
+                        }
+                    }
+
+                    showPortfolioNotice('success', 'Portfolio elementi uğurla yeniləndi.');
+                } else {
+                    payload.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+                    await db.collection('portfolio').add(payload);
+                    showPortfolioNotice('success', 'Portfolio elementi uğurla əlavə edildi.');
+                }
+
+                resetPortfolioForm();
+            } catch (error) {
+                console.error('Portfolio yadda saxlama xətası:', error);
+                showPortfolioNotice('error', 'Xəta baş verdi: ' + error.message);
+            } finally {
+                btn.disabled = false;
+                if (!portfolioEditId) btn.textContent = '+ Portfolioya əlavə et';
+            }
+        }
+
+        async function editPortfolioItem(docId) {
+            try {
+                const doc = await db.collection('portfolio').doc(docId).get();
+
+                if (!doc.exists) {
+                    showPortfolioNotice('error', 'Portfolio elementi tapılmadı.');
+                    return;
+                }
+
+                const data = doc.data();
+
+                portfolioEditId = docId;
+                portfolioEditStoragePath = data.storagePath || null;
+                portfolioEditImageUrl = data.imageUrl || null;
+
+                document.getElementById('portfolioTitle').value = data.title || '';
+                document.getElementById('portfolioAuthor').value = data.author || '';
+                document.getElementById('portfolioImage').value = '';
+
+                if (data.imageUrl) {
+                    document.getElementById('portfolioPreviewImage').src = data.imageUrl;
+                    document.getElementById('portfolioPreviewName').textContent =
+                        'Mövcud şəkil — dəyişmək istəsəniz yeni şəkil seçin';
+                    document.getElementById('portfolioPreview').style.display = 'flex';
+                }
+
+                const btn = document.getElementById('portfolioSaveBtn');
+                btn.textContent = '✓ Dəyişiklikləri yadda saxla';
+
+                document.getElementById('portfolioSection').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            } catch (error) {
+                console.error('Portfolio redaktə xətası:', error);
+                showPortfolioNotice('error', 'Element açıla bilmədi: ' + error.message);
+            }
+        }
+
+        async function deletePortfolioItem(docId) {
+            if (!confirm('Bu portfolio şəklini silmək istəyirsiniz? Şəkil Storage-dan da silinəcək.')) return;
+
+            try {
+                const doc = await db.collection('portfolio').doc(docId).get();
+
+                if (!doc.exists) {
+                    showPortfolioNotice('error', 'Portfolio elementi tapılmadı.');
+                    return;
+                }
+
+                const data = doc.data();
+
+                await db.collection('portfolio').doc(docId).delete();
+
+                if (data.storagePath) {
+                    try {
+                        await storage.ref().child(data.storagePath).delete();
+                    } catch (storageError) {
+                        console.warn('Storage şəkli silinmədi:', storageError);
+                    }
+                }
+
+                if (portfolioEditId === docId) resetPortfolioForm();
+
+                showPortfolioNotice('success', 'Portfolio elementi silindi.');
+            } catch (error) {
+                console.error('Portfolio silmə xətası:', error);
+                showPortfolioNotice('error', 'Silinmə xətası: ' + error.message);
             }
         }
 
