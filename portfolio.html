@@ -487,5 +487,77 @@
 
     </div>
 
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDWqLPM2X89vyqOYocw4KEBh65WKMutZOI",
+            authDomain: "gunelsstory-6d3a9.firebaseapp.com",
+            projectId: "gunelsstory-6d3a9",
+            storageBucket: "gunelsstory-6d3a9.firebasestorage.app",
+            messagingSenderId: "903174908342",
+            appId: "1:903174908342:web:f73871214550442e553917",
+            measurementId: "G-5Q48RSFFH9"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        const gallery = document.querySelector('.gallery-grid');
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function renderPortfolioItem(doc) {
+            const data = doc.data();
+            if (!data.imageUrl) return;
+
+            const card = document.createElement('div');
+            card.className = 'book-card';
+
+            const title = escapeHtml(data.title || 'Başlıqsız');
+            const author = escapeHtml(data.author || 'Psixoloq Günel Mahmudqızı');
+            const imageUrl = escapeHtml(data.imageUrl);
+
+            card.innerHTML = `
+                <div class="book-img-box">
+                    <img src="${imageUrl}" alt="${title}" loading="lazy">
+                </div>
+                <div class="book-info">
+                    <h3>${title}</h3>
+                    <div class="book-author-badge">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                        </svg>
+                        ${author}
+                    </div>
+                </div>
+            `;
+
+            gallery.appendChild(card);
+        }
+
+        // Firestore-da portfolio sənədləri varsa, yalnız dinamik portfolio göstərilir.
+        // Heç bir sənəd yoxdursa, mövcud statik kartlar olduğu kimi qalır.
+        db.collection('portfolio')
+            .orderBy('createdAt', 'desc')
+            .onSnapshot(function(snapshot) {
+                if (snapshot.empty) return;
+
+                gallery.innerHTML = '';
+                snapshot.forEach(renderPortfolioItem);
+            }, function(error) {
+                console.error('Portfolio yükləmə xətası:', error);
+                // Xəta zamanı mövcud statik kartlar silinmir.
+            });
+    </script>
 </body>
 </html>
