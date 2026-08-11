@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="az">
 <head>
@@ -5,362 +6,386 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium Admin Panel - Gunel's Story</title>
     <link rel="icon" type="image/png" href="image/favicon.png">
-    
-    <!-- Google Fonts - Premium Inter & Plus Jakarta Sans -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-base: #FAF8F5; /* Premium Ultra-soft Krem tonu */
-            --primary-lux: #0F1A5C; /* Dərin Kral Göyü */
-            --accent-gold: #D97706; /* Müasir Premium Qızılı-Kəhrəba */
+            --bg-base: #FAF8F5;
+            --primary-lux: #0F1A5C;
+            --accent-gold: #D97706;
             --accent-gold-hover: #B45309;
-            --text-main: #1E293B; /* Soft Tünd Boz */
-            --text-muted: #64748B; /* Kübar Boz */
+            --text-main: #1E293B;
+            --text-muted: #64748B;
             --white: #ffffff;
-            
-            /* Sistem Status Rəngləri */
+
             --success: #059669;
             --success-bg: #E6F4EA;
             --danger: #DC2626;
             --danger-bg: #FEE2E2;
-            --pending: #3B82F6;
-            --pending-bg: #EFF6FF;
 
-            /* Yeni Zolaq Rəngləri (Yumşaq status fonları) */
-            --row-waiting-bg: #FFFBEB; /* Çox yumşaq narıncı fon */
-            --row-waiting-border: #F59E0B; /* Narıncı kənar xətt */
-            --row-viewed-bg: #F0FDF4; /* Çox yumşaq yaşıl fon */
-            --row-viewed-border: #10B981; /* Yaşıl kənar xətt */
+            --row-waiting-bg: #FFFBEB;
+            --row-waiting-border: #F59E0B;
+            --row-viewed-bg: #F0FDF4;
+            --row-viewed-border: #10B981;
 
             --whatsapp: #16A34A;
             --whatsapp-bg: #DCFCE7;
 
-            /* Kölgələr və Struktur */
             --shadow-sm: 0 2px 8px rgba(15, 26, 92, 0.04);
             --shadow-md: 0 12px 34px rgba(15, 26, 92, 0.06);
             --shadow-lg: 0 30px 70px rgba(15, 26, 92, 0.12);
+
             --radius-lg: 24px;
             --radius-md: 16px;
             --radius-sm: 12px;
+
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        
-        body { 
-            background-color: var(--bg-base); 
-            color: var(--text-main); 
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background-image: radial-gradient(rgba(15, 26, 92, 0.03) 1.5px, transparent 1.5px);
+            background-image: radial-gradient(
+                rgba(15, 26, 92, 0.03) 1.5px,
+                transparent 1.5px
+            );
             background-size: 32px 32px;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* PREMIUM LOGIN OVERLAY */
+        /* LOGIN */
+
         .login-overlay {
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%;
-            background: radial-gradient(circle at 10% 20%, rgba(15, 26, 92, 0.98) 0%, rgba(5, 10, 40, 1) 90%);
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(
+                circle at 10% 20%,
+                rgba(15, 26, 92, 0.98) 0%,
+                rgba(5, 10, 40, 1) 90%
+            );
+            display: flex;
+            justify-content: center;
+            align-items: center;
             z-index: 9999;
             padding: 24px;
-            overflow: hidden;
         }
-
-        .login-overlay::before, .login-overlay::after {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-gold), rgba(217,119,6,0));
-            filter: blur(120px);
-            opacity: 0.15;
-            z-index: 1;
-        }
-        .login-overlay::before { top: -10%; left: -10%; }
-        .login-overlay::after { bottom: -10%; right: -10%; background: linear-gradient(135deg, #3B82F6, rgba(0,0,0,0)); }
 
         .login-box {
-            background: rgba(255, 255, 255, 0.85); 
+            background: rgba(255,255,255,.85);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 50px 45px; 
+            padding: 50px 45px;
             border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg); 
-            width: 100%; 
-            max-width: 460px; 
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            max-width: 460px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            z-index: 2;
-            transform: translateY(0);
-            transition: var(--transition);
         }
 
-        .login-box h2 { 
-            color: var(--primary-lux); 
-            margin-bottom: 8px; 
-            font-weight: 800; 
+        .login-box h2 {
+            color: var(--primary-lux);
+            margin-bottom: 8px;
+            font-weight: 800;
             font-size: 2rem;
-            letter-spacing: -0.5px;
         }
 
         .login-subtitle {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: .95rem;
             margin-bottom: 35px;
             font-weight: 500;
         }
 
         .input-group {
-            position: relative;
             margin-bottom: 20px;
             text-align: left;
         }
 
         .input-label {
             display: block;
-            font-size: 0.85rem;
+            font-size: .85rem;
             font-weight: 700;
             color: var(--primary-lux);
             margin-bottom: 8px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding-left: 4px;
         }
 
-        .login-input { 
-            width: 100%; 
-            padding: 16px 20px; 
-            border: 1.5px solid rgba(15, 26, 92, 0.08); 
-            border-radius: var(--radius-sm); 
-            outline: none; 
-            font-size: 1rem; 
-            font-weight: 500;
-            color: var(--text-main);
-            transition: var(--transition);
-            background-color: rgba(248, 250, 252, 0.8);
+        .login-input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1.5px solid rgba(15,26,92,.08);
+            border-radius: var(--radius-sm);
+            outline: none;
+            font-size: 1rem;
+            background: rgba(248,250,252,.8);
         }
 
-        .login-input:focus { 
-            border-color: var(--primary-lux); 
-            background-color: var(--white);
-            box-shadow: 0 0 0 4px rgba(15, 26, 92, 0.06);
-        }
-        
-        .password-container { 
-            position: relative; 
-            width: 100%; 
-        }
-        
-        .password-container .login-input { 
-            padding-right: 55px; 
+        .login-input:focus {
+            border-color: var(--primary-lux);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(15,26,92,.06);
         }
 
-        .toggle-password { 
-            position: absolute; 
-            right: 18px; 
-            top: 50%; 
-            transform: translateY(-50%); 
-            background: none; 
-            border: none; 
-            cursor: pointer; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: var(--text-muted); 
-            padding: 6px; 
-            transition: var(--transition);
+        .password-container {
+            position: relative;
         }
 
-        .toggle-password:hover { color: var(--primary-lux); }
-        .toggle-password svg { width: 20px; height: 20px; fill: currentColor; }
+        .password-container .login-input {
+            padding-right: 55px;
+        }
 
-        .login-btn { 
-            width: 100%; 
-            padding: 16px; 
-            background: var(--primary-lux); 
-            color: var(--white); 
-            border: none; 
-            border-radius: var(--radius-sm); 
-            font-weight: 700; 
-            font-size: 1.05rem; 
-            cursor: pointer; 
+        .toggle-password {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .toggle-password svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary-lux);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
             margin-top: 15px;
             margin-bottom: 24px;
-            box-shadow: 0 10px 25px rgba(15, 26, 92, 0.15);
-            transition: var(--transition);
         }
 
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(15, 26, 92, 0.25);
-            background: #09103b;
-        }
-
-        .login-back-btn { 
-            display: inline-flex; 
+        .login-back-btn {
+            display: inline-flex;
             align-items: center;
             gap: 8px;
-            text-decoration: none; 
-            color: var(--text-muted); 
-            font-size: 0.9rem; 
-            font-weight: 600; 
-            transition: var(--transition); 
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: .9rem;
+            font-weight: 600;
         }
 
-        .login-back-btn:hover { color: var(--accent-gold); }
-
         #loginError {
-            background-color: var(--danger-bg);
+            background: var(--danger-bg);
             color: var(--danger);
-            padding: 12px var(--radius-sm);
+            padding: 12px;
             border-radius: var(--radius-sm);
             font-weight: 600;
             margin-top: 20px;
             display: none;
-            font-size: 0.85rem;
-            border: 1px solid rgba(220, 38, 38, 0.1);
+            font-size: .85rem;
         }
 
-        /* ƏSAS İDARƏETMƏ PANELİ */
-        .admin-container { 
-            max-width: 1340px; 
+        /* ADMIN */
+
+        .admin-container {
+            max-width: 1340px;
             width: 100%;
-            margin: 40px auto; 
-            background-color: var(--white); 
-            padding: 40px; 
-            border-radius: var(--radius-lg); 
-            box-shadow: var(--shadow-md); 
-            border: 1px solid rgba(15, 26, 92, 0.03);
-            display: none; 
-            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            display: none;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(15,26,92,.06);
+            padding-bottom: 30px;
+            margin-bottom: 35px;
         }
 
-        .admin-header { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            border-bottom: 1px solid rgba(15, 26, 92, 0.06); 
-            padding-bottom: 30px; 
-            margin-bottom: 35px; 
+        .admin-header h1 {
+            color: var(--primary-lux);
+            font-size: 2.1rem;
+            font-weight: 800;
         }
 
-        .admin-header h1 { 
-            color: var(--primary-lux); 
-            font-size: 2.1rem; 
-            font-weight: 800; 
-            display: flex; 
-            align-items: center; 
-            gap: 14px; 
-            letter-spacing: -0.5px;
+        .logout-btn {
+            background: var(--danger-bg);
+            color: var(--danger);
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            cursor: pointer;
         }
 
-        .logout-btn { 
-            background-color: var(--danger-bg); 
-            color: var(--danger); 
-            padding: 12px 24px; 
-            border: none; 
-            border-radius: var(--radius-sm); 
-            font-weight: 700; 
-            font-size: 0.9rem; 
-            cursor: pointer; 
-            transition: var(--transition); 
-        }
+        /* GITHUB UPLOAD */
 
-        .logout-btn:hover { 
-            background-color: var(--danger); 
-            color: var(--white);
-            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.15);
-        }
-        
-        /* Cədvəl Strukturu */
-        .table-responsive { 
-            width: 100%; 
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            border: 1px solid rgba(15, 26, 92, 0.05);
+        .portfolio-upload {
+            background: linear-gradient(
+                135deg,
+                #F8FAFC,
+                #FFFDF8
+            );
+            border: 1px solid rgba(15,26,92,.08);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            margin-bottom: 40px;
             box-shadow: var(--shadow-sm);
         }
 
-        table { 
-            width: 100%; 
-            border-collapse: collapse; 
-            text-align: left; 
-            background-color: var(--white);
+        .portfolio-upload h2 {
+            color: var(--primary-lux);
+            font-size: 1.35rem;
+            margin-bottom: 8px;
+            font-weight: 800;
         }
 
-        th { 
-            background-color: #F8FAFC; 
-            color: var(--text-muted); 
-            font-weight: 700; 
-            padding: 20px 24px; 
-            border-bottom: 1px solid rgba(15, 26, 92, 0.06); 
-            font-size: 0.8rem; 
+        .upload-description {
+            color: var(--text-muted);
+            font-size: .9rem;
+            margin-bottom: 24px;
+        }
+
+        .upload-row {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .file-input {
+            width: 100%;
+            padding: 15px;
+            border: 1.5px dashed rgba(15,26,92,.2);
+            border-radius: var(--radius-sm);
+            background: white;
+            cursor: pointer;
+        }
+
+        .upload-btn {
+            border: none;
+            background: var(--primary-lux);
+            color: white;
+            padding: 15px 25px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .upload-btn:hover {
+            background: #09103b;
+            transform: translateY(-2px);
+        }
+
+        .upload-btn:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .upload-status {
+            margin-top: 18px;
+            padding: 12px 15px;
+            border-radius: var(--radius-sm);
+            display: none;
+            font-size: .88rem;
+            font-weight: 600;
+        }
+
+        .upload-status.success {
+            display: block;
+            background: var(--success-bg);
+            color: var(--success);
+        }
+
+        .upload-status.error {
+            display: block;
+            background: var(--danger-bg);
+            color: var(--danger);
+        }
+
+        .upload-status.loading {
+            display: block;
+            background: #EFF6FF;
+            color: #2563EB;
+        }
+
+        /* TABLE */
+
+        .table-responsive {
+            width: 100%;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid rgba(15,26,92,.05);
+            box-shadow: var(--shadow-sm);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: white;
+        }
+
+        th {
+            background: #F8FAFC;
+            color: var(--text-muted);
+            font-weight: 700;
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(15,26,92,.06);
+            font-size: .8rem;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
         }
 
-        td { 
-            padding: 22px 24px; 
-            border-bottom: 1px solid rgba(15, 26, 92, 0.04); 
-            vertical-align: middle; 
-            font-size: 0.95rem; 
-            color: var(--text-main);
+        td {
+            padding: 22px 24px;
+            border-bottom: 1px solid rgba(15,26,92,.04);
+            vertical-align: middle;
+            font-size: .95rem;
         }
 
-        tr { 
-            transition: var(--transition); 
-            border-left: 4px solid transparent; /* Kənar xətt effekti üçün zəmin */
-        }
-        
-        /* STATUS ZOLAQLARININ DINAMIK RƏNGLƏRİ */
         tr.status-waiting {
-            background-color: var(--row-waiting-bg);
-            border-left-color: var(--row-waiting-border);
-        }
-        tr.status-waiting:hover {
-            background-color: #FFF3CD; /* Hover zamanı bir ton daha tünd narıncı */
+            background: var(--row-waiting-bg);
+            border-left: 4px solid var(--row-waiting-border);
         }
 
         tr.status-viewed {
-            background-color: var(--row-viewed-bg);
-            border-left-color: var(--row-viewed-border);
-        }
-        tr.status-viewed:hover {
-            background-color: #DCFCE7; /* Hover zamanı bir ton daha tünd yaşıl */
-        }
-        
-        .parent-name-cell {
-            font-weight: 700; 
-            color: var(--primary-lux);
-            font-size: 1rem;
+            background: var(--row-viewed-bg);
+            border-left: 4px solid var(--row-viewed-border);
         }
 
-        .phone-container { 
-            display: flex; 
+        .parent-name-cell {
+            font-weight: 700;
+            color: var(--primary-lux);
+        }
+
+        .phone-container {
+            display: flex;
             flex-direction: column;
-            gap: 6px; 
+            gap: 6px;
         }
 
         .phone-wrapper {
@@ -369,20 +394,16 @@
             gap: 8px;
         }
 
-        .phone-link { 
-            color: var(--text-main); 
-            text-decoration: none; 
-            font-weight: 600; 
-            font-size: 0.9rem;
-            transition: var(--transition);
+        .phone-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
         }
-        .phone-link:hover { color: var(--primary-lux); }
 
-        /* Telefon nömrəsinin blur effekti və düymənin düzülüşü */
         .phone-link.blurred {
             filter: blur(5px);
-            pointer-events: none; /* Blur olanda kliklənməsin */
-            user-select: none;    /* Kopyalamaq olmasın */
+            pointer-events: none;
+            user-select: none;
         }
 
         .toggle-blur-btn {
@@ -391,16 +412,6 @@
             cursor: pointer;
             color: var(--text-muted);
             padding: 4px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            border-radius: 6px;
-        }
-
-        .toggle-blur-btn:hover {
-            color: var(--primary-lux);
-            background-color: rgba(15, 26, 92, 0.05);
         }
 
         .toggle-blur-btn svg {
@@ -408,493 +419,1396 @@
             height: 18px;
             fill: currentColor;
         }
-        
-        .whatsapp-btn { 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
-            background-color: var(--whatsapp-bg); 
-            color: var(--whatsapp); 
-            text-decoration: none; 
-            padding: 6px 12px; 
-            border-radius: 8px; 
-            font-size: 0.8rem; 
-            font-weight: 700; 
-            gap: 6px; 
-            width: fit-content;
-            transition: var(--transition); 
-        }
 
-        .whatsapp-btn:hover { 
-            background-color: var(--whatsapp); 
-            color: var(--white);
-            transform: translateY(-1px);
-        }
-
-        .whatsapp-btn svg { width: 14px; height: 14px; fill: currentColor; }
-        
-        .age-badge {
-            background: rgba(15, 26, 92, 0.05); 
-            color: var(--primary-lux); 
-            padding: 6px 12px; 
-            border-radius: var(--radius-sm); 
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--whatsapp-bg);
+            color: var(--whatsapp);
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: .8rem;
             font-weight: 700;
-            font-size: 0.85rem;
+            gap: 6px;
+            width: fit-content;
         }
 
-        .interests-cell { 
-            max-width: 260px; 
-            white-space: nowrap; 
-            overflow: hidden; 
-            text-overflow: ellipsis; 
+        .whatsapp-btn svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+
+        .age-badge {
+            background: rgba(15,26,92,.05);
+            color: var(--primary-lux);
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: .85rem;
+        }
+
+        .interests-cell {
+            max-width: 260px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             color: var(--text-muted);
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        /* Üstünə gələndə bütün mətni göstərsin */
-        tr:hover .interests-cell {
-            white-space: normal; 
-            color: var(--text-main);
         }
 
         .date-cell {
-            color: var(--text-muted); 
-            font-size: 0.85rem; 
-            font-weight: 500;
+            color: var(--text-muted);
+            font-size: .85rem;
         }
 
-        .action-container { 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
+        .action-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        /* Status düymələrinin rənglənməsi */
-        .status-btn { 
+        .status-btn {
             border: none;
-            background: #FEF3C7; /* Sarımtıl-Narıncı düymə fonu */
-            color: #D97706; 
-            padding: 8px 16px; 
-            border-radius: var(--radius-sm); 
-            font-weight: 700; 
-            font-size: 0.85rem; 
-            cursor: pointer; 
-            transition: var(--transition); 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 6px; 
+            background: #FEF3C7;
+            color: #D97706;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            cursor: pointer;
         }
 
-        .status-btn:hover { background: #FDE68A; }
-
-        .status-btn.checked { 
-            background-color: var(--success-bg); 
-            color: var(--success); 
-        }
-        .status-btn.checked:hover { background: rgba(5, 150, 105, 0.2); }
-
-        .delete-btn { 
-            background-color: transparent; 
-            border: 1.5px solid rgba(220, 38, 38, 0.15); 
-            color: var(--danger); 
-            padding: 8px; 
-            border-radius: var(--radius-sm); 
-            cursor: pointer; 
-            transition: var(--transition); 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
+        .status-btn.checked {
+            background: var(--success-bg);
+            color: var(--success);
         }
 
-        .delete-btn:hover { 
-            background-color: var(--danger-bg); 
-            border-color: transparent;
+        .delete-btn {
+            background: transparent;
+            border: 1.5px solid rgba(220,38,38,.15);
+            color: var(--danger);
+            padding: 8px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
         }
 
-        .delete-btn svg { width: 18px; height: 18px; fill: currentColor; }
+        .delete-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
 
-        /* MOBİL RESPONSİVLİK */
         @media (max-width: 1024px) {
-            body { padding: 0; }
-            .admin-container { margin: 0; border-radius: 0; padding: 24px 16px; }
-            
-            table, thead, tbody, th, td, tr { display: block; }
-            thead { display: none; }
-            
+
+            .admin-container {
+                margin: 0;
+                border-radius: 0;
+                padding: 24px 16px;
+            }
+
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display: block;
+            }
+
+            thead {
+                display: none;
+            }
+
             tr {
                 border-radius: var(--radius-md);
                 margin-bottom: 20px;
                 padding: 20px;
                 box-shadow: var(--shadow-sm);
-                border-top: 1px solid rgba(15, 26, 92, 0.06);
-                border-right: 1px solid rgba(15, 26, 92, 0.06);
-                border-bottom: 1px solid rgba(15, 26, 92, 0.06);
+                border-top: 1px solid rgba(15,26,92,.06);
+                border-right: 1px solid rgba(15,26,92,.06);
+                border-bottom: 1px solid rgba(15,26,92,.06);
             }
-            
+
             td {
                 text-align: right;
                 padding: 12px 0;
-                border-bottom: 1px dashed rgba(15, 26, 92, 0.05);
-                position: relative;
+                border-bottom: 1px dashed rgba(15,26,92,.05);
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                white-space: normal;
-                background: transparent !important; /* Mobil görünüşdə fərdi td fonlarını təmizlə */
+                background: transparent !important;
             }
-            
-            td:last-child { border-bottom: none; padding-top: 16px; }
 
             td::before {
                 content: attr(data-label);
-                float: left;
                 font-weight: 700;
                 color: var(--text-muted);
-                font-size: 0.8rem;
+                font-size: .8rem;
                 text-transform: uppercase;
-                letter-spacing: 0.5px;
             }
 
-            .parent-name-cell { text-align: right; }
-            .interests-cell { max-width: 100%; text-align: right; }
-            .phone-container { align-items: flex-end; }
-            .phone-wrapper { justify-content: flex-end; }
-            .action-container { justify-content: flex-end; width: 100%; }
-            .whatsapp-btn { width: auto; }
+            .action-container {
+                justify-content: flex-end;
+            }
+
+            .upload-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .file-input-wrapper {
+                min-width: 100%;
+            }
         }
 
-        /* GİRİŞ EKRANININ MOBİL OPTİMİZASİYASI */
         @media (max-width: 480px) {
+
             .login-overlay {
                 padding: 16px;
-                background: #090e32;
             }
-            .login-overlay::before, .login-overlay::after {
-                display: none;
-            }
+
             .login-box {
                 padding: 32px 24px;
-                border-radius: var(--radius-md);
-                background: rgba(255, 255, 255, 0.92);
             }
-            .login-box h2 {
+
+            .admin-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .admin-header h1 {
                 font-size: 1.6rem;
-                margin-bottom: 4px;
             }
-            .login-subtitle {
-                font-size: 0.85rem;
-                margin-bottom: 24px;
+
+            .logout-btn {
+                width: 100%;
             }
-            .input-group {
-                margin-bottom: 16px;
-            }
-            .input-label {
-                font-size: 0.75rem;
-                margin-bottom: 6px;
-            }
-            .login-input {
-                padding: 12px 16px;
-                font-size: 0.95rem;
-            }
-            .password-container .login-input {
-                padding-right: 48px;
-            }
-            .toggle-password {
-                right: 14px;
-            }
-            .login-btn {
-                padding: 14px;
-                font-size: 0.95rem;
-                margin-top: 10px;
-                margin-bottom: 20px;
-            }
-            .login-back-btn {
-                font-size: 0.85rem;
+
+            .portfolio-upload {
+                padding: 22px;
             }
         }
     </style>
 </head>
+
 <body>
 
-    <!-- Premium Login Ekranı -->
-    <div class="login-overlay" id="loginOverlay">
-        <div class="login-box">
-            <h2>Xoş Gəldiniz</h2>
-            <p class="login-subtitle">Gunel's Story Admin Panelinə giriş edin</p>
-            
-            <div class="input-group">
-                <label class="input-label">İstifadəçi Adı</label>
-                <input type="text" id="username" class="login-input" placeholder="admin">
-            </div>
-            
-            <div class="input-group">
-                <label class="input-label">Şifrə</label>
-                <div class="password-container">
-                    <input type="password" id="password" class="login-input" placeholder="••••••••">
-                    <button type="button" onclick="togglePasswordVisibility()" class="toggle-password" id="togglePasswordBtn" title="Şifrəni göstər">
-                        <svg id="eyeClosedIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                        <svg id="eyeOpenIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none;"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-4.5c-5 0-9.27 3.11-11 7.5 1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 16.5c-2.48 0-4.5-2.02-4.5-4.5S9.52 7.5 12 7.5s4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5z"/></svg>
-                    </button>
-                </div>
+<!-- LOGIN -->
+
+<div class="login-overlay" id="loginOverlay">
+
+    <div class="login-box">
+
+        <h2>Xoş Gəldiniz</h2>
+
+        <p class="login-subtitle">
+            Gunel's Story Admin Panelinə giriş edin
+        </p>
+
+        <div class="input-group">
+
+            <label class="input-label">
+                İstifadəçi Adı
+            </label>
+
+            <input
+                type="text"
+                id="username"
+                class="login-input"
+                placeholder="admin"
+            >
+
+        </div>
+
+        <div class="input-group">
+
+            <label class="input-label">
+                Şifrə
+            </label>
+
+            <div class="password-container">
+
+                <input
+                    type="password"
+                    id="password"
+                    class="login-input"
+                    placeholder="••••••••"
+                >
+
+                <button
+                    type="button"
+                    onclick="togglePasswordVisibility()"
+                    class="toggle-password"
+                    id="togglePasswordBtn"
+                >
+                    <svg id="eyeClosedIcon"
+                         viewBox="0 0 24 24">
+                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5S17 4.5 12 4.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+                    </svg>
+
+                    <svg id="eyeOpenIcon"
+                         viewBox="0 0 24 24"
+                         style="display:none;">
+                        <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-4.5c-5 0-9.27 3.11-11 7.5 1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5-6-7.5-11-7.5z"/>
+                    </svg>
+                </button>
+
             </div>
 
-            <button onclick="checkFirestoreLogin()" id="loginBtn" class="login-btn">Sistemə Daxil Ol</button>
-            
-            <div>
-                <a href="index.html" class="login-back-btn">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                    Əsas Səhifəyə Qayıt
-                </a>
-            </div>
-            <div id="loginError">Məlumatlar yanlışdır və ya baza bağlantısı qurulmadı!</div>
         </div>
+
+        <button
+            onclick="checkFirestoreLogin()"
+            id="loginBtn"
+            class="login-btn"
+        >
+            Sistemə Daxil Ol
+        </button>
+
+        <div>
+
+            <a href="index.html" class="login-back-btn">
+                ← Əsas Səhifəyə Qayıt
+            </a>
+
+        </div>
+
+        <div id="loginError">
+            Məlumatlar yanlışdır!
+        </div>
+
     </div>
 
-    <!-- Sifariş Paneli -->
-    <div class="admin-container" id="adminContainer">
-        <div class="admin-header">
-            <h1>İdarəetmə Paneli</h1>
-            <button onclick="logoutAdmin()" class="logout-btn">Sistemdən çıxış</button>
-        </div>
+</div>
 
-        <div class="table-responsive">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Valideynin Adı</th>
-                        <th>Əlaqə Kanalları</th>
-                        <th>Uşağın Adı</th>
-                        <th>Yaş</th>
-                        <th>Maraq və İstəklər</th>
-                        <th>Sifariş Tarixi</th>
-                        <th>Əməliyyat / Status</th>
-                    </tr>
-                </thead>
-                <tbody id="ordersTableBody">
-                    <tr>
-                        <td colspan="7" style="text-align: center; color: var(--text-muted); padding: 40px; font-weight: 600;">Məlumatlar təhlükəsiz şəkildə yüklənir...</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+
+<!-- ADMIN PANEL -->
+
+<div class="admin-container" id="adminContainer">
+
+    <div class="admin-header">
+
+        <h1>
+            İdarəetmə Paneli
+        </h1>
+
+        <button
+            onclick="logoutAdmin()"
+            class="logout-btn"
+        >
+            Sistemdən çıxış
+        </button>
+
     </div>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
-    <script>
-        // Real Firebase Config
-        const firebaseConfig = { 
-            apiKey: "AIzaSyDWqLPM2X89vyqOYocw4KEBh65WKMutZOI", 
-            authDomain: "gunelsstory-6d3a9.firebaseapp.com", 
-            projectId: "gunelsstory-6d3a9", 
-            storageBucket: "gunelsstory-6d3a9.firebasestorage.app", 
-            messagingSenderId: "903174908342", 
-            appId: "1:903174908342:web:f73871214550442e553917", 
-            measurementId: "G-5Q48RSFFH9" 
-        };
+    <!-- GITHUB PORTFOLIO UPLOAD -->
 
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+    <div class="portfolio-upload">
 
-        function togglePasswordVisibility() {
-            const passwordInput = document.getElementById('password');
-            const eyeOpenIcon = document.getElementById('eyeOpenIcon');
-            const eyeClosedIcon = document.getElementById('eyeClosedIcon');
-            const toggleBtn = document.getElementById('togglePasswordBtn');
+        <h2>
+            Portfolioya şəkil əlavə et
+        </h2>
 
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                eyeOpenIcon.style.display = 'block';
-                eyeClosedIcon.style.display = 'none';
-                toggleBtn.setAttribute('title', 'Şifrəni gizlə');
+        <p class="upload-description">
+            Şəkli seçin və birbaşa GitHub repository-nizə yükləyin.
+        </p>
+
+        <div class="upload-row">
+
+            <div class="file-input-wrapper">
+
+                <input
+                    type="file"
+                    id="portfolioImage"
+                    class="file-input"
+                    accept="image/jpeg,image/png,image/webp,image/gif"
+                >
+
+            </div>
+
+            <button
+                id="uploadGithubBtn"
+                class="upload-btn"
+                onclick="uploadPortfolioImage()"
+            >
+                GitHub-a yüklə
+            </button>
+
+        </div>
+
+        <div
+            id="uploadStatus"
+            class="upload-status"
+        ></div>
+
+    </div>
+
+
+    <!-- ORDERS -->
+
+    <div class="table-responsive">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Valideynin Adı</th>
+                    <th>Əlaqə Kanalları</th>
+                    <th>Uşağın Adı</th>
+                    <th>Yaş</th>
+                    <th>Maraq və İstəklər</th>
+                    <th>Sifariş Tarixi</th>
+                    <th>Əməliyyat / Status</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="ordersTableBody">
+
+                <tr>
+
+                    <td
+                        colspan="7"
+                        style="
+                        text-align:center;
+                        color:var(--text-muted);
+                        padding:40px;
+                        font-weight:600;
+                        "
+                    >
+                        Məlumatlar təhlükəsiz şəkildə yüklənir...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<!-- FIREBASE -->
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+
+<script>
+
+/* =========================================================
+   GITHUB AYARLARI
+   ========================================================= */
+
+/*
+   BURADA YALNIZ BU 4 SƏTRİ DƏYİŞDİR.
+
+   Tokeni mənə göndərmə.
+*/
+
+const GITHUB_TOKEN = "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";
+
+const GITHUB_OWNER = "gunelsstory";
+
+const GITHUB_REPO = "gunelsstory";
+
+const GITHUB_BRANCH = "main";
+
+/*
+   Şəkillərin GitHub-da yerləşəcəyi qovluq.
+*/
+
+const GITHUB_FOLDER = "images/portfolio";
+
+
+/* =========================================================
+   FIREBASE
+   ========================================================= */
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyDWqLPM2X89vyqOYocw4KEBh65WKMutZOI",
+
+    authDomain: "gunelsstory-6d3a9.firebaseapp.com",
+
+    projectId: "gunelsstory-6d3a9",
+
+    storageBucket: "gunelsstory-6d3a9.firebasestorage.app",
+
+    messagingSenderId: "903174908342",
+
+    appId: "1:903174908342:web:f73871214550442e553917",
+
+    measurementId: "G-5Q48RSFFH9"
+
+};
+
+
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.firestore();
+
+
+/* =========================================================
+   PASSWORD
+   ========================================================= */
+
+function togglePasswordVisibility() {
+
+    const passwordInput =
+        document.getElementById("password");
+
+    const eyeOpenIcon =
+        document.getElementById("eyeOpenIcon");
+
+    const eyeClosedIcon =
+        document.getElementById("eyeClosedIcon");
+
+    if (passwordInput.type === "password") {
+
+        passwordInput.type = "text";
+
+        eyeOpenIcon.style.display = "block";
+
+        eyeClosedIcon.style.display = "none";
+
+    } else {
+
+        passwordInput.type = "password";
+
+        eyeOpenIcon.style.display = "none";
+
+        eyeClosedIcon.style.display = "block";
+
+    }
+
+}
+
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+window.addEventListener("DOMContentLoaded", function () {
+
+    const isAdminLoggedIn =
+        localStorage.getItem("adminLoggedIn");
+
+    if (isAdminLoggedIn === "true") {
+
+        document.getElementById("loginOverlay").style.display = "none";
+
+        document.getElementById("adminContainer").style.display = "block";
+
+        startListeningOrders();
+
+    }
+
+});
+
+
+function checkFirestoreLogin() {
+
+    const userInput =
+        document.getElementById("username").value;
+
+    const passInput =
+        document.getElementById("password").value;
+
+    const errorText =
+        document.getElementById("loginError");
+
+    const loginBtn =
+        document.getElementById("loginBtn");
+
+    errorText.style.display = "none";
+
+    loginBtn.innerText = "Doğrulanır...";
+
+    loginBtn.disabled = true;
+
+
+    db.collection("adminConfig")
+        .doc("credentials")
+        .get()
+
+        .then(function (doc) {
+
+            if (doc.exists) {
+
+                const dbData = doc.data();
+
+                if (
+                    userInput === dbData.username &&
+                    passInput === dbData.password
+                ) {
+
+                    localStorage.setItem(
+                        "adminLoggedIn",
+                        "true"
+                    );
+
+                    document.getElementById(
+                        "loginOverlay"
+                    ).style.display = "none";
+
+                    document.getElementById(
+                        "adminContainer"
+                    ).style.display = "block";
+
+                    startListeningOrders();
+
+                } else {
+
+                    errorText.innerText =
+                        "İstifadəçi adı və ya şifrə yanlışdır!";
+
+                    errorText.style.display = "block";
+
+                }
+
             } else {
-                passwordInput.type = 'password';
-                eyeOpenIcon.style.display = 'none';
-                eyeClosedIcon.style.display = 'block';
-                toggleBtn.setAttribute('title', 'Şifrəni göstər');
-            }
-        }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            const isAdminLoggedIn = localStorage.getItem('adminLoggedIn');
-            if (isAdminLoggedIn === 'true') {
-                document.getElementById('loginOverlay').style.display = 'none';
-                document.getElementById('adminContainer').style.display = 'block';
-                startListeningOrders();
+                errorText.innerText =
+                    "Sistem konfiqurasiyası tapılmadı!";
+
+                errorText.style.display = "block";
+
             }
+
+        })
+
+        .catch(function (error) {
+
+            errorText.innerText =
+                "Xəta baş verdi: " + error.message;
+
+            errorText.style.display = "block";
+
+        })
+
+        .finally(function () {
+
+            loginBtn.innerText =
+                "Sistemə Daxil Ol";
+
+            loginBtn.disabled = false;
+
         });
 
-        function checkFirestoreLogin() {
-            const userInput = document.getElementById('username').value;
-            const passInput = document.getElementById('password').value;
-            const errorText = document.getElementById('loginError');
-            const loginBtn = document.getElementById('loginBtn');
+}
 
-            errorText.style.display = 'none';
-            loginBtn.innerText = "Doğrulanır...";
-            loginBtn.disabled = true;
 
-            db.collection("adminConfig").doc("credentials").get().then(function(doc) {
-                if (doc.exists) {
-                    const dbData = doc.data();
-                    if (userInput === dbData.username && passInput === dbData.password) {
-                        localStorage.setItem('adminLoggedIn', 'true');
-                        document.getElementById('loginOverlay').style.display = 'none';
-                        document.getElementById('adminContainer').style.display = 'block';
-                        startListeningOrders();
-                    } else {
-                        errorText.innerText = "İstifadəçi adı və ya şifrə yanlışdır!";
-                        errorText.style.display = 'block';
-                    }
-                } else {
-                    errorText.innerText = "Sistem konfiqurasiyası tapılmadı!";
-                    errorText.style.display = 'block';
-                }
-            }).catch(function(error) {
-                errorText.innerText = "Xəta baş verdi: " + error.message;
-                errorText.style.display = 'block';
-            }).finally(function() {
-                loginBtn.innerText = "Sistemə Daxil Ol";
-                loginBtn.disabled = false;
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
+function logoutAdmin() {
+
+    localStorage.removeItem("adminLoggedIn");
+
+    document.getElementById(
+        "adminContainer"
+    ).style.display = "none";
+
+    document.getElementById(
+        "loginOverlay"
+    ).style.display = "flex";
+
+    document.getElementById("username").value = "";
+
+    document.getElementById("password").value = "";
+
+}
+
+
+/* =========================================================
+   GITHUB ŞƏKİL YÜKLƏMƏ
+   ========================================================= */
+
+async function uploadPortfolioImage() {
+
+    const fileInput =
+        document.getElementById("portfolioImage");
+
+    const uploadBtn =
+        document.getElementById("uploadGithubBtn");
+
+    const status =
+        document.getElementById("uploadStatus");
+
+
+    /* Fayl seçilib? */
+
+    if (!fileInput.files.length) {
+
+        showUploadStatus(
+            "Əvvəlcə bir şəkil seçin.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const file = fileInput.files[0];
+
+
+    /* Yalnız şəkil */
+
+    if (!file.type.startsWith("image/")) {
+
+        showUploadStatus(
+            "Zəhmət olmasa şəkil faylı seçin.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Çox böyük faylların qarşısını alırıq.
+       10 MB limit.
+    */
+
+    if (file.size > 10 * 1024 * 1024) {
+
+        showUploadStatus(
+            "Şəkil 10 MB-dan böyük ola bilməz.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    /* Konfiqurasiya yoxlanışı */
+
+    if (
+        GITHUB_TOKEN === "BURAYA_GITHUB_TOKENINI_YAZ" ||
+        GITHUB_OWNER === "BURAYA_GITHUB_USERNAME" ||
+        GITHUB_REPO === "BURAYA_REPOSITORY_ADI"
+    ) {
+
+        showUploadStatus(
+            "Əvvəlcə GitHub ayarlarını kodda doldurun.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    uploadBtn.disabled = true;
+
+    uploadBtn.innerText = "Yüklənir...";
+
+
+    showUploadStatus(
+        "Şəkil GitHub-a göndərilir...",
+        "loading"
+    );
+
+
+    try {
+
+        /*
+           Şəkli Base64 formatına çeviririk.
+        */
+
+        const base64 = await fileToBase64(file);
+
+
+        /*
+           Fayl adını təmizləyirik.
+        */
+
+        const originalName =
+            file.name
+                .toLowerCase()
+                .replace(/\s+/g, "-")
+                .replace(/[^a-z0-9._-]/g, "");
+
+
+        /*
+           Eyni adlı faylların üzərinə yazılmaması üçün
+           tarix əlavə edilir.
+        */
+
+        const timestamp =
+            Date.now();
+
+        const fileName =
+            timestamp + "-" + originalName;
+
+
+        const filePath =
+            GITHUB_FOLDER + "/" + fileName;
+
+
+        /*
+           GitHub API
+        */
+
+        const githubUrl =
+            "https://api.github.com/repos/" +
+            encodeURIComponent(GITHUB_OWNER) +
+            "/" +
+            encodeURIComponent(GITHUB_REPO) +
+            "/contents/" +
+            filePath;
+
+
+        /*
+           Base64-dən "data:image..." hissəsini çıxarırıq.
+        */
+
+        const base64Content =
+            base64.split(",")[1];
+
+
+        const response =
+            await fetch(githubUrl, {
+
+                method: "PUT",
+
+                headers: {
+
+                    "Authorization":
+                        "Bearer " + GITHUB_TOKEN,
+
+                    "Accept":
+                        "application/vnd.github+json",
+
+                    "Content-Type":
+                        "application/json"
+
+                },
+
+                body: JSON.stringify({
+
+                    message:
+                        "Portfolio şəkli əlavə edildi: " +
+                        fileName,
+
+                    content:
+                        base64Content,
+
+                    branch:
+                        GITHUB_BRANCH
+
+                })
+
             });
+
+
+        const result =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            console.error(
+                "GitHub API:",
+                result
+            );
+
+            throw new Error(
+                result.message ||
+                "GitHub yükləmə xətası."
+            );
+
         }
 
-        function logoutAdmin() {
-            localStorage.removeItem('adminLoggedIn');
-            document.getElementById('adminContainer').style.display = 'none';
-            document.getElementById('loginOverlay').style.display = 'flex';
-            
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
-            
-            const passwordInput = document.getElementById('password');
-            passwordInput.type = 'password';
-            document.getElementById('eyeOpenIcon').style.display = 'none';
-            document.getElementById('eyeClosedIcon').style.display = 'block';
-            document.getElementById('loginError').style.display = 'none';
+
+        /*
+           GitHub-dakı faylın xam URL-i.
+        */
+
+        const imageUrl =
+            "https://raw.githubusercontent.com/" +
+            GITHUB_OWNER +
+            "/" +
+            GITHUB_REPO +
+            "/" +
+            GITHUB_BRANCH +
+            "/" +
+            filePath;
+
+
+        showUploadStatus(
+            "✓ Şəkil uğurla GitHub-a yükləndi! " +
+            "Portfolio URL-i hazırdır.",
+            "success"
+        );
+
+
+        console.log(
+            "Portfolio şəkil URL:",
+            imageUrl
+        );
+
+
+        /*
+           URL-i avtomatik clipboard-a kopyalayırıq.
+        */
+
+        try {
+
+            await navigator.clipboard.writeText(
+                imageUrl
+            );
+
+        } catch (clipboardError) {
+
+            console.log(
+                "URL clipboard-a kopyalanmadı."
+            );
+
         }
 
-        function toggleStatus(docId, currentStatus) {
-            db.collection("orders").doc(docId).update({
-                isViewed: !currentStatus
-            }).catch(function(error) {
-                console.error("Status güncellenirken hata:", error);
-            });
+
+        /*
+           Fayl seçimini təmizləyirik.
+        */
+
+        fileInput.value = "";
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        showUploadStatus(
+            "Xəta: " + error.message,
+            "error"
+        );
+
+    } finally {
+
+        uploadBtn.disabled = false;
+
+        uploadBtn.innerText =
+            "GitHub-a yüklə";
+
+    }
+
+}
+
+
+/* =========================================================
+   FILE → BASE64
+   ========================================================= */
+
+function fileToBase64(file) {
+
+    return new Promise(
+        function(resolve, reject) {
+
+            const reader =
+                new FileReader();
+
+            reader.readAsDataURL(file);
+
+            reader.onload =
+                function () {
+
+                    resolve(
+                        reader.result
+                    );
+
+                };
+
+            reader.onerror =
+                function (error) {
+
+                    reject(error);
+
+                };
+
         }
+    );
 
-        function deleteOrder(docId, parentName) {
-            const confirmDelete = confirm(`${parentName} adlı müraciəti tamamilə silmək istəyirsiniz?`);
-            if (confirmDelete) {
-                db.collection("orders").doc(docId).delete().catch(function(error) {
-                    alert("Silinmə xətası: " + error.message);
-                });
-            }
-        }
+}
 
-        // Blurlu nömrəni açıb-bağlayan funksiya
-        function togglePhoneBlur(button, docId) {
-            const phoneLink = document.getElementById(`phone-${docId}`);
-            const eyeOpen = button.querySelector('.eye-open');
-            const eyeClosed = button.querySelector('.eye-closed');
-            
-            if (phoneLink.classList.contains('blurred')) {
-                phoneLink.classList.remove('blurred');
-                phoneLink.style.pointerEvents = 'auto'; // İndi kliklənə bilər
-                eyeOpen.style.display = 'block';
-                eyeClosed.style.display = 'none';
-                button.setAttribute('title', 'Nömrəni gizlə');
-            } else {
-                phoneLink.classList.add('blurred');
-                phoneLink.style.pointerEvents = 'none'; // Kliklənməni blokla
-                eyeOpen.style.display = 'none';
-                eyeClosed.style.display = 'block';
-                button.setAttribute('title', 'Nömrəni göstər');
-            }
-        }
 
-        function startListeningOrders() {
-            const ordersTableBody = document.getElementById('ordersTableBody');
+/* =========================================================
+   UPLOAD STATUS
+   ========================================================= */
 
-            db.collection("orders").orderBy("createdAt", "desc").onSnapshot(function(snapshot) {
-                ordersTableBody.innerHTML = ''; 
+function showUploadStatus(message, type) {
+
+    const status =
+        document.getElementById(
+            "uploadStatus"
+        );
+
+    status.className =
+        "upload-status " + type;
+
+    status.innerText =
+        message;
+
+}
+
+
+/* =========================================================
+   ORDER STATUS
+   ========================================================= */
+
+function toggleStatus(
+    docId,
+    currentStatus
+) {
+
+    db.collection("orders")
+        .doc(docId)
+        .update({
+
+            isViewed: !currentStatus
+
+        })
+
+        .catch(function(error) {
+
+            console.error(
+                "Status yenilənərkən xəta:",
+                error
+            );
+
+        });
+
+}
+
+
+/* =========================================================
+   ORDER DELETE
+   ========================================================= */
+
+function deleteOrder(
+    docId,
+    parentName
+) {
+
+    const confirmDelete =
+        confirm(
+            parentName +
+            " adlı müraciəti tamamilə silmək istəyirsiniz?"
+        );
+
+
+    if (!confirmDelete) {
+        return;
+    }
+
+
+    db.collection("orders")
+        .doc(docId)
+        .delete()
+
+        .catch(function(error) {
+
+            alert(
+                "Silinmə xətası: " +
+                error.message
+            );
+
+        });
+
+}
+
+
+/* =========================================================
+   PHONE BLUR
+   ========================================================= */
+
+function togglePhoneBlur(
+    button,
+    docId
+) {
+
+    const phoneLink =
+        document.getElementById(
+            "phone-" + docId
+        );
+
+    const eyeOpen =
+        button.querySelector(
+            ".eye-open"
+        );
+
+    const eyeClosed =
+        button.querySelector(
+            ".eye-closed"
+        );
+
+
+    if (
+        phoneLink.classList.contains(
+            "blurred"
+        )
+    ) {
+
+        phoneLink.classList.remove(
+            "blurred"
+        );
+
+        phoneLink.style.pointerEvents =
+            "auto";
+
+        eyeOpen.style.display =
+            "block";
+
+        eyeClosed.style.display =
+            "none";
+
+    } else {
+
+        phoneLink.classList.add(
+            "blurred"
+        );
+
+        phoneLink.style.pointerEvents =
+            "none";
+
+        eyeOpen.style.display =
+            "none";
+
+        eyeClosed.style.display =
+            "block";
+
+    }
+
+}
+
+
+/* =========================================================
+   ORDERS
+   ========================================================= */
+
+function startListeningOrders() {
+
+    const ordersTableBody =
+        document.getElementById(
+            "ordersTableBody"
+        );
+
+
+    db.collection("orders")
+        .orderBy(
+            "createdAt",
+            "desc"
+        )
+
+        .onSnapshot(
+            function(snapshot) {
+
+                ordersTableBody.innerHTML = "";
+
 
                 if (snapshot.empty) {
-                    ordersTableBody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 50px; color: var(--text-muted); font-weight: 600;">Hələ ki heç bir müraciət qeydə alınmayıb.</td></tr>';
+
+                    ordersTableBody.innerHTML = `
+                        <tr>
+                            <td
+                                colspan="7"
+                                style="
+                                text-align:center;
+                                padding:50px;
+                                color:var(--text-muted);
+                                font-weight:600;
+                                "
+                            >
+                                Hələ ki heç bir müraciət qeydə alınmayıb.
+                            </td>
+                        </tr>
+                    `;
+
                     return;
+
                 }
 
-                snapshot.forEach(function(doc) {
-                    const data = doc.data();
-                    const docId = doc.id;
-                    const isViewed = data.isViewed || false;
-                    const parentName = data.parentName || 'Qeyd edilməyib';
 
-                    let orderDate = "Gözlənilir";
-                    if (data.createdAt) {
-                        orderDate = data.createdAt.toDate().toLocaleString('az-AZ', { hour: '2-digit', minute:'2-digit', day: '2-digit', month: '2-digit', year: 'numeric' });
-                    }
+                snapshot.forEach(
+                    function(doc) {
 
-                    const cleanPhone = (data.parentPhone || '').replace(/\D/g, '');
-                    let waLink = `https://wa.me/${cleanPhone}`;
-                    if (cleanPhone.startsWith('0')) {
-                        waLink = `https://wa.me/994${cleanPhone.substring(1)}`;
-                    }
+                        const data =
+                            doc.data();
 
-                    const tr = document.createElement('tr');
-                    
-                    // Sətrə statusa görə dinamik sinif (class) təyin edirik
-                    if (isViewed) {
-                        tr.className = 'status-viewed';
-                    } else {
-                        tr.className = 'status-waiting';
-                    }
+                        const docId =
+                            doc.id;
 
-                    const statusClass = isViewed ? 'status-btn checked' : 'status-btn';
-                    const statusText = isViewed ? '✓ Baxıldı' : '• Gözləyir';
+                        const isViewed =
+                            data.isViewed || false;
 
-                    tr.innerHTML = `
-                        <td data-label="Valideyn" class="parent-name-cell">${parentName}</td>
-                        <td data-label="Əlaqə">
-                            <div class="phone-container">
-                                <div class="phone-wrapper">
-                                    <a href="tel:${data.parentPhone || ''}" id="phone-${docId}" class="phone-link blurred">${data.parentPhone || 'Qeyd yoxdur'}</a>
-                                    ${data.parentPhone ? `
-                                    <button class="toggle-blur-btn" onclick="togglePhoneBlur(this, '${docId}')" title="Nömrəni göstər">
-                                        <svg class="eye-closed" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                                        <svg class="eye-open" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none;"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-4.5c-5 0-9.27 3.11-11 7.5 1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 16.5c-2.48 0-4.5-2.02-4.5-4.5S9.52 7.5 12 7.5s4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5z"/></svg>
-                                    </button>
-                                    ` : ''}
+                        const parentName =
+                            data.parentName ||
+                            "Qeyd edilməyib";
+
+
+                        let orderDate =
+                            "Gözlənilir";
+
+
+                        if (data.createdAt) {
+
+                            orderDate =
+                                data.createdAt
+                                    .toDate()
+                                    .toLocaleString(
+                                        "az-AZ",
+                                        {
+                                            hour: "2-digit",
+                                            minute: "2-digit",
+                                            day: "2-digit",
+                                            month: "2-digit",
+                                            year: "numeric"
+                                        }
+                                    );
+
+                        }
+
+
+                        const cleanPhone =
+                            (data.parentPhone || "")
+                                .replace(/\D/g, "");
+
+
+                        let waLink =
+                            "https://wa.me/" +
+                            cleanPhone;
+
+
+                        if (
+                            cleanPhone.startsWith("0")
+                        ) {
+
+                            waLink =
+                                "https://wa.me/994" +
+                                cleanPhone.substring(1);
+
+                        }
+
+
+                        const tr =
+                            document.createElement(
+                                "tr"
+                            );
+
+
+                        tr.className =
+                            isViewed
+                                ? "status-viewed"
+                                : "status-waiting";
+
+
+                        const statusClass =
+                            isViewed
+                                ? "status-btn checked"
+                                : "status-btn";
+
+
+                        const statusText =
+                            isViewed
+                                ? "✓ Baxıldı"
+                                : "• Gözləyir";
+
+
+                        tr.innerHTML = `
+
+                            <td
+                                data-label="Valideyn"
+                                class="parent-name-cell"
+                            >
+                                ${escapeHtml(parentName)}
+                            </td>
+
+
+                            <td data-label="Əlaqə">
+
+                                <div class="phone-container">
+
+                                    <div class="phone-wrapper">
+
+                                        <a
+                                            href="tel:${escapeHtml(data.parentPhone || "")}"
+                                            id="phone-${docId}"
+                                            class="phone-link blurred"
+                                        >
+                                            ${escapeHtml(data.parentPhone || "Qeyd yoxdur")}
+                                        </a>
+
+                                        ${
+                                            data.parentPhone
+                                            ? `
+
+                                            <button
+                                                class="toggle-blur-btn"
+                                                onclick="togglePhoneBlur(this, '${docId}')"
+                                            >
+
+                                                <svg
+                                                    class="eye-closed"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5S17 4.5 12 4.5z"/>
+                                                </svg>
+
+                                                <svg
+                                                    class="eye-open"
+                                                    viewBox="0 0 24 24"
+                                                    style="display:none;"
+                                                >
+                                                    <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+                                                </svg>
+
+                                            </button>
+
+                                            `
+                                            : ""
+                                        }
+
+                                    </div>
+
+
+                                    ${
+                                        data.parentPhone
+                                        ? `
+
+                                        <a
+                                            href="${waLink}"
+                                            target="_blank"
+                                            class="whatsapp-btn"
+                                        >
+                                            WhatsApp
+                                        </a>
+
+                                        `
+                                        : ""
+                                    }
+
                                 </div>
-                                ${data.parentPhone ? `
-                                <a href="${waLink}" target="_blank" class="whatsapp-btn">
-                                    <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-                                    <span>WhatsApp</span>
-                                </a>` : ''}
-                            </div>
-                        </td>
-                        <td data-label="Uşaq" style="font-weight: 600; color: var(--text-main);">${data.childName || 'Qeyd edilməyib'}</td>
-                        <td data-label="Yaş"><span class="age-badge">${data.childAge || '-'} yaş</span></td>
-                        <td data-label="Maraqlar" class="interests-cell" title="${data.childInterests || ''}">${data.childInterests || 'Qeyd yoxdur'}</td>
-                        <td data-label="Tarix" class="date-cell">${orderDate}</td>
-                        <td data-label="Status">
-                            <div class="action-container">
-                                <button class="delete-btn" onclick="deleteOrder('${docId}', '${parentName}')" title="Sil">
-                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-                                </button>
-                                <button class="${statusClass}" onclick="toggleStatus('${docId}', ${isViewed})">
-                                    ${statusText}
-                                </button>
-                            </div>
-                        </td>
-                    `;
-                    ordersTableBody.appendChild(tr);
-                });
-            });
-        }
-    </script>
+
+                            </td>
+
+
+                            <td
+                                data-label="Uşaq"
+                                style="font-weight:600;"
+                            >
+                                ${escapeHtml(data.childName || "Qeyd edilməyib")}
+                            </td>
+
+
+                            <td data-label="Yaş">
+
+                                <span class="age-badge">
+                                    ${escapeHtml(data.childAge || "-")} yaş
+                                </span>
+
+                            </td>
+
+
+                            <td
+                                data-label="Maraqlar"
+                                class="interests-cell"
+                            >
+                                ${escapeHtml(data.childInterests || "Qeyd yoxdur")}
+                            </td>
+
+
+                            <td
+                                data-label="Tarix"
+                                class="date-cell"
+                            >
+                                ${orderDate}
+                            </td>
+
+
+                            <td data-label="Status">
+
+                                <div class="action-container">
+
+                                    <button
+                                        class="delete-btn"
+                                        onclick="deleteOrder(
+                                            '${docId}',
+                                            '${escapeJs(parentName)}'
+                                        )"
+                                        title="Sil"
+                                    >
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                                        </svg>
+                                    </button>
+
+
+                                    <button
+                                        class="${statusClass}"
+                                        onclick="toggleStatus(
+                                            '${docId}',
+                                            ${isViewed}
+                                        )"
+                                    >
+                                        ${statusText}
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        `;
+
+
+                        ordersTableBody.appendChild(tr);
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   TƏHLÜKƏSİZ MƏTN
+   ========================================================= */
+
+function escapeHtml(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+function escapeJs(value) {
+
+    return String(value)
+        .replace(/\\/g, "\\\\")
+        .replace(/'/g, "\\'");
+
+}
+
+</script>
+
 </body>
 </html>
+```
