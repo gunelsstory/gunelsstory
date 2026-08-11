@@ -389,10 +389,80 @@
 
             .order-form-container { padding: 20px 14px; }
         }
+        <!-- İş gedir başlığı bu silinəcək -->
+        #maintenanceScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #0F1A5C;
+    color: white;
+}
+
+.maintenance-content {
+    max-width: 600px;
+    padding: 30px;
+}
+
+.maintenance-logo {
+    width: 180px;
+    max-width: 70vw;
+    margin-bottom: 30px;
+}
+
+.maintenance-loader {
+    width: 35px;
+    height: 35px;
+    margin: 0 auto 25px;
+    border: 3px solid rgba(255,255,255,.25);
+    border-top-color: #F59E0B;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.maintenance-content h1 {
+    margin-bottom: 12px;
+    font-size: 2rem;
+}
+
+.maintenance-content p {
+    margin: 5px 0;
+    color: rgba(255,255,255,.8);
+}
+
+.maintenance-thanks {
+    color: #F59E0B !important;
+    font-weight: 700;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
     </style>
 </head>
 <body>
+<!-- iş gedir menyusudur bu da silinəcək -->
 
+    <div id="maintenanceScreen">
+    <div class="maintenance-content">
+
+        <img src="image/logo.png" alt="Logo" class="maintenance-logo">
+
+        <div class="maintenance-loader"></div>
+
+        <h1>Sayt üzərində iş gedir</h1>
+
+        <p>Saytımız hazırda inkişaf mərhələsindədir.</p>
+
+        <p class="maintenance-thanks">
+            Səbriniz üçün təşəkkür edirik.
+        </p>
+
+    </div>
+</div>
     <!-- Üst Menyu -->
     <nav>
         <div class="nav-container">
