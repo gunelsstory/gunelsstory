@@ -129,64 +129,45 @@
 
         #story-splash {
 
-            position:
-                fixed;
+            position: fixed;
 
-            inset:
-                0;
+            inset: 0;
 
-            width:
-                100%;
+            width: 100%;
 
-            height:
-                100vh;
+            height: 100vh;
 
-            height:
-                100dvh;
+            height: 100dvh;
 
-            z-index:
-                99999;
+            z-index: 99999;
 
-            display:
-                flex;
+            display: flex;
 
-            align-items:
-                center;
+            align-items: center;
 
-            justify-content:
-                center;
+            justify-content: center;
 
-            text-align:
-                center;
+            text-align: center;
 
-            background:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.78
-                );
+            /* TAMAMİLƏ OPAQ BEJ FON */
 
-            backdrop-filter:
-                blur(20px);
+            background: #faf7f0;
 
-            -webkit-backdrop-filter:
-                blur(20px);
+            opacity: 1;
 
-            opacity:
-                1;
-
-            visibility:
-                visible;
+            visibility: visible;
 
             transition:
                 opacity 0.9s ease,
                 visibility 0.9s ease;
 
-            overflow:
-                hidden;
+            overflow: hidden;
         }
 
+
+        /* =====================================================
+           SPLASH CONTENT
+        ====================================================== */
 
         .story-splash-content {
 
@@ -194,6 +175,18 @@
                 min(90%, 430px);
 
             text-align:
+                center;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            justify-content:
                 center;
 
             animation:
@@ -204,15 +197,17 @@
         }
 
 
-        /* LOGO */
+        /* =====================================================
+           LOGO
+        ====================================================== */
 
         .story-splash-logo {
 
             width:
-                125px;
+                145px;
 
             height:
-                125px;
+                145px;
 
             object-fit:
                 contain;
@@ -221,100 +216,40 @@
                 block;
 
             margin:
-                0 auto 20px;
+                0 auto 28px;
         }
 
 
-        /* BAŞLIQ */
-
-        .story-splash-title {
-
-            margin:
-                0;
-
-            font-family:
-                'Plus Jakarta Sans',
-                sans-serif;
-
-            font-size:
-                1.35rem;
-
-            font-weight:
-                800;
-
-            letter-spacing:
-                2.5px;
-
-            color:
-                var(--text-main);
-        }
-
-
-        /* ALT BAŞLIQ */
-
-        .story-splash-subtitle {
-
-            margin:
-                9px 0 0;
-
-            font-family:
-                'Plus Jakarta Sans',
-                sans-serif;
-
-            font-size:
-                0.88rem;
-
-            font-weight:
-                500;
-
-            color:
-                var(--text-sub);
-        }
-
-
-        /* AYIRICI */
-
-        .story-splash-line {
-
-            width:
-                45px;
-
-            height:
-                2px;
-
-            margin:
-                25px auto 20px;
-
-            background:
-                #f5b942;
-
-            border-radius:
-                10px;
-        }
-
-
-        /* SLOQAN */
+        /* =====================================================
+           SPLASH SLOQAN
+        ====================================================== */
 
         .story-splash-quote {
 
             margin:
                 0;
 
+            max-width:
+                360px;
+
             font-family:
                 'Quicksand',
                 sans-serif;
 
             font-size:
-                0.92rem;
+                0.98rem;
 
             line-height:
-                1.7;
+                1.75;
 
             font-weight:
                 600;
 
             color:
-                var(--text-sub);
+                #64748b;
+
+            letter-spacing:
+                0.1px;
         }
 
 
@@ -353,7 +288,6 @@
                     translateY(0)
                     scale(1);
             }
-
         }
 
 
@@ -1212,53 +1146,46 @@
 
             /* SPLASH */
 
+            #story-splash {
+
+                background:
+                    #faf7f0;
+            }
+
+
+            .story-splash-content {
+
+                width:
+                    88%;
+
+                max-width:
+                    360px;
+            }
+
+
             .story-splash-logo {
 
                 width:
-                    105px;
+                    115px;
 
                 height:
-                    105px;
+                    115px;
 
                 margin-bottom:
-                    16px;
-            }
-
-
-            .story-splash-title {
-
-                font-size:
-                    1.08rem;
-
-                letter-spacing:
-                    2px;
-            }
-
-
-            .story-splash-subtitle {
-
-                font-size:
-                    0.78rem;
-            }
-
-
-            .story-splash-line {
-
-                margin-top:
-                    21px;
-
-                margin-bottom:
-                    17px;
+                    24px;
             }
 
 
             .story-splash-quote {
 
                 font-size:
-                    0.82rem;
+                    0.86rem;
 
                 line-height:
-                    1.65;
+                    1.7;
+
+                padding:
+                    0 8px;
             }
 
 
@@ -1452,7 +1379,7 @@
         <div class="story-splash-content">
 
 
-            <!-- LOGO -->
+            <!-- YALNIZCA LOGO -->
 
             <img
                 src="image/logo.png"
@@ -1461,30 +1388,7 @@
             >
 
 
-            <!-- BAŞLIQ -->
-
-            <h1 class="story-splash-title">
-
-                GUNEL'S STORY
-
-            </h1>
-
-
-            <!-- ALT MƏTN -->
-
-            <p class="story-splash-subtitle">
-
-                Sehrli hekayəniz hazırlanır...
-
-            </p>
-
-
-            <!-- AYIRICI -->
-
-            <div class="story-splash-line"></div>
-
-
-            <!-- SLOQAN -->
+            <!-- YALNIZCA SLOQAN -->
 
             <p class="story-splash-quote">
 
@@ -1605,7 +1509,7 @@
 
             <div class="main-badge">
 
-                ✨ 100% xüsusi və fərdi hekayə kitabları
+                🌕 100% xüsusi və fərdi hekayə kitabları
 
             </div>
 
@@ -2213,7 +2117,6 @@
 
             measurementId:
                 "G-5Q48RSFFH9"
-
         };
 
 
@@ -2235,7 +2138,6 @@
             .addEventListener(
                 "submit",
                 function (e) {
-
 
                     e.preventDefault();
 
@@ -2303,7 +2205,6 @@
                         .then(
                             function () {
 
-
                                 alert(
                                     "Müraciətiniz uğurla göndərildi!"
                                 );
@@ -2321,7 +2222,6 @@
                         .catch(
                             function (error) {
 
-
                                 console.error(
                                     "Xəta:",
                                     error
@@ -2338,7 +2238,6 @@
 
                         .finally(
                             function () {
-
 
                                 submitBtn.disabled =
                                     false;
@@ -2362,7 +2261,6 @@
             "load",
             function () {
 
-
                 const splash =
                     document.getElementById(
                         "story-splash"
@@ -2372,19 +2270,16 @@
                 setTimeout(
                     function () {
 
-
                         splash.classList.add(
                             "hide"
                         );
 
-
                     },
-                    5000
+                    3000
                 );
 
             }
         );
-
 
     </script>
 
