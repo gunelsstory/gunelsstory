@@ -124,7 +124,7 @@
 
 
         /* =====================================================
-           GUNEL'S STORY — 5 SANİYƏLİK AÇILIŞ EKRANI
+           GUNEL'S STORY — AÇILIŞ EKRANI
         ====================================================== */
 
         #story-splash {
@@ -148,8 +148,6 @@
             justify-content: center;
 
             text-align: center;
-
-            /* TAMAMİLƏ OPAQ BEJ FON */
 
             background: #faf7f0;
 
@@ -198,7 +196,7 @@
 
 
         /* =====================================================
-           LOGO
+           SPLASH LOGO
         ====================================================== */
 
         .story-splash-logo {
@@ -292,7 +290,7 @@
 
 
         /* =====================================================
-           5 SANİYƏDƏN SONRA YOX OLMA
+           SPLASH YOX OLMA
         ====================================================== */
 
         #story-splash.hide {
@@ -364,6 +362,10 @@
         }
 
 
+        /* =====================================================
+           NAV LOGO
+        ====================================================== */
+
         .nav-logo {
 
             display:
@@ -404,6 +406,10 @@
                 contain;
         }
 
+
+        /* =====================================================
+           DESKTOP MENU
+        ====================================================== */
 
         .nav-links {
 
@@ -473,6 +479,194 @@
 
 
         /* =====================================================
+           HAMBURGER
+           DEFAULT OLARAQ DESKTOPDA GİZLİDİR
+        ====================================================== */
+
+        .hamburger {
+
+            display:
+                none;
+
+            width:
+                42px;
+
+            height:
+                42px;
+
+            border:
+                none;
+
+            background:
+                transparent;
+
+            cursor:
+                pointer;
+
+            padding:
+                8px;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            gap:
+                5px;
+
+            border-radius:
+                10px;
+        }
+
+
+        .hamburger span {
+
+            display:
+                block;
+
+            width:
+                23px;
+
+            height:
+                2px;
+
+            background:
+                var(--text-main);
+
+            border-radius:
+                10px;
+
+            transition:
+                transform 0.3s ease,
+                opacity 0.3s ease;
+        }
+
+
+        /* =====================================================
+           HAMBURGER → X
+        ====================================================== */
+
+        .hamburger.active span:nth-child(1) {
+
+            transform:
+                translateY(7px)
+                rotate(45deg);
+        }
+
+
+        .hamburger.active span:nth-child(2) {
+
+            opacity:
+                0;
+        }
+
+
+        .hamburger.active span:nth-child(3) {
+
+            transform:
+                translateY(-7px)
+                rotate(-45deg);
+        }
+
+
+        /* =====================================================
+           MOBİL MENYU
+        ====================================================== */
+
+        .mobile-menu {
+
+            display:
+                none;
+
+            max-width:
+                1000px;
+
+            margin:
+                0 auto;
+
+            padding:
+                0 16px 14px;
+        }
+
+
+        .mobile-menu a {
+
+            display:
+                block;
+
+            text-decoration:
+                none;
+
+            color:
+                var(--text-main);
+
+            font-size:
+                0.9rem;
+
+            font-weight:
+                700;
+
+            padding:
+                13px 16px;
+
+            margin-top:
+                6px;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid #edf2f7;
+
+            border-radius:
+                12px;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+
+        .mobile-menu a:hover {
+
+            color:
+                var(--primary-magic);
+        }
+
+
+        .mobile-menu a:active {
+
+            transform:
+                scale(0.98);
+        }
+
+
+        .mobile-menu .mobile-admin-link {
+
+            color:
+                var(--white);
+
+            background:
+                var(--primary-magic);
+
+            border-color:
+                var(--primary-magic);
+        }
+
+
+        .mobile-menu.show {
+
+            display:
+                block;
+        }
+
+
+        /* =====================================================
            ƏSAS KONTEYNER
         ====================================================== */
 
@@ -500,51 +694,6 @@
 
             padding:
                 50px 10px 45px;
-        }
-
-
-        .logo-box {
-
-            width:
-                110px;
-
-            height:
-                110px;
-
-            margin:
-                0 auto 20px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            transition:
-                transform 0.3s ease;
-        }
-
-
-        .logo-box:hover {
-
-            transform:
-                scale(1.05);
-        }
-
-
-        .logo-box img {
-
-            max-width:
-                100%;
-
-            max-height:
-                100%;
-
-            object-fit:
-                contain;
         }
 
 
@@ -876,49 +1025,8 @@
 
 
         /* =====================================================
-           SİFARİŞ BÖLMƏSİ
+           SİFARİŞ FORMASI
         ====================================================== */
-
-        .package-card {
-
-            background:
-                var(--white);
-
-            border-radius:
-                var(--radius-xl);
-
-            padding:
-                50px 20px;
-
-            box-shadow:
-                var(--shadow-soft);
-
-            margin-top:
-                50px;
-
-            border:
-                1px solid #edf2f7;
-
-            text-align:
-                center;
-        }
-
-
-        .package-card h3 {
-
-            font-size:
-                1.85rem;
-
-            font-weight:
-                700;
-
-            margin-bottom:
-                8px;
-
-            color:
-                var(--text-main);
-        }
-
 
         .order-form-container {
 
@@ -1144,7 +1252,9 @@
         @media (max-width: 768px) {
 
 
-            /* SPLASH */
+            /* =================================================
+               SPLASH
+            ================================================== */
 
             #story-splash {
 
@@ -1189,33 +1299,14 @@
             }
 
 
-            /* NAV */
+            /* =================================================
+               NAV
+            ================================================== */
 
             .nav-container {
 
                 padding:
-                    14px 16px;
-            }
-
-
-            .container {
-
-                padding:
-                    0 16px;
-            }
-
-
-            .nav-links {
-
-                gap:
-                    10px;
-            }
-
-
-            .nav-links a {
-
-                font-size:
-                    0.72rem;
+                    12px 16px;
             }
 
 
@@ -1223,6 +1314,9 @@
 
                 font-size:
                     1rem;
+
+                gap:
+                    8px;
             }
 
 
@@ -1236,7 +1330,27 @@
             }
 
 
-            /* HEADER */
+            /* Desktop menyunu mobilde gizlə */
+
+            .nav-links {
+
+                display:
+                    none;
+            }
+
+
+            /* Hamburgeri mobilde göstər */
+
+            .hamburger {
+
+                display:
+                    flex;
+            }
+
+
+            /* =================================================
+               HEADER
+            ================================================== */
 
             header {
 
@@ -1259,7 +1373,16 @@
             }
 
 
-            /* CARDS */
+            /* =================================================
+               CARDS
+            ================================================== */
+
+            .container {
+
+                padding:
+                    0 16px;
+            }
+
 
             .step-card {
 
@@ -1342,17 +1465,9 @@
             }
 
 
-            /* FORM */
-
-            .package-card {
-
-                padding:
-                    35px 16px;
-
-                margin-top:
-                    35px;
-            }
-
+            /* =================================================
+               FORM
+            ================================================== */
 
             .order-form-container {
 
@@ -1378,7 +1493,6 @@
 
         <div class="story-splash-content">
 
-
             <!-- YALNIZCA LOGO -->
 
             <img
@@ -1398,15 +1512,9 @@
 
             </p>
 
-
         </div>
 
     </div>
-
-
-    <!-- =====================================================
-         ƏSAS SAYT
-    ====================================================== -->
 
 
     <!-- =====================================================
@@ -1417,6 +1525,8 @@
 
         <div class="nav-container">
 
+
+            <!-- LOGO -->
 
             <a
                 href="index.html"
@@ -1435,34 +1545,74 @@
             </a>
 
 
+            <!-- DESKTOP MENU -->
+
             <div class="nav-links">
 
-
                 <a href="haqqimizda.html">
-
                     HAQQIMIZDA
-
                 </a>
-
 
                 <a href="portfolio.html">
-
                     PORTFOLİO
-
                 </a>
-
 
                 <a
                     href="admin.html"
                     class="admin-link"
                 >
-
                     ⚙️ ADMİN
-
                 </a>
 
-
             </div>
+
+
+            <!-- =================================================
+                 MOBİL HAMBURGER
+            ================================================== -->
+
+            <button
+                class="hamburger"
+                id="hamburger"
+                aria-label="Menyu"
+                aria-expanded="false"
+                type="button"
+            >
+
+                <span></span>
+
+                <span></span>
+
+                <span></span>
+
+            </button>
+
+        </div>
+
+
+        <!-- =====================================================
+             MOBİL AÇILAN MENYU
+        ====================================================== -->
+
+        <div
+            class="mobile-menu"
+            id="mobileMenu"
+        >
+
+            <a href="haqqimizda.html">
+                HAQQIMIZDA
+            </a>
+
+            <a href="portfolio.html">
+                PORTFOLİO
+            </a>
+
+            <a
+                href="admin.html"
+                class="mobile-admin-link"
+            >
+                ⚙️ ADMİN
+            </a>
 
         </div>
 
@@ -1483,7 +1633,6 @@
         <header>
 
 
-
             <h1>
 
                 Gunel's story
@@ -1493,7 +1642,8 @@
 
             <div class="subtitle">
 
-                Sevgi ilə yazılan hekayələr, günəş kimi parlayan uşaqlar üçün...☀️
+                Sevgi ilə yazılan hekayələr,
+                günəş kimi parlayan uşaqlar üçün...☀️
 
             </div>
 
@@ -1503,7 +1653,6 @@
                 🌕 100% xüsusi və fərdi hekayə kitabları
 
             </div>
-
 
         </header>
 
@@ -1517,24 +1666,17 @@
 
             <div class="step-header">
 
-
                 <div class="step-number">
-
                     1
-
                 </div>
-
 
                 <div class="step-title">
 
                     <h2>
-
                         Uşağınız Üçün Xüsusi Hekayə
-
                     </h2>
 
                 </div>
-
 
             </div>
 
@@ -1552,7 +1694,6 @@
 
                 <div class="step-img-side">
 
-
                     <div class="step-img-box">
 
                         <img
@@ -1561,7 +1702,6 @@
                         >
 
                     </div>
-
 
                 </div>
 
@@ -1572,15 +1712,11 @@
                     <div class="feature-sub-card">
 
                         <div class="feature-icon">
-
                             👶
-
                         </div>
 
                         <p>
-
                             Uşağınızın adı
-
                         </p>
 
                     </div>
@@ -1589,25 +1725,18 @@
                     <div class="feature-sub-card">
 
                         <div class="feature-icon">
-
                             🦄
-
                         </div>
 
                         <p>
-
                             Sevimli personajlar
-
                         </p>
 
                     </div>
 
-
                 </div>
 
-
             </div>
-
 
         </div>
 
@@ -1621,24 +1750,17 @@
 
             <div class="step-header">
 
-
                 <div class="step-number">
-
                     2
-
                 </div>
-
 
                 <div class="step-title">
 
                     <h2>
-
                         Uşağınızın Şəkli ilə Dizayn
-
                     </h2>
 
                 </div>
-
 
             </div>
 
@@ -1656,7 +1778,6 @@
 
                 <div class="step-img-side">
 
-
                     <div class="step-img-box">
 
                         <img
@@ -1665,7 +1786,6 @@
                         >
 
                     </div>
-
 
                 </div>
 
@@ -1676,15 +1796,11 @@
                     <div class="feature-sub-card">
 
                         <div class="feature-icon">
-
                             📷
-
                         </div>
 
                         <p>
-
                             Real foto
-
                         </p>
 
                     </div>
@@ -1693,25 +1809,18 @@
                     <div class="feature-sub-card">
 
                         <div class="feature-icon">
-
                             🎨
-
                         </div>
 
                         <p>
-
                             Peşəkar dizayn
-
                         </p>
 
                     </div>
 
-
                 </div>
 
-
             </div>
-
 
         </div>
 
@@ -1725,24 +1834,17 @@
 
             <div class="step-header">
 
-
                 <div class="step-number">
-
                     3
-
                 </div>
-
 
                 <div class="step-title">
 
                     <h2>
-
                         Premium Keyfiyyətli Çap
-
                     </h2>
 
                 </div>
-
 
             </div>
 
@@ -1760,7 +1862,6 @@
 
                 <div class="step-img-side">
 
-
                     <div class="step-img-box">
 
                         <img
@@ -1769,7 +1870,6 @@
                         >
 
                     </div>
-
 
                 </div>
 
@@ -1780,15 +1880,11 @@
                     <div class="feature-sub-card">
 
                         <div class="feature-icon">
-
                             📄
-
                         </div>
 
                         <p>
-
                             Premium kağız
-
                         </p>
 
                     </div>
@@ -1797,25 +1893,18 @@
                     <div class="feature-sub-card">
 
                         <div class="feature-icon">
-
                             🌈
-
                         </div>
 
                         <p>
-
                             HD rənglər
-
                         </p>
 
                     </div>
 
-
                 </div>
 
-
             </div>
-
 
         </div>
 
@@ -1829,24 +1918,17 @@
 
             <div class="step-header">
 
-
                 <div class="step-number">
-
                     4
-
                 </div>
-
 
                 <div class="step-title">
 
                     <h2>
-
                         Xüsusi Hədiyyə Qablaşdırma
-
                     </h2>
 
                 </div>
-
 
             </div>
 
@@ -1864,7 +1946,6 @@
 
                 <div class="step-img-side">
 
-
                     <div class="step-img-box">
 
                         <img
@@ -1873,7 +1954,6 @@
                         >
 
                     </div>
-
 
                 </div>
 
@@ -1884,15 +1964,11 @@
                     <div class="feature-sub-card">
 
                         <div class="feature-icon">
-
                             🎀
-
                         </div>
 
                         <p>
-
                             Dizayn paketləmə
-
                         </p>
 
                     </div>
@@ -1901,25 +1977,18 @@
                     <div class="feature-sub-card">
 
                         <div class="feature-icon">
-
                             ❤️
-
                         </div>
 
                         <p>
-
                             Hədiyyə paketi
-
                         </p>
 
                     </div>
 
-
                 </div>
 
-
             </div>
-
 
         </div>
 
@@ -1932,9 +2001,7 @@
 
 
             <h4>
-
                 Sifariş Müraciəti
-
             </h4>
 
 
@@ -1943,13 +2010,9 @@
 
                 <div class="form-group">
 
-
                     <label for="parentName">
-
                         Valideynin Adı və Soyadı *
-
                     </label>
-
 
                     <input
                         type="text"
@@ -1958,19 +2021,14 @@
                         placeholder="Nümunə: Aysel Məmmədova"
                     >
 
-
                 </div>
 
 
                 <div class="form-group">
 
-
                     <label for="parentPhone">
-
                         Telefon Nömrəniz *
-
                     </label>
-
 
                     <input
                         type="tel"
@@ -1979,19 +2037,14 @@
                         placeholder="Nümunə: +994 50 123 45 67"
                     >
 
-
                 </div>
 
 
                 <div class="form-group">
 
-
                     <label for="childName">
-
                         Uşağın Adı *
-
                     </label>
-
 
                     <input
                         type="text"
@@ -2000,19 +2053,14 @@
                         placeholder="Nümunə: Ömər"
                     >
 
-
                 </div>
 
 
                 <div class="form-group">
 
-
                     <label for="childAge">
-
                         Uşağın Yaşı
-
                     </label>
-
 
                     <input
                         type="number"
@@ -2020,26 +2068,20 @@
                         placeholder="Nümunə: 5"
                     >
 
-
                 </div>
 
 
                 <div class="form-group">
 
-
                     <label for="childInterests">
-
                         Uşağın Sevimli Personajları / Maraqları
-
                     </label>
-
 
                     <textarea
                         id="childInterests"
                         rows="3"
                         placeholder="Nümunə: Dinozavrlar, kosmos və sevimli iti Bobbi..."
                     ></textarea>
-
 
                 </div>
 
@@ -2048,9 +2090,7 @@
                     type="submit"
                     class="order-btn"
                 >
-
                     MÜRACİƏTİ TAMAMLA ✨
-
                 </button>
 
 
@@ -2062,7 +2102,6 @@
                 * Əlaqə nömrəsində WhatsApp aktiv olan nömrəni qeyd edin.
 
             </p>
-
 
         </div>
 
@@ -2080,7 +2119,6 @@
 
 
     <script>
-
 
         /* =====================================================
            FIREBASE KONFİQURASİYASI
@@ -2245,7 +2283,7 @@
 
 
         /* =====================================================
-           GUNEL'S STORY — 5 SANİYƏLİK SPLASH
+           3 SANİYƏLİK SPLASH
         ====================================================== */
 
         window.addEventListener(
@@ -2268,6 +2306,114 @@
                     },
                     3000
                 );
+
+            }
+        );
+
+
+        /* =====================================================
+           MOBİL HAMBURGER MENU
+        ====================================================== */
+
+        const hamburger =
+            document.getElementById(
+                "hamburger"
+            );
+
+
+        const mobileMenu =
+            document.getElementById(
+                "mobileMenu"
+            );
+
+
+        hamburger.addEventListener(
+            "click",
+            function () {
+
+                const isOpen =
+                    hamburger.classList.toggle(
+                        "active"
+                    );
+
+
+                mobileMenu.classList.toggle(
+                    "show"
+                );
+
+
+                hamburger.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           MENYU LINKİNƏ BASILDIQDA MENYUNU BAĞLA
+        ====================================================== */
+
+        const mobileMenuLinks =
+            mobileMenu.querySelectorAll(
+                "a"
+            );
+
+
+        mobileMenuLinks.forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        hamburger.classList.remove(
+                            "active"
+                        );
+
+
+                        mobileMenu.classList.remove(
+                            "show"
+                        );
+
+
+                        hamburger.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           EKRAN BÖYÜDÜKDƏ MOBİL MENYUNU TƏMİZLƏ
+        ====================================================== */
+
+        window.addEventListener(
+            "resize",
+            function () {
+
+                if (window.innerWidth > 768) {
+
+                    hamburger.classList.remove(
+                        "active"
+                    );
+
+                    mobileMenu.classList.remove(
+                        "show"
+                    );
+
+                    hamburger.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
 
             }
         );
