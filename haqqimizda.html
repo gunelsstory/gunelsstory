@@ -1,1 +1,2060 @@
+<!DOCTYPE html>
+<html lang="az">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>Haqqımızda | Gunel's story</title>
+
+    <link rel="icon"
+          type="image/png"
+          href="image/favicon.png">
+
+
+    <!-- =====================================================
+         ŞRİFTLƏR
+    ====================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@600;700&display=swap"
+          rel="stylesheet">
+
+
+    <style>
+
+        /* =====================================================
+           ROOT
+        ====================================================== */
+
+        :root {
+
+            --bg-color: #fafbfc;
+
+            --primary: #4f46e5;
+
+            --primary-soft: #f0f0ff;
+
+            --text-main: #1a1a24;
+
+            --text-sub: #64748b;
+
+            --white: #ffffff;
+
+            --border: #e8edf3;
+
+            --radius-xl: 24px;
+
+            --radius-md: 16px;
+
+            --shadow-soft:
+                0 10px 35px
+                rgba(15, 23, 42, 0.04);
+
+            --shadow-hover:
+                0 18px 45px
+                rgba(79, 70, 229, 0.08);
+        }
+
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            background:
+                var(--bg-color);
+
+            color:
+                var(--text-main);
+
+            font-family:
+                'Plus Jakarta Sans',
+                sans-serif;
+
+            min-height:
+                100vh;
+
+            padding-bottom:
+                70px;
+        }
+
+
+        h1,
+        h2,
+        h3 {
+
+            font-family:
+                'Quicksand',
+                sans-serif;
+        }
+
+
+        /* =====================================================
+           NAV
+        ====================================================== */
+
+        nav {
+
+            position:
+                sticky;
+
+            top:
+                0;
+
+            z-index:
+                1000;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.94
+                );
+
+            backdrop-filter:
+                blur(12px);
+
+            -webkit-backdrop-filter:
+                blur(12px);
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+
+        .nav-container {
+
+            max-width:
+                1000px;
+
+            margin:
+                0 auto;
+
+            padding:
+                12px 24px;
+
+            min-height:
+                64px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            position:
+                relative;
+        }
+
+
+        /* =====================================================
+           NAV LOGO
+        ====================================================== */
+
+        .nav-brand {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                9px;
+
+            text-decoration:
+                none;
+
+            color:
+                var(--text-main);
+
+            flex-shrink:
+                0;
+        }
+
+
+        .nav-brand img {
+
+            width:
+                40px;
+
+            height:
+                40px;
+
+            object-fit:
+                contain;
+
+            display:
+                block;
+        }
+
+
+        .nav-brand span {
+
+            font-size:
+                1.15rem;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                -0.4px;
+
+            white-space:
+                nowrap;
+        }
+
+
+        /* =====================================================
+           NAV LINKS
+        ====================================================== */
+
+        .nav-links {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                24px;
+        }
+
+
+        .nav-links a {
+
+            text-decoration:
+                none;
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.85rem;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                0.4px;
+
+            transition:
+                color 0.2s ease;
+        }
+
+
+        .nav-links a:hover {
+
+            color:
+                var(--primary);
+        }
+
+
+        .nav-links .admin-link {
+
+            color:
+                var(--white);
+
+            background:
+                var(--primary);
+
+            padding:
+                9px 18px;
+
+            border-radius:
+                50px;
+
+            box-shadow:
+                0 5px 15px
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.18
+                );
+        }
+
+
+        /* =====================================================
+           HAMBURGER
+        ====================================================== */
+
+        .menu-toggle {
+
+            display:
+                none;
+
+            width:
+                40px;
+
+            height:
+                40px;
+
+            border:
+                none;
+
+            background:
+                transparent;
+
+            color:
+                var(--text-main);
+
+            font-size:
+                27px;
+
+            line-height:
+                1;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            cursor:
+                pointer;
+
+            z-index:
+                1100;
+        }
+
+
+        /* =====================================================
+           MAIN
+        ====================================================== */
+
+        .page-container {
+
+            max-width:
+                900px;
+
+            margin:
+                0 auto;
+
+            padding:
+                0 20px;
+        }
+
+
+        /* =====================================================
+           GERI QAYIT
+        ====================================================== */
+
+        .back-section {
+
+            padding:
+                28px 0 0;
+        }
+
+
+        .back-button {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            text-decoration:
+                none;
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.86rem;
+
+            font-weight:
+                700;
+
+            padding:
+                10px 16px;
+
+            background:
+                var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                50px;
+
+            transition:
+                all 0.2s ease;
+        }
+
+
+        .back-button:hover {
+
+            color:
+                var(--primary);
+
+            border-color:
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.25
+                );
+
+            transform:
+                translateX(-2px);
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .about-hero {
+
+            text-align:
+                center;
+
+            padding:
+                65px 10px 55px;
+        }
+
+
+        .about-logo {
+
+            width:
+                95px;
+
+            height:
+                95px;
+
+            margin:
+                0 auto 22px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+        }
+
+
+        .about-logo img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                contain;
+        }
+
+
+        .about-label {
+
+            display:
+                inline-block;
+
+            background:
+                var(--primary-soft);
+
+            color:
+                var(--primary);
+
+            padding:
+                7px 17px;
+
+            border-radius:
+                50px;
+
+            font-size:
+                0.78rem;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                0.8px;
+
+            margin-bottom:
+                18px;
+        }
+
+
+        .about-hero h1 {
+
+            font-size:
+                3rem;
+
+            line-height:
+                1.15;
+
+            letter-spacing:
+                -1px;
+
+            margin-bottom:
+                16px;
+        }
+
+
+        .about-hero h1 span {
+
+            color:
+                var(--primary);
+        }
+
+
+        .about-hero p {
+
+            max-width:
+                680px;
+
+            margin:
+                0 auto;
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                1.05rem;
+
+            line-height:
+                1.8;
+        }
+
+
+        /* =====================================================
+           BÖLMƏ KARTI
+        ====================================================== */
+
+        .about-card {
+
+            background:
+                var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                var(--radius-xl);
+
+            padding:
+                42px;
+
+            margin-bottom:
+                24px;
+
+            box-shadow:
+                var(--shadow-soft);
+
+            transition:
+                all 0.3s ease;
+        }
+
+
+        .about-card:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                var(--shadow-hover);
+        }
+
+
+        .section-heading {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                14px;
+
+            margin-bottom:
+                18px;
+        }
+
+
+        .section-icon {
+
+            width:
+                44px;
+
+            height:
+                44px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                var(--primary-soft);
+
+            border-radius:
+                13px;
+
+            font-size:
+                1.35rem;
+
+            flex-shrink:
+                0;
+        }
+
+
+        .section-heading h2 {
+
+            font-size:
+                1.55rem;
+
+            letter-spacing:
+                -0.3px;
+        }
+
+
+        .about-card p {
+
+            color:
+                var(--text-sub);
+
+            line-height:
+                1.8;
+
+            font-size:
+                0.97rem;
+        }
+
+
+        /* =====================================================
+           MISSIYA
+        ====================================================== */
+
+        .mission-card {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f7f7ff 0%,
+                    #ffffff 100%
+                );
+
+            border:
+                1px solid
+                #e9e8ff;
+        }
+
+
+        .mission-text {
+
+            font-family:
+                'Quicksand',
+                sans-serif;
+
+            font-size:
+                1.25rem !important;
+
+            line-height:
+                1.7 !important;
+
+            color:
+                var(--text-main) !important;
+
+            font-weight:
+                600;
+        }
+
+
+        /* =====================================================
+           NƏ EDİRİK
+        ====================================================== */
+
+        .services-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap:
+                16px;
+
+            margin-top:
+                26px;
+        }
+
+
+        .service-item {
+
+            padding:
+                24px;
+
+            background:
+                #f8fafc;
+
+            border:
+                1px solid #edf2f7;
+
+            border-radius:
+                var(--radius-md);
+
+            transition:
+                all 0.25s ease;
+        }
+
+
+        .service-item:hover {
+
+            background:
+                #f5f5ff;
+
+            border-color:
+                #e3e1ff;
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .service-icon {
+
+            font-size:
+                1.9rem;
+
+            margin-bottom:
+                14px;
+        }
+
+
+        .service-item h3 {
+
+            font-size:
+                1.05rem;
+
+            margin-bottom:
+                8px;
+        }
+
+
+        .service-item p {
+
+            font-size:
+                0.88rem;
+
+            line-height:
+                1.6;
+        }
+
+
+        /* =====================================================
+           ÜSTÜNLÜKLƏR
+        ====================================================== */
+
+        .advantages {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap:
+                12px;
+
+            margin-top:
+                26px;
+        }
+
+
+        .advantage {
+
+            text-align:
+                center;
+
+            padding:
+                22px 12px;
+
+            background:
+                #f8fafc;
+
+            border-radius:
+                var(--radius-md);
+
+            border:
+                1px solid #edf2f7;
+        }
+
+
+        .advantage-icon {
+
+            font-size:
+                1.8rem;
+
+            margin-bottom:
+                10px;
+        }
+
+
+        .advantage strong {
+
+            display:
+                block;
+
+            font-size:
+                0.82rem;
+
+            line-height:
+                1.35;
+        }
+
+
+        /* =====================================================
+           SON CTA
+        ====================================================== */
+
+        .cta-card {
+
+            margin-top:
+                24px;
+
+            padding:
+                48px 35px;
+
+            text-align:
+                center;
+
+            background:
+                var(--primary);
+
+            color:
+                var(--white);
+
+            border-radius:
+                var(--radius-xl);
+
+            box-shadow:
+                0 15px 40px
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.16
+                );
+        }
+
+
+        .cta-card h2 {
+
+            font-size:
+                1.8rem;
+
+            margin-bottom:
+                12px;
+        }
+
+
+        .cta-card p {
+
+            max-width:
+                590px;
+
+            margin:
+                0 auto 25px;
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.82
+                );
+
+            line-height:
+                1.7;
+
+            font-size:
+                0.95rem;
+        }
+
+
+        .cta-button {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-decoration:
+                none;
+
+            background:
+                var(--white);
+
+            color:
+                var(--primary);
+
+            padding:
+                13px 24px;
+
+            border-radius:
+                50px;
+
+            font-weight:
+                800;
+
+            font-size:
+                0.88rem;
+
+            transition:
+                all 0.2s ease;
+        }
+
+
+        .cta-button:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.12
+                );
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        footer {
+
+            text-align:
+                center;
+
+            padding:
+                40px 20px 10px;
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.78rem;
+        }
+
+
+        /* =====================================================
+           MOBİL
+        ====================================================== */
+
+        @media (max-width: 768px) {
+
+
+            /* NAV */
+
+            .nav-container {
+
+                padding:
+                    12px 16px;
+            }
+
+
+            .nav-brand {
+
+                max-width:
+                    calc(100% - 55px);
+            }
+
+
+            .nav-brand img {
+
+                width:
+                    36px;
+
+                height:
+                    36px;
+            }
+
+
+            .nav-brand span {
+
+                font-size:
+                    0.98rem;
+
+                overflow:
+                    hidden;
+
+                text-overflow:
+                    ellipsis;
+            }
+
+
+            .menu-toggle {
+
+                display:
+                    flex;
+            }
+
+
+            /* MOBİL MENYU */
+
+            .nav-links {
+
+                display:
+                    none;
+
+                position:
+                    absolute;
+
+                top:
+                    calc(100% + 8px);
+
+                right:
+                    14px;
+
+                width:
+                    200px;
+
+                padding:
+                    10px;
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    stretch;
+
+                gap:
+                    4px;
+
+                background:
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0.98
+                    );
+
+                border:
+                    1px solid var(--border);
+
+                border-radius:
+                    16px;
+
+                box-shadow:
+                    0 15px 40px
+                    rgba(
+                        15,
+                        23,
+                        42,
+                        0.12
+                    );
+            }
+
+
+            .nav-links.open {
+
+                display:
+                    flex;
+            }
+
+
+            .nav-links a {
+
+                display:
+                    block;
+
+                width:
+                    100%;
+
+                padding:
+                    13px 14px;
+
+                font-size:
+                    0.75rem;
+
+                border-radius:
+                    10px;
+            }
+
+
+            .nav-links a:hover {
+
+                background:
+                    var(--primary-soft);
+            }
+
+
+            .nav-links .admin-link {
+
+                text-align:
+                    center;
+            }
+
+
+            /* CONTENT */
+
+            .page-container {
+
+                padding:
+                    0 16px;
+            }
+
+
+            .back-section {
+
+                padding-top:
+                    20px;
+            }
+
+
+            .about-hero {
+
+                padding:
+                    45px 5px 38px;
+            }
+
+
+            .about-logo {
+
+                width:
+                    80px;
+
+                height:
+                    80px;
+            }
+
+
+            .about-hero h1 {
+
+                font-size:
+                    2.25rem;
+            }
+
+
+            .about-hero p {
+
+                font-size:
+                    0.93rem;
+
+                line-height:
+                    1.7;
+            }
+
+
+            .about-card {
+
+                padding:
+                    27px 21px;
+
+                border-radius:
+                    20px;
+
+                margin-bottom:
+                    16px;
+            }
+
+
+            .section-heading {
+
+                gap:
+                    11px;
+            }
+
+
+            .section-icon {
+
+                width:
+                    40px;
+
+                height:
+                    40px;
+
+                font-size:
+                    1.2rem;
+            }
+
+
+            .section-heading h2 {
+
+                font-size:
+                    1.3rem;
+            }
+
+
+            .about-card p {
+
+                font-size:
+                    0.9rem;
+
+                line-height:
+                    1.7;
+            }
+
+
+            .mission-text {
+
+                font-size:
+                    1.05rem !important;
+            }
+
+
+            /* SERVICES */
+
+            .services-grid {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    12px;
+            }
+
+
+            .service-item {
+
+                padding:
+                    20px;
+            }
+
+
+            /* ADVANTAGES */
+
+            .advantages {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap:
+                    10px;
+            }
+
+
+            .advantage {
+
+                padding:
+                    18px 10px;
+            }
+
+
+            .advantage-icon {
+
+                font-size:
+                    1.6rem;
+            }
+
+
+            .advantage strong {
+
+                font-size:
+                    0.75rem;
+            }
+
+
+            /* CTA */
+
+            .cta-card {
+
+                padding:
+                    38px 22px;
+
+                border-radius:
+                    20px;
+            }
+
+
+            .cta-card h2 {
+
+                font-size:
+                    1.45rem;
+            }
+
+
+            .cta-card p {
+
+                font-size:
+                    0.87rem;
+            }
+
+        }
+
+
+        /* =====================================================
+           ÇOX KİÇİK EKRAN
+        ====================================================== */
+
+        @media (max-width: 380px) {
+
+
+            .nav-container {
+
+                padding-left:
+                    13px;
+
+                padding-right:
+                    13px;
+            }
+
+
+            .nav-brand img {
+
+                width:
+                    33px;
+
+                height:
+                    33px;
+            }
+
+
+            .nav-brand span {
+
+                font-size:
+                    0.9rem;
+            }
+
+
+            .about-hero h1 {
+
+                font-size:
+                    2rem;
+            }
+
+
+            .about-card {
+
+                padding:
+                    23px 17px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <nav>
+
+        <div class="nav-container">
+
+
+            <!-- LOGO -->
+
+            <a href="index.html"
+               class="nav-brand">
+
+                <img
+                    src="image/logo.png"
+                    alt="Gunel's story logo">
+
+                <span>
+                    Gunel's story
+                </span>
+
+            </a>
+
+
+            <!-- HAMBURGER -->
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Menyu"
+                aria-expanded="false">
+
+                ☰
+
+            </button>
+
+
+            <!-- MENYU -->
+
+            <div
+                class="nav-links"
+                id="navLinks">
+
+
+                <a href="haqqimizda.html">
+                    HAQQIMIZDA
+                </a>
+
+
+                <a href="portfolio.html">
+                    PORTFOLİO
+                </a>
+
+
+                <a href="admin.html"
+                   class="admin-link">
+
+                    ⚙️ ADMİN
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         ƏSAS SƏHİFƏ
+    ====================================================== -->
+
+    <main class="page-container">
+
+
+        <!-- =================================================
+             GERİ QAYIT
+        ================================================== -->
+
+        <div class="back-section">
+
+            <a href="index.html"
+               class="back-button">
+
+                ← Əsas səhifəyə qayıt
+
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="about-hero">
+
+
+            <div class="about-logo">
+
+                <img
+                    src="image/logo.png"
+                    alt="Gunel's story">
+
+            </div>
+
+
+            <div class="about-label">
+
+                BİZ KİMİK?
+
+            </div>
+
+
+            <h1>
+
+                Hər uşağın
+                <span>
+                    öz hekayəsi
+                </span>
+                var.
+
+            </h1>
+
+
+            <p>
+
+                Gunel's story uşaqların özlərini hekayələrin
+                içində görmələri üçün yaradılmış fərdi
+                uşaq kitabları platformasıdır.
+
+            </p>
+
+
+        </section>
+
+
+        <!-- =================================================
+             BİZİM HAQQIMIZDA
+        ================================================== -->
+
+        <section class="about-card">
+
+
+            <div class="section-heading">
+
+
+                <div class="section-icon">
+                    ✨
+                </div>
+
+
+                <h2>
+                    Gunel's story nədir?
+                </h2>
+
+
+            </div>
+
+
+            <p>
+
+                Biz uşaqlar üçün sadəcə bir kitab hazırlamırıq.
+                Uşağın adını, maraqlarını, sevdiyi personajları
+                və xəyal dünyasını hekayənin bir hissəsinə
+                çevirərək ona özünə məxsus bir macəra bəxş edirik.
+
+                <br><br>
+
+                Məqsədimiz hər bir uşağın kitabı vərəqləyərkən
+                “Bu hekayədə mən varam” hissini yaşamasıdır.
+
+            </p>
+
+
+        </section>
+
+
+        <!-- =================================================
+             MİSSİYAMIZ
+        ================================================== -->
+
+        <section class="about-card mission-card">
+
+
+            <div class="section-heading">
+
+
+                <div class="section-icon">
+                    💜
+                </div>
+
+
+                <h2>
+                    Missiyamız
+                </h2>
+
+
+            </div>
+
+
+            <p class="mission-text">
+
+                Uşaqların xəyal gücünü, yaradıcılığını və
+                kitaba olan sevgisini öz hekayələri vasitəsilə
+                daha da gücləndirmək.
+
+            </p>
+
+
+        </section>
+
+
+        <!-- =================================================
+             NƏ EDİRİK?
+        ================================================== -->
+
+        <section class="about-card">
+
+
+            <div class="section-heading">
+
+
+                <div class="section-icon">
+                    🎨
+                </div>
+
+
+                <h2>
+                    Nə edirik?
+                </h2>
+
+
+            </div>
+
+
+            <p>
+
+                Hər sifarişi fərdi yanaşma ilə hazırlayırıq.
+                Uşağın xüsusiyyətlərinə uyğun hekayə və vizual
+                dünya formalaşdırır, sonra isə onu yüksək
+                keyfiyyətli kitab şəklində təqdim edirik.
+
+            </p>
+
+
+            <div class="services-grid">
+
+
+                <div class="service-item">
+
+
+                    <div class="service-icon">
+                        📖
+                    </div>
+
+
+                    <h3>
+                        Fərdi hekayə
+                    </h3>
+
+
+                    <p>
+
+                        Uşağın adı və maraqları əsasında
+                        xüsusi hekayə hazırlanır.
+
+                    </p>
+
+
+                </div>
+
+
+                <div class="service-item">
+
+
+                    <div class="service-icon">
+                        📸
+                    </div>
+
+
+                    <h3>
+                        Şəkil inteqrasiyası
+                    </h3>
+
+
+                    <p>
+
+                        Uşağın təqdim etdiyi foto
+                        hekayənin vizual dünyasına
+                        uyğunlaşdırılır.
+
+                    </p>
+
+
+                </div>
+
+
+                <div class="service-item">
+
+
+                    <div class="service-icon">
+                        🖌️
+                    </div>
+
+
+                    <h3>
+                        Peşəkar dizayn
+                    </h3>
+
+
+                    <p>
+
+                        Hər səhifə vahid və estetik
+                        kitab konsepsiyası ilə hazırlanır.
+
+                    </p>
+
+
+                </div>
+
+
+                <div class="service-item">
+
+
+                    <div class="service-icon">
+                        🎁
+                    </div>
+
+
+                    <h3>
+                        Xüsusi təqdimat
+                    </h3>
+
+
+                    <p>
+
+                        Hazırlanan kitab uşağa hədiyyə
+                        edilə biləcək xüsusi məhsula çevrilir.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             NİYƏ BİZ?
+        ================================================== -->
+
+        <section class="about-card">
+
+
+            <div class="section-heading">
+
+
+                <div class="section-icon">
+                    ⭐
+                </div>
+
+
+                <h2>
+                    Niyə Gunel's story?
+                </h2>
+
+
+            </div>
+
+
+            <p>
+
+                Bizim üçün əsas olan yalnız gözəl görünən
+                kitab yaratmaq deyil. Əsas məqsəd uşağın
+                hekayə ilə emosional bağ qurmasıdır.
+
+            </p>
+
+
+            <div class="advantages">
+
+
+                <div class="advantage">
+
+
+                    <div class="advantage-icon">
+                        💎
+                    </div>
+
+
+                    <strong>
+                        Fərdi yanaşma
+                    </strong>
+
+
+                </div>
+
+
+                <div class="advantage">
+
+
+                    <div class="advantage-icon">
+                        🎨
+                    </div>
+
+
+                    <strong>
+                        Estetik dizayn
+                    </strong>
+
+
+                </div>
+
+
+                <div class="advantage">
+
+
+                    <div class="advantage-icon">
+                        ❤️
+                    </div>
+
+
+                    <strong>
+                        Uşaq yönümlü
+                    </strong>
+
+
+                </div>
+
+
+                <div class="advantage">
+
+
+                    <div class="advantage-icon">
+                        ✨
+                    </div>
+
+
+                    <strong>
+                        Xüsusi xatirə
+                    </strong>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             CTA
+        ================================================== -->
+
+        <section class="cta-card">
+
+
+            <h2>
+
+                Uşağınızın hekayəsi
+                indi başlaya bilər.
+
+            </h2>
+
+
+            <p>
+
+                Onu öz hekayəsinin baş qəhrəmanına çevirin
+                və illər sonra belə sevə-sevə vərəqləyəcəyi
+                xüsusi bir xatirə yaradın.
+
+            </p>
+
+
+            <a href="index.html"
+               class="cta-button">
+
+                Hekayəni yaratmağa başla →
+
+            </a>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        © 2026 Gunel's story — Uşağınız hekayənin
+        baş qəhrəmanıdır.
+
+    </footer>
+
+
+    <!-- =====================================================
+         MOBILE MENU SCRIPT
+    ====================================================== -->
+
+    <script>
+
+
+        const menuToggle =
+            document.getElementById(
+                "menuToggle"
+            );
+
+
+        const navLinks =
+            document.getElementById(
+                "navLinks"
+            );
+
+
+        /* MENU AÇ / BAĞLA */
+
+        menuToggle.addEventListener(
+            "click",
+            function (event) {
+
+
+                event.stopPropagation();
+
+
+                navLinks.classList.toggle(
+                    "open"
+                );
+
+
+                const isOpen =
+                    navLinks.classList.contains(
+                        "open"
+                    );
+
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                );
+
+
+                menuToggle.textContent =
+                    isOpen
+                        ? "✕"
+                        : "☰";
+
+            }
+        );
+
+
+        /* MENYU SEÇİLƏNDƏ BAĞLANSIN */
+
+        navLinks
+            .querySelectorAll("a")
+            .forEach(
+                function (link) {
+
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+
+                            navLinks.classList.remove(
+                                "open"
+                            );
+
+
+                            menuToggle.textContent =
+                                "☰";
+
+
+                            menuToggle.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* MENYU XARİCİNƏ BASILANDA BAĞLANSIN */
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+
+                if (
+                    !event.target.closest(
+                        ".nav-container"
+                    )
+                ) {
+
+
+                    navLinks.classList.remove(
+                        "open"
+                    );
+
+
+                    menuToggle.textContent =
+                        "☰";
+
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* EKRAN BÖYÜDÜKDƏ MENYU SIFIRLANSIN */
+
+        window.addEventListener(
+            "resize",
+            function () {
+
+
+                if (
+                    window.innerWidth > 768
+                ) {
+
+
+                    navLinks.classList.remove(
+                        "open"
+                    );
+
+
+                    menuToggle.textContent =
+                        "☰";
+
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
