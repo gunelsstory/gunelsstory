@@ -1,1011 +1,1708 @@
 <!DOCTYPE html>
-
 <html lang="az">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<title>Gunel's story - Hazırladığımız Sehrli Kitablar</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<link rel="icon" type="image/png" href="image/favicon.png">
+    <title>Gunel's story - Hazırladığımız Sehrli Kitablar</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon"
+          type="image/png"
+          href="image/favicon.png">
 
-<link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
 
-<style>
-    :root {
-        --bg-color: #FAF8F5;
-        --primary-blue: #0F1A5C;
-        --accent-gold: #D97706;
-        --text-dark: #1E293B;
-        --text-muted: #64748B;
-        --white: #ffffff;
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
-        --border-radius-lg: 24px;
-        --border-radius-sm: 14px;
-        --border-color: rgba(15, 26, 92, 0.04);
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-        --shadow-sm: 0 4px 20px rgba(15, 26, 92, 0.02);
-        --shadow-md: 0 20px 40px rgba(15, 26, 92, 0.04);
-        --shadow-lg: 0 30px 60px rgba(15, 26, 92, 0.08);
 
-        --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+    <style>
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        -webkit-font-smoothing: antialiased;
-    }
+        /* =====================================================
+           ROOT
+        ====================================================== */
 
-    body {
-        background-color: var(--bg-color);
-        color: var(--text-dark);
-        padding-bottom: 100px;
+        :root {
 
-        background-image:
-            radial-gradient(
-                rgba(15, 26, 92, 0.02) 1.5px,
-                transparent 1.5px
-            );
+            --bg-color: #FAF8F5;
 
-        background-size: 32px 32px;
-    }
+            --primary-blue: #0F1A5C;
 
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 24px;
-    }
+            --accent-gold: #D97706;
 
-    /* NAVİQASİYA */
+            --text-dark: #1E293B;
 
-    .nav-bar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+            --text-muted: #64748B;
 
-        padding: 35px 0;
-        margin-bottom: 20px;
-    }
+            --white: #ffffff;
 
-    .back-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
+            --border-radius-lg: 24px;
 
-        background-color: var(--white);
-        color: var(--primary-blue);
+            --border-radius-sm: 14px;
 
-        text-decoration: none;
+            --border-color:
+                rgba(15, 26, 92, 0.04);
 
-        padding: 14px 28px;
+            --shadow-sm:
+                0 4px 20px
+                rgba(15, 26, 92, 0.02);
 
-        border-radius: 50px;
+            --shadow-md:
+                0 20px 40px
+                rgba(15, 26, 92, 0.04);
 
-        font-weight: 700;
-        font-size: 0.9rem;
+            --shadow-lg:
+                0 30px 60px
+                rgba(15, 26, 92, 0.08);
 
-        box-shadow: var(--shadow-sm);
-
-        border: 1px solid var(--border-color);
-
-        transition: var(--transition);
-    }
-
-    .back-btn svg {
-        width: 18px;
-        height: 18px;
-
-        fill: none;
-        stroke: currentColor;
-        stroke-width: 2.5;
-
-        stroke-linecap: round;
-        stroke-linejoin: round;
-
-        transition: transform 0.3s var(--transition);
-    }
-
-    .back-btn:hover {
-        background-color: var(--primary-blue);
-        color: var(--white);
-
-        transform: translateY(-2px);
-
-        box-shadow:
-            0 12px 30px rgba(15, 26, 92, 0.15);
-
-        border-color: transparent;
-    }
-
-    .back-btn:hover svg {
-        transform: translateX(-4px);
-    }
-
-    /* BAŞLIQ */
-
-    header {
-        text-align: center;
-
-        padding: 40px 0 70px;
-    }
-
-    header h1 {
-        font-size: 3rem;
-        font-weight: 800;
-
-        margin-bottom: 18px;
-
-        color: var(--primary-blue);
-
-        letter-spacing: -1px;
-    }
-
-    header p {
-        font-size: 1.15rem;
-
-        color: var(--text-muted);
-
-        max-width: 680px;
-
-        margin: 0 auto;
-
-        line-height: 1.7;
-
-        font-weight: 500;
-    }
-
-    /* GALLERY */
-
-    .gallery-grid {
-        display: grid;
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        gap: 48px;
-    }
-
-    /* BOOK CARD */
-
-    .book-card {
-        background-color: var(--white);
-
-        border-radius: var(--border-radius-lg);
-
-        overflow: hidden;
-
-        box-shadow: var(--shadow-md);
-
-        border: 1px solid var(--border-color);
-
-        transition: var(--transition);
-
-        display: flex;
-        flex-direction: column;
-
-        position: relative;
-    }
-
-    @media (min-width: 769px) {
-
-        .book-card:nth-child(even) {
-            transform: translateY(35px);
+            --transition:
+                all 0.5s
+                cubic-bezier(
+                    0.16,
+                    1,
+                    0.3,
+                    1
+                );
         }
 
-        .gallery-grid {
-            padding-bottom: 45px;
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+            font-family:
+                'Plus Jakarta Sans',
+                sans-serif;
+
+            -webkit-font-smoothing:
+                antialiased;
         }
-    }
 
-    .book-card:hover {
-        transform: translateY(-10px) !important;
-
-        box-shadow: var(--shadow-lg);
-
-        border-color:
-            rgba(15, 26, 92, 0.08);
-    }
-
-    /* IMAGE */
-
-    .book-img-box {
-        width: 100%;
-
-        aspect-ratio: 16 / 11;
-
-        background-color: #F8FAFC;
-
-        overflow: hidden;
-
-        position: relative;
-    }
-
-    .book-img-box img {
-        width: 100%;
-        height: 100%;
-
-        object-fit: cover;
-
-        display: block;
-
-        transition:
-            transform 0.8s
-            cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .book-card:hover .book-img-box img {
-        transform: scale(1.05);
-    }
-
-    .book-img-box::after {
-        content: '';
-
-        position: absolute;
-
-        top: 0;
-        left: 0;
-
-        width: 100%;
-        height: 100%;
-
-        background:
-            linear-gradient(
-                to bottom,
-                transparent 60%,
-                rgba(15, 26, 92, 0.02)
-            );
-
-        pointer-events: none;
-    }
-
-    /* INFO */
-
-    .book-info {
-        padding: 35px 40px;
-
-        background-color: var(--white);
-
-        flex-grow: 1;
-
-        display: flex;
-        flex-direction: column;
-
-        justify-content: space-between;
-
-        gap: 20px;
-
-        border-top:
-            1px solid rgba(15, 26, 92, 0.02);
-    }
-
-    .book-info h3 {
-        font-size: 1.5rem;
-
-        font-weight: 800;
-
-        color: var(--primary-blue);
-
-        line-height: 1.4;
-
-        letter-spacing: -0.3px;
-    }
-
-    .book-author-badge {
-        display: inline-flex;
-
-        align-items: center;
-
-        gap: 8px;
-
-        color: var(--accent-gold);
-
-        background-color:
-            rgba(217, 119, 6, 0.06);
-
-        padding: 6px 14px;
-
-        border-radius: 50px;
-
-        font-size: 0.85rem;
-
-        font-weight: 700;
-
-        width: fit-content;
-    }
-
-    .book-author-badge svg {
-        width: 14px;
-        height: 14px;
-
-        fill: currentColor;
-    }
-
-    /* LOADING */
-
-    .portfolio-loading {
-        grid-column: 1 / -1;
-
-        padding: 70px 20px;
-
-        text-align: center;
-
-        color: var(--text-muted);
-
-        font-weight: 600;
-    }
-
-    .portfolio-error {
-        grid-column: 1 / -1;
-
-        padding: 40px 20px;
-
-        text-align: center;
-
-        color: #B91C1C;
-
-        background: #FEF2F2;
-
-        border-radius: var(--border-radius-lg);
-    }
-
-    /* EMPTY */
-
-    .portfolio-empty {
-        grid-column: 1 / -1;
-
-        padding: 60px 20px;
-
-        text-align: center;
-
-        color: var(--text-muted);
-
-        background: var(--white);
-
-        border-radius: var(--border-radius-lg);
-
-        border: 1px dashed rgba(15, 26, 92, 0.12);
-    }
-
-    /* FOOTER */
-
-    .gallery-footer {
-        text-align: center;
-
-        margin-top: 120px;
-
-        background:
-            radial-gradient(
-                circle at top right,
-                #1E2A78 0%,
-                #0F1A5C 100%
-            );
-
-        padding: 70px 40px;
-
-        border-radius: var(--border-radius-lg);
-
-        box-shadow:
-            0 30px 70px
-            rgba(15, 26, 92, 0.25);
-
-        position: relative;
-
-        overflow: hidden;
-    }
-
-    .gallery-footer::before {
-        content: '';
-
-        position: absolute;
-
-        top: -40%;
-        right: -10%;
-
-        width: 400px;
-        height: 400px;
-
-        border-radius: 50%;
-
-        background:
-            rgba(217, 119, 6, 0.15);
-
-        filter: blur(80px);
-    }
-
-    .gallery-footer h2 {
-        font-size: 2.3rem;
-
-        font-weight: 800;
-
-        margin-bottom: 14px;
-
-        color: var(--white);
-
-        position: relative;
-
-        z-index: 1;
-
-        letter-spacing: -0.5px;
-    }
-
-    .gallery-footer p {
-        font-size: 1.15rem;
-
-        color:
-            rgba(255, 255, 255, 0.75);
-
-        margin-bottom: 35px;
-
-        position: relative;
-
-        z-index: 1;
-
-        font-weight: 500;
-
-        max-width: 600px;
-
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 768px) {
-
-        .gallery-grid {
-            grid-template-columns: 1fr;
-
-            gap: 30px;
-        }
 
         body {
-            padding-bottom: 60px;
+
+            background-color:
+                var(--bg-color);
+
+            color:
+                var(--text-dark);
+
+            padding-bottom:
+                100px;
+
+            background-image:
+                radial-gradient(
+                    rgba(
+                        15,
+                        26,
+                        92,
+                        0.02
+                    ) 1.5px,
+                    transparent 1.5px
+                );
+
+            background-size:
+                32px 32px;
         }
+
+
+        /* =====================================================
+           CONTAINER
+        ====================================================== */
+
+        .container {
+
+            max-width:
+                1200px;
+
+            margin:
+                0 auto;
+
+            padding:
+                0 24px;
+        }
+
+
+        /* =====================================================
+           NAVİQASİYA
+        ====================================================== */
+
+        .nav-bar {
+
+            display:
+                flex;
+
+            justify-content:
+                flex-start;
+
+            align-items:
+                center;
+
+            padding:
+                35px 0;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .back-btn {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+            background-color:
+                var(--white);
+
+            color:
+                var(--primary-blue);
+
+            text-decoration:
+                none;
+
+            padding:
+                14px 28px;
+
+            border-radius:
+                50px;
+
+            font-weight:
+                700;
+
+            font-size:
+                0.9rem;
+
+            box-shadow:
+                var(--shadow-sm);
+
+            border:
+                1px solid
+                var(--border-color);
+
+            transition:
+                var(--transition);
+        }
+
+
+        .back-btn svg {
+
+            width:
+                18px;
+
+            height:
+                18px;
+
+            fill:
+                none;
+
+            stroke:
+                currentColor;
+
+            stroke-width:
+                2.5;
+
+            stroke-linecap:
+                round;
+
+            stroke-linejoin:
+                round;
+
+            transition:
+                transform 0.3s
+                ease;
+        }
+
+
+        .back-btn:hover {
+
+            background-color:
+                var(--primary-blue);
+
+            color:
+                var(--white);
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 12px 30px
+                rgba(
+                    15,
+                    26,
+                    92,
+                    0.15
+                );
+
+            border-color:
+                transparent;
+        }
+
+
+        .back-btn:hover svg {
+
+            transform:
+                translateX(-4px);
+        }
+
+
+        /* =====================================================
+           BAŞLIQ
+        ====================================================== */
 
         header {
-            padding: 20px 0 40px;
+
+            text-align:
+                center;
+
+            padding:
+                40px 0 70px;
         }
+
 
         header h1 {
-            font-size: 2.2rem;
+
+            font-size:
+                3rem;
+
+            font-weight:
+                800;
+
+            margin-bottom:
+                18px;
+
+            color:
+                var(--primary-blue);
+
+            letter-spacing:
+                -1px;
         }
+
 
         header p {
-            font-size: 1rem;
+
+            font-size:
+                1.15rem;
+
+            color:
+                var(--text-muted);
+
+            max-width:
+                680px;
+
+            margin:
+                0 auto;
+
+            line-height:
+                1.7;
+
+            font-weight:
+                500;
         }
+
+
+        /* =====================================================
+           GALLERY
+        ====================================================== */
+
+        .gallery-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap:
+                48px;
+        }
+
+
+        /* =====================================================
+           BOOK CARD
+        ====================================================== */
 
         .book-card {
-            border-radius: 20px;
+
+            background-color:
+                var(--white);
+
+            border-radius:
+                var(--border-radius-lg);
+
+            overflow:
+                hidden;
+
+            box-shadow:
+                var(--shadow-md);
+
+            border:
+                1px solid
+                var(--border-color);
+
+            transition:
+                var(--transition);
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            position:
+                relative;
+
+            min-width:
+                0;
         }
+
+
+        /* Desktopda cüt kartlar bir qədər aşağı */
+
+        @media (min-width: 769px) {
+
+            .book-card:nth-child(even) {
+
+                transform:
+                    translateY(35px);
+            }
+
+
+            .gallery-grid {
+
+                padding-bottom:
+                    45px;
+            }
+        }
+
+
+        .book-card:hover {
+
+            transform:
+                translateY(-10px);
+
+            box-shadow:
+                var(--shadow-lg);
+
+            border-color:
+                rgba(
+                    15,
+                    26,
+                    92,
+                    0.08
+                );
+        }
+
+
+        @media (min-width: 769px) {
+
+            .book-card:nth-child(even):hover {
+
+                transform:
+                    translateY(25px);
+            }
+        }
+
+
+        /* =====================================================
+           IMAGE
+        ====================================================== */
+
+        .book-img-box {
+
+            width:
+                100%;
+
+            aspect-ratio:
+                16 / 11;
+
+            background-color:
+                #F8FAFC;
+
+            overflow:
+                hidden;
+
+            position:
+                relative;
+        }
+
+
+        .book-img-box img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                cover;
+
+            display:
+                block;
+
+            transition:
+                transform 0.8s
+                cubic-bezier(
+                    0.16,
+                    1,
+                    0.3,
+                    1
+                );
+        }
+
+
+        .book-card:hover
+        .book-img-box img {
+
+            transform:
+                scale(1.05);
+        }
+
+
+        .book-img-box::after {
+
+            content:
+                '';
+
+            position:
+                absolute;
+
+            top:
+                0;
+
+            left:
+                0;
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    transparent 60%,
+                    rgba(
+                        15,
+                        26,
+                        92,
+                        0.02
+                    )
+                );
+
+            pointer-events:
+                none;
+        }
+
+
+        /* =====================================================
+           INFO
+        ====================================================== */
 
         .book-info {
-            padding: 25px;
+
+            padding:
+                35px 40px;
+
+            background-color:
+                var(--white);
+
+            flex-grow:
+                1;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                space-between;
+
+            gap:
+                20px;
+
+            border-top:
+                1px solid
+                rgba(
+                    15,
+                    26,
+                    92,
+                    0.02
+                );
         }
+
 
         .book-info h3 {
-            font-size: 1.3rem;
+
+            font-size:
+                1.5rem;
+
+            font-weight:
+                800;
+
+            color:
+                var(--primary-blue);
+
+            line-height:
+                1.4;
+
+            letter-spacing:
+                -0.3px;
         }
+
+
+        .book-author-badge {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            color:
+                var(--accent-gold);
+
+            background-color:
+                rgba(
+                    217,
+                    119,
+                    6,
+                    0.06
+                );
+
+            padding:
+                6px 14px;
+
+            border-radius:
+                50px;
+
+            font-size:
+                0.85rem;
+
+            font-weight:
+                700;
+
+            width:
+                fit-content;
+
+            max-width:
+                100%;
+
+            line-height:
+                1.3;
+        }
+
+
+        .book-author-badge svg {
+
+            width:
+                14px;
+
+            height:
+                14px;
+
+            fill:
+                currentColor;
+
+            flex-shrink:
+                0;
+        }
+
+
+        /* =====================================================
+           LOADING
+        ====================================================== */
+
+        .portfolio-loading {
+
+            grid-column:
+                1 / -1;
+
+            padding:
+                70px 20px;
+
+            text-align:
+                center;
+
+            color:
+                var(--text-muted);
+
+            font-weight:
+                600;
+        }
+
+
+        /* =====================================================
+           ERROR
+        ====================================================== */
+
+        .portfolio-error {
+
+            grid-column:
+                1 / -1;
+
+            padding:
+                40px 20px;
+
+            text-align:
+                center;
+
+            color:
+                #B91C1C;
+
+            background:
+                #FEF2F2;
+
+            border-radius:
+                var(--border-radius-lg);
+        }
+
+
+        /* =====================================================
+           EMPTY
+        ====================================================== */
+
+        .portfolio-empty {
+
+            grid-column:
+                1 / -1;
+
+            padding:
+                60px 20px;
+
+            text-align:
+                center;
+
+            color:
+                var(--text-muted);
+
+            background:
+                var(--white);
+
+            border-radius:
+                var(--border-radius-lg);
+
+            border:
+                1px dashed
+                rgba(
+                    15,
+                    26,
+                    92,
+                    0.12
+                );
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
 
         .gallery-footer {
-            margin-top: 70px;
 
-            padding: 50px 24px;
+            text-align:
+                center;
 
-            border-radius: 20px;
+            margin-top:
+                120px;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    #1E2A78 0%,
+                    #0F1A5C 100%
+                );
+
+            padding:
+                70px 40px;
+
+            border-radius:
+                var(--border-radius-lg);
+
+            box-shadow:
+                0 30px 70px
+                rgba(
+                    15,
+                    26,
+                    92,
+                    0.25
+                );
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
         }
+
+
+        .gallery-footer::before {
+
+            content:
+                '';
+
+            position:
+                absolute;
+
+            top:
+                -40%;
+
+            right:
+                -10%;
+
+            width:
+                400px;
+
+            height:
+                400px;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(
+                    217,
+                    119,
+                    6,
+                    0.15
+                );
+
+            filter:
+                blur(80px);
+        }
+
 
         .gallery-footer h2 {
-            font-size: 1.7rem;
+
+            font-size:
+                2.3rem;
+
+            font-weight:
+                800;
+
+            margin-bottom:
+                14px;
+
+            color:
+                var(--white);
+
+            position:
+                relative;
+
+            z-index:
+                1;
+
+            letter-spacing:
+                -0.5px;
         }
 
+
         .gallery-footer p {
-            font-size: 1rem;
+
+            font-size:
+                1.15rem;
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.75
+                );
+
+            margin-bottom:
+                35px;
+
+            position:
+                relative;
+
+            z-index:
+                1;
+
+            font-weight:
+                500;
+
+            max-width:
+                600px;
+
+            margin-left:
+                auto;
+
+            margin-right:
+                auto;
         }
-    }
-</style>
-```
+
+
+        /* =====================================================
+           MOBİL
+           2 SÜTUN
+        ====================================================== */
+
+        @media (max-width: 768px) {
+
+            body {
+
+                padding-bottom:
+                    60px;
+            }
+
+
+            .container {
+
+                padding:
+                    0 12px;
+            }
+
+
+            /* NAV */
+
+            .nav-bar {
+
+                padding:
+                    20px 0;
+
+                margin-bottom:
+                    5px;
+            }
+
+
+            .back-btn {
+
+                padding:
+                    11px 16px;
+
+                font-size:
+                    0.75rem;
+
+                gap:
+                    7px;
+            }
+
+
+            .back-btn svg {
+
+                width:
+                    16px;
+
+                height:
+                    16px;
+            }
+
+
+            /* HEADER */
+
+            header {
+
+                padding:
+                    20px 5px 35px;
+            }
+
+
+            header h1 {
+
+                font-size:
+                    2rem;
+
+                line-height:
+                    1.2;
+
+                margin-bottom:
+                    12px;
+            }
+
+
+            header p {
+
+                font-size:
+                    0.9rem;
+
+                line-height:
+                    1.6;
+            }
+
+
+            /* =================================================
+               MOBİL 2 SÜTUN
+            ================================================== */
+
+            .gallery-grid {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+                gap:
+                    16px;
+
+                padding-bottom:
+                    0;
+            }
+
+
+            /* Mobil kart */
+
+            .book-card {
+
+                border-radius:
+                    16px;
+
+                min-width:
+                    0;
+
+                transform:
+                    none !important;
+            }
+
+
+            .book-card:hover {
+
+                transform:
+                    translateY(-4px) !important;
+            }
+
+
+            /* Şəkil */
+
+            .book-img-box {
+
+                aspect-ratio:
+                    16 / 12;
+            }
+
+
+            .book-card:hover
+            .book-img-box img {
+
+                transform:
+                    none;
+            }
+
+
+            /* Məlumat */
+
+            .book-info {
+
+                padding:
+                    13px 11px;
+
+                gap:
+                    11px;
+            }
+
+
+            .book-info h3 {
+
+                font-size:
+                    0.82rem;
+
+                line-height:
+                    1.35;
+
+                letter-spacing:
+                    -0.1px;
+            }
+
+
+            .book-author-badge {
+
+                font-size:
+                    0.58rem;
+
+                padding:
+                    5px 7px;
+
+                gap:
+                    4px;
+
+                line-height:
+                    1.2;
+
+                border-radius:
+                    30px;
+            }
+
+
+            .book-author-badge svg {
+
+                width:
+                    10px;
+
+                height:
+                    10px;
+            }
+
+
+            /* Loading */
+
+            .portfolio-loading {
+
+                grid-column:
+                    1 / -1;
+
+                padding:
+                    50px 10px;
+
+                font-size:
+                    0.85rem;
+            }
+
+
+            /* Footer */
+
+            .gallery-footer {
+
+                margin-top:
+                    60px;
+
+                padding:
+                    45px 20px;
+
+                border-radius:
+                    18px;
+            }
+
+
+            .gallery-footer h2 {
+
+                font-size:
+                    1.5rem;
+
+                line-height:
+                    1.3;
+            }
+
+
+            .gallery-footer p {
+
+                font-size:
+                    0.9rem;
+
+                line-height:
+                    1.6;
+
+                margin-bottom:
+                    0;
+            }
+
+        }
+
+
+        /* =====================================================
+           ÇOX KİÇİK TELEFONLAR
+        ====================================================== */
+
+        @media (max-width: 380px) {
+
+            .container {
+
+                padding:
+                    0 10px;
+            }
+
+
+            .gallery-grid {
+
+                gap:
+                    12px;
+            }
+
+
+            .book-info {
+
+                padding:
+                    11px 9px;
+            }
+
+
+            .book-info h3 {
+
+                font-size:
+                    0.76rem;
+            }
+
+
+            .book-author-badge {
+
+                font-size:
+                    0.53rem;
+
+                padding:
+                    4px 6px;
+            }
+
+
+            .book-author-badge svg {
+
+                width:
+                    9px;
+
+                height:
+                    9px;
+            }
+
+
+            header h1 {
+
+                font-size:
+                    1.75rem;
+            }
+
+
+            header p {
+
+                font-size:
+                    0.85rem;
+            }
+
+
+            .back-btn {
+
+                font-size:
+                    0.68rem;
+
+                padding:
+                    10px 13px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
+
 <body>
 
-```
-<div class="container">
 
-    <!-- NAVİQASİYA -->
+    <div class="container">
 
-    <div class="nav-bar">
 
-        <a
-            href="index.html"
-            class="back-btn"
-        >
+        <!-- =================================================
+             NAVİQASİYA
+        ================================================== -->
 
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
+        <div class="nav-bar">
+
+            <a
+                href="index.html"
+                class="back-btn"
             >
 
-                <line
-                    x1="19"
-                    y1="12"
-                    x2="5"
-                    y2="12"
-                ></line>
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                >
 
-                <polyline
-                    points="12 19 5 12 12 5"
-                ></polyline>
+                    <line
+                        x1="19"
+                        y1="12"
+                        x2="5"
+                        y2="12"
+                    ></line>
 
-            </svg>
+                    <polyline
+                        points="12 19 5 12 12 5"
+                    ></polyline>
 
-            Əsas Səhifəyə Qayıt
+                </svg>
 
-        </a>
+                Əsas Səhifəyə Qayıt
 
-    </div>
+            </a>
 
-
-    <!-- BAŞLIQ -->
-
-    <header>
-
-        <h1>
-            Hazırladığımız Sehrli Kitablar
-        </h1>
-
-        <p>
-            Hər biri real uşaq hekayələri və xüsusi
-            illüstrasiyalar əsasında hazırlanmış lüks
-            cildli xatirə kitablarımızdan eksklüziv nümunələr.
-        </p>
-
-    </header>
-
-
-    <!-- FIRESTORE PORTFOLIO -->
-
-    <div
-        class="gallery-grid"
-        id="portfolioGallery"
-    >
-
-        <div class="portfolio-loading">
-            Portfolio yüklənir...
         </div>
 
-    </div>
 
+        <!-- =================================================
+             BAŞLIQ
+        ================================================== -->
 
-    <!-- CTA -->
+        <header>
 
-    <div class="gallery-footer">
+            <h1>
+                Hazırladığımız Sehrli Kitablar
+            </h1>
 
-        <h2>
-            Övladınız Üçün Belə Bir Kitab İstəyirsiniz?
-        </h2>
+            <p>
+                Hər biri real uşaq hekayələri və xüsusi
+                illüstrasiyalar əsasında hazırlanmış lüks
+                cildli xatirə kitablarımızdan eksklüziv nümunələr.
+            </p>
 
-        <p>
-            Hekayəni birlikdə yazaq, xüsusi illüstrasiyalarla
-            onu unudulmaz bir xatirə kitabına çevirək!
-        </p>
+        </header>
 
-    </div>
 
-</div>
+        <!-- =================================================
+             FIRESTORE PORTFOLIO
+        ================================================== -->
 
+        <div
+            class="gallery-grid"
+            id="portfolioGallery"
+        >
 
-<!-- =====================================================
-     FIREBASE
-====================================================== -->
+            <div class="portfolio-loading">
 
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-
-
-<script>
-
-    /* =====================================================
-       SƏNİN FIREBASE CONFIG
-    ====================================================== */
-
-    const firebaseConfig = {
-
-        apiKey:
-            "AIzaSyDWqLPM2X89vyqOYocw4KEBh65WKMutZOI",
-
-        authDomain:
-            "gunelsstory-6d3a9.firebaseapp.com",
-
-        projectId:
-            "gunelsstory-6d3a9",
-
-        storageBucket:
-            "gunelsstory-6d3a9.firebasestorage.app",
-
-        messagingSenderId:
-            "903174908342",
-
-        appId:
-            "1:903174908342:web:f73871214550442e553917",
-
-        measurementId:
-            "G-5Q48RSFFH9"
-    };
-
-
-    /* FIREBASE-I BAŞLAT */
-
-    firebase.initializeApp(firebaseConfig);
-
-
-    /* FIRESTORE */
-
-    const db =
-        firebase.firestore();
-
-
-    /* =====================================================
-       EHTİYAT KİTABLAR
-       
-       Bunlar yalnız Firestore-da heç bir portfolio
-       sənədi olmadıqda göstərilir.
-       
-       Firestore-da kitab əlavə etdikdən sonra
-       avtomatik olaraq bunların yerinə Firestore
-       məlumatları gələcək.
-    ====================================================== */
-
-    const fallbackPortfolio = [
-
-        {
-            title:
-                "Anlamaq və Sevmək: Ürəyimdə yaşayan ailə",
-
-            author:
-                "Psixoloq Günel Mahmudqızı",
-
-            imageUrl:
-                "image/cild.png"
-        },
-
-        {
-            title:
-                "Özünəinam Hekayəsi: Çiçəkdən şahzadəyə",
-
-            author:
-                "Psixoloq Günel Mahmudqızı",
-
-            imageUrl:
-                "image/İsimsiz-1.png"
-        },
-
-        {
-            title:
-                "Sara və dovşan Miminin göyqurşağına səyahəti",
-
-            author:
-                "Psixoloq Günel Mahmudqızı",
-
-            imageUrl:
-                "image/sara.jpg"
-        }
-
-    ];
-
-
-    /* =====================================================
-       HTML ESCAPE
-    ====================================================== */
-
-    function escapeHtml(value) {
-
-        return String(value || "")
-
-            .replace(/&/g, "&amp;")
-
-            .replace(/</g, "&lt;")
-
-            .replace(/>/g, "&gt;")
-
-            .replace(/"/g, "&quot;")
-
-            .replace(/'/g, "&#039;");
-    }
-
-
-    /* =====================================================
-       PORTFOLIO KARTI
-    ====================================================== */
-
-    function createPortfolioCard(data) {
-
-        const card =
-            document.createElement("div");
-
-        card.className =
-            "book-card";
-
-
-        const title =
-            data.title ||
-            "Adsız portfolio";
-
-
-        const author =
-            data.author ||
-            "Müəllif qeyd edilməyib";
-
-
-        const imageUrl =
-            data.imageUrl ||
-            "";
-
-
-        card.innerHTML = `
-
-            <div class="book-img-box">
-
-                <img
-                    src="${escapeHtml(imageUrl)}"
-                    alt="${escapeHtml(title)}"
-                    loading="lazy"
-                >
+                Portfolio yüklənir...
 
             </div>
 
-
-            <div class="book-info">
-
-                <h3>
-                    ${escapeHtml(title)}
-                </h3>
+        </div>
 
 
-                <div class="book-author-badge">
+        <!-- =================================================
+             CTA
+        ================================================== -->
 
-                    <svg
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
+        <div class="gallery-footer">
+
+            <h2>
+                Övladınız Üçün Belə Bir Kitab İstəyirsiniz?
+            </h2>
+
+            <p>
+                Hekayəni birlikdə yazaq, xüsusi illüstrasiyalarla
+                onu unudulmaz bir xatirə kitabına çevirək!
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         FIREBASE
+    ====================================================== -->
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+
+    <script>
+
+
+        /* =====================================================
+           FIREBASE CONFIG
+        ====================================================== */
+
+        const firebaseConfig = {
+
+            apiKey:
+                "AIzaSyDWqLPM2X89vyqOYocw4KEBh65WKMutZOI",
+
+            authDomain:
+                "gunelsstory-6d3a9.firebaseapp.com",
+
+            projectId:
+                "gunelsstory-6d3a9",
+
+            storageBucket:
+                "gunelsstory-6d3a9.firebasestorage.app",
+
+            messagingSenderId:
+                "903174908342",
+
+            appId:
+                "1:903174908342:web:f73871214550442e553917",
+
+            measurementId:
+                "G-5Q48RSFFH9"
+        };
+
+
+        /* =====================================================
+           FIREBASE-I BAŞLAT
+        ====================================================== */
+
+        firebase.initializeApp(
+            firebaseConfig
+        );
+
+
+        /* =====================================================
+           FIRESTORE
+        ====================================================== */
+
+        const db =
+            firebase.firestore();
+
+
+        /* =====================================================
+           FALLBACK PORTFOLIO
+        ====================================================== */
+
+        const fallbackPortfolio = [
+
+            {
+                title:
+                    "Anlamaq və Sevmək: Ürəyimdə yaşayan ailə",
+
+                author:
+                    "Psixoloq Günel Mahmudqızı",
+
+                imageUrl:
+                    "image/cild.png"
+            },
+
+
+            {
+                title:
+                    "Özünəinam Hekayəsi: Çiçəkdən şahzadəyə",
+
+                author:
+                    "Psixoloq Günel Mahmudqızı",
+
+                imageUrl:
+                    "image/İsimsiz-1.png"
+            },
+
+
+            {
+                title:
+                    "Sara və dovşan Miminin göyqurşağına səyahəti",
+
+                author:
+                    "Psixoloq Günel Mahmudqızı",
+
+                imageUrl:
+                    "image/sara.jpg"
+            }
+
+        ];
+
+
+        /* =====================================================
+           HTML ESCAPE
+        ====================================================== */
+
+        function escapeHtml(value) {
+
+            return String(value || "")
+
+                .replace(/&/g, "&amp;")
+
+                .replace(/</g, "&lt;")
+
+                .replace(/>/g, "&gt;")
+
+                .replace(/"/g, "&quot;")
+
+                .replace(/'/g, "&#039;");
+        }
+
+
+        /* =====================================================
+           PORTFOLIO KARTI
+        ====================================================== */
+
+        function createPortfolioCard(data) {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "book-card";
+
+
+            const title =
+                data.title ||
+                "Adsız portfolio";
+
+
+            const author =
+                data.author ||
+                "Müəllif qeyd edilməyib";
+
+
+            const imageUrl =
+                data.imageUrl ||
+                "";
+
+
+            card.innerHTML = `
+
+                <div class="book-img-box">
+
+                    <img
+                        src="${escapeHtml(imageUrl)}"
+                        alt="${escapeHtml(title)}"
+                        loading="lazy"
                     >
-
-                        <path
-                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                        />
-
-                    </svg>
-
-                    ${escapeHtml(author)}
 
                 </div>
 
-            </div>
 
-        `;
+                <div class="book-info">
 
-
-        return card;
-    }
-
-
-    /* =====================================================
-       FALLBACK GÖSTƏR
-    ====================================================== */
-
-    function renderFallbackPortfolio() {
-
-        const gallery =
-            document.getElementById(
-                "portfolioGallery"
-            );
+                    <h3>
+                        ${escapeHtml(title)}
+                    </h3>
 
 
-        gallery.innerHTML = "";
+                    <div class="book-author-badge">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+
+                            <path
+                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                            />
+
+                        </svg>
+
+                        ${escapeHtml(author)}
+
+                    </div>
+
+                </div>
+
+            `;
 
 
-        fallbackPortfolio.forEach(
-            function (item) {
+            return card;
+        }
 
-                gallery.appendChild(
-                    createPortfolioCard(item)
+
+        /* =====================================================
+           FALLBACK GÖSTƏR
+        ====================================================== */
+
+        function renderFallbackPortfolio() {
+
+            const gallery =
+                document.getElementById(
+                    "portfolioGallery"
                 );
 
-            }
-        );
-    }
+
+            gallery.innerHTML =
+                "";
 
 
-    /* =====================================================
-       FIRESTORE PORTFOLIO YÜKLƏ
-       
-       ADMIN TƏRƏFDƏ:
-       
-       portfolio
-          ├── title
-          ├── author
-          ├── imageUrl
-          ├── createdAt
-          └── updatedAt
-       
-       istifadə olunur.
-    ====================================================== */
+            fallbackPortfolio.forEach(
+                function (item) {
 
-    function startPortfolioListener() {
+                    gallery.appendChild(
+                        createPortfolioCard(item)
+                    );
 
-        const gallery =
-            document.getElementById(
-                "portfolioGallery"
+                }
             );
+        }
 
 
-        db.collection("portfolio")
-            .onSnapshot(
+        /* =====================================================
+           FIRESTORE PORTFOLIO YÜKLƏ
+        ====================================================== */
 
-                function (snapshot) {
+        function startPortfolioListener() {
 
-                    /*
-                     * Əgər Firestore-da heç bir
-                     * portfolio yoxdursa,
-                     * əvvəlki statik kitabları saxlayırıq.
-                     */
+            const gallery =
+                document.getElementById(
+                    "portfolioGallery"
+                );
 
-                    if (snapshot.empty) {
+
+            db.collection("portfolio")
+                .onSnapshot(
+
+                    function (snapshot) {
+
+
+                        /* -----------------------------------------
+                           FIRESTORE BOŞDURSA
+                        ------------------------------------------ */
+
+                        if (snapshot.empty) {
+
+                            renderFallbackPortfolio();
+
+                            return;
+                        }
+
+
+                        const portfolioItems = [];
+
+
+                        /* -----------------------------------------
+                           DATALARI OXU
+                        ------------------------------------------ */
+
+                        snapshot.forEach(
+                            function (doc) {
+
+                                const data =
+                                    doc.data();
+
+
+                                portfolioItems.push({
+
+                                    id:
+                                        doc.id,
+
+                                    title:
+                                        data.title ||
+                                        "",
+
+                                    author:
+                                        data.author ||
+                                        "",
+
+                                    imageUrl:
+                                        data.imageUrl ||
+                                        "",
+
+                                    createdAt:
+                                        data.createdAt ||
+                                        null
+
+                                });
+
+                            }
+                        );
+
+
+                        /* -----------------------------------------
+                           ƏN YENİ KİTAB YUXARIDA
+                        ------------------------------------------ */
+
+                        portfolioItems.sort(
+                            function (a, b) {
+
+                                let aTime = 0;
+
+                                let bTime = 0;
+
+
+                                if (
+                                    a.createdAt &&
+                                    typeof
+                                    a.createdAt.toMillis ===
+                                    "function"
+                                ) {
+
+                                    aTime =
+                                        a.createdAt.toMillis();
+
+                                }
+
+
+                                if (
+                                    b.createdAt &&
+                                    typeof
+                                    b.createdAt.toMillis ===
+                                    "function"
+                                ) {
+
+                                    bTime =
+                                        b.createdAt.toMillis();
+
+                                }
+
+
+                                return bTime - aTime;
+
+                            }
+                        );
+
+
+                        /* -----------------------------------------
+                           GALEREYANI TƏMİZLƏ
+                        ------------------------------------------ */
+
+                        gallery.innerHTML =
+                            "";
+
+
+                        /* -----------------------------------------
+                           KİTABLARI GÖSTƏR
+                        ------------------------------------------ */
+
+                        portfolioItems.forEach(
+                            function (item) {
+
+                                gallery.appendChild(
+                                    createPortfolioCard(item)
+                                );
+
+                            }
+                        );
+
+                    },
+
+
+                    function (error) {
+
+                        console.error(
+                            "Firestore portfolio xətası:",
+                            error
+                        );
+
+
+                        /* -----------------------------------------
+                           FIRESTORE XƏTASI OLARSA
+                           FALLBACK GÖSTƏR
+                        ------------------------------------------ */
 
                         renderFallbackPortfolio();
 
-                        return;
                     }
 
-
-                    const portfolioItems = [];
-
-
-                    snapshot.forEach(
-                        function (doc) {
-
-                            const data =
-                                doc.data();
-
-
-                            portfolioItems.push({
-
-                                id: doc.id,
-
-                                title:
-                                    data.title || "",
-
-                                author:
-                                    data.author || "",
-
-                                imageUrl:
-                                    data.imageUrl || "",
-
-                                createdAt:
-                                    data.createdAt || null
-
-                            });
-
-                        }
-                    );
-
-
-                    /*
-                     * Ən yeni əlavə olunan kitab
-                     * yuxarıda görünsün.
-                     *
-                     * Admin panelində createdAt
-                     * serverTimestamp ilə yazılır.
-                     */
-
-                    portfolioItems.sort(
-                        function (a, b) {
-
-                            let aTime = 0;
-                            let bTime = 0;
-
-
-                            if (
-                                a.createdAt &&
-                                typeof a.createdAt.toMillis === "function"
-                            ) {
-
-                                aTime =
-                                    a.createdAt.toMillis();
-
-                            }
-
-
-                            if (
-                                b.createdAt &&
-                                typeof b.createdAt.toMillis === "function"
-                            ) {
-
-                                bTime =
-                                    b.createdAt.toMillis();
-
-                            }
-
-
-                            return bTime - aTime;
-
-                        }
-                    );
-
-
-                    /*
-                     * Ekranı təmizlə
-                     */
-
-                    gallery.innerHTML = "";
-
-
-                    /*
-                     * Firestore məlumatlarını göstər
-                     */
-
-                    portfolioItems.forEach(
-                        function (item) {
-
-                            gallery.appendChild(
-                                createPortfolioCard(item)
-                            );
-
-                        }
-                    );
-
-                },
-
-
-                function (error) {
-
-                    console.error(
-                        "Firestore portfolio xətası:",
-                        error
-                    );
-
-
-                    /*
-                     * Firestore oxunmasa belə
-                     * səhifə boş qalmasın.
-                     */
-
-                    renderFallbackPortfolio();
-
-                }
-
-            );
-
-    }
-
-
-    /* =====================================================
-       SƏHİFƏ AÇILANDA FIRESTORE-U DİNLƏ
-    ====================================================== */
-
-    document.addEventListener(
-        "DOMContentLoaded",
-        function () {
-
-            startPortfolioListener();
+                );
 
         }
-    );
 
-</script>
-```
+
+        /* =====================================================
+           SƏHİFƏ AÇILANDA BAŞLA
+        ====================================================== */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                startPortfolioListener();
+
+            }
+        );
+
+    </script>
+
 
 </body>
 
