@@ -94,8 +94,15 @@
 
             -webkit-font-smoothing:
                 antialiased;
+
+            -webkit-tap-highlight-color:
+                transparent;
         }
 
+
+        /* =====================================================
+           BODY
+        ====================================================== */
 
         body {
 
@@ -110,17 +117,19 @@
 
             background-image:
                 radial-gradient(
-                    rgba(
-                        15,
-                        26,
-                        92,
-                        0.02
-                    ) 1.5px,
+                    rgba(15, 26, 92, 0.02)
+                    1.5px,
                     transparent 1.5px
                 );
 
             background-size:
                 32px 32px;
+        }
+
+
+        body.modal-open {
+
+            overflow: hidden;
         }
 
 
@@ -151,7 +160,7 @@
                 flex;
 
             justify-content:
-                flex-start;
+                space-between;
 
             align-items:
                 center;
@@ -232,8 +241,7 @@
                 round;
 
             transition:
-                transform 0.3s
-                ease;
+                transform 0.3s ease;
         }
 
 
@@ -250,12 +258,7 @@
 
             box-shadow:
                 0 12px 30px
-                rgba(
-                    15,
-                    26,
-                    92,
-                    0.15
-                );
+                rgba(15, 26, 92, 0.15);
 
             border-color:
                 transparent;
@@ -334,7 +337,7 @@
                 grid;
 
             grid-template-columns:
-                repeat(2, minmax(0, 1fr));
+                repeat(2, 1fr);
 
             gap:
                 48px;
@@ -374,13 +377,8 @@
 
             position:
                 relative;
-
-            min-width:
-                0;
         }
 
-
-        /* Desktopda cüt kartlar bir qədər aşağı */
 
         @media (min-width: 769px) {
 
@@ -402,28 +400,13 @@
         .book-card:hover {
 
             transform:
-                translateY(-10px);
+                translateY(-10px) !important;
 
             box-shadow:
                 var(--shadow-lg);
 
             border-color:
-                rgba(
-                    15,
-                    26,
-                    92,
-                    0.08
-                );
-        }
-
-
-        @media (min-width: 769px) {
-
-            .book-card:nth-child(even):hover {
-
-                transform:
-                    translateY(25px);
-            }
+                rgba(15, 26, 92, 0.08);
         }
 
 
@@ -485,8 +468,7 @@
 
         .book-img-box::after {
 
-            content:
-                '';
+            content: '';
 
             position:
                 absolute;
@@ -507,16 +489,107 @@
                 linear-gradient(
                     to bottom,
                     transparent 60%,
-                    rgba(
-                        15,
-                        26,
-                        92,
-                        0.02
-                    )
+                    rgba(15, 26, 92, 0.02)
                 );
 
             pointer-events:
                 none;
+        }
+
+
+        /* =====================================================
+           MOBİL GÖZ İKONU
+           YALNIZCA MOBİLDƏ GÖRÜNÜR
+        ====================================================== */
+
+        .mobile-view-btn {
+
+            display:
+                none;
+
+            position:
+                absolute;
+
+            top:
+                10px;
+
+            right:
+                10px;
+
+            width:
+                38px;
+
+            height:
+                38px;
+
+            border:
+                none;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(255, 255, 255, 0.94);
+
+            color:
+                var(--primary-blue);
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            cursor:
+                pointer;
+
+            z-index:
+                10;
+
+            box-shadow:
+                0 4px 14px
+                rgba(15, 26, 92, 0.18);
+
+            backdrop-filter:
+                blur(8px);
+
+            -webkit-backdrop-filter:
+                blur(8px);
+
+            transition:
+                all 0.25s ease;
+        }
+
+
+        .mobile-view-btn svg {
+
+            width:
+                19px;
+
+            height:
+                19px;
+
+            fill:
+                none;
+
+            stroke:
+                currentColor;
+
+            stroke-width:
+                2;
+
+            stroke-linecap:
+                round;
+
+            stroke-linejoin:
+                round;
+        }
+
+
+        .mobile-view-btn:active {
+
+            transform:
+                scale(0.9);
         }
 
 
@@ -549,12 +622,7 @@
 
             border-top:
                 1px solid
-                rgba(
-                    15,
-                    26,
-                    92,
-                    0.02
-                );
+                rgba(15, 26, 92, 0.02);
         }
 
 
@@ -592,12 +660,7 @@
                 var(--accent-gold);
 
             background-color:
-                rgba(
-                    217,
-                    119,
-                    6,
-                    0.06
-                );
+                rgba(217, 119, 6, 0.06);
 
             padding:
                 6px 14px;
@@ -613,12 +676,6 @@
 
             width:
                 fit-content;
-
-            max-width:
-                100%;
-
-            line-height:
-                1.3;
         }
 
 
@@ -632,9 +689,6 @@
 
             fill:
                 currentColor;
-
-            flex-shrink:
-                0;
         }
 
 
@@ -660,10 +714,6 @@
                 600;
         }
 
-
-        /* =====================================================
-           ERROR
-        ====================================================== */
 
         .portfolio-error {
 
@@ -713,12 +763,7 @@
 
             border:
                 1px dashed
-                rgba(
-                    15,
-                    26,
-                    92,
-                    0.12
-                );
+                rgba(15, 26, 92, 0.12);
         }
 
 
@@ -749,12 +794,7 @@
 
             box-shadow:
                 0 30px 70px
-                rgba(
-                    15,
-                    26,
-                    92,
-                    0.25
-                );
+                rgba(15, 26, 92, 0.25);
 
             position:
                 relative;
@@ -788,12 +828,7 @@
                 50%;
 
             background:
-                rgba(
-                    217,
-                    119,
-                    6,
-                    0.15
-                );
+                rgba(217, 119, 6, 0.15);
 
             filter:
                 blur(80px);
@@ -831,12 +866,7 @@
                 1.15rem;
 
             color:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.75
-                );
+                rgba(255, 255, 255, 0.75);
 
             margin-bottom:
                 35px;
@@ -862,8 +892,200 @@
 
 
         /* =====================================================
-           MOBİL
-           2 SÜTUN
+           IMAGE MODAL
+        ====================================================== */
+
+        .image-modal {
+
+            position:
+                fixed;
+
+            inset:
+                0;
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            background:
+                rgba(8, 13, 40, 0.94);
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                55px 20px 25px;
+
+            z-index:
+                99999;
+
+            opacity:
+                0;
+
+            visibility:
+                hidden;
+
+            pointer-events:
+                none;
+
+            transition:
+                opacity 0.3s ease,
+                visibility 0.3s ease;
+
+            backdrop-filter:
+                blur(10px);
+
+            -webkit-backdrop-filter:
+                blur(10px);
+        }
+
+
+        .image-modal.active {
+
+            opacity:
+                1;
+
+            visibility:
+                visible;
+
+            pointer-events:
+                auto;
+        }
+
+
+        .modal-image {
+
+            max-width:
+                min(95vw, 1000px);
+
+            max-height:
+                88vh;
+
+            width:
+                auto;
+
+            height:
+                auto;
+
+            object-fit:
+                contain;
+
+            border-radius:
+                14px;
+
+            box-shadow:
+                0 30px 80px
+                rgba(0, 0, 0, 0.4);
+
+            transform:
+                scale(0.92);
+
+            transition:
+                transform 0.35s
+                cubic-bezier(
+                    0.16,
+                    1,
+                    0.3,
+                    1
+                );
+        }
+
+
+        .image-modal.active
+        .modal-image {
+
+            transform:
+                scale(1);
+        }
+
+
+        /* =====================================================
+           MODAL X DÜYMƏSİ
+        ====================================================== */
+
+        .modal-close {
+
+            position:
+                absolute;
+
+            top:
+                18px;
+
+            right:
+                18px;
+
+            width:
+                44px;
+
+            height:
+                44px;
+
+            border:
+                none;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(255, 255, 255, 0.95);
+
+            color:
+                var(--primary-blue);
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            cursor:
+                pointer;
+
+            z-index:
+                100000;
+
+            font-size:
+                30px;
+
+            line-height:
+                1;
+
+            font-weight:
+                400;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0, 0, 0, 0.25);
+
+            transition:
+                all 0.25s ease;
+        }
+
+
+        .modal-close:hover {
+
+            transform:
+                rotate(90deg)
+                scale(1.05);
+
+            background:
+                var(--white);
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
         ====================================================== */
 
         @media (max-width: 768px) {
@@ -950,7 +1172,7 @@
 
 
             /* =================================================
-               MOBİL 2 SÜTUN
+               MOBİLDƏ 2 SÜTUN
             ================================================== */
 
             .gallery-grid {
@@ -959,14 +1181,16 @@
                     repeat(2, minmax(0, 1fr));
 
                 gap:
-                    16px;
+                    14px;
 
                 padding-bottom:
                     0;
             }
 
 
-            /* Mobil kart */
+            /* =================================================
+               MOBİL KART
+            ================================================== */
 
             .book-card {
 
@@ -984,16 +1208,40 @@
             .book-card:hover {
 
                 transform:
-                    translateY(-4px) !important;
+                    none !important;
+
+                box-shadow:
+                    var(--shadow-md);
             }
 
 
-            /* Şəkil */
+            /* =================================================
+               GÖZ İKONU MOBİLDƏ AKTİV
+            ================================================== */
+
+            .mobile-view-btn {
+
+                display:
+                    flex;
+            }
+
+
+            /* MOBİLDƏ ŞƏKİL */
 
             .book-img-box {
 
                 aspect-ratio:
-                    16 / 12;
+                    1 / 1;
+
+                border-radius:
+                    0;
+            }
+
+
+            .book-img-box img {
+
+                transition:
+                    none;
             }
 
 
@@ -1005,22 +1253,22 @@
             }
 
 
-            /* Məlumat */
+            /* INFO */
 
             .book-info {
 
                 padding:
-                    13px 11px;
+                    15px 12px;
 
                 gap:
-                    11px;
+                    12px;
             }
 
 
             .book-info h3 {
 
                 font-size:
-                    0.82rem;
+                    0.88rem;
 
                 line-height:
                     1.35;
@@ -1032,17 +1280,17 @@
 
             .book-author-badge {
 
-                font-size:
-                    0.58rem;
-
                 padding:
-                    5px 7px;
+                    5px 8px;
 
                 gap:
-                    4px;
+                    5px;
+
+                font-size:
+                    0.62rem;
 
                 line-height:
-                    1.2;
+                    1.25;
 
                 border-radius:
                     30px;
@@ -1052,29 +1300,17 @@
             .book-author-badge svg {
 
                 width:
-                    10px;
+                    11px;
 
                 height:
-                    10px;
+                    11px;
+
+                flex-shrink:
+                    0;
             }
 
 
-            /* Loading */
-
-            .portfolio-loading {
-
-                grid-column:
-                    1 / -1;
-
-                padding:
-                    50px 10px;
-
-                font-size:
-                    0.85rem;
-            }
-
-
-            /* Footer */
+            /* FOOTER */
 
             .gallery-footer {
 
@@ -1095,7 +1331,7 @@
                     1.5rem;
 
                 line-height:
-                    1.3;
+                    1.35;
             }
 
 
@@ -1106,16 +1342,53 @@
 
                 line-height:
                     1.6;
-
-                margin-bottom:
-                    0;
             }
 
+
+            /* MODAL */
+
+            .image-modal {
+
+                padding:
+                    60px 12px 20px;
+            }
+
+
+            .modal-image {
+
+                max-width:
+                    94vw;
+
+                max-height:
+                    82vh;
+
+                border-radius:
+                    10px;
+            }
+
+
+            .modal-close {
+
+                top:
+                    12px;
+
+                right:
+                    12px;
+
+                width:
+                    42px;
+
+                height:
+                    42px;
+
+                font-size:
+                    28px;
+            }
         }
 
 
         /* =====================================================
-           ÇOX KİÇİK TELEFONLAR
+           ÇOX KİÇİK EKRANLAR
         ====================================================== */
 
         @media (max-width: 380px) {
@@ -1123,74 +1396,65 @@
             .container {
 
                 padding:
-                    0 10px;
+                    0 9px;
             }
 
 
             .gallery-grid {
 
                 gap:
-                    12px;
+                    10px;
             }
 
 
             .book-info {
 
                 padding:
-                    11px 9px;
+                    12px 9px;
             }
 
 
             .book-info h3 {
 
                 font-size:
-                    0.76rem;
+                    0.78rem;
             }
 
 
             .book-author-badge {
 
                 font-size:
-                    0.53rem;
+                    0.55rem;
 
                 padding:
                     4px 6px;
             }
 
 
-            .book-author-badge svg {
+            .mobile-view-btn {
 
                 width:
-                    9px;
+                    34px;
 
                 height:
-                    9px;
+                    34px;
+
+                top:
+                    7px;
+
+                right:
+                    7px;
             }
 
 
-            header h1 {
+            .mobile-view-btn svg {
 
-                font-size:
-                    1.75rem;
+                width:
+                    17px;
+
+                height:
+                    17px;
             }
-
-
-            header p {
-
-                font-size:
-                    0.85rem;
-            }
-
-
-            .back-btn {
-
-                font-size:
-                    0.68rem;
-
-                padding:
-                    10px 13px;
-            }
-
         }
 
     </style>
@@ -1201,507 +1465,791 @@
 <body>
 
 
-    <div class="container">
+<div class="container">
 
 
-        <!-- =================================================
-             NAVİQASİYA
-        ================================================== -->
+    <!-- =====================================================
+         NAVİQASİYA
+    ====================================================== -->
 
-        <div class="nav-bar">
+    <div class="nav-bar">
 
-            <a
-                href="index.html"
-                class="back-btn"
-            >
-
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                >
-
-                    <line
-                        x1="19"
-                        y1="12"
-                        x2="5"
-                        y2="12"
-                    ></line>
-
-                    <polyline
-                        points="12 19 5 12 12 5"
-                    ></polyline>
-
-                </svg>
-
-                Əsas Səhifəyə Qayıt
-
-            </a>
-
-        </div>
-
-
-        <!-- =================================================
-             BAŞLIQ
-        ================================================== -->
-
-        <header>
-
-            <h1>
-                Hazırladığımız Sehrli Kitablar
-            </h1>
-
-            <p>
-                Hər biri real uşaq hekayələri və xüsusi
-                illüstrasiyalar əsasında hazırlanmış lüks
-                cildli xatirə kitablarımızdan eksklüziv nümunələr.
-            </p>
-
-        </header>
-
-
-        <!-- =================================================
-             FIRESTORE PORTFOLIO
-        ================================================== -->
-
-        <div
-            class="gallery-grid"
-            id="portfolioGallery"
+        <a
+            href="index.html"
+            class="back-btn"
         >
 
-            <div class="portfolio-loading">
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+            >
 
-                Portfolio yüklənir...
+                <line
+                    x1="19"
+                    y1="12"
+                    x2="5"
+                    y2="12"
+                ></line>
 
-            </div>
+                <polyline
+                    points="12 19 5 12 12 5"
+                ></polyline>
 
-        </div>
+            </svg>
 
+            Əsas Səhifəyə Qayıt
 
-        <!-- =================================================
-             CTA
-        ================================================== -->
-
-        <div class="gallery-footer">
-
-            <h2>
-                Övladınız Üçün Belə Bir Kitab İstəyirsiniz?
-            </h2>
-
-            <p>
-                Hekayəni birlikdə yazaq, xüsusi illüstrasiyalarla
-                onu unudulmaz bir xatirə kitabına çevirək!
-            </p>
-
-        </div>
-
+        </a>
 
     </div>
 
 
     <!-- =====================================================
-         FIREBASE
+         BAŞLIQ
     ====================================================== -->
 
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <header>
 
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+        <h1>
+            Hazırladığımız Sehrli Kitablar
+        </h1>
 
+        <p>
+            Hər biri real uşaq hekayələri və xüsusi
+            illüstrasiyalar əsasında hazırlanmış lüks
+            cildli xatirə kitablarımızdan eksklüziv nümunələr.
+        </p>
 
-    <script>
-
-
-        /* =====================================================
-           FIREBASE CONFIG
-        ====================================================== */
-
-        const firebaseConfig = {
-
-            apiKey:
-                "AIzaSyDWqLPM2X89vyqOYocw4KEBh65WKMutZOI",
-
-            authDomain:
-                "gunelsstory-6d3a9.firebaseapp.com",
-
-            projectId:
-                "gunelsstory-6d3a9",
-
-            storageBucket:
-                "gunelsstory-6d3a9.firebasestorage.app",
-
-            messagingSenderId:
-                "903174908342",
-
-            appId:
-                "1:903174908342:web:f73871214550442e553917",
-
-            measurementId:
-                "G-5Q48RSFFH9"
-        };
+    </header>
 
 
-        /* =====================================================
-           FIREBASE-I BAŞLAT
-        ====================================================== */
+    <!-- =====================================================
+         FIRESTORE PORTFOLIO
+    ====================================================== -->
 
-        firebase.initializeApp(
-            firebaseConfig
-        );
+    <div
+        class="gallery-grid"
+        id="portfolioGallery"
+    >
 
+        <div class="portfolio-loading">
+            Portfolio yüklənir...
+        </div>
 
-        /* =====================================================
-           FIRESTORE
-        ====================================================== */
-
-        const db =
-            firebase.firestore();
-
-
-        /* =====================================================
-           FALLBACK PORTFOLIO
-        ====================================================== */
-
-        const fallbackPortfolio = [
-
-            {
-                title:
-                    "Anlamaq və Sevmək: Ürəyimdə yaşayan ailə",
-
-                author:
-                    "Psixoloq Günel Mahmudqızı",
-
-                imageUrl:
-                    "image/cild.png"
-            },
+    </div>
 
 
-            {
-                title:
-                    "Özünəinam Hekayəsi: Çiçəkdən şahzadəyə",
+    <!-- =====================================================
+         CTA
+    ====================================================== -->
 
-                author:
-                    "Psixoloq Günel Mahmudqızı",
+    <div class="gallery-footer">
 
-                imageUrl:
-                    "image/İsimsiz-1.png"
-            },
+        <h2>
+            Övladınız Üçün Belə Bir Kitab İstəyirsiniz?
+        </h2>
 
+        <p>
+            Hekayəni birlikdə yazaq, xüsusi illüstrasiyalarla
+            onu unudulmaz bir xatirə kitabına çevirək!
+        </p>
 
-            {
-                title:
-                    "Sara və dovşan Miminin göyqurşağına səyahəti",
+    </div>
 
-                author:
-                    "Psixoloq Günel Mahmudqızı",
-
-                imageUrl:
-                    "image/sara.jpg"
-            }
-
-        ];
+</div>
 
 
-        /* =====================================================
-           HTML ESCAPE
-        ====================================================== */
+<!-- =====================================================
+     ŞƏKİL MODALI
+====================================================== -->
 
-        function escapeHtml(value) {
+<div
+    class="image-modal"
+    id="imageModal"
+    aria-hidden="true"
+>
 
-            return String(value || "")
+    <button
+        type="button"
+        class="modal-close"
+        id="modalClose"
+        aria-label="Bağla"
+    >
+        ×
+    </button>
 
-                .replace(/&/g, "&amp;")
 
-                .replace(/</g, "&lt;")
+    <img
+        src=""
+        alt=""
+        class="modal-image"
+        id="modalImage"
+    >
 
-                .replace(/>/g, "&gt;")
+</div>
 
-                .replace(/"/g, "&quot;")
 
-                .replace(/'/g, "&#039;");
+<!-- =====================================================
+     FIREBASE
+====================================================== -->
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+
+<script>
+
+    /* =====================================================
+       FIREBASE CONFIG
+    ====================================================== */
+
+    const firebaseConfig = {
+
+        apiKey:
+            "AIzaSyDWqLPM2X89vyqOYocw4KEBh65WKMutZOI",
+
+        authDomain:
+            "gunelsstory-6d3a9.firebaseapp.com",
+
+        projectId:
+            "gunelsstory-6d3a9",
+
+        storageBucket:
+            "gunelsstory-6d3a9.firebasestorage.app",
+
+        messagingSenderId:
+            "903174908342",
+
+        appId:
+            "1:903174908342:web:f73871214550442e553917",
+
+        measurementId:
+            "G-5Q48RSFFH9"
+    };
+
+
+    /* =====================================================
+       FIREBASE-I BAŞLAT
+    ====================================================== */
+
+    firebase.initializeApp(
+        firebaseConfig
+    );
+
+
+    /* =====================================================
+       FIRESTORE
+    ====================================================== */
+
+    const db =
+        firebase.firestore();
+
+
+    /* =====================================================
+       FALLBACK PORTFOLIO
+    ====================================================== */
+
+    const fallbackPortfolio = [
+
+        {
+
+            title:
+                "Anlamaq və Sevmək: Ürəyimdə yaşayan ailə",
+
+            author:
+                "Psixoloq Günel Mahmudqızı",
+
+            imageUrl:
+                "image/cild.png"
+        },
+
+
+        {
+
+            title:
+                "Özünəinam Hekayəsi: Çiçəkdən şahzadəyə",
+
+            author:
+                "Psixoloq Günel Mahmudqızı",
+
+            imageUrl:
+                "image/İsimsiz-1.png"
+        },
+
+
+        {
+
+            title:
+                "Sara və dovşan Miminin göyqurşağına səyahəti",
+
+            author:
+                "Psixoloq Günel Mahmudqızı",
+
+            imageUrl:
+                "image/sara.jpg"
         }
 
-
-        /* =====================================================
-           PORTFOLIO KARTI
-        ====================================================== */
-
-        function createPortfolioCard(data) {
-
-            const card =
-                document.createElement(
-                    "div"
-                );
+    ];
 
 
-            card.className =
-                "book-card";
+    /* =====================================================
+       HTML ESCAPE
+    ====================================================== */
+
+    function escapeHtml(value) {
+
+        return String(value || "")
+
+            .replace(/&/g, "&amp;")
+
+            .replace(/</g, "&lt;")
+
+            .replace(/>/g, "&gt;")
+
+            .replace(/"/g, "&quot;")
+
+            .replace(/'/g, "&#039;");
+    }
 
 
-            const title =
-                data.title ||
-                "Adsız portfolio";
+    /* =====================================================
+       PORTFOLIO KARTI
+    ====================================================== */
+
+    function createPortfolioCard(data) {
+
+        const card =
+            document.createElement("div");
 
 
-            const author =
-                data.author ||
-                "Müəllif qeyd edilməyib";
+        card.className =
+            "book-card";
 
 
-            const imageUrl =
-                data.imageUrl ||
-                "";
+        const title =
+            data.title ||
+            "Adsız portfolio";
 
 
-            card.innerHTML = `
+        const author =
+            data.author ||
+            "Müəllif qeyd edilməyib";
 
-                <div class="book-img-box">
 
-                    <img
-                        src="${escapeHtml(imageUrl)}"
-                        alt="${escapeHtml(title)}"
-                        loading="lazy"
+        const imageUrl =
+            data.imageUrl ||
+            "";
+
+
+        card.innerHTML = `
+
+            <div class="book-img-box">
+
+                <img
+                    src="${escapeHtml(imageUrl)}"
+                    alt="${escapeHtml(title)}"
+                    loading="lazy"
+                >
+
+
+                <!-- MOBİL GÖZ İKONU -->
+
+                <button
+                    type="button"
+                    class="mobile-view-btn"
+                    aria-label="Kitaba bax"
+                    data-image="${escapeHtml(imageUrl)}"
+                    data-title="${escapeHtml(title)}"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
                     >
 
+                        <path
+                            d="
+                                M2 12
+                                C4.5 7
+                                8 5
+                                12 5
+                                C16 5
+                                19.5 7
+                                22 12
+                                C19.5 17
+                                16 19
+                                12 19
+                                C8 19
+                                4.5 17
+                                2 12
+                                Z
+                            "
+                        />
+
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="3"
+                        />
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+
+            <div class="book-info">
+
+                <h3>
+                    ${escapeHtml(title)}
+                </h3>
+
+
+                <div class="book-author-badge">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+
+                        <path
+                            d="
+                                M12 17.27
+                                L18.18 21
+                                L16.54 13.97
+                                L22 9.24
+                                L14.81 8.63
+                                L12 2
+                                L9.19 8.63
+                                L2 9.24
+                                L7.46 13.97
+                                L5.82 21
+                                Z
+                            "
+                        />
+
+                    </svg>
+
+                    ${escapeHtml(author)}
+
                 </div>
 
+            </div>
 
-                <div class="book-info">
-
-                    <h3>
-                        ${escapeHtml(title)}
-                    </h3>
+        `;
 
 
-                    <div class="book-author-badge">
-
-                        <svg
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-
-                            <path
-                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                            />
-
-                        </svg>
-
-                        ${escapeHtml(author)}
-
-                    </div>
-
-                </div>
-
-            `;
+        return card;
+    }
 
 
-            return card;
-        }
+    /* =====================================================
+       FALLBACK GÖSTƏR
+    ====================================================== */
 
+    function renderFallbackPortfolio() {
 
-        /* =====================================================
-           FALLBACK GÖSTƏR
-        ====================================================== */
-
-        function renderFallbackPortfolio() {
-
-            const gallery =
-                document.getElementById(
-                    "portfolioGallery"
-                );
-
-
-            gallery.innerHTML =
-                "";
-
-
-            fallbackPortfolio.forEach(
-                function (item) {
-
-                    gallery.appendChild(
-                        createPortfolioCard(item)
-                    );
-
-                }
+        const gallery =
+            document.getElementById(
+                "portfolioGallery"
             );
-        }
 
 
-        /* =====================================================
-           FIRESTORE PORTFOLIO YÜKLƏ
-        ====================================================== */
+        gallery.innerHTML =
+            "";
 
-        function startPortfolioListener() {
 
-            const gallery =
-                document.getElementById(
-                    "portfolioGallery"
+        fallbackPortfolio.forEach(
+            function (item) {
+
+                gallery.appendChild(
+                    createPortfolioCard(item)
                 );
 
-
-            db.collection("portfolio")
-                .onSnapshot(
-
-                    function (snapshot) {
+            }
+        );
+    }
 
 
-                        /* -----------------------------------------
-                           FIRESTORE BOŞDURSA
-                        ------------------------------------------ */
+    /* =====================================================
+       FIRESTORE PORTFOLIO YÜKLƏ
+    ====================================================== */
 
-                        if (snapshot.empty) {
+    function startPortfolioListener() {
 
-                            renderFallbackPortfolio();
-
-                            return;
-                        }
-
-
-                        const portfolioItems = [];
+        const gallery =
+            document.getElementById(
+                "portfolioGallery"
+            );
 
 
-                        /* -----------------------------------------
-                           DATALARI OXU
-                        ------------------------------------------ */
+        db.collection("portfolio")
+            .onSnapshot(
 
-                        snapshot.forEach(
-                            function (doc) {
+                function (snapshot) {
 
-                                const data =
-                                    doc.data();
+                    /*
+                     * Firestore boşdursa fallback
+                     */
 
-
-                                portfolioItems.push({
-
-                                    id:
-                                        doc.id,
-
-                                    title:
-                                        data.title ||
-                                        "",
-
-                                    author:
-                                        data.author ||
-                                        "",
-
-                                    imageUrl:
-                                        data.imageUrl ||
-                                        "",
-
-                                    createdAt:
-                                        data.createdAt ||
-                                        null
-
-                                });
-
-                            }
-                        );
-
-
-                        /* -----------------------------------------
-                           ƏN YENİ KİTAB YUXARIDA
-                        ------------------------------------------ */
-
-                        portfolioItems.sort(
-                            function (a, b) {
-
-                                let aTime = 0;
-
-                                let bTime = 0;
-
-
-                                if (
-                                    a.createdAt &&
-                                    typeof
-                                    a.createdAt.toMillis ===
-                                    "function"
-                                ) {
-
-                                    aTime =
-                                        a.createdAt.toMillis();
-
-                                }
-
-
-                                if (
-                                    b.createdAt &&
-                                    typeof
-                                    b.createdAt.toMillis ===
-                                    "function"
-                                ) {
-
-                                    bTime =
-                                        b.createdAt.toMillis();
-
-                                }
-
-
-                                return bTime - aTime;
-
-                            }
-                        );
-
-
-                        /* -----------------------------------------
-                           GALEREYANI TƏMİZLƏ
-                        ------------------------------------------ */
-
-                        gallery.innerHTML =
-                            "";
-
-
-                        /* -----------------------------------------
-                           KİTABLARI GÖSTƏR
-                        ------------------------------------------ */
-
-                        portfolioItems.forEach(
-                            function (item) {
-
-                                gallery.appendChild(
-                                    createPortfolioCard(item)
-                                );
-
-                            }
-                        );
-
-                    },
-
-
-                    function (error) {
-
-                        console.error(
-                            "Firestore portfolio xətası:",
-                            error
-                        );
-
-
-                        /* -----------------------------------------
-                           FIRESTORE XƏTASI OLARSA
-                           FALLBACK GÖSTƏR
-                        ------------------------------------------ */
+                    if (snapshot.empty) {
 
                         renderFallbackPortfolio();
 
+                        return;
                     }
 
-                );
 
+                    const portfolioItems = [];
+
+
+                    snapshot.forEach(
+                        function (doc) {
+
+                            const data =
+                                doc.data();
+
+
+                            portfolioItems.push({
+
+                                id:
+                                    doc.id,
+
+                                title:
+                                    data.title || "",
+
+                                author:
+                                    data.author || "",
+
+                                imageUrl:
+                                    data.imageUrl || "",
+
+                                createdAt:
+                                    data.createdAt || null
+
+                            });
+
+                        }
+                    );
+
+
+                    /*
+                     * Ən yeni kitab yuxarıda
+                     */
+
+                    portfolioItems.sort(
+                        function (a, b) {
+
+                            let aTime =
+                                0;
+
+                            let bTime =
+                                0;
+
+
+                            if (
+                                a.createdAt &&
+                                typeof
+                                a.createdAt.toMillis
+                                === "function"
+                            ) {
+
+                                aTime =
+                                    a.createdAt.toMillis();
+                            }
+
+
+                            if (
+                                b.createdAt &&
+                                typeof
+                                b.createdAt.toMillis
+                                === "function"
+                            ) {
+
+                                bTime =
+                                    b.createdAt.toMillis();
+                            }
+
+
+                            return bTime - aTime;
+
+                        }
+                    );
+
+
+                    /*
+                     * Ekranı təmizlə
+                     */
+
+                    gallery.innerHTML =
+                        "";
+
+
+                    /*
+                     * Kitabları əlavə et
+                     */
+
+                    portfolioItems.forEach(
+                        function (item) {
+
+                            gallery.appendChild(
+                                createPortfolioCard(item)
+                            );
+
+                        }
+                    );
+
+                },
+
+
+                function (error) {
+
+                    console.error(
+                        "Firestore portfolio xətası:",
+                        error
+                    );
+
+
+                    renderFallbackPortfolio();
+
+                }
+
+            );
+
+    }
+
+
+    /* =====================================================
+       MOBİL ŞƏKİL MODALI
+    ====================================================== */
+
+    const imageModal =
+        document.getElementById(
+            "imageModal"
+        );
+
+
+    const modalImage =
+        document.getElementById(
+            "modalImage"
+        );
+
+
+    const modalClose =
+        document.getElementById(
+            "modalClose"
+        );
+
+
+    /* =====================================================
+       MODALI AÇ
+    ====================================================== */
+
+    function openImageModal(
+        imageUrl,
+        title
+    ) {
+
+        if (!imageUrl) {
+            return;
         }
 
 
-        /* =====================================================
-           SƏHİFƏ AÇILANDA BAŞLA
-        ====================================================== */
+        modalImage.src =
+            imageUrl;
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            function () {
 
-                startPortfolioListener();
+        modalImage.alt =
+            title || "Kitab";
 
-            }
+
+        imageModal.classList.add(
+            "active"
         );
 
-    </script>
+
+        imageModal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+
+        document.body.classList.add(
+            "modal-open"
+        );
+    }
+
+
+    /* =====================================================
+       MODALI BAĞLA
+    ====================================================== */
+
+    function closeImageModal() {
+
+        imageModal.classList.remove(
+            "active"
+        );
+
+
+        imageModal.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+
+        document.body.classList.remove(
+            "modal-open"
+        );
+
+
+        /*
+         * Animasiya bitəndən sonra şəkli təmizlə
+         */
+
+        setTimeout(
+            function () {
+
+                if (
+                    !imageModal.classList.contains(
+                        "active"
+                    )
+                ) {
+
+                    modalImage.src =
+                        "";
+
+                    modalImage.alt =
+                        "";
+                }
+
+            },
+            300
+        );
+    }
+
+
+    /* =====================================================
+       GÖZ İKONUNA KLİK
+    ====================================================== */
+
+    document.addEventListener(
+        "click",
+        function (event) {
+
+            const viewButton =
+                event.target.closest(
+                    ".mobile-view-btn"
+                );
+
+
+            if (!viewButton) {
+                return;
+            }
+
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+
+            const imageUrl =
+                viewButton.dataset.image;
+
+
+            const title =
+                viewButton.dataset.title;
+
+
+            openImageModal(
+                imageUrl,
+                title
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       X DÜYMƏSİ
+    ====================================================== */
+
+    modalClose.addEventListener(
+        "click",
+        function (event) {
+
+            event.stopPropagation();
+
+            closeImageModal();
+
+        }
+    );
+
+
+    /* =====================================================
+       MODALIN BOŞ SAHƏSİNƏ KLİK
+    ====================================================== */
+
+    imageModal.addEventListener(
+        "click",
+        function (event) {
+
+            /*
+             * Yalnız qaranlıq fonun özünə
+             * klik ediləndə bağla.
+             */
+
+            if (
+                event.target === imageModal
+            ) {
+
+                closeImageModal();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       ESC İLƏ BAĞLAMA
+    ====================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape" &&
+                imageModal.classList.contains(
+                    "active"
+                )
+            ) {
+
+                closeImageModal();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       DOM READY
+    ====================================================== */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            startPortfolioListener();
+
+        }
+    );
+
+</script>
 
 
 </body>
