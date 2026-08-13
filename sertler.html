@@ -1,1 +1,2083 @@
+```html
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Xidmət Şərtləri — Gunel's Story</title>
+
+    <link rel="icon"
+          type="image/png"
+          href="image/favicon.png">
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@600;700&display=swap"
+          rel="stylesheet">
+
+
+    <style>
+
+        /* =====================================================
+           ROOT
+        ====================================================== */
+
+        :root {
+
+            --bg-color: #fafbfc;
+
+            --primary-magic: #4f46e5;
+
+            --primary-soft: #f0f0ff;
+
+            --accent-rose: #ff7675;
+
+            --gold-gradient:
+                linear-gradient(
+                    135deg,
+                    #ff9f43 0%,
+                    #ff6b6b 100%
+                );
+
+            --card-bg: #ffffff;
+
+            --text-main: #1a1a24;
+
+            --text-sub: #64748b;
+
+            --white: #ffffff;
+
+            --border: #edf2f7;
+
+            --radius-xl: 24px;
+
+            --radius-md: 16px;
+
+            --shadow-soft:
+                0 8px 30px
+                rgba(0, 0, 0, 0.03);
+
+            --shadow-hover:
+                0 16px 40px
+                rgba(79, 70, 229, 0.08);
+        }
+
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            background:
+                var(--bg-color);
+
+            color:
+                var(--text-main);
+
+            font-family:
+                'Plus Jakarta Sans',
+                sans-serif;
+
+            min-height: 100vh;
+
+            padding-bottom: 60px;
+        }
+
+
+        h1,
+        h2,
+        h3,
+        .section-number {
+
+            font-family:
+                'Quicksand',
+                sans-serif;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ====================================================== */
+
+        nav {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.92
+                );
+
+            backdrop-filter:
+                blur(12px);
+
+            -webkit-backdrop-filter:
+                blur(12px);
+
+            border-bottom:
+                1px solid #e2e8f0;
+        }
+
+
+        .nav-container {
+
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            padding:
+                16px 24px;
+        }
+
+
+        /* =====================================================
+           LOGO
+        ====================================================== */
+
+        .nav-logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            font-size: 1.2rem;
+
+            font-weight: 700;
+
+            color:
+                var(--text-main);
+
+            text-decoration: none;
+
+            letter-spacing:
+                -0.4px;
+
+            white-space: nowrap;
+        }
+
+
+        .nav-logo img {
+
+            width: 38px;
+
+            height: 38px;
+
+            object-fit: contain;
+        }
+
+
+        /* =====================================================
+           DESKTOP MENU
+        ====================================================== */
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+
+        .nav-links a {
+
+            text-decoration: none;
+
+            font-size: 0.78rem;
+
+            font-weight: 700;
+
+            color:
+                var(--text-sub);
+
+            transition:
+                color 0.2s ease;
+
+            letter-spacing:
+                0.4px;
+
+            white-space: nowrap;
+        }
+
+
+        .nav-links a:hover {
+
+            color:
+                var(--primary-magic);
+        }
+
+
+        .nav-links .active {
+
+            color:
+                var(--primary-magic);
+        }
+
+
+        .nav-links .admin-link {
+
+            color:
+                var(--white);
+
+            background:
+                var(--primary-magic);
+
+            padding:
+                9px 16px;
+
+            border-radius:
+                50px;
+
+            box-shadow:
+                0 4px 14px
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.2
+                );
+        }
+
+
+        /* =====================================================
+           HAMBURGER
+        ====================================================== */
+
+        .hamburger {
+
+            display: none;
+
+            width: 42px;
+
+            height: 42px;
+
+            border: none;
+
+            background:
+                transparent;
+
+            cursor: pointer;
+
+            padding: 8px;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 5px;
+
+            border-radius: 10px;
+        }
+
+
+        .hamburger span {
+
+            display: block;
+
+            width: 23px;
+
+            height: 2px;
+
+            background:
+                var(--text-main);
+
+            border-radius: 10px;
+
+            transition:
+                transform 0.3s ease,
+                opacity 0.3s ease;
+        }
+
+
+        .hamburger.active
+        span:nth-child(1) {
+
+            transform:
+                translateY(7px)
+                rotate(45deg);
+        }
+
+
+        .hamburger.active
+        span:nth-child(2) {
+
+            opacity: 0;
+        }
+
+
+        .hamburger.active
+        span:nth-child(3) {
+
+            transform:
+                translateY(-7px)
+                rotate(-45deg);
+        }
+
+
+        /* =====================================================
+           MOBILE MENU
+        ====================================================== */
+
+        .mobile-menu {
+
+            display: none;
+
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding:
+                0 16px 14px;
+        }
+
+
+        .mobile-menu a {
+
+            display: block;
+
+            text-decoration: none;
+
+            color:
+                var(--text-main);
+
+            font-size: 0.9rem;
+
+            font-weight: 700;
+
+            padding:
+                13px 16px;
+
+            margin-top: 6px;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                12px;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease;
+        }
+
+
+        .mobile-menu a:hover {
+
+            color:
+                var(--primary-magic);
+        }
+
+
+        .mobile-menu .active {
+
+            color:
+                var(--primary-magic);
+
+            background:
+                var(--primary-soft);
+
+            border-color:
+                #dddfff;
+        }
+
+
+        .mobile-menu .mobile-admin-link {
+
+            color:
+                var(--white);
+
+            background:
+                var(--primary-magic);
+
+            border-color:
+                var(--primary-magic);
+        }
+
+
+        .mobile-menu.show {
+
+            display: block;
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ====================================================== */
+
+        .container {
+
+            width:
+                min(
+                    calc(100% - 40px),
+                    900px
+                );
+
+            margin: 0 auto;
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .terms-hero {
+
+            text-align: center;
+
+            padding:
+                70px 20px 50px;
+        }
+
+
+        .terms-icon {
+
+            width: 72px;
+
+            height: 72px;
+
+            margin:
+                0 auto 22px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                var(--primary-soft);
+
+            border-radius:
+                22px;
+
+            font-size:
+                2rem;
+
+            box-shadow:
+                var(--shadow-soft);
+        }
+
+
+        .terms-hero h1 {
+
+            font-size:
+                clamp(
+                    2rem,
+                    5vw,
+                    3rem
+                );
+
+            font-weight: 700;
+
+            letter-spacing:
+                -1px;
+
+            margin-bottom:
+                14px;
+        }
+
+
+        .terms-hero p {
+
+            max-width:
+                680px;
+
+            margin: 0 auto;
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                1rem;
+
+            line-height:
+                1.8;
+        }
+
+
+        .updated-date {
+
+            display: inline-block;
+
+            margin-top:
+                20px;
+
+            padding:
+                8px 16px;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                50px;
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.78rem;
+
+            font-weight:
+                600;
+        }
+
+
+        /* =====================================================
+           TERMS CARDS
+        ====================================================== */
+
+        .terms-card {
+
+            background:
+                var(--card-bg);
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                var(--radius-xl);
+
+            padding:
+                34px 38px;
+
+            margin-bottom:
+                18px;
+
+            box-shadow:
+                var(--shadow-soft);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        .terms-card:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                var(--shadow-hover);
+        }
+
+
+        .terms-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 16px;
+
+            margin-bottom:
+                18px;
+        }
+
+
+        .section-number {
+
+            width: 42px;
+
+            height: 42px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                var(--primary-soft);
+
+            color:
+                var(--primary-magic);
+
+            border-radius:
+                13px;
+
+            font-size:
+                0.95rem;
+
+            font-weight:
+                700;
+        }
+
+
+        .terms-card h2 {
+
+            font-size:
+                1.35rem;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                -0.3px;
+        }
+
+
+        .terms-card p {
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.95rem;
+
+            line-height:
+                1.8;
+
+            margin-bottom:
+                12px;
+        }
+
+
+        .terms-card p:last-child {
+
+            margin-bottom: 0;
+        }
+
+
+        .terms-card ul {
+
+            margin:
+                10px 0 4px 20px;
+        }
+
+
+        .terms-card li {
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.95rem;
+
+            line-height:
+                1.8;
+
+            padding-left:
+                5px;
+
+            margin-bottom:
+                5px;
+        }
+
+
+        .terms-card li::marker {
+
+            color:
+                var(--primary-magic);
+        }
+
+
+        /* =====================================================
+           IMPORTANT BOX
+        ====================================================== */
+
+        .important-box {
+
+            margin-top:
+                18px;
+
+            padding:
+                18px 20px;
+
+            background:
+                #faf7f0;
+
+            border:
+                1px solid #f3eadb;
+
+            border-radius:
+                14px;
+        }
+
+
+        .important-box strong {
+
+            display: block;
+
+            color:
+                var(--text-main);
+
+            margin-bottom:
+                5px;
+
+            font-size:
+                0.9rem;
+        }
+
+
+        .important-box p {
+
+            margin: 0;
+
+            font-size:
+                0.88rem;
+        }
+
+
+        /* =====================================================
+           PACKAGE BOX
+        ====================================================== */
+
+        .package-box {
+
+            margin-top:
+                18px;
+
+            padding:
+                20px;
+
+            background:
+                var(--primary-soft);
+
+            border:
+                1px solid #e1e1ff;
+
+            border-radius:
+                16px;
+        }
+
+
+        .package-box strong {
+
+            display: block;
+
+            color:
+                var(--primary-magic);
+
+            margin-bottom:
+                10px;
+
+            font-size:
+                0.92rem;
+        }
+
+
+        .package-box ul {
+
+            margin:
+                0 0 0 18px;
+        }
+
+
+        .package-box li {
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.88rem;
+
+            line-height:
+                1.7;
+
+            margin-bottom:
+                3px;
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ====================================================== */
+
+        .contact-card {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f0f0ff,
+                    #ffffff
+                );
+
+            border:
+                1px solid #e3e3ff;
+
+            border-radius:
+                var(--radius-xl);
+
+            padding:
+                35px 38px;
+
+            margin-top:
+                28px;
+
+            text-align:
+                center;
+        }
+
+
+        .contact-card h2 {
+
+            font-size:
+                1.4rem;
+
+            margin-bottom:
+                10px;
+        }
+
+
+        .contact-card p {
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.9rem;
+
+            line-height:
+                1.7;
+
+            margin-bottom:
+                16px;
+        }
+
+
+        .contact-info {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content:
+                center;
+
+            gap: 10px;
+        }
+
+
+        .contact-item {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding:
+                10px 15px;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                50px;
+
+            color:
+                var(--text-main);
+
+            font-size:
+                0.82rem;
+
+            font-weight:
+                600;
+        }
+
+
+        /* =====================================================
+           BACK BUTTON
+        ====================================================== */
+
+        .back-area {
+
+            text-align:
+                center;
+
+            margin-top:
+                35px;
+        }
+
+
+        .back-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content:
+                center;
+
+            gap: 8px;
+
+            padding:
+                13px 22px;
+
+            background:
+                var(--primary-magic);
+
+            color:
+                #ffffff;
+
+            text-decoration: none;
+
+            border-radius:
+                50px;
+
+            font-size:
+                0.85rem;
+
+            font-weight:
+                700;
+
+            box-shadow:
+                0 7px 20px
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.18
+                );
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .back-button:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.24
+                );
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        footer {
+
+            max-width:
+                900px;
+
+            margin:
+                55px auto 0;
+
+            padding:
+                25px 20px;
+
+            text-align:
+                center;
+
+            border-top:
+                1px solid #e2e8f0;
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.78rem;
+
+            line-height:
+                1.7;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ====================================================== */
+
+        @media (max-width: 768px) {
+
+            .nav-container {
+
+                padding:
+                    12px 16px;
+            }
+
+
+            .nav-logo {
+
+                font-size:
+                    1rem;
+            }
+
+
+            .nav-logo img {
+
+                width: 34px;
+
+                height: 34px;
+            }
+
+
+            .nav-links {
+
+                display: none;
+            }
+
+
+            .hamburger {
+
+                display: flex;
+            }
+
+
+            .container {
+
+                width:
+                    calc(100% - 28px);
+            }
+
+
+            .terms-hero {
+
+                padding:
+                    45px 8px 30px;
+            }
+
+
+            .terms-icon {
+
+                width: 62px;
+
+                height: 62px;
+
+                border-radius:
+                    18px;
+
+                font-size:
+                    1.7rem;
+            }
+
+
+            .terms-hero h1 {
+
+                font-size:
+                    2rem;
+            }
+
+
+            .terms-hero p {
+
+                font-size:
+                    0.9rem;
+
+                line-height:
+                    1.7;
+            }
+
+
+            .terms-card {
+
+                padding:
+                    24px 20px;
+
+                border-radius:
+                    20px;
+            }
+
+
+            .terms-header {
+
+                align-items:
+                    flex-start;
+            }
+
+
+            .section-number {
+
+                width: 38px;
+
+                height: 38px;
+
+                border-radius:
+                    11px;
+
+                font-size:
+                    0.85rem;
+            }
+
+
+            .terms-card h2 {
+
+                font-size:
+                    1.18rem;
+
+                line-height:
+                    1.35;
+            }
+
+
+            .terms-card p,
+            .terms-card li {
+
+                font-size:
+                    0.88rem;
+
+                line-height:
+                    1.75;
+            }
+
+
+            .contact-card {
+
+                padding:
+                    26px 20px;
+
+                border-radius:
+                    20px;
+            }
+
+
+            .contact-info {
+
+                flex-direction:
+                    column;
+            }
+
+
+            .contact-item {
+
+                justify-content:
+                    center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <nav>
+
+        <div class="nav-container">
+
+
+            <!-- LOGO -->
+
+            <a href="index.html"
+               class="nav-logo">
+
+                <img src="image/logo.png"
+                     alt="Gunel's Story">
+
+                <span>
+                    Gunel's story
+                </span>
+
+            </a>
+
+
+            <!-- DESKTOP MENU -->
+
+            <div class="nav-links">
+
+                <a href="haqqimizda.html">
+                    HAQQIMIZDA
+                </a>
+
+                <a href="portfolio.html">
+                    PORTFOLİO
+                </a>
+
+                <a href="mexfilik.html">
+                    MƏXFİLİK
+                </a>
+
+                <a href="xidmet-sertleri.html"
+                   class="active">
+                    XİDMƏT ŞƏRTLƏRİ
+                </a>
+
+                <a href="admin.html"
+                   class="admin-link">
+                    ⚙️ ADMİN
+                </a>
+
+            </div>
+
+
+            <!-- HAMBURGER -->
+
+            <button
+                class="hamburger"
+                id="hamburger"
+                aria-label="Menyu"
+                aria-expanded="false"
+                type="button">
+
+                <span></span>
+
+                <span></span>
+
+                <span></span>
+
+            </button>
+
+        </div>
+
+
+        <!-- MOBILE MENU -->
+
+        <div class="mobile-menu"
+             id="mobileMenu">
+
+            <a href="haqqimizda.html">
+                HAQQIMIZDA
+            </a>
+
+            <a href="portfolio.html">
+                PORTFOLİO
+            </a>
+
+            <a href="mexfilik.html">
+                🔒 MƏXFİLİK
+            </a>
+
+            <a href="xidmet-sertleri.html"
+               class="active">
+                📄 XİDMƏT ŞƏRTLƏRİ
+            </a>
+
+            <a href="admin.html"
+               class="mobile-admin-link">
+                ⚙️ ADMİN
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main>
+
+        <div class="container">
+
+
+            <!-- =================================================
+                 HERO
+            ================================================== -->
+
+            <section class="terms-hero">
+
+                <div class="terms-icon">
+                    📄
+                </div>
+
+                <h1>
+                    Xidmət Şərtləri
+                </h1>
+
+                <p>
+                    Gunel's Story xidmətlərindən istifadə,
+                    fərdi hekayələrin hazırlanması və sifariş
+                    prosesinin əsas şərtləri burada izah olunur.
+                </p>
+
+                <span class="updated-date">
+                    Son yenilənmə: 13 avqust 2026
+                </span>
+
+            </section>
+
+
+            <!-- =================================================
+                 01 — ÜMUMİ ŞƏRTLƏR
+            ================================================== -->
+
+            <section class="terms-card">
+
+                <div class="terms-header">
+
+                    <div class="section-number">
+                        01
+                    </div>
+
+                    <h2>
+                        Ümumi şərtlər
+                    </h2>
+
+                </div>
+
+                <p>
+                    Gunel's Story fərdi və xüsusi uşaq hekayə
+                    kitablarının hazırlanması üzrə xidmət göstərir.
+                </p>
+
+                <p>
+                    Saytımızdan sifariş göndərməklə istifadəçi
+                    təqdim etdiyi məlumatların doğru və düzgün
+                    olduğunu təsdiq edir.
+                </p>
+
+                <p>
+                    Xidmətlərdən istifadə edən şəxsin yetkinlik
+                    yaşına çatması və ya uşağın qanuni valideyni
+                    və ya qanuni nümayəndəsi olması tələb olunur.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 02 — XİDMƏTİN MƏZMUNU
+            ================================================== -->
+
+            <section class="terms-card">
+
+                <div class="terms-header">
+
+                    <div class="section-number">
+                        02
+                    </div>
+
+                    <h2>
+                        Xidmətin məzmunu
+                    </h2>
+
+                </div>
+
+                <p>
+                    Gunel's Story tərəfindən təqdim edilən fərdi
+                    kitab xidməti uşağın adı, maraqları, sevimli
+                    personajları və təqdim edilən digər məlumatlar
+                    əsasında xüsusi hekayənin hazırlanmasını nəzərdə
+                    tutur.
+                </p>
+
+                <div class="package-box">
+
+                    <strong>
+                        ✨ Xidmətə daxil ola bilən əsas elementlər
+                    </strong>
+
+                    <ul>
+
+                        <li>
+                            Fərdi hekayə
+                        </li>
+
+                        <li>
+                            Uşağın adına uyğunlaşdırılmış məzmun
+                        </li>
+
+                        <li>
+                            Fərdi dizayn və illüstrasiya
+                        </li>
+
+                        <li>
+                            Premium çap
+                        </li>
+
+                        <li>
+                            Hədiyyə qablaşdırması
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 03 — SİFARİŞ
+            ================================================== -->
+
+            <section class="terms-card">
+
+                <div class="terms-header">
+
+                    <div class="section-number">
+                        03
+                    </div>
+
+                    <h2>
+                        Sifariş prosesi
+                    </h2>
+
+                </div>
+
+                <p>
+                    Sifariş üçün saytımızdakı müraciət formasının
+                    doldurulması tələb olunur.
+                </p>
+
+                <p>
+                    Sifariş zamanı təqdim edilən məlumatların
+                    hazırlanacaq kitabın məzmununa və dizaynına
+                    uyğun olması vacibdir.
+                </p>
+
+                <p>
+                    Sifarişin qəbul edilməsi ilə bağlı əlavə
+                    məlumat və təsdiq üçün istifadəçi ilə təqdim
+                    etdiyi əlaqə vasitəsi üzərindən əlaqə saxlanıla
+                    bilər.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 04 — FƏRDİ MƏZMUN
+            ================================================== -->
+
+            <section class="terms-card">
+
+                <div class="terms-header">
+
+                    <div class="section-number">
+                        04
+                    </div>
+
+                    <h2>
+                        Fərdi məzmun və dizayn
+                    </h2>
+
+                </div>
+
+                <p>
+                    Hazırlanan hekayələr fərdi sifariş əsasında
+                    yaradıldığı üçün hər bir kitabın məzmunu,
+                    illüstrasiyaları və vizual görünüşü fərqli ola bilər.
+                </p>
+
+                <p>
+                    Nümunə şəkillər və portfolio materialları
+                    hazırlanacaq kitabın tam olaraq eyni görünəcəyinə
+                    zəmanət vermir.
+                </p>
+
+                <div class="important-box">
+
+                    <strong>
+                        🎨 Vacib qeyd
+                    </strong>
+
+                    <p>
+                        Fərdi yaradıcı məhsullarda rəng, kompozisiya,
+                        illüstrasiya üslubu və digər vizual elementlərdə
+                        müəyyən fərqlər ola bilər.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 05 — ŞƏKİLLƏR
+            ================================================== -->
+
+            <section class="terms-card">
+
+                <div class="terms-header">
+
+                    <div class="section-number">
+                        05
+                    </div>
+
+                    <h2>
+                        Şəkillərin təqdim edilməsi
+                    </h2>
+
+                </div>
+
+                <p>
+                    Fərdi dizayn üçün təqdim edilən şəkillər
+                    istifadəçinin özü və ya uşağın valideyni /
+                    qanuni nümayəndəsi tərəfindən təqdim edilməlidir.
+                </p>
+
+                <p>
+                    İstifadəçi təqdim etdiyi şəkillərdən istifadə
+                    etmək hüququna malik olduğunu təsdiq edir.
+                </p>
+
+                <p>
+                    Üçüncü şəxslərə məxsus şəkillərin və digər
+                    materialların icazəsiz təqdim edilməsinə görə
+                    məsuliyyət həmin materialı təqdim edən şəxsə aiddir.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 06 — ÖDƏNİŞ
+            ================================================== -->
+
+            <section class="terms-card">
+
+                <div class="terms-header">
+
+                    <div class="section-number">
+                        06
+                    </div>
+
+                    <h2>
+                        Qiymət və ödəniş
+                    </h2>
+
+                </div>
+
+                <p>
+                    Xidmətlərin qiyməti saytımızda göstərilən
+                    standart qiymət təklifinə və ya sifariş zamanı
+                    razılaşdırılmış qiymətə əsasən müəyyən edilir.
+                </p>
+
+                <p>
+                    Xidmətin qiymətinə hansı elementlərin daxil
+                    olduğu sifarişdən əvvəl istifadəçiyə bildirilməlidir.
+                </p>
+
+                <p>
+                    Əlavə xidmətlər və xüsusi tələblər ayrıca
+                    qiymətləndirilə bilər.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 07 — DƏYİŞİKLİKLƏR
+            ================================================== -->
+
+            <section class="terms-card">
+
+                <div class="terms-header">
+
+                    <div class="section-number">
+                        07
+                    </div>
+
+                    <h2>
+                        Dəyişikliklər və təsdiq
+                    </h2>
+
+                </div>
+
+                <p>
+                    Fərdi kitab hazırlanarkən istifadəçinin təqdim
+                    etdiyi məlumatların düzgünlüyü mühüm əhəmiyyət
+                    daşıyır.
+                </p>
+
+                <p>
+                    Sifariş təsdiqləndikdən və yaradıcı işə
+                    başlandıqdan sonra sonradan edilən dəyişikliklər
+                    əlavə vaxt və ya əlavə ödəniş tələb edə bilər.
+                </p>
+
+                <p>
+                    Əhəmiyyətli dəyişikliklər üçün istifadəçi ilə
+                    əvvəlcədən razılaşma aparılması nəzərdə tutulur.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 08 — LƏĞV VƏ GERİ QAYTARMA
+            ================================================== -->
+
+            <section class="terms-card">
+
+                <div class="terms-header">
+
+                    <div class="section-number">
+                        08
+                    </div>
+
+                    <h2>
+                        Sifarişin ləğvi və geri qaytarma
+                    </h2>
+
+                </div>
+
+                <p>
+                    Fərdi məhsul xüsusi olaraq konkret uşaq üçün
+                    hazırlandığından sifarişin ləğvi və ödənişin
+                    geri qaytarılması məsələsi işin hansı mərhələdə
+                    olmasından asılı olaraq qiymətləndirilir.
+                </p>
+
+                <p>
+                    Sifariş hazırlanmağa başlamazdan əvvəl ləğv
+                    imkanları barədə istifadəçi ilə razılaşma aparıla bilər.
+                </p>
+
+                <div class="important-box">
+
+                    <strong>
+                        ⚠️ Vacib
+                    </strong>
+
+                    <p>
+                        Geri qaytarma və ləğv qaydaları tətbiq olunan
+                        qanunvericiliyin tələblərinə uyğun şəkildə
+                        həyata keçirilməlidir.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 09 — ÇAPI VƏ ÇATDIRILMA
+            ================================================== -->
+
+            <section class="terms-card">
+
+                <div class="terms-header">
+
+                    <div class="section-number">
+                        09
+                    </div>
+
+                    <h2>
+                        Çap və çatdırılma
+                    </h2>
+
+                </div>
+
+                <p>
+                    Fərdi kitabın hazırlanma və çap müddəti sifarişin
+                    məzmunundan, dizayn prosesindən və digər istehsal
+                    amillərindən asılı olaraq dəyişə bilər.
+                </p>
+
+                <p>
+                    Çatdırılma müddəti və şərtləri sifariş zamanı
+                    istifadəçiyə bildirilir.
+                </p>
+
+                <p>
+                    Çatdırılma ünvanının və əlaqə məlumatlarının
+                    düzgün təqdim edilməsinə görə istifadəçi məsuliyyət daşıyır.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 10 — KEYFİYYƏT
+            ================================================== -->
+
+            <section class="terms-card">
+
+                <div class="terms-header">
+
+                    <div class="section-number">
+                        10
+                    </div>
+
+                    <h2>
+                        Məhsulun keyfiyyəti
+                    </h2>
+
+                </div>
+
+                <p>
+                    Gunel's Story sifarişlərin mümkün qədər yüksək
+                    keyfiyyətlə hazırlanmasına çalışır.
+                </p>
+
+                <p>
+                    Çap məhsulunda istehsal prosesindən yaranan
+                    qüsur və ya sifarişlə uyğun gəlməyən ciddi
+                    problem aşkar edilərsə, istifadəçi bunu
+                    mümkün qədər qısa müddətdə bizə bildirməlidir.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 11 — MÜƏLLİFLİK
+            ================================================== -->
+
+            <section class="terms-card">
+
+                <div class="terms-header">
+
+                    <div class="section-number">
+                        11
+                    </div>
+
+                    <h2>
+                        Müəlliflik və istifadə hüquqları
+                    </h2>
+
+                </div>
+
+                <p>
+                    Gunel's Story tərəfindən hazırlanmış hekayə,
+                    illüstrasiya, dizayn və digər yaradıcı materiallar
+                    müvafiq müəlliflik hüquqları ilə qoruna bilər.
+                </p>
+
+                <p>
+                    İstifadəçi öz sifarişi üçün hazırlanmış fiziki
+                    məhsuldan şəxsi istifadə məqsədilə yararlana bilər.
+                </p>
+
+                <p>
+                    Hazırlanmış materialların kommersiya məqsədilə
+                    kopyalanması, yenidən satılması və ya icazəsiz
+                    şəkildə yayılması üçün ayrıca razılıq tələb oluna bilər.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 12 — MƏXFİLİK
+            ================================================== -->
+
+            <section class="terms-card">
+
+                <div class="terms-header">
+
+                    <div class="section-number">
+                        12
+                    </div>
+
+                    <h2>
+                        Məxfilik
+                    </h2>
+
+                </div>
+
+                <p>
+                    Sifariş zamanı təqdim edilən şəxsi məlumatların
+                    istifadəsi və qorunması ayrıca
+                    <strong>Məxfilik Siyasəti</strong> ilə tənzimlənir.
+                </p>
+
+                <p>
+                    Şəxsi məlumatların necə toplandığı, istifadə
+                    edildiyi və qorunduğu barədə ətraflı məlumat üçün
+                    Məxfilik Siyasəti səhifəsinə baxa bilərsiniz.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 13 — MƏSULİYYƏT
+            ================================================== -->
+
+            <section class="terms-card">
+
+                <div class="terms-header">
+
+                    <div class="section-number">
+                        13
+                    </div>
+
+                    <h2>
+                        Məsuliyyət
+                    </h2>
+
+                </div>
+
+                <p>
+                    İstifadəçi sifariş zamanı təqdim etdiyi məlumatların
+                    düzgünlüyünə və təqdim etdiyi materiallardan istifadə
+                    hüququna görə məsuliyyət daşıyır.
+                </p>
+
+                <p>
+                    Gunel's Story xidmətin keyfiyyətli göstərilməsi üçün
+                    mümkün səyləri göstərir, lakin internet, rabitə,
+                    çap və digər xidmətlərdə üçüncü tərəflərdən asılı
+                    olan texniki problemlərə tam nəzarət edə bilməz.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 14 — ŞƏRTLƏRİN DƏYİŞDİRİLMƏSİ
+            ================================================== -->
+
+            <section class="terms-card">
+
+                <div class="terms-header">
+
+                    <div class="section-number">
+                        14
+                    </div>
+
+                    <h2>
+                        Şərtlərin dəyişdirilməsi
+                    </h2>
+
+                </div>
+
+                <p>
+                    Gunel's Story xidmətlərin inkişaf etdirilməsi,
+                    yeni xidmətlərin əlavə edilməsi və ya hüquqi
+                    tələblərin dəyişməsi ilə əlaqədar bu Xidmət
+                    Şərtlərini yeniləyə bilər.
+                </p>
+
+                <p>
+                    Yenilənmiş şərtlər bu səhifədə dərc edildiyi
+                    tarixdən etibarən tətbiq olunur.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 CONTACT
+            ================================================== -->
+
+            <section class="contact-card">
+
+                <h2>
+                    Suallarınız var?
+                </h2>
+
+                <p>
+                    Xidmət şərtləri, sifariş və ya məhsul haqqında
+                    hər hansı sualınız varsa, bizimlə əlaqə saxlaya bilərsiniz.
+                </p>
+
+                <div class="contact-info">
+
+                    <div class="contact-item">
+                        📧 [e-poçt ünvanı]
+                    </div>
+
+                    <div class="contact-item">
+                        📱 [telefon / WhatsApp]
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 BACK BUTTON
+            ================================================== -->
+
+            <div class="back-area">
+
+                <a href="index.html"
+                   class="back-button">
+
+                    ← Ana səhifəyə qayıt
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        © 2026 Gunel's Story.
+        Bütün hüquqlar qorunur.
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        const hamburger =
+            document.getElementById(
+                "hamburger"
+            );
+
+        const mobileMenu =
+            document.getElementById(
+                "mobileMenu"
+            );
+
+
+        hamburger.addEventListener(
+            "click",
+            function () {
+
+                const isOpen =
+                    hamburger.classList.toggle(
+                        "active"
+                    );
+
+                mobileMenu.classList.toggle(
+                    "show"
+                );
+
+                hamburger.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                );
+
+            }
+        );
+
+
+        const mobileLinks =
+            mobileMenu.querySelectorAll(
+                "a"
+            );
+
+
+        mobileLinks.forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        hamburger.classList.remove(
+                            "active"
+                        );
+
+                        mobileMenu.classList.remove(
+                            "show"
+                        );
+
+                        hamburger.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        window.addEventListener(
+            "resize",
+            function () {
+
+                if (
+                    window.innerWidth > 768
+                ) {
+
+                    hamburger.classList.remove(
+                        "active"
+                    );
+
+                    mobileMenu.classList.remove(
+                        "show"
+                    );
+
+                    hamburger.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
+```
 
