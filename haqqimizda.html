@@ -6,9 +6,15 @@
     <meta charset="UTF-8">
 
     <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+          content="width=device-width, initial-scale=1.0">
 
-    <title>Haqqımızda | Gunel's story</title>
+    <meta name="description"
+          content="Gunel's Story haqqında məlumat. Fərdi uşaq kitabları, missiyamız və xidmətlərimiz.">
+
+    <meta name="theme-color"
+          content="#4f46e5">
+
+    <title>Haqqımızda | Gunel's Story</title>
 
     <link rel="icon"
           type="image/png"
@@ -41,6 +47,8 @@
             --bg-color: #fafbfc;
 
             --primary: #4f46e5;
+
+            --primary-dark: #4338ca;
 
             --primary-soft: #f0f0ff;
 
@@ -108,6 +116,12 @@
         }
 
 
+        body.menu-open {
+
+            overflow: hidden;
+        }
+
+
         h1,
         h2,
         h3 {
@@ -118,8 +132,15 @@
         }
 
 
+        a {
+
+            -webkit-tap-highlight-color:
+                transparent;
+        }
+
+
         /* =====================================================
-           NAV
+           NAVIGATION
         ====================================================== */
 
         nav {
@@ -138,7 +159,7 @@
                     255,
                     255,
                     255,
-                    0.94
+                    0.95
                 );
 
             backdrop-filter:
@@ -155,7 +176,7 @@
         .nav-container {
 
             max-width:
-                1000px;
+                1100px;
 
             margin:
                 0 auto;
@@ -181,7 +202,7 @@
 
 
         /* =====================================================
-           NAV LOGO
+           LOGO
         ====================================================== */
 
         .nav-brand {
@@ -251,7 +272,7 @@
                 center;
 
             gap:
-                24px;
+                8px;
         }
 
 
@@ -264,16 +285,25 @@
                 var(--text-sub);
 
             font-size:
-                0.85rem;
+                0.78rem;
 
             font-weight:
                 700;
 
             letter-spacing:
-                0.4px;
+                0.2px;
+
+            padding:
+                9px 11px;
+
+            border-radius:
+                10px;
 
             transition:
-                color 0.2s ease;
+                all 0.2s ease;
+
+            white-space:
+                nowrap;
         }
 
 
@@ -281,8 +311,13 @@
 
             color:
                 var(--primary);
+
+            background:
+                var(--primary-soft);
         }
 
+
+        /* ADMIN */
 
         .nav-links .admin-link {
 
@@ -293,7 +328,7 @@
                 var(--primary);
 
             padding:
-                9px 18px;
+                9px 16px;
 
             border-radius:
                 50px;
@@ -309,6 +344,16 @@
         }
 
 
+        .nav-links .admin-link:hover {
+
+            color:
+                var(--white);
+
+            background:
+                var(--primary-dark);
+        }
+
+
         /* =====================================================
            HAMBURGER
         ====================================================== */
@@ -319,22 +364,25 @@
                 none;
 
             width:
-                40px;
+                44px;
 
             height:
-                40px;
+                44px;
 
             border:
-                none;
+                1px solid var(--border);
 
             background:
-                transparent;
+                var(--white);
 
             color:
                 var(--text-main);
 
+            border-radius:
+                12px;
+
             font-size:
-                27px;
+                24px;
 
             line-height:
                 1;
@@ -350,6 +398,40 @@
 
             z-index:
                 1100;
+
+            transition:
+                all 0.2s ease;
+        }
+
+
+        .menu-toggle:hover {
+
+            color:
+                var(--primary);
+
+            border-color:
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.25
+                );
+        }
+
+
+        .menu-toggle:focus-visible {
+
+            outline:
+                3px solid
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.25
+                );
+
+            outline-offset:
+                2px;
         }
 
 
@@ -371,7 +453,7 @@
 
 
         /* =====================================================
-           GERI QAYIT
+           GERİ QAYIT
         ====================================================== */
 
         .back-section {
@@ -562,7 +644,7 @@
 
 
         /* =====================================================
-           BÖLMƏ KARTI
+           KART
         ====================================================== */
 
         .about-card {
@@ -671,7 +753,7 @@
 
 
         /* =====================================================
-           MISSIYA
+           MISSİYA
         ====================================================== */
 
         .mission-card {
@@ -684,8 +766,7 @@
                 );
 
             border:
-                1px solid
-                #e9e8ff;
+                1px solid #e9e8ff;
         }
 
 
@@ -710,7 +791,7 @@
 
 
         /* =====================================================
-           NƏ EDİRİK
+           XİDMƏTLƏR
         ====================================================== */
 
         .services-grid {
@@ -854,7 +935,153 @@
 
 
         /* =====================================================
-           SON CTA
+           HÜQUQİ MƏLUMATLAR
+        ====================================================== */
+
+        .legal-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap:
+                16px;
+
+            margin-top:
+                26px;
+        }
+
+
+        .legal-card {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            text-decoration:
+                none;
+
+            color:
+                var(--text-main);
+
+            padding:
+                24px;
+
+            background:
+                #f8fafc;
+
+            border:
+                1px solid #edf2f7;
+
+            border-radius:
+                var(--radius-md);
+
+            transition:
+                all 0.25s ease;
+        }
+
+
+        .legal-card:hover {
+
+            background:
+                var(--primary-soft);
+
+            border-color:
+                #dedcff;
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.06
+                );
+        }
+
+
+        .legal-icon {
+
+            width:
+                46px;
+
+            height:
+                46px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                13px;
+
+            font-size:
+                1.35rem;
+
+            margin-bottom:
+                16px;
+        }
+
+
+        .legal-card h3 {
+
+            font-size:
+                1.05rem;
+
+            margin-bottom:
+                8px;
+        }
+
+
+        .legal-card p {
+
+            font-size:
+                0.87rem !important;
+
+            line-height:
+                1.65 !important;
+
+            margin-bottom:
+                16px;
+        }
+
+
+        .legal-link {
+
+            margin-top:
+                auto;
+
+            color:
+                var(--primary);
+
+            font-size:
+                0.82rem;
+
+            font-weight:
+                800;
+        }
+
+
+        /* =====================================================
+           CTA
         ====================================================== */
 
         .cta-card {
@@ -995,11 +1222,99 @@
         }
 
 
+        .footer-links {
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                8px 20px;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .footer-links a {
+
+            color:
+                var(--text-sub);
+
+            text-decoration:
+                none;
+
+            font-weight:
+                700;
+
+            transition:
+                color 0.2s ease;
+        }
+
+
+        .footer-links a:hover {
+
+            color:
+                var(--primary);
+        }
+
+
         /* =====================================================
            MOBİL
         ====================================================== */
 
+        @media (max-width: 900px) {
+
+            .nav-container {
+
+                padding:
+                    12px 18px;
+            }
+
+
+            .nav-links {
+
+                gap:
+                    3px;
+            }
+
+
+            .nav-links a {
+
+                font-size:
+                    0.72rem;
+
+                padding:
+                    8px 8px;
+            }
+
+
+            .nav-links .admin-link {
+
+                padding:
+                    8px 13px;
+            }
+        }
+
+
         @media (max-width: 768px) {
+
+
+            /* BODY */
+
+            body {
+
+                padding-bottom:
+                    45px;
+            }
 
 
             /* NAV */
@@ -1007,14 +1322,17 @@
             .nav-container {
 
                 padding:
-                    12px 16px;
+                    10px 16px;
+
+                min-height:
+                    62px;
             }
 
 
             .nav-brand {
 
                 max-width:
-                    calc(100% - 55px);
+                    calc(100% - 60px);
             }
 
 
@@ -1041,6 +1359,8 @@
             }
 
 
+            /* HAMBURGER GÖRÜNSÜN */
+
             .menu-toggle {
 
                 display:
@@ -1061,11 +1381,20 @@
                 top:
                     calc(100% + 8px);
 
+                left:
+                    14px;
+
                 right:
                     14px;
 
                 width:
-                    200px;
+                    auto;
+
+                max-height:
+                    calc(100vh - 85px);
+
+                overflow-y:
+                    auto;
 
                 padding:
                     10px;
@@ -1084,22 +1413,22 @@
                         255,
                         255,
                         255,
-                        0.98
+                        0.99
                     );
 
                 border:
                     1px solid var(--border);
 
                 border-radius:
-                    16px;
+                    18px;
 
                 box-shadow:
-                    0 15px 40px
+                    0 18px 45px
                     rgba(
                         15,
                         23,
                         42,
-                        0.12
+                        0.14
                     );
             }
 
@@ -1114,19 +1443,25 @@
             .nav-links a {
 
                 display:
-                    block;
+                    flex;
+
+                align-items:
+                    center;
 
                 width:
                     100%;
 
+                min-height:
+                    46px;
+
                 padding:
-                    13px 14px;
+                    12px 14px;
 
                 font-size:
-                    0.75rem;
+                    0.78rem;
 
                 border-radius:
-                    10px;
+                    11px;
             }
 
 
@@ -1139,8 +1474,14 @@
 
             .nav-links .admin-link {
 
-                text-align:
+                justify-content:
                     center;
+
+                margin-top:
+                    4px;
+
+                min-height:
+                    46px;
             }
 
 
@@ -1303,6 +1644,25 @@
             }
 
 
+            /* LEGAL */
+
+            .legal-grid {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    12px;
+            }
+
+
+            .legal-card {
+
+                padding:
+                    20px;
+            }
+
+
             /* CTA */
 
             .cta-card {
@@ -1328,6 +1688,22 @@
                     0.87rem;
             }
 
+
+            /* FOOTER */
+
+            footer {
+
+                padding:
+                    35px 15px 10px;
+            }
+
+
+            .footer-links {
+
+                gap:
+                    10px 16px;
+            }
+
         }
 
 
@@ -1336,7 +1712,6 @@
         ====================================================== */
 
         @media (max-width: 380px) {
-
 
             .nav-container {
 
@@ -1380,6 +1755,32 @@
 
         }
 
+
+        /* =====================================================
+           REDUCED MOTION
+        ====================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+
+                scroll-behavior:
+                    auto;
+            }
+
+
+            *,
+            *::before,
+            *::after {
+
+                transition:
+                    none !important;
+
+                animation:
+                    none !important;
+            }
+        }
+
     </style>
 
 </head>
@@ -1392,7 +1793,7 @@
          NAVIGATION
     ====================================================== -->
 
-    <nav>
+    <nav aria-label="Əsas menyu">
 
         <div class="nav-container">
 
@@ -1400,14 +1801,15 @@
             <!-- LOGO -->
 
             <a href="index.html"
-               class="nav-brand">
+               class="nav-brand"
+               aria-label="Gunel's Story əsas səhifə">
 
                 <img
                     src="image/logo.png"
-                    alt="Gunel's story logo">
+                    alt="Gunel's Story logo">
 
                 <span>
-                    Gunel's story
+                    Gunel's Story
                 </span>
 
             </a>
@@ -1418,7 +1820,9 @@
             <button
                 class="menu-toggle"
                 id="menuToggle"
-                aria-label="Menyu"
+                type="button"
+                aria-label="Menyunu aç"
+                aria-controls="navLinks"
                 aria-expanded="false">
 
                 ☰
@@ -1443,6 +1847,20 @@
                 </a>
 
 
+                <!-- YENİ -->
+
+                <a href="mexfilik-siyaseti.html">
+                    MƏXFİLİK SİYASƏTİ
+                </a>
+
+
+                <!-- YENİ -->
+
+                <a href="xidmet-sertleri.html">
+                    XİDMƏT ŞƏRTLƏRİ
+                </a>
+
+
                 <a href="admin.html"
                    class="admin-link">
 
@@ -1458,6 +1876,7 @@
     </nav>
 
 
+
     <!-- =====================================================
          ƏSAS SƏHİFƏ
     ====================================================== -->
@@ -1465,9 +1884,7 @@
     <main class="page-container">
 
 
-        <!-- =================================================
-             GERİ QAYIT
-        ================================================== -->
+        <!-- GERİ -->
 
         <div class="back-section">
 
@@ -1481,13 +1898,23 @@
         </div>
 
 
+
         <!-- =================================================
              HERO
         ================================================== -->
 
         <section class="about-hero">
 
-         
+
+            <div class="about-logo">
+
+                <img
+                    src="image/logo.png"
+                    alt="Gunel's Story">
+
+            </div>
+
+
             <div class="about-label">
 
                 BİZ KİMİK?
@@ -1508,14 +1935,15 @@
 
             <p>
 
-                Gunel's story uşaqların özlərini hekayələrin
-                içində görmələri üçün yaradılmış fərdi
-                uşaq kitab brendidir.
+                Gunel's Story uşaqların özlərini
+                hekayələrin içində görmələri üçün
+                yaradılmış fərdi uşaq kitab brendidir.
 
             </p>
 
 
         </section>
+
 
 
         <!-- =================================================
@@ -1527,36 +1955,54 @@
 
             <div class="section-heading">
 
-
                 <div class="section-icon">
                     ☀️
                 </div>
-
 
                 <h2>
                     Gunel's Story
                 </h2>
 
-
             </div>
 
 
             <p>
-                <b>Gunel's Story</b>-nin yaranma tarixi <b>Günel Əbilova</b>nın uşaqlıq yaşlarında qələmə almağa başladığı kiçik esselərə dayanır.
-                Ali təhsili bitirəndən sonra, Uşaq psixoloqu magistr ixtisas dərəcəsi üzrə təhsilini davam etdirən Günel Əbilova məhz bu illərdən
-                uşaq hekayələri yazmağa maraq göstərmişdir. 2026-cı ilin may ayında 
-                <b>"Sara və dovşan Miminin göyqurşağına səyahəti"</b> adlı ilk fərdi uşaq kitabı çap olunmuşdur.
-                
+
+                <b>Gunel's Story</b>-nin yaranma tarixi
+                <b>Günel Əbilova</b>nın uşaqlıq yaşlarında
+                qələmə almağa başladığı kiçik esselərə dayanır.
+
+                Ali təhsili bitirəndən sonra, Uşaq psixoloqu
+                magistr ixtisas dərəcəsi üzrə təhsilini davam
+                etdirən Günel Əbilova məhz bu illərdən uşaq
+                hekayələri yazmağa maraq göstərmişdir.
+
+                2026-cı ilin may ayında
+                <b>"Sara və dovşan Miminin göyqurşağına səyahəti"</b>
+                adlı ilk fərdi uşaq kitabı çap olunmuşdur.
+
+
                 <br><br>
-                
-                <b>Gunel's Story</b> brendinin yaradıcısı uşaq psixoloqu <b>Günel Əbilovadır</b>. 
-                Yeni yaradılan brendin əsas məqsədi uşaqların daxili aləmini kəşf etmək,
-                oxu qabiliyyətini inkişaf etdirmək, gələcək həyatlarında öz uşaqlıqlarından qalan 
-                dəyərli bir hədiyyəyə sahib olmasıdır. Hər bir uşağın kitabı vərəqləyərkən
+
+
+                <b>Gunel's Story</b> brendinin yaradıcısı
+                uşaq psixoloqu <b>Günel Əbilovadır</b>.
+
+                Yeni yaradılan brendin əsas məqsədi uşaqların
+                daxili aləmini kəşf etmək, oxu qabiliyyətini
+                inkişaf etdirmək, gələcək həyatlarında öz
+                uşaqlıqlarından qalan dəyərli bir hədiyyəyə
+                sahib olmasıdır.
+
+                Hər bir uşağın kitabı vərəqləyərkən
                 "Bu hekayədə mən varam" hissini yaşamasıdır.
-                
+
+
                 <br><br>
+
+
                 Biz uşaqlar üçün sadəcə bir kitab hazırlamırıq.
+
                 Uşağın adını, maraqlarını, sevdiyi personajları
                 və xəyal dünyasını hekayənin bir hissəsinə
                 çevirərək ona özünə məxsus bir macəra bəxş edirik.
@@ -1565,6 +2011,7 @@
 
 
         </section>
+
 
 
         <!-- =================================================
@@ -1576,16 +2023,13 @@
 
             <div class="section-heading">
 
-
                 <div class="section-icon">
                     💜
                 </div>
 
-
                 <h2>
                     Missiyamız
                 </h2>
-
 
             </div>
 
@@ -1602,6 +2046,7 @@
         </section>
 
 
+
         <!-- =================================================
              NƏ EDİRİK?
         ================================================== -->
@@ -1611,16 +2056,13 @@
 
             <div class="section-heading">
 
-
                 <div class="section-icon">
                     🎨
                 </div>
 
-
                 <h2>
                     Nə edirik?
                 </h2>
-
 
             </div>
 
@@ -1628,6 +2070,7 @@
             <p>
 
                 Hər sifarişi fərdi yanaşma ilə hazırlayırıq.
+
                 Uşağın xüsusiyyətlərinə uyğun hekayə və vizual
                 dünya formalaşdırır, sonra isə onu yüksək
                 keyfiyyətli kitab şəklində təqdim edirik.
@@ -1640,16 +2083,13 @@
 
                 <div class="service-item">
 
-
                     <div class="service-icon">
                         📖
                     </div>
 
-
                     <h3>
                         Fərdi hekayə
                     </h3>
-
 
                     <p>
 
@@ -1658,22 +2098,19 @@
 
                     </p>
 
-
                 </div>
 
 
-                <div class="service-item">
 
+                <div class="service-item">
 
                     <div class="service-icon">
                         📸
                     </div>
 
-
                     <h3>
                         Şəkil inteqrasiyası
                     </h3>
-
 
                     <p>
 
@@ -1683,22 +2120,19 @@
 
                     </p>
 
-
                 </div>
 
 
-                <div class="service-item">
 
+                <div class="service-item">
 
                     <div class="service-icon">
                         🖌️
                     </div>
 
-
                     <h3>
                         Peşəkar dizayn
                     </h3>
-
 
                     <p>
 
@@ -1707,22 +2141,19 @@
 
                     </p>
 
-
                 </div>
 
 
-                <div class="service-item">
 
+                <div class="service-item">
 
                     <div class="service-icon">
                         🎁
                     </div>
 
-
                     <h3>
                         Xüsusi təqdimat
                     </h3>
-
 
                     <p>
 
@@ -1731,7 +2162,6 @@
 
                     </p>
 
-
                 </div>
 
 
@@ -1739,6 +2169,7 @@
 
 
         </section>
+
 
 
         <!-- =================================================
@@ -1750,16 +2181,13 @@
 
             <div class="section-heading">
 
-
                 <div class="section-icon">
                     ⭐
                 </div>
 
-
                 <h2>
-                    Niyə Gunel's story?
+                    Niyə Gunel's Story?
                 </h2>
-
 
             </div>
 
@@ -1767,8 +2195,10 @@
             <p>
 
                 Bizim üçün əsas olan yalnız gözəl görünən
-                kitab yaratmaq deyil. Əsas məqsəd uşağın
-                hekayə ilə emosional bağ qurmasıdır.
+                kitab yaratmaq deyil.
+
+                Əsas məqsəd uşağın hekayə ilə emosional
+                bağ qurmasıdır.
 
             </p>
 
@@ -1778,64 +2208,52 @@
 
                 <div class="advantage">
 
-
                     <div class="advantage-icon">
                         💎
                     </div>
-
 
                     <strong>
                         Fərdi yanaşma
                     </strong>
 
-
                 </div>
 
 
                 <div class="advantage">
-
 
                     <div class="advantage-icon">
                         🎨
                     </div>
 
-
                     <strong>
                         Estetik dizayn
                     </strong>
-
 
                 </div>
 
 
                 <div class="advantage">
-
 
                     <div class="advantage-icon">
                         ❤️
                     </div>
 
-
                     <strong>
                         Uşaq yönümlü
                     </strong>
-
 
                 </div>
 
 
                 <div class="advantage">
 
-
                     <div class="advantage-icon">
                         🧸
                     </div>
 
-
                     <strong>
                         Xüsusi xatirə
                     </strong>
-
 
                 </div>
 
@@ -1844,6 +2262,103 @@
 
 
         </section>
+
+
+
+        <!-- =================================================
+             HÜQUQİ MƏLUMATLAR
+        ================================================== -->
+
+        <section class="about-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🔐
+                </div>
+
+                <h2>
+                    Hüquqi məlumatlar
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Gunel's Story xidmətlərindən istifadə etməzdən
+                əvvəl məxfilik siyasətimiz və xidmət şərtlərimiz
+                haqqında ətraflı məlumat əldə edə bilərsiniz.
+
+            </p>
+
+
+            <div class="legal-grid">
+
+
+                <!-- MƏXFİLİK -->
+
+                <a href="mexfilik-siyaseti.html"
+                   class="legal-card">
+
+                    <div class="legal-icon">
+                        🔒
+                    </div>
+
+                    <h3>
+                        Məxfilik siyasəti
+                    </h3>
+
+                    <p>
+
+                        Şəxsi məlumatların necə toplandığı,
+                        istifadə edildiyi və qorunduğu
+                        haqqında məlumat.
+
+                    </p>
+
+                    <span class="legal-link">
+                        Siyasətə bax →
+                    </span>
+
+                </a>
+
+
+
+                <!-- XİDMƏT ŞƏRTLƏRİ -->
+
+                <a href="xidmet-sertleri.html"
+                   class="legal-card">
+
+                    <div class="legal-icon">
+                        📄
+                    </div>
+
+                    <h3>
+                        Xidmət şərtləri
+                    </h3>
+
+                    <p>
+
+                        Gunel's Story xidmətlərindən istifadə
+                        qaydaları, sifariş prosesi və tərəflərin
+                        əsas məsuliyyətləri.
+
+                    </p>
+
+                    <span class="legal-link">
+                        Şərtlərə bax →
+                    </span>
+
+                </a>
+
+
+            </div>
+
+
+        </section>
+
 
 
         <!-- =================================================
@@ -1886,11 +2401,57 @@
 
 
     <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+
+        <div class="footer-links">
+
+
+            <a href="haqqimizda.html">
+                Haqqımızda
+            </a>
+
+
+            <a href="portfolio.html">
+                Portfolio
+            </a>
+
+
+            <a href="mexfilik-siyaseti.html">
+                Məxfilik siyasəti
+            </a>
+
+
+            <a href="xidmet-sertleri.html">
+                Xidmət şərtləri
+            </a>
+
+
+        </div>
+
+
+        <p>
+            © 2026 Gunel's Story. Bütün hüquqlar qorunur.
+        </p>
+
+
+    </footer>
+
+
+
+    <!-- =====================================================
          MOBILE MENU SCRIPT
     ====================================================== -->
 
     <script>
 
+
+        /* =================================================
+           ELEMENTLƏR
+        ================================================== */
 
         const menuToggle =
             document.getElementById(
@@ -1904,82 +2465,127 @@
             );
 
 
-        /* MENU AÇ / BAĞLA */
 
-        menuToggle.addEventListener(
-            "click",
-            function (event) {
+        /* =================================================
+           MENYU AÇ / BAĞLA
+        ================================================== */
+
+        function openMenu() {
+
+            navLinks.classList.add(
+                "open"
+            );
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                "Menyunu bağla"
+            );
+
+            menuToggle.textContent =
+                "✕";
+
+            document.body.classList.add(
+                "menu-open"
+            );
+        }
 
 
-                event.stopPropagation();
+        function closeMenu() {
+
+            navLinks.classList.remove(
+                "open"
+            );
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                "Menyunu aç"
+            );
+
+            menuToggle.textContent =
+                "☰";
+
+            document.body.classList.remove(
+                "menu-open"
+            );
+        }
 
 
-                navLinks.classList.toggle(
+        function toggleMenu() {
+
+            const isOpen =
+                navLinks.classList.contains(
                     "open"
                 );
 
 
-                const isOpen =
-                    navLinks.classList.contains(
-                        "open"
-                    );
+            if (isOpen) {
+
+                closeMenu();
+
+            } else {
+
+                openMenu();
+
+            }
+        }
 
 
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    isOpen
-                );
 
+        /* =================================================
+           HAMBURGER CLICK
+        ================================================== */
 
-                menuToggle.textContent =
-                    isOpen
-                        ? "✕"
-                        : "☰";
+        menuToggle.addEventListener(
+            "click",
+            function(event) {
+
+                event.stopPropagation();
+
+                toggleMenu();
 
             }
         );
 
 
-        /* MENYU SEÇİLƏNDƏ BAĞLANSIN */
+
+        /* =================================================
+           MENYU LINKLƏRİNƏ CLICK
+        ================================================== */
 
         navLinks
             .querySelectorAll("a")
-            .forEach(
-                function (link) {
+            .forEach(function(link) {
+
+                link.addEventListener(
+                    "click",
+                    function() {
+
+                        closeMenu();
+
+                    }
+                );
+
+            });
 
 
-                    link.addEventListener(
-                        "click",
-                        function () {
 
-
-                            navLinks.classList.remove(
-                                "open"
-                            );
-
-
-                            menuToggle.textContent =
-                                "☰";
-
-
-                            menuToggle.setAttribute(
-                                "aria-expanded",
-                                "false"
-                            );
-
-                        }
-                    );
-
-                }
-            );
-
-
-        /* MENYU XARİCİNƏ BASILANDA BAĞLANSIN */
+        /* =================================================
+           MENYU XARİCİNƏ CLICK
+        ================================================== */
 
         document.addEventListener(
             "click",
-            function (event) {
-
+            function(event) {
 
                 if (
                     !event.target.closest(
@@ -1987,20 +2593,7 @@
                     )
                 ) {
 
-
-                    navLinks.classList.remove(
-                        "open"
-                    );
-
-
-                    menuToggle.textContent =
-                        "☰";
-
-
-                    menuToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
+                    closeMenu();
 
                 }
 
@@ -2008,31 +2601,41 @@
         );
 
 
-        /* EKRAN BÖYÜDÜKDƏ MENYU SIFIRLANSIN */
+
+        /* =================================================
+           ESC İLƏ BAĞLAMA
+        ================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    closeMenu();
+
+                }
+
+            }
+        );
+
+
+
+        /* =================================================
+           EKRAN BÖYÜDÜKDƏ SIFIRLA
+        ================================================== */
 
         window.addEventListener(
             "resize",
-            function () {
-
+            function() {
 
                 if (
                     window.innerWidth > 768
                 ) {
 
-
-                    navLinks.classList.remove(
-                        "open"
-                    );
-
-
-                    menuToggle.textContent =
-                        "☰";
-
-
-                    menuToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
+                    closeMenu();
 
                 }
 
