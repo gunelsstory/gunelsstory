@@ -1,1 +1,2284 @@
+<!DOCTYPE html>
+<html lang="az">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>Məxfilik Siyasəti | Gunel's story</title>
+
+    <meta name="description"
+          content="Gunel's story məxfilik siyasəti və istifadəçi məlumatlarının qorunması haqqında məlumat.">
+
+    <link rel="icon"
+          type="image/png"
+          href="image/favicon.png">
+
+
+    <!-- =====================================================
+         ŞRİFTLƏR
+    ====================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@600;700&display=swap"
+          rel="stylesheet">
+
+
+    <style>
+
+        /* =====================================================
+           ROOT
+        ====================================================== */
+
+        :root {
+
+            --bg-color: #fafbfc;
+
+            --primary: #4f46e5;
+
+            --primary-soft: #f0f0ff;
+
+            --text-main: #1a1a24;
+
+            --text-sub: #64748b;
+
+            --white: #ffffff;
+
+            --border: #e8edf3;
+
+            --radius-xl: 24px;
+
+            --radius-md: 16px;
+
+            --shadow-soft:
+                0 10px 35px
+                rgba(15, 23, 42, 0.04);
+
+            --shadow-hover:
+                0 18px 45px
+                rgba(79, 70, 229, 0.08);
+        }
+
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            background:
+                var(--bg-color);
+
+            color:
+                var(--text-main);
+
+            font-family:
+                'Plus Jakarta Sans',
+                sans-serif;
+
+            min-height:
+                100vh;
+
+            padding-bottom:
+                60px;
+        }
+
+
+        h1,
+        h2,
+        h3 {
+
+            font-family:
+                'Quicksand',
+                sans-serif;
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ====================================================== */
+
+        nav {
+
+            position:
+                sticky;
+
+            top:
+                0;
+
+            z-index:
+                1000;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.94
+                );
+
+            backdrop-filter:
+                blur(12px);
+
+            -webkit-backdrop-filter:
+                blur(12px);
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+
+        .nav-container {
+
+            max-width:
+                1000px;
+
+            margin:
+                0 auto;
+
+            padding:
+                12px 24px;
+
+            min-height:
+                64px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            position:
+                relative;
+        }
+
+
+        /* =====================================================
+           LOGO
+        ====================================================== */
+
+        .nav-brand {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                9px;
+
+            text-decoration:
+                none;
+
+            color:
+                var(--text-main);
+
+            flex-shrink:
+                0;
+        }
+
+
+        .nav-brand img {
+
+            width:
+                40px;
+
+            height:
+                40px;
+
+            object-fit:
+                contain;
+
+            display:
+                block;
+        }
+
+
+        .nav-brand span {
+
+            font-size:
+                1.15rem;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                -0.4px;
+
+            white-space:
+                nowrap;
+        }
+
+
+        /* =====================================================
+           DESKTOP NAV LINKS
+        ====================================================== */
+
+        .nav-links {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                20px;
+        }
+
+
+        .nav-links a {
+
+            text-decoration:
+                none;
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.78rem;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                0.3px;
+
+            transition:
+                color 0.2s ease;
+        }
+
+
+        .nav-links a:hover {
+
+            color:
+                var(--primary);
+        }
+
+
+        .nav-links a.active {
+
+            color:
+                var(--primary);
+        }
+
+
+        .nav-links .admin-link {
+
+            color:
+                var(--white);
+
+            background:
+                var(--primary);
+
+            padding:
+                9px 17px;
+
+            border-radius:
+                50px;
+
+            box-shadow:
+                0 5px 15px
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.18
+                );
+        }
+
+
+        .nav-links .admin-link:hover {
+
+            color:
+                var(--white);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* =====================================================
+           HAMBURGER
+        ====================================================== */
+
+        .menu-toggle {
+
+            display:
+                none;
+
+            width:
+                40px;
+
+            height:
+                40px;
+
+            border:
+                none;
+
+            background:
+                transparent;
+
+            color:
+                var(--text-main);
+
+            font-size:
+                27px;
+
+            line-height:
+                1;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            cursor:
+                pointer;
+
+            z-index:
+                1100;
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ====================================================== */
+
+        .page-container {
+
+            max-width:
+                900px;
+
+            margin:
+                0 auto;
+
+            padding:
+                0 20px;
+        }
+
+
+        /* =====================================================
+           GERİ QAYIT
+        ====================================================== */
+
+        .back-section {
+
+            padding:
+                28px 0 0;
+        }
+
+
+        .back-button {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            text-decoration:
+                none;
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.86rem;
+
+            font-weight:
+                700;
+
+            padding:
+                10px 16px;
+
+            background:
+                var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                50px;
+
+            transition:
+                all 0.2s ease;
+        }
+
+
+        .back-button:hover {
+
+            color:
+                var(--primary);
+
+            border-color:
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.25
+                );
+
+            transform:
+                translateX(-2px);
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .privacy-hero {
+
+            text-align:
+                center;
+
+            padding:
+                55px 10px 45px;
+        }
+
+
+        .privacy-icon {
+
+            width:
+                82px;
+
+            height:
+                82px;
+
+            margin:
+                0 auto 20px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                var(--primary-soft);
+
+            border-radius:
+                24px;
+
+            font-size:
+                2.4rem;
+        }
+
+
+        .privacy-label {
+
+            display:
+                inline-block;
+
+            background:
+                var(--primary-soft);
+
+            color:
+                var(--primary);
+
+            padding:
+                7px 17px;
+
+            border-radius:
+                50px;
+
+            font-size:
+                0.76rem;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                0.8px;
+
+            margin-bottom:
+                17px;
+        }
+
+
+        .privacy-hero h1 {
+
+            font-size:
+                2.8rem;
+
+            line-height:
+                1.2;
+
+            letter-spacing:
+                -1px;
+
+            margin-bottom:
+                14px;
+        }
+
+
+        .privacy-hero h1 span {
+
+            color:
+                var(--primary);
+        }
+
+
+        .privacy-hero p {
+
+            max-width:
+                680px;
+
+            margin:
+                0 auto;
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.98rem;
+
+            line-height:
+                1.75;
+        }
+
+
+        /* =====================================================
+           PRIVACY CARD
+        ====================================================== */
+
+        .privacy-card {
+
+            background:
+                var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                var(--radius-xl);
+
+            padding:
+                38px 42px;
+
+            margin-bottom:
+                18px;
+
+            box-shadow:
+                var(--shadow-soft);
+
+            transition:
+                all 0.3s ease;
+        }
+
+
+        .privacy-card:hover {
+
+            transform:
+                translateY(-1px);
+
+            box-shadow:
+                var(--shadow-hover);
+        }
+
+
+        .section-heading {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                13px;
+
+            margin-bottom:
+                17px;
+        }
+
+
+        .section-icon {
+
+            width:
+                43px;
+
+            height:
+                43px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                var(--primary-soft);
+
+            border-radius:
+                13px;
+
+            font-size:
+                1.3rem;
+
+            flex-shrink:
+                0;
+        }
+
+
+        .section-heading h2 {
+
+            font-size:
+                1.4rem;
+
+            letter-spacing:
+                -0.3px;
+        }
+
+
+        .privacy-card p {
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.94rem;
+
+            line-height:
+                1.8;
+
+            margin-bottom:
+                12px;
+        }
+
+
+        .privacy-card p:last-child {
+
+            margin-bottom:
+                0;
+        }
+
+
+        .privacy-card ul {
+
+            margin:
+                12px 0 0 20px;
+
+            color:
+                var(--text-sub);
+        }
+
+
+        .privacy-card li {
+
+            font-size:
+                0.93rem;
+
+            line-height:
+                1.8;
+
+            margin-bottom:
+                8px;
+
+            padding-left:
+                5px;
+        }
+
+
+        .privacy-card strong {
+
+            color:
+                var(--text-main);
+        }
+
+
+        /* =====================================================
+           IMPORTANT BOX
+        ====================================================== */
+
+        .important-box {
+
+            background:
+                #f7f7ff;
+
+            border:
+                1px solid #e7e5ff;
+
+            border-radius:
+                16px;
+
+            padding:
+                20px;
+
+            margin-top:
+                16px;
+        }
+
+
+        .important-box p {
+
+            margin:
+                0;
+
+            color:
+                var(--text-main);
+
+            font-size:
+                0.9rem;
+        }
+
+
+        /* =====================================================
+           POLICY LINKS
+        ====================================================== */
+
+        .policy-links {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap:
+                12px;
+
+            margin-top:
+                20px;
+        }
+
+
+        .policy-link {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+            text-decoration:
+                none;
+
+            background:
+                #f8fafc;
+
+            border:
+                1px solid #edf2f7;
+
+            color:
+                var(--text-main);
+
+            padding:
+                16px;
+
+            border-radius:
+                14px;
+
+            font-size:
+                0.86rem;
+
+            font-weight:
+                700;
+
+            transition:
+                all 0.2s ease;
+        }
+
+
+        .policy-link:hover {
+
+            color:
+                var(--primary);
+
+            background:
+                var(--primary-soft);
+
+            border-color:
+                #e4e2ff;
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =====================================================
+           CTA
+        ====================================================== */
+
+        .cta-card {
+
+            margin-top:
+                22px;
+
+            padding:
+                40px 30px;
+
+            text-align:
+                center;
+
+            background:
+                var(--primary);
+
+            color:
+                var(--white);
+
+            border-radius:
+                var(--radius-xl);
+
+            box-shadow:
+                0 15px 40px
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.16
+                );
+        }
+
+
+        .cta-card h2 {
+
+            font-size:
+                1.7rem;
+
+            margin-bottom:
+                11px;
+        }
+
+
+        .cta-card p {
+
+            max-width:
+                600px;
+
+            margin:
+                0 auto 22px;
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.82
+                );
+
+            line-height:
+                1.7;
+
+            font-size:
+                0.9rem;
+        }
+
+
+        .cta-button {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-decoration:
+                none;
+
+            background:
+                var(--white);
+
+            color:
+                var(--primary);
+
+            padding:
+                12px 22px;
+
+            border-radius:
+                50px;
+
+            font-weight:
+                800;
+
+            font-size:
+                0.85rem;
+
+            transition:
+                all 0.2s ease;
+        }
+
+
+        .cta-button:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.12
+                );
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        footer {
+
+            text-align:
+                center;
+
+            padding:
+                35px 20px 10px;
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.77rem;
+        }
+
+
+        .footer-links {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                12px 20px;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .footer-links a {
+
+            color:
+                var(--text-sub);
+
+            text-decoration:
+                none;
+
+            font-weight:
+                700;
+
+            transition:
+                color 0.2s ease;
+        }
+
+
+        .footer-links a:hover {
+
+            color:
+                var(--primary);
+        }
+
+
+        /* =====================================================
+           MOBİL
+        ====================================================== */
+
+        @media (max-width: 768px) {
+
+
+            /* NAV */
+
+            .nav-container {
+
+                padding:
+                    11px 16px;
+            }
+
+
+            .nav-brand {
+
+                max-width:
+                    calc(100% - 55px);
+            }
+
+
+            .nav-brand img {
+
+                width:
+                    36px;
+
+                height:
+                    36px;
+            }
+
+
+            .nav-brand span {
+
+                font-size:
+                    0.98rem;
+
+                overflow:
+                    hidden;
+
+                text-overflow:
+                    ellipsis;
+            }
+
+
+            /* HAMBURGER */
+
+            .menu-toggle {
+
+                display:
+                    flex;
+            }
+
+
+            /* MOBILE MENU */
+
+            .nav-links {
+
+                display:
+                    none;
+
+                position:
+                    absolute;
+
+                top:
+                    calc(100% + 8px);
+
+                right:
+                    14px;
+
+                width:
+                    220px;
+
+                padding:
+                    10px;
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    stretch;
+
+                gap:
+                    4px;
+
+                background:
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0.99
+                    );
+
+                border:
+                    1px solid var(--border);
+
+                border-radius:
+                    16px;
+
+                box-shadow:
+                    0 15px 40px
+                    rgba(
+                        15,
+                        23,
+                        42,
+                        0.12
+                    );
+            }
+
+
+            .nav-links.open {
+
+                display:
+                    flex;
+            }
+
+
+            .nav-links a {
+
+                display:
+                    block;
+
+                width:
+                    100%;
+
+                padding:
+                    13px 14px;
+
+                font-size:
+                    0.74rem;
+
+                border-radius:
+                    10px;
+            }
+
+
+            .nav-links a:hover {
+
+                background:
+                    var(--primary-soft);
+            }
+
+
+            .nav-links .admin-link {
+
+                text-align:
+                    center;
+            }
+
+
+            /* CONTENT */
+
+            .page-container {
+
+                padding:
+                    0 16px;
+            }
+
+
+            .back-section {
+
+                padding-top:
+                    20px;
+            }
+
+
+            .privacy-hero {
+
+                padding:
+                    40px 5px 32px;
+            }
+
+
+            .privacy-icon {
+
+                width:
+                    72px;
+
+                height:
+                    72px;
+
+                border-radius:
+                    20px;
+
+                font-size:
+                    2rem;
+            }
+
+
+            .privacy-hero h1 {
+
+                font-size:
+                    2.2rem;
+            }
+
+
+            .privacy-hero p {
+
+                font-size:
+                    0.9rem;
+
+                line-height:
+                    1.7;
+            }
+
+
+            .privacy-card {
+
+                padding:
+                    26px 21px;
+
+                border-radius:
+                    20px;
+
+                margin-bottom:
+                    14px;
+            }
+
+
+            .section-heading {
+
+                gap:
+                    10px;
+            }
+
+
+            .section-icon {
+
+                width:
+                    39px;
+
+                height:
+                    39px;
+
+                font-size:
+                    1.15rem;
+            }
+
+
+            .section-heading h2 {
+
+                font-size:
+                    1.22rem;
+            }
+
+
+            .privacy-card p {
+
+                font-size:
+                    0.88rem;
+
+                line-height:
+                    1.75;
+            }
+
+
+            .privacy-card li {
+
+                font-size:
+                    0.87rem;
+
+                line-height:
+                    1.7;
+            }
+
+
+            /* POLICY LINKS */
+
+            .policy-links {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    9px;
+            }
+
+
+            .policy-link {
+
+                padding:
+                    14px;
+            }
+
+
+            /* CTA */
+
+            .cta-card {
+
+                padding:
+                    35px 21px;
+
+                border-radius:
+                    20px;
+            }
+
+
+            .cta-card h2 {
+
+                font-size:
+                    1.4rem;
+            }
+
+
+            .cta-card p {
+
+                font-size:
+                    0.85rem;
+            }
+
+
+            /* FOOTER */
+
+            .footer-links {
+
+                gap:
+                    10px 16px;
+            }
+
+        }
+
+
+        /* =====================================================
+           ÇOX KİÇİK EKRAN
+        ====================================================== */
+
+        @media (max-width: 380px) {
+
+
+            .nav-container {
+
+                padding-left:
+                    13px;
+
+                padding-right:
+                    13px;
+            }
+
+
+            .nav-brand img {
+
+                width:
+                    33px;
+
+                height:
+                    33px;
+            }
+
+
+            .nav-brand span {
+
+                font-size:
+                    0.9rem;
+            }
+
+
+            .privacy-hero h1 {
+
+                font-size:
+                    1.95rem;
+            }
+
+
+            .privacy-card {
+
+                padding:
+                    23px 17px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <nav>
+
+        <div class="nav-container">
+
+
+            <!-- LOGO -->
+
+            <a href="index.html"
+               class="nav-brand">
+
+                <img
+                    src="image/logo.png"
+                    alt="Gunel's story logo">
+
+                <span>
+                    Gunel's story
+                </span>
+
+            </a>
+
+
+            <!-- HAMBURGER -->
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Menyu"
+                aria-expanded="false">
+
+                ☰
+
+            </button>
+
+
+            <!-- MENYU -->
+
+            <div
+                class="nav-links"
+                id="navLinks">
+
+
+                <a href="haqqimizda.html">
+                    HAQQIMIZDA
+                </a>
+
+
+                <a href="portfolio.html">
+                    PORTFOLİO
+                </a>
+
+
+                <a href="mexfilik.html"
+                   class="active">
+                    MƏXFİLİK SİYASƏTİ
+                </a>
+
+
+                <a href="sertler.html">
+                    XİDMƏT ŞƏRTLƏRİ
+                </a>
+
+
+                <a href="admin.html"
+                   class="admin-link">
+
+                    ⚙️ ADMİN
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="page-container">
+
+
+        <!-- GERİ -->
+
+        <div class="back-section">
+
+            <a href="index.html"
+               class="back-button">
+
+                ← Əsas səhifəyə qayıt
+
+            </a>
+
+        </div>
+
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="privacy-hero">
+
+
+            <div class="privacy-icon">
+
+                🔒
+
+            </div>
+
+
+            <div class="privacy-label">
+
+                MƏXFİLİK
+
+            </div>
+
+
+            <h1>
+
+                Məxfilik
+                <span>
+                    Siyasəti
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                Gunel's story olaraq istifadəçilərimizin
+                və sifarişçilərimizin təqdim etdiyi
+                məlumatların məxfiliyinə hörmətlə yanaşırıq.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             1. ÜMUMİ MƏLUMAT
+        ================================================== -->
+
+        <section class="privacy-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🛡️
+                </div>
+
+                <h2>
+                    Ümumi məlumat
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Bu Məxfilik Siyasəti Gunel's story
+                tərəfindən təqdim olunan xidmətlərdən
+                istifadə zamanı toplanan məlumatların
+                necə istifadə edildiyini və qorunduğunu
+                izah edir.
+
+            </p>
+
+
+            <p>
+
+                Saytımızdan istifadə etməklə bu siyasətdə
+                göstərilən prinsiplərlə tanış olduğunuzu
+                qəbul etmiş olursunuz.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             2. TOPLANAN MƏLUMATLAR
+        ================================================== -->
+
+        <section class="privacy-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    📋
+                </div>
+
+                <h2>
+                    Hansı məlumatları toplayırıq?
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Sifariş və xidmətlərin hazırlanması zamanı
+                sizdən müəyyən məlumatların təqdim edilməsi
+                tələb oluna bilər.
+
+            </p>
+
+
+            <ul>
+
+                <li>
+                    Ad və soyad
+                </li>
+
+                <li>
+                    Əlaqə məlumatları
+                </li>
+
+                <li>
+                    Sifarişin hazırlanması üçün təqdim edilən məlumatlar
+                </li>
+
+                <li>
+                    Uşağın adı və hekayənin hazırlanması üçün
+                    təqdim olunan digər məlumatlar
+                </li>
+
+                <li>
+                    İstifadəçi tərəfindən könüllü təqdim edilən
+                    fotoşəkillər və digər materiallar
+                </li>
+
+            </ul>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             3. MƏLUMATLARDAN İSTİFADƏ
+        ================================================== -->
+
+        <section class="privacy-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    ⚙️
+                </div>
+
+                <h2>
+                    Məlumatlardan necə istifadə edirik?
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Təqdim etdiyiniz məlumatlardan əsasən
+                sifarişlərin hazırlanması və xidmətlərin
+                göstərilməsi məqsədilə istifadə olunur.
+
+            </p>
+
+
+            <ul>
+
+                <li>
+                    Fərdi hekayənin hazırlanması
+                </li>
+
+                <li>
+                    Kitab dizaynının hazırlanması
+                </li>
+
+                <li>
+                    Sifarişlə bağlı sizinlə əlaqə saxlanılması
+                </li>
+
+                <li>
+                    Sifarişin hazırlanması və təqdim edilməsi
+                </li>
+
+                <li>
+                    Xidmətlərin keyfiyyətinin yaxşılaşdırılması
+                </li>
+
+            </ul>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             4. FOTOŞƏKİLLƏR
+        ================================================== -->
+
+        <section class="privacy-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    📸
+                </div>
+
+                <h2>
+                    Fotoşəkillərin istifadəsi
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Fərdi kitab hazırlanması zamanı istifadəçi
+                tərəfindən təqdim edilən fotoşəkillər yalnız
+                sifarişin hazırlanması məqsədilə istifadə olunur.
+
+            </p>
+
+
+            <p>
+
+                Fotoşəkillərin başqa məqsədlərlə istifadəsi
+                yalnız müvafiq razılıq olduğu halda həyata
+                keçirilə bilər.
+
+            </p>
+
+
+            <div class="important-box">
+
+                <p>
+
+                    <strong>Qeyd:</strong>
+                    Sifariş zamanı təqdim etdiyiniz materialların
+                    istifadəsi ilə bağlı xüsusi razılıq və ya
+                    məhdudiyyətiniz varsa, bunu əvvəlcədən bizə
+                    bildirməyiniz xahiş olunur.
+
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             5. MƏLUMATLARIN QORUNMASI
+        ================================================== -->
+
+        <section class="privacy-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🔐
+                </div>
+
+                <h2>
+                    Məlumatların qorunması
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Gunel's story təqdim olunan məlumatların
+                icazəsiz istifadəsinin, yayılmasının və
+                itirilməsinin qarşısını almaq üçün
+                uyğun təhlükəsizlik tədbirlərindən istifadə
+                etməyə çalışır.
+
+            </p>
+
+
+            <p>
+
+                Bununla belə, internet üzərindən məlumat
+                ötürülməsinin tam təhlükəsizliyinə zəmanət
+                vermək mümkün olmadığını nəzərə almaq
+                vacibdir.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             6. ÜÇÜNCÜ TƏRƏFLƏR
+        ================================================== -->
+
+        <section class="privacy-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🤝
+                </div>
+
+                <h2>
+                    Üçüncü tərəflərlə paylaşım
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                İstifadəçilər tərəfindən təqdim edilən
+                şəxsi məlumatlar kommersiya məqsədilə
+                satılmır və qanuni əsas olmadan üçüncü
+                şəxslərə təqdim edilmir.
+
+            </p>
+
+
+            <p>
+
+                Xidmətin göstərilməsi üçün zəruri olduğu
+                hallarda məlumatların müəyyən xidmət
+                təminatçıları ilə paylaşılması mümkün ola bilər.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             7. MƏLUMATLARIN SAXLANILMASI
+        ================================================== -->
+
+        <section class="privacy-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🗂️
+                </div>
+
+                <h2>
+                    Məlumatların saxlanılması
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Məlumatlar yalnız xidmətlərin göstərilməsi,
+                sifarişlərin icrası və qanuni öhdəliklərin
+                yerinə yetirilməsi üçün zəruri olduğu müddət
+                ərzində saxlanıla bilər.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             8. İSTİFADƏÇİNİN HÜQUQLARI
+        ================================================== -->
+
+        <section class="privacy-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    👤
+                </div>
+
+                <h2>
+                    İstifadəçinin hüquqları
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                İstifadəçi öz məlumatları ilə bağlı məlumat
+                almaq, məlumatların düzəldilməsini və
+                mümkün olduğu hallarda silinməsini tələb
+                edə bilər.
+
+            </p>
+
+
+            <p>
+
+                Bunun üçün bizimlə əlaqə saxlamağınız kifayətdir.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             9. SİYASƏTDƏ DƏYİŞİKLİKLƏR
+        ================================================== -->
+
+        <section class="privacy-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🔄
+                </div>
+
+                <h2>
+                    Siyasətdə dəyişikliklər
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Gunel's story gələcəkdə bu Məxfilik
+                Siyasətinə dəyişikliklər edə bilər.
+
+                Yenilənmiş versiya bu səhifədə
+                yayımlandığı tarixdən etibarən qüvvəyə minir.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             DİGƏR SƏHİFƏLƏR
+        ================================================== -->
+
+        <section class="privacy-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🔗
+                </div>
+
+                <h2>
+                    Digər məlumatlar
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Xidmətlərimiz və istifadə qaydaları ilə
+                bağlı daha ətraflı məlumat üçün aşağıdakı
+                səhifələrə keçə bilərsiniz.
+
+            </p>
+
+
+            <div class="policy-links">
+
+
+                <a href="sertler.html"
+                   class="policy-link">
+
+                    📄
+                    <span>
+                        Xidmət şərtləri
+                    </span>
+
+                </a>
+
+
+                <a href="haqqimizda.html"
+                   class="policy-link">
+
+                    ℹ️
+                    <span>
+                        Haqqımızda
+                    </span>
+
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             CTA
+        ================================================== -->
+
+        <section class="cta-card">
+
+
+            <h2>
+
+                Sualınız var?
+
+            </h2>
+
+
+            <p>
+
+                Məxfilik və məlumatlarınızın istifadəsi
+                ilə bağlı əlavə sualınız varsa, bizimlə
+                əlaqə saxlaya bilərsiniz.
+
+            </p>
+
+
+            <a href="index.html"
+               class="cta-button">
+
+                Əsas səhifəyə keç →
+
+            </a>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+
+        <div class="footer-links">
+
+
+            <a href="index.html">
+                Əsas səhifə
+            </a>
+
+
+            <a href="haqqimizda.html">
+                Haqqımızda
+            </a>
+
+
+            <a href="portfolio.html">
+                Portfolio
+            </a>
+
+
+            <a href="mexfilik.html">
+                Məxfilik siyasəti
+            </a>
+
+
+            <a href="sertler.html">
+                Xidmət şərtləri
+            </a>
+
+
+        </div>
+
+
+        <p>
+
+            © 2026 Gunel's story. Bütün hüquqlar qorunur.
+
+        </p>
+
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         MOBILE MENU SCRIPT
+    ====================================================== -->
+
+    <script>
+
+
+        const menuToggle =
+            document.getElementById(
+                "menuToggle"
+            );
+
+
+        const navLinks =
+            document.getElementById(
+                "navLinks"
+            );
+
+
+        /* MENU AÇ / BAĞLA */
+
+        menuToggle.addEventListener(
+            "click",
+            function (event) {
+
+
+                event.stopPropagation();
+
+
+                navLinks.classList.toggle(
+                    "open"
+                );
+
+
+                const isOpen =
+                    navLinks.classList.contains(
+                        "open"
+                    );
+
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                );
+
+
+                menuToggle.textContent =
+                    isOpen
+                        ? "✕"
+                        : "☰";
+
+            }
+        );
+
+
+        /* MENYU LINKİNƏ BASILDIQDA BAĞLANSIN */
+
+        navLinks
+            .querySelectorAll("a")
+            .forEach(
+                function (link) {
+
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+
+                            navLinks.classList.remove(
+                                "open"
+                            );
+
+
+                            menuToggle.textContent =
+                                "☰";
+
+
+                            menuToggle.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* MENYU XARİCİNƏ BASILDIQDA BAĞLANSIN */
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+
+                if (
+                    !event.target.closest(
+                        ".nav-container"
+                    )
+                ) {
+
+
+                    navLinks.classList.remove(
+                        "open"
+                    );
+
+
+                    menuToggle.textContent =
+                        "☰";
+
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* EKRAN BÖYÜDÜKDƏ MENYU RESET */
+
+        window.addEventListener(
+            "resize",
+            function () {
+
+
+                if (
+                    window.innerWidth > 768
+                ) {
+
+
+                    navLinks.classList.remove(
+                        "open"
+                    );
+
+
+                    menuToggle.textContent =
+                        "☰";
+
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
