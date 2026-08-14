@@ -8,7 +8,10 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-    <title>Haqqımızda | Gunel's story</title>
+    <title>Xidmət Şərtləri | Gunel's story</title>
+
+    <meta name="description"
+          content="Gunel's story xidmət şərtləri. Fərdi uşaq kitablarının hazırlanması, sifariş, ödəniş, dəyişiklik və istifadə şərtləri.">
 
     <link rel="icon"
           type="image/png"
@@ -104,7 +107,7 @@
                 100vh;
 
             padding-bottom:
-                70px;
+                60px;
         }
 
 
@@ -119,7 +122,7 @@
 
 
         /* =====================================================
-           NAV
+           NAVIGATION
         ====================================================== */
 
         nav {
@@ -181,7 +184,7 @@
 
 
         /* =====================================================
-           NAV LOGO
+           LOGO
         ====================================================== */
 
         .nav-brand {
@@ -270,7 +273,7 @@
                 700;
 
             letter-spacing:
-                0.25px;
+                0.3px;
 
             transition:
                 color 0.2s ease;
@@ -278,6 +281,13 @@
 
 
         .nav-links a:hover {
+
+            color:
+                var(--primary);
+        }
+
+
+        .nav-links a.active {
 
             color:
                 var(--primary);
@@ -293,7 +303,7 @@
                 var(--primary);
 
             padding:
-                9px 18px;
+                9px 17px;
 
             border-radius:
                 50px;
@@ -306,6 +316,13 @@
                     229,
                     0.18
                 );
+        }
+
+
+        .nav-links .admin-link:hover {
+
+            color:
+                var(--white);
         }
 
 
@@ -371,7 +388,7 @@
 
 
         /* =====================================================
-           GERI QAYIT
+           BACK BUTTON
         ====================================================== */
 
         .back-section {
@@ -443,26 +460,26 @@
            HERO
         ====================================================== */
 
-        .about-hero {
+        .terms-hero {
 
             text-align:
                 center;
 
             padding:
-                65px 10px 55px;
+                55px 10px 45px;
         }
 
 
-        .about-logo {
+        .terms-icon {
 
             width:
-                95px;
+                82px;
 
             height:
-                95px;
+                82px;
 
             margin:
-                0 auto 22px;
+                0 auto 20px;
 
             display:
                 flex;
@@ -472,23 +489,19 @@
 
             justify-content:
                 center;
+
+            background:
+                var(--primary-soft);
+
+            border-radius:
+                24px;
+
+            font-size:
+                2.4rem;
         }
 
 
-        .about-logo img {
-
-            width:
-                100%;
-
-            height:
-                100%;
-
-            object-fit:
-                contain;
-        }
-
-
-        .about-label {
+        .terms-label {
 
             display:
                 inline-block;
@@ -506,7 +519,7 @@
                 50px;
 
             font-size:
-                0.78rem;
+                0.76rem;
 
             font-weight:
                 800;
@@ -515,34 +528,34 @@
                 0.8px;
 
             margin-bottom:
-                18px;
+                17px;
         }
 
 
-        .about-hero h1 {
+        .terms-hero h1 {
 
             font-size:
-                3rem;
+                2.8rem;
 
             line-height:
-                1.15;
+                1.2;
 
             letter-spacing:
                 -1px;
 
             margin-bottom:
-                16px;
+                14px;
         }
 
 
-        .about-hero h1 span {
+        .terms-hero h1 span {
 
             color:
                 var(--primary);
         }
 
 
-        .about-hero p {
+        .terms-hero p {
 
             max-width:
                 680px;
@@ -554,18 +567,18 @@
                 var(--text-sub);
 
             font-size:
-                1.05rem;
+                0.98rem;
 
             line-height:
-                1.8;
+                1.75;
         }
 
 
         /* =====================================================
-           BÖLMƏ KARTI
+           CONTENT CARDS
         ====================================================== */
 
-        .about-card {
+        .terms-card {
 
             background:
                 var(--white);
@@ -577,10 +590,10 @@
                 var(--radius-xl);
 
             padding:
-                42px;
+                38px 42px;
 
             margin-bottom:
-                24px;
+                18px;
 
             box-shadow:
                 var(--shadow-soft);
@@ -590,10 +603,10 @@
         }
 
 
-        .about-card:hover {
+        .terms-card:hover {
 
             transform:
-                translateY(-2px);
+                translateY(-1px);
 
             box-shadow:
                 var(--shadow-hover);
@@ -609,20 +622,20 @@
                 center;
 
             gap:
-                14px;
+                13px;
 
             margin-bottom:
-                18px;
+                17px;
         }
 
 
         .section-icon {
 
             width:
-                44px;
+                43px;
 
             height:
-                44px;
+                43px;
 
             display:
                 flex;
@@ -640,7 +653,7 @@
                 13px;
 
             font-size:
-                1.35rem;
+                1.3rem;
 
             flex-shrink:
                 0;
@@ -650,70 +663,218 @@
         .section-heading h2 {
 
             font-size:
-                1.55rem;
+                1.4rem;
 
             letter-spacing:
                 -0.3px;
         }
 
 
-        .about-card p {
+        .terms-card p {
 
             color:
                 var(--text-sub);
 
+            font-size:
+                0.94rem;
+
             line-height:
                 1.8;
 
-            font-size:
-                0.97rem;
+            margin-bottom:
+                12px;
         }
 
 
-        /* =====================================================
-           MISSIYA
-        ====================================================== */
+        .terms-card p:last-child {
 
-        .mission-card {
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #f7f7ff 0%,
-                    #ffffff 100%
-                );
-
-            border:
-                1px solid
-                #e9e8ff;
+            margin-bottom:
+                0;
         }
 
 
-        .mission-text {
+        .terms-card ul {
 
-            font-family:
-                'Quicksand',
-                sans-serif;
-
-            font-size:
-                1.25rem !important;
-
-            line-height:
-                1.7 !important;
+            margin:
+                12px 0 0 20px;
 
             color:
-                var(--text-main) !important;
+                var(--text-sub);
+        }
 
-            font-weight:
-                600;
+
+        .terms-card li {
+
+            font-size:
+                0.93rem;
+
+            line-height:
+                1.8;
+
+            margin-bottom:
+                8px;
+
+            padding-left:
+                5px;
+        }
+
+
+        .terms-card strong {
+
+            color:
+                var(--text-main);
         }
 
 
         /* =====================================================
-           NƏ EDİRİK
+           INFO BOX
         ====================================================== */
 
-        .services-grid {
+        .info-box {
+
+            background:
+                #f7f7ff;
+
+            border:
+                1px solid #e7e5ff;
+
+            border-radius:
+                16px;
+
+            padding:
+                20px;
+
+            margin-top:
+                16px;
+        }
+
+
+        .info-box p {
+
+            margin:
+                0;
+
+            color:
+                var(--text-main);
+
+            font-size:
+                0.9rem;
+        }
+
+
+        /* =====================================================
+           PROCESS
+        ====================================================== */
+
+        .process-list {
+
+            display:
+                grid;
+
+            gap:
+                10px;
+
+            margin-top:
+                18px;
+        }
+
+
+        .process-item {
+
+            display:
+                flex;
+
+            align-items:
+                flex-start;
+
+            gap:
+                13px;
+
+            padding:
+                15px;
+
+            background:
+                #f8fafc;
+
+            border:
+                1px solid #edf2f7;
+
+            border-radius:
+                14px;
+        }
+
+
+        .process-number {
+
+            width:
+                32px;
+
+            height:
+                32px;
+
+            min-width:
+                32px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                var(--primary);
+
+            color:
+                var(--white);
+
+            border-radius:
+                50%;
+
+            font-size:
+                0.78rem;
+
+            font-weight:
+                800;
+        }
+
+
+        .process-item strong {
+
+            display:
+                block;
+
+            margin-bottom:
+                3px;
+
+            font-size:
+                0.9rem;
+        }
+
+
+        .process-item span {
+
+            display:
+                block;
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.83rem;
+
+            line-height:
+                1.6;
+        }
+
+
+        /* =====================================================
+           OTHER LINKS
+        ====================================================== */
+
+        .policy-links {
 
             display:
                 grid;
@@ -722,17 +883,26 @@
                 repeat(2, 1fr);
 
             gap:
-                16px;
+                12px;
 
             margin-top:
-                26px;
+                20px;
         }
 
 
-        .service-item {
+        .policy-link {
 
-            padding:
-                24px;
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+            text-decoration:
+                none;
 
             background:
                 #f8fafc;
@@ -740,130 +910,53 @@
             border:
                 1px solid #edf2f7;
 
+            color:
+                var(--text-main);
+
+            padding:
+                16px;
+
             border-radius:
-                var(--radius-md);
+                14px;
+
+            font-size:
+                0.86rem;
+
+            font-weight:
+                700;
 
             transition:
-                all 0.25s ease;
+                all 0.2s ease;
         }
 
 
-        .service-item:hover {
+        .policy-link:hover {
+
+            color:
+                var(--primary);
 
             background:
-                #f5f5ff;
+                var(--primary-soft);
 
             border-color:
-                #e3e1ff;
+                #e4e2ff;
 
             transform:
                 translateY(-2px);
         }
 
 
-        .service-icon {
-
-            font-size:
-                1.9rem;
-
-            margin-bottom:
-                14px;
-        }
-
-
-        .service-item h3 {
-
-            font-size:
-                1.05rem;
-
-            margin-bottom:
-                8px;
-        }
-
-
-        .service-item p {
-
-            font-size:
-                0.88rem;
-
-            line-height:
-                1.6;
-        }
-
-
         /* =====================================================
-           ÜSTÜNLÜKLƏR
-        ====================================================== */
-
-        .advantages {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap:
-                12px;
-
-            margin-top:
-                26px;
-        }
-
-
-        .advantage {
-
-            text-align:
-                center;
-
-            padding:
-                22px 12px;
-
-            background:
-                #f8fafc;
-
-            border-radius:
-                var(--radius-md);
-
-            border:
-                1px solid #edf2f7;
-        }
-
-
-        .advantage-icon {
-
-            font-size:
-                1.8rem;
-
-            margin-bottom:
-                10px;
-        }
-
-
-        .advantage strong {
-
-            display:
-                block;
-
-            font-size:
-                0.82rem;
-
-            line-height:
-                1.35;
-        }
-
-
-        /* =====================================================
-           SON CTA
+           CTA
         ====================================================== */
 
         .cta-card {
 
             margin-top:
-                24px;
+                22px;
 
             padding:
-                48px 35px;
+                40px 30px;
 
             text-align:
                 center;
@@ -891,20 +984,20 @@
         .cta-card h2 {
 
             font-size:
-                1.8rem;
+                1.7rem;
 
             margin-bottom:
-                12px;
+                11px;
         }
 
 
         .cta-card p {
 
             max-width:
-                590px;
+                600px;
 
             margin:
-                0 auto 25px;
+                0 auto 22px;
 
             color:
                 rgba(
@@ -918,7 +1011,7 @@
                 1.7;
 
             font-size:
-                0.95rem;
+                0.9rem;
         }
 
 
@@ -943,7 +1036,7 @@
                 var(--primary);
 
             padding:
-                13px 24px;
+                12px 22px;
 
             border-radius:
                 50px;
@@ -952,7 +1045,7 @@
                 800;
 
             font-size:
-                0.88rem;
+                0.85rem;
 
             transition:
                 all 0.2s ease;
@@ -985,13 +1078,58 @@
                 center;
 
             padding:
-                40px 20px 10px;
+                35px 20px 10px;
 
             color:
                 var(--text-sub);
 
             font-size:
-                0.78rem;
+                0.77rem;
+        }
+
+
+        .footer-links {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                12px 20px;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .footer-links a {
+
+            color:
+                var(--text-sub);
+
+            text-decoration:
+                none;
+
+            font-weight:
+                700;
+
+            transition:
+                color 0.2s ease;
+        }
+
+
+        .footer-links a:hover {
+
+            color:
+                var(--primary);
         }
 
 
@@ -1002,12 +1140,10 @@
         @media (max-width: 768px) {
 
 
-            /* NAV */
-
             .nav-container {
 
                 padding:
-                    12px 16px;
+                    11px 16px;
             }
 
 
@@ -1048,7 +1184,7 @@
             }
 
 
-            /* MOBİL MENYU */
+            /* MOBILE MENU */
 
             .nav-links {
 
@@ -1065,10 +1201,7 @@
                     14px;
 
                 width:
-                    245px;
-
-                max-width:
-                    calc(100vw - 28px);
+                    225px;
 
                 padding:
                     10px;
@@ -1087,7 +1220,7 @@
                         255,
                         255,
                         255,
-                        0.98
+                        0.99
                     );
 
                 border:
@@ -1126,7 +1259,7 @@
                     13px 14px;
 
                 font-size:
-                    0.75rem;
+                    0.74rem;
 
                 border-radius:
                     10px;
@@ -1163,81 +1296,37 @@
             }
 
 
-            .about-hero {
+            .terms-hero {
 
                 padding:
-                    45px 5px 38px;
+                    40px 5px 32px;
             }
 
 
-            .about-logo {
+            .terms-icon {
 
                 width:
-                    80px;
+                    72px;
 
                 height:
-                    80px;
-            }
-
-
-            .about-hero h1 {
-
-                font-size:
-                    2.25rem;
-            }
-
-
-            .about-hero p {
-
-                font-size:
-                    0.93rem;
-
-                line-height:
-                    1.7;
-            }
-
-
-            .about-card {
-
-                padding:
-                    27px 21px;
+                    72px;
 
                 border-radius:
                     20px;
 
-                margin-bottom:
-                    16px;
+                font-size:
+                    2rem;
             }
 
 
-            .section-heading {
-
-                gap:
-                    11px;
-            }
-
-
-            .section-icon {
-
-                width:
-                    40px;
-
-                height:
-                    40px;
+            .terms-hero h1 {
 
                 font-size:
-                    1.2rem;
+                    2.2rem;
             }
 
 
-            .section-heading h2 {
-
-                font-size:
-                    1.3rem;
-            }
-
-
-            .about-card p {
+            .terms-hero p {
 
                 font-size:
                     0.9rem;
@@ -1247,62 +1336,105 @@
             }
 
 
-            .mission-text {
-
-                font-size:
-                    1.05rem !important;
-            }
-
-
-            /* SERVICES */
-
-            .services-grid {
-
-                grid-template-columns:
-                    1fr;
-
-                gap:
-                    12px;
-            }
-
-
-            .service-item {
+            .terms-card {
 
                 padding:
+                    26px 21px;
+
+                border-radius:
                     20px;
+
+                margin-bottom:
+                    14px;
             }
 
 
-            /* ADVANTAGES */
-
-            .advantages {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
+            .section-heading {
 
                 gap:
                     10px;
             }
 
 
-            .advantage {
+            .section-icon {
+
+                width:
+                    39px;
+
+                height:
+                    39px;
+
+                font-size:
+                    1.15rem;
+            }
+
+
+            .section-heading h2 {
+
+                font-size:
+                    1.22rem;
+            }
+
+
+            .terms-card p {
+
+                font-size:
+                    0.88rem;
+
+                line-height:
+                    1.75;
+            }
+
+
+            .terms-card li {
+
+                font-size:
+                    0.87rem;
+
+                line-height:
+                    1.7;
+            }
+
+
+            /* PROCESS */
+
+            .process-item {
 
                 padding:
-                    18px 10px;
+                    13px;
             }
 
 
-            .advantage-icon {
+            .process-item strong {
 
                 font-size:
-                    1.6rem;
+                    0.86rem;
             }
 
 
-            .advantage strong {
+            .process-item span {
 
                 font-size:
-                    0.75rem;
+                    0.8rem;
+            }
+
+
+            /* LINKS */
+
+            .policy-links {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    9px;
+            }
+
+
+            .policy-link {
+
+                padding:
+                    14px;
             }
 
 
@@ -1311,7 +1443,7 @@
             .cta-card {
 
                 padding:
-                    38px 22px;
+                    35px 21px;
 
                 border-radius:
                     20px;
@@ -1321,14 +1453,23 @@
             .cta-card h2 {
 
                 font-size:
-                    1.45rem;
+                    1.4rem;
             }
 
 
             .cta-card p {
 
                 font-size:
-                    0.87rem;
+                    0.85rem;
+            }
+
+
+            /* FOOTER */
+
+            .footer-links {
+
+                gap:
+                    10px 16px;
             }
 
         }
@@ -1368,14 +1509,14 @@
             }
 
 
-            .about-hero h1 {
+            .terms-hero h1 {
 
                 font-size:
-                    2rem;
+                    1.95rem;
             }
 
 
-            .about-card {
+            .terms-card {
 
                 padding:
                     23px 17px;
@@ -1436,11 +1577,6 @@
                 id="navLinks">
 
 
-                <a href="index.html">
-                    ƏSAS SƏHİFƏ
-                </a>
-
-
                 <a href="haqqimizda.html">
                     HAQQIMIZDA
                 </a>
@@ -1456,7 +1592,8 @@
                 </a>
 
 
-                <a href="xidmet-sertleri.html">
+                <a href="xidmet-sertleri.html"
+                   class="active">
                     XİDMƏT ŞƏRTLƏRİ
                 </a>
 
@@ -1476,16 +1613,15 @@
     </nav>
 
 
+
     <!-- =====================================================
-         ƏSAS SƏHİFƏ
+         MAIN
     ====================================================== -->
 
     <main class="page-container">
 
 
-        <!-- =================================================
-             GERİ QAYIT
-        ================================================== -->
+        <!-- GERİ -->
 
         <div class="back-section">
 
@@ -1499,36 +1635,43 @@
         </div>
 
 
+
         <!-- =================================================
              HERO
         ================================================== -->
 
-        <section class="about-hero">
+        <section class="terms-hero">
 
 
-            <div class="about-label">
+            <div class="terms-icon">
 
-                BİZ KİMİK?
+                📄
+
+            </div>
+
+
+            <div class="terms-label">
+
+                XİDMƏT ŞƏRTLƏRİ
 
             </div>
 
 
             <h1>
 
-                Hər uşağın
+                Xidmət
                 <span>
-                    öz hekayəsi
+                    Şərtləri
                 </span>
-                var.
 
             </h1>
 
 
             <p>
 
-                Gunel's story uşaqların özlərini hekayələrin
-                içində görmələri üçün yaradılmış fərdi
-                uşaq kitab brendidir.
+                <b>Gunel's story</b> xidmətlərindən istifadə,
+                fərdi kitab sifarişlərinin hazırlanması
+                və təqdim edilməsi ilə bağlı əsas şərtlər.
 
             </p>
 
@@ -1536,326 +1679,237 @@
         </section>
 
 
+
         <!-- =================================================
-             BİZİM HAQQIMIZDA
+             1. ÜMUMİ ŞƏRTLƏR
         ================================================== -->
 
-        <section class="about-card">
+        <section class="terms-card">
 
 
             <div class="section-heading">
 
-
                 <div class="section-icon">
-                    ☀️
+                    📋
                 </div>
 
-
                 <h2>
-                    Gunel's Story
+                    Ümumi şərtlər
                 </h2>
-
 
             </div>
 
 
             <p>
 
-                <b>Gunel's Story</b>-nin yaranma tarixi <b>Günel Əbilova</b>nın uşaqlıq yaşlarında qələmə almağa başladığı kiçik esselərə dayanır.
-                Ali təhsili bitirəndən sonra, Uşaq psixoloqu magistr ixtisas dərəcəsi üzrə təhsilini davam etdirən Günel Əbilova məhz bu illərdən
-                uşaq hekayələri yazmağa maraq göstərmişdir. 2026-cı ilin may ayında
-                <b>"Sara və dovşan Miminin göyqurşağına səyahəti"</b> adlı ilk fərdi uşaq kitabı çap olunmuşdur.
-
-                <br><br>
-
-                <b>Gunel's Story</b> brendinin yaradıcısı uşaq psixoloqu <b>Günel Əbilovadır</b>.
-                Yeni yaradılan brendin əsas məqsədi uşaqların daxili aləmini kəşf etmək,
-                oxu qabiliyyətini inkişaf etdirmək, gələcək həyatlarında öz uşaqlıqlarından qalan
-                dəyərli bir hədiyyəyə sahib olmasıdır. Hər bir uşağın kitabı vərəqləyərkən
-                "Bu hekayədə mən varam" hissini yaşamasıdır.
-
-                <br><br>
-
-                Biz uşaqlar üçün sadəcə bir kitab hazırlamırıq.
-                Uşağın adını, maraqlarını, sevdiyi personajları
-                və xəyal dünyasını hekayənin bir hissəsinə
-                çevirərək ona özünə məxsus bir macəra bəxş edirik.
+                <b>Gunel's story</b> fərdi uşaq kitablarının
+                hazırlanması və təqdim edilməsi üzrə
+                xidmət göstərir.
 
             </p>
 
 
-        </section>
+            <p>
+
+                Saytdan istifadə etməklə və sifariş
+                yerləşdirməklə istifadəçi bu <b>Xidmət
+                Şərtləri</b> ilə tanış olduğunu və onları
+                qəbul etdiyini təsdiq edir.
+
+            </p>
 
 
-        <!-- =================================================
-             MİSSİYAMIZ
-        ================================================== -->
+            <div class="info-box">
 
-        <section class="about-card mission-card">
+                <p>
 
+                    <strong>Qeyd:</strong>
+                    Sifariş verməzdən əvvəl təqdim olunan
+                    məlumatların düzgünlüyünü yoxlamağınız
+                    xahiş olunur.
 
-            <div class="section-heading">
-
-
-                <div class="section-icon">
-                    💜
-                </div>
-
-
-                <h2>
-                    Missiyamız
-                </h2>
-
+                </p>
 
             </div>
 
 
-            <p class="mission-text">
-
-                Uşaqların xəyal gücünü, yaradıcılığını və
-                kitaba olan sevgisini öz hekayələri vasitəsilə
-                daha da gücləndirmək.
-
-            </p>
-
-
         </section>
 
 
+
         <!-- =================================================
-             NƏ EDİRİK?
+             2. XİDMƏTİN MƏZMUNU
         ================================================== -->
 
-        <section class="about-card">
+        <section class="terms-card">
 
 
             <div class="section-heading">
 
-
                 <div class="section-icon">
-                    🎨
+                    📖
                 </div>
 
-
                 <h2>
-                    Nə edirik?
+                    Xidmətin məzmunu
                 </h2>
-
 
             </div>
 
 
             <p>
 
-                Hər sifarişi fərdi yanaşma ilə hazırlayırıq.
-                Uşağın xüsusiyyətlərinə uyğun hekayə və vizual
-                dünya formalaşdırır, sonra isə onu yüksək
-                keyfiyyətli kitab şəklində təqdim edirik.
+                <b>Gunel's story</b>b> uşağın fərdi xüsusiyyətləri,
+                adı, maraqları və təqdim olunan məlumatlar
+                əsasında xüsusi hekayə və vizual materiallar
+                hazırlayanır.
 
             </p>
 
 
-            <div class="services-grid">
+            <ul>
 
+                <li>
+                    Fərdi uşaq hekayəsinin hazırlanması
+                </li>
 
-                <div class="service-item">
+                <li>
+                    Kitab səhifələrinin dizayn edilməsi
+                </li>
 
+                <li>
+                    Təqdim olunan fotoşəkillərin layihəyə
+                    uyğunlaşdırılması
+                </li>
 
-                    <div class="service-icon">
-                        📖
-                    </div>
+                <li>
+                    Çap və təqdimat üçün hazırlanmış
+                    kitab materiallarının formalaşdırılması
+                </li>
 
-
-                    <h3>
-                        Fərdi hekayə
-                    </h3>
-
-
-                    <p>
-
-                        Uşağın adı və maraqları əsasında
-                        xüsusi hekayə hazırlanır.
-
-                    </p>
-
-
-                </div>
-
-
-                <div class="service-item">
-
-
-                    <div class="service-icon">
-                        📸
-                    </div>
-
-
-                    <h3>
-                        Şəkil inteqrasiyası
-                    </h3>
-
-
-                    <p>
-
-                        Uşağın təqdim etdiyi foto
-                        hekayənin vizual dünyasına
-                        uyğunlaşdırılır.
-
-                    </p>
-
-
-                </div>
-
-
-                <div class="service-item">
-
-
-                    <div class="service-icon">
-                        🖌️
-                    </div>
-
-
-                    <h3>
-                        Peşəkar dizayn
-                    </h3>
-
-
-                    <p>
-
-                        Hər səhifə vahid və estetik
-                        kitab konsepsiyası ilə hazırlanır.
-
-                    </p>
-
-
-                </div>
-
-
-                <div class="service-item">
-
-
-                    <div class="service-icon">
-                        🎁
-                    </div>
-
-
-                    <h3>
-                        Xüsusi təqdimat
-                    </h3>
-
-
-                    <p>
-
-                        Hazırlanan kitab uşağa hədiyyə
-                        edilə biləcək xüsusi hədiyyəyə çevrilir.
-
-                    </p>
-
-
-                </div>
-
-
-            </div>
+            </ul>
 
 
         </section>
 
 
+
         <!-- =================================================
-             NİYƏ BİZ?
+             3. SİFARİŞ PROSESİ
         ================================================== -->
 
-        <section class="about-card">
+        <section class="terms-card">
 
 
             <div class="section-heading">
 
-
                 <div class="section-icon">
-                    ⭐
+                    🛒
                 </div>
 
-
                 <h2>
-                    Niyə Gunel's story?
+                    Sifariş prosesi
                 </h2>
-
 
             </div>
 
 
             <p>
 
-                Bizim üçün əsas olan yalnız gözəl görünən
-                kitab yaratmaq deyil. Əsas məqsəd uşağın
-                hekayə ilə emosional bağ qurmasıdır.
+                Sifarişin hazırlanması üçün istifadəçidən
+                tələb olunan məlumatların tam və düzgün
+                təqdim edilməsi vacibdir.
 
             </p>
 
 
-            <div class="advantages">
+            <div class="process-list">
 
 
-                <div class="advantage">
+                <div class="process-item">
 
-
-                    <div class="advantage-icon">
-                        💎
+                    <div class="process-number">
+                        1
                     </div>
 
+                    <div>
 
-                    <strong>
-                        Fərdi yanaşma
-                    </strong>
+                        <strong>
+                            Məlumatların təqdim edilməsi
+                        </strong>
 
+                        <span>
+                            Uşaq və sifarişlə bağlı
+                            zəruri məlumatlar təqdim olunmalıdır.
+                        </span>
+
+                    </div>
 
                 </div>
 
 
-                <div class="advantage">
+                <div class="process-item">
 
-
-                    <div class="advantage-icon">
-                        🎨
+                    <div class="process-number">
+                        2
                     </div>
 
+                    <div>
 
-                    <strong>
-                        Estetik dizayn
-                    </strong>
+                        <strong>
+                            Hekayənin hazırlanması
+                        </strong>
 
+                        <span>
+                            Təqdim olunan məlumatlar əsasında
+                            fərdi hekayə hazırlanır.
+                        </span>
+
+                    </div>
 
                 </div>
 
 
-                <div class="advantage">
+                <div class="process-item">
 
-
-                    <div class="advantage-icon">
-                        ❤️
+                    <div class="process-number">
+                        3
                     </div>
 
+                    <div>
 
-                    <strong>
-                        Uşaq yönümlü
-                    </strong>
+                        <strong>
+                            Dizayn mərhələsi
+                        </strong>
 
+                        <span>
+                            Hekayəyə uyğun vizual və
+                            səhifə dizaynı hazırlanır.
+                        </span>
+
+                    </div>
 
                 </div>
 
 
-                <div class="advantage">
+                <div class="process-item">
 
-
-                    <div class="advantage-icon">
-                        🧸
+                    <div class="process-number">
+                        4
                     </div>
 
+                    <div>
 
-                    <strong>
-                        Xüsusi xatirə
-                    </strong>
+                        <strong>
+                            Yekun təqdimat
+                        </strong>
 
+                        <span>
+                            Hazırlanmış məhsul razılaşdırılmış
+                            formada təqdim edilir.
+                        </span>
+
+                    </div>
 
                 </div>
 
@@ -1864,6 +1918,431 @@
 
 
         </section>
+
+
+
+        <!-- =================================================
+             4. İSTİFADƏÇİNİN MƏSULİYYƏTİ
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    👤
+                </div>
+
+                <h2>
+                    İstifadəçinin məsuliyyəti
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                İstifadəçi sifariş zamanı təqdim etdiyi
+                məlumatların düzgünlüyünə və həmin
+                məlumatlardan istifadə etmək hüququna
+                malik olmasına görə məsuliyyət daşıyır.
+
+            </p>
+
+
+            <ul>
+
+                <li>
+                    Təqdim olunan ad və məlumatların düzgün olması
+                </li>
+
+                <li>
+                    Fotoşəkillərdən istifadə üçün lazımi hüquqa
+                    malik olması
+                </li>
+
+                <li>
+                    Sifariş məlumatlarının yoxlanılması
+                </li>
+
+                <li>
+                    Sifarişlə bağlı vacib dəyişikliklərin
+                    vaxtında bildirilməsi
+                </li>
+
+            </ul>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             5. FOTOŞƏKİLLƏR VƏ MATERİALLAR
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    📸
+                </div>
+
+                <h2>
+                    Fotoşəkillər və təqdim olunan materiallar
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                İstifadəçi tərəfindən təqdim olunan
+                fotoşəkillər və digər materiallar
+                sifarişin hazırlanması məqsədilə istifadə
+                edilir.
+
+            </p>
+
+
+            <p>
+
+                İstifadəçi təqdim etdiyi materiallardan
+                istifadə etmək hüququna malik olduğunu
+                təsdiq etməlidir.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             6. DƏYİŞİKLİKLƏR
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    ✏️
+                </div>
+
+                <h2>
+                    Dəyişiklik və düzəlişlər
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Sifariş hazırlanarkən istifadəçi tərəfindən
+                təqdim olunan məlumatların dəyişdirilməsi
+                və ya düzəlişlərin edilməsi müəyyən hallarda
+                mümkün ola bilər.
+
+            </p>
+
+
+            <p>
+
+                Dizayn və ya hekayə hazırlanması başa
+                çatdıqdan sonra edilən əlavə dəyişikliklər
+                əlavə iş tələb edə bilər.
+
+            </p>
+
+
+            <div class="info-box">
+
+                <p>
+
+                    <strong>Tövsiyə:</strong>
+                    Sifariş təsdiqlənməzdən əvvəl bütün
+                    məlumatları diqqətlə yoxlayın.
+
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             7. ÖDƏNİŞ
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    💳
+                </div>
+
+                <h2>
+                    Ödəniş
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Xidmətin qiyməti sifarişin növünə,
+                seçilmiş məhsula və əlavə xidmətlərə
+                uyğun olaraq müəyyən edilir.
+
+            </p>
+
+
+            <p>
+
+                Sifariş zamanı tətbiq olunan qiymət və
+                ödəniş qaydaları istifadəçiyə əvvəlcədən
+                bildirilir.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             8. MÜDDƏT
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    ⏱️
+                </div>
+
+                <h2>
+                    Hazırlanma müddəti
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Fərdi kitabın hazırlanma müddəti sifarişin
+                məzmunundan, seçilmiş xidmətlərdən və
+                layihənin həcmindən asılı olaraq dəyişə bilər.
+
+            </p>
+
+
+            <p>
+
+                Hekayənin nəşr və dizayn üçün təqdim edildiyi üçüncü tərəflərin 
+                işlərindən və digər gözlənilməyən texniki işlərdən asılıdır.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             9. LƏĞV VƏ GERİ QAYTARMA
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🔄
+                </div>
+
+                <h2>
+                    Sifarişin ləğvi və geri qaytarılması
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Fərdi hazırlanmış məhsullar xüsusi olaraq
+                konkret istifadəçi və uşaq üçün hazırlandığı
+                üçün sifarişin ləğvi və ödənişin geri
+                qaytarılması məhsulun hazırlanma mərhələsindən
+                asılıdır.
+
+            </p>
+
+
+            <p>
+
+                Geri qaytarma və ləğv şərtləri konkret
+                sifariş üzrə əvvəlcədən razılaşdırılmalıdır.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             10. MÜƏLLİFLİK VƏ MƏZMUN
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    ©️
+                </div>
+
+                <h2>
+                    Müəlliflik və məzmun hüquqları
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                <b>Gunel's story</b>b> tərəfindən hazırlanmış
+                hekayə, dizayn, illüstrasiya və digər
+                yaradıcı materiallar müvafiq müəlliflik
+                hüquqları ilə qorunur. Hazırlanan fərdi kitabın
+                bütün müəlliflik hüququ <b>Gunel's story</b>ə məxsusdur.
+
+            </p>
+
+
+            <p>
+
+                Hazırlanmış fərdi məhsulun şəxsi istifadə
+                məqsədilə istifadəsi ilə kommersiya məqsədilə
+                çoxaldılması və yayılması eyni hüquqi məna
+                daşımır.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             11. XİDMƏTDƏ DƏYİŞİKLİKLƏR
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🔧
+                </div>
+
+                <h2>
+                    Xidmətlərdə dəyişikliklər
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                <b>Gunel's story</b> xidmətlərin məzmununda,
+                dizaynında, təqdim olunma formasında və
+                digər xüsusiyyətlərində dəyişiklik etmək
+                hüququnu özündə saxlayır.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             12. ŞƏRTLƏRƏ DƏYİŞİKLİK
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    📑
+                </div>
+
+                <h2>
+                    Xidmət şərtlərində dəyişikliklər
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Bu <b>Xidmət Şərtləri</b> gələcəkdə yenilənə və
+                dəyişdirilə bilər. Yenilənmiş versiya
+                bu səhifədə yayımlandığı tarixdən etibarən
+                qüvvəyə minir.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             DİGƏR SƏHİFƏLƏR
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🔗
+                </div>
+
+                <h2>
+                    Digər səhifələr
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Gunel's story haqqında və məlumatların
+                qorunması ilə bağlı daha ətraflı məlumat
+                üçün aşağıdakı səhifələrə keçə bilərsiniz.
+
+            </p>
 
 
         <!-- =================================================
@@ -1875,17 +2354,15 @@
 
             <h2>
 
-                Uşağınızın hekayəsi
-                indi başlaya bilər.
+                Sifarişinizə başlamağa hazırsınız?
 
             </h2>
 
 
             <p>
 
-                Onu öz hekayəsinin baş qəhrəmanına çevirin
-                və illər sonra belə sevə-sevə vərəqləyəcəyi
-                xüsusi bir xatirə yaradın.
+                Uşağınız üçün xüsusi və unudulmaz
+                bir hekayə yaratmağa başlaya bilərsiniz.
 
             </p>
 
@@ -1893,7 +2370,7 @@
             <a href="index.html"
                class="cta-button">
 
-                Hekayəni yaratmağa başla →
+                Əsas səhifəyə keç →
 
             </a>
 
@@ -1902,6 +2379,24 @@
 
 
     </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+
+        <p>
+
+            © 2026 Gunel's story. Bütün hüquqlar qorunur.
+
+        </p>
+
+
+    </footer>
 
 
 
@@ -1960,7 +2455,7 @@
         );
 
 
-        /* MENYU SEÇİLƏNDƏ BAĞLANSIN */
+        /* LINKƏ BASILDIQDA MENYU BAĞLANSIN */
 
         navLinks
             .querySelectorAll("a")
@@ -1994,7 +2489,7 @@
             );
 
 
-        /* MENYU XARİCİNƏ BASILANDA BAĞLANSIN */
+        /* MENYU XARİCİNƏ BASILDIQDA BAĞLANSIN */
 
         document.addEventListener(
             "click",
@@ -2028,7 +2523,7 @@
         );
 
 
-        /* EKRAN BÖYÜDÜKDƏ MENYU SIFIRLANSIN */
+        /* EKRAN BÖYÜDÜKDƏ MENYU RESET */
 
         window.addEventListener(
             "resize",
