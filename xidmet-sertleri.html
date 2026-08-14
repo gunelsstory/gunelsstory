@@ -1,1 +1,2627 @@
+<!DOCTYPE html>
+<html lang="az">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>Xidmət Şərtləri | Gunel's story</title>
+
+    <meta name="description"
+          content="Gunel's story xidmət şərtləri. Fərdi uşaq kitablarının hazırlanması, sifariş, ödəniş, dəyişiklik və istifadə şərtləri.">
+
+    <link rel="icon"
+          type="image/png"
+          href="image/favicon.png">
+
+
+    <!-- =====================================================
+         ŞRİFTLƏR
+    ====================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@600;700&display=swap"
+          rel="stylesheet">
+
+
+    <style>
+
+        /* =====================================================
+           ROOT
+        ====================================================== */
+
+        :root {
+
+            --bg-color: #fafbfc;
+
+            --primary: #4f46e5;
+
+            --primary-soft: #f0f0ff;
+
+            --text-main: #1a1a24;
+
+            --text-sub: #64748b;
+
+            --white: #ffffff;
+
+            --border: #e8edf3;
+
+            --radius-xl: 24px;
+
+            --radius-md: 16px;
+
+            --shadow-soft:
+                0 10px 35px
+                rgba(15, 23, 42, 0.04);
+
+            --shadow-hover:
+                0 18px 45px
+                rgba(79, 70, 229, 0.08);
+        }
+
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            background:
+                var(--bg-color);
+
+            color:
+                var(--text-main);
+
+            font-family:
+                'Plus Jakarta Sans',
+                sans-serif;
+
+            min-height:
+                100vh;
+
+            padding-bottom:
+                60px;
+        }
+
+
+        h1,
+        h2,
+        h3 {
+
+            font-family:
+                'Quicksand',
+                sans-serif;
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ====================================================== */
+
+        nav {
+
+            position:
+                sticky;
+
+            top:
+                0;
+
+            z-index:
+                1000;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.94
+                );
+
+            backdrop-filter:
+                blur(12px);
+
+            -webkit-backdrop-filter:
+                blur(12px);
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+
+        .nav-container {
+
+            max-width:
+                1000px;
+
+            margin:
+                0 auto;
+
+            padding:
+                12px 24px;
+
+            min-height:
+                64px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            position:
+                relative;
+        }
+
+
+        /* =====================================================
+           LOGO
+        ====================================================== */
+
+        .nav-brand {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                9px;
+
+            text-decoration:
+                none;
+
+            color:
+                var(--text-main);
+
+            flex-shrink:
+                0;
+        }
+
+
+        .nav-brand img {
+
+            width:
+                40px;
+
+            height:
+                40px;
+
+            object-fit:
+                contain;
+
+            display:
+                block;
+        }
+
+
+        .nav-brand span {
+
+            font-size:
+                1.15rem;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                -0.4px;
+
+            white-space:
+                nowrap;
+        }
+
+
+        /* =====================================================
+           NAV LINKS
+        ====================================================== */
+
+        .nav-links {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                20px;
+        }
+
+
+        .nav-links a {
+
+            text-decoration:
+                none;
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.78rem;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                0.3px;
+
+            transition:
+                color 0.2s ease;
+        }
+
+
+        .nav-links a:hover {
+
+            color:
+                var(--primary);
+        }
+
+
+        .nav-links a.active {
+
+            color:
+                var(--primary);
+        }
+
+
+        .nav-links .admin-link {
+
+            color:
+                var(--white);
+
+            background:
+                var(--primary);
+
+            padding:
+                9px 17px;
+
+            border-radius:
+                50px;
+
+            box-shadow:
+                0 5px 15px
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.18
+                );
+        }
+
+
+        .nav-links .admin-link:hover {
+
+            color:
+                var(--white);
+        }
+
+
+        /* =====================================================
+           HAMBURGER
+        ====================================================== */
+
+        .menu-toggle {
+
+            display:
+                none;
+
+            width:
+                40px;
+
+            height:
+                40px;
+
+            border:
+                none;
+
+            background:
+                transparent;
+
+            color:
+                var(--text-main);
+
+            font-size:
+                27px;
+
+            line-height:
+                1;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            cursor:
+                pointer;
+
+            z-index:
+                1100;
+        }
+
+
+        /* =====================================================
+           MAIN
+        ====================================================== */
+
+        .page-container {
+
+            max-width:
+                900px;
+
+            margin:
+                0 auto;
+
+            padding:
+                0 20px;
+        }
+
+
+        /* =====================================================
+           BACK BUTTON
+        ====================================================== */
+
+        .back-section {
+
+            padding:
+                28px 0 0;
+        }
+
+
+        .back-button {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            text-decoration:
+                none;
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.86rem;
+
+            font-weight:
+                700;
+
+            padding:
+                10px 16px;
+
+            background:
+                var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                50px;
+
+            transition:
+                all 0.2s ease;
+        }
+
+
+        .back-button:hover {
+
+            color:
+                var(--primary);
+
+            border-color:
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.25
+                );
+
+            transform:
+                translateX(-2px);
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .terms-hero {
+
+            text-align:
+                center;
+
+            padding:
+                55px 10px 45px;
+        }
+
+
+        .terms-icon {
+
+            width:
+                82px;
+
+            height:
+                82px;
+
+            margin:
+                0 auto 20px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                var(--primary-soft);
+
+            border-radius:
+                24px;
+
+            font-size:
+                2.4rem;
+        }
+
+
+        .terms-label {
+
+            display:
+                inline-block;
+
+            background:
+                var(--primary-soft);
+
+            color:
+                var(--primary);
+
+            padding:
+                7px 17px;
+
+            border-radius:
+                50px;
+
+            font-size:
+                0.76rem;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                0.8px;
+
+            margin-bottom:
+                17px;
+        }
+
+
+        .terms-hero h1 {
+
+            font-size:
+                2.8rem;
+
+            line-height:
+                1.2;
+
+            letter-spacing:
+                -1px;
+
+            margin-bottom:
+                14px;
+        }
+
+
+        .terms-hero h1 span {
+
+            color:
+                var(--primary);
+        }
+
+
+        .terms-hero p {
+
+            max-width:
+                680px;
+
+            margin:
+                0 auto;
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.98rem;
+
+            line-height:
+                1.75;
+        }
+
+
+        /* =====================================================
+           CONTENT CARDS
+        ====================================================== */
+
+        .terms-card {
+
+            background:
+                var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                var(--radius-xl);
+
+            padding:
+                38px 42px;
+
+            margin-bottom:
+                18px;
+
+            box-shadow:
+                var(--shadow-soft);
+
+            transition:
+                all 0.3s ease;
+        }
+
+
+        .terms-card:hover {
+
+            transform:
+                translateY(-1px);
+
+            box-shadow:
+                var(--shadow-hover);
+        }
+
+
+        .section-heading {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                13px;
+
+            margin-bottom:
+                17px;
+        }
+
+
+        .section-icon {
+
+            width:
+                43px;
+
+            height:
+                43px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                var(--primary-soft);
+
+            border-radius:
+                13px;
+
+            font-size:
+                1.3rem;
+
+            flex-shrink:
+                0;
+        }
+
+
+        .section-heading h2 {
+
+            font-size:
+                1.4rem;
+
+            letter-spacing:
+                -0.3px;
+        }
+
+
+        .terms-card p {
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.94rem;
+
+            line-height:
+                1.8;
+
+            margin-bottom:
+                12px;
+        }
+
+
+        .terms-card p:last-child {
+
+            margin-bottom:
+                0;
+        }
+
+
+        .terms-card ul {
+
+            margin:
+                12px 0 0 20px;
+
+            color:
+                var(--text-sub);
+        }
+
+
+        .terms-card li {
+
+            font-size:
+                0.93rem;
+
+            line-height:
+                1.8;
+
+            margin-bottom:
+                8px;
+
+            padding-left:
+                5px;
+        }
+
+
+        .terms-card strong {
+
+            color:
+                var(--text-main);
+        }
+
+
+        /* =====================================================
+           INFO BOX
+        ====================================================== */
+
+        .info-box {
+
+            background:
+                #f7f7ff;
+
+            border:
+                1px solid #e7e5ff;
+
+            border-radius:
+                16px;
+
+            padding:
+                20px;
+
+            margin-top:
+                16px;
+        }
+
+
+        .info-box p {
+
+            margin:
+                0;
+
+            color:
+                var(--text-main);
+
+            font-size:
+                0.9rem;
+        }
+
+
+        /* =====================================================
+           PROCESS
+        ====================================================== */
+
+        .process-list {
+
+            display:
+                grid;
+
+            gap:
+                10px;
+
+            margin-top:
+                18px;
+        }
+
+
+        .process-item {
+
+            display:
+                flex;
+
+            align-items:
+                flex-start;
+
+            gap:
+                13px;
+
+            padding:
+                15px;
+
+            background:
+                #f8fafc;
+
+            border:
+                1px solid #edf2f7;
+
+            border-radius:
+                14px;
+        }
+
+
+        .process-number {
+
+            width:
+                32px;
+
+            height:
+                32px;
+
+            min-width:
+                32px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                var(--primary);
+
+            color:
+                var(--white);
+
+            border-radius:
+                50%;
+
+            font-size:
+                0.78rem;
+
+            font-weight:
+                800;
+        }
+
+
+        .process-item strong {
+
+            display:
+                block;
+
+            margin-bottom:
+                3px;
+
+            font-size:
+                0.9rem;
+        }
+
+
+        .process-item span {
+
+            display:
+                block;
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.83rem;
+
+            line-height:
+                1.6;
+        }
+
+
+        /* =====================================================
+           OTHER LINKS
+        ====================================================== */
+
+        .policy-links {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap:
+                12px;
+
+            margin-top:
+                20px;
+        }
+
+
+        .policy-link {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+            text-decoration:
+                none;
+
+            background:
+                #f8fafc;
+
+            border:
+                1px solid #edf2f7;
+
+            color:
+                var(--text-main);
+
+            padding:
+                16px;
+
+            border-radius:
+                14px;
+
+            font-size:
+                0.86rem;
+
+            font-weight:
+                700;
+
+            transition:
+                all 0.2s ease;
+        }
+
+
+        .policy-link:hover {
+
+            color:
+                var(--primary);
+
+            background:
+                var(--primary-soft);
+
+            border-color:
+                #e4e2ff;
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =====================================================
+           CTA
+        ====================================================== */
+
+        .cta-card {
+
+            margin-top:
+                22px;
+
+            padding:
+                40px 30px;
+
+            text-align:
+                center;
+
+            background:
+                var(--primary);
+
+            color:
+                var(--white);
+
+            border-radius:
+                var(--radius-xl);
+
+            box-shadow:
+                0 15px 40px
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.16
+                );
+        }
+
+
+        .cta-card h2 {
+
+            font-size:
+                1.7rem;
+
+            margin-bottom:
+                11px;
+        }
+
+
+        .cta-card p {
+
+            max-width:
+                600px;
+
+            margin:
+                0 auto 22px;
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.82
+                );
+
+            line-height:
+                1.7;
+
+            font-size:
+                0.9rem;
+        }
+
+
+        .cta-button {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-decoration:
+                none;
+
+            background:
+                var(--white);
+
+            color:
+                var(--primary);
+
+            padding:
+                12px 22px;
+
+            border-radius:
+                50px;
+
+            font-weight:
+                800;
+
+            font-size:
+                0.85rem;
+
+            transition:
+                all 0.2s ease;
+        }
+
+
+        .cta-button:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.12
+                );
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        footer {
+
+            text-align:
+                center;
+
+            padding:
+                35px 20px 10px;
+
+            color:
+                var(--text-sub);
+
+            font-size:
+                0.77rem;
+        }
+
+
+        .footer-links {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                12px 20px;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .footer-links a {
+
+            color:
+                var(--text-sub);
+
+            text-decoration:
+                none;
+
+            font-weight:
+                700;
+
+            transition:
+                color 0.2s ease;
+        }
+
+
+        .footer-links a:hover {
+
+            color:
+                var(--primary);
+        }
+
+
+        /* =====================================================
+           MOBİL
+        ====================================================== */
+
+        @media (max-width: 768px) {
+
+
+            .nav-container {
+
+                padding:
+                    11px 16px;
+            }
+
+
+            .nav-brand {
+
+                max-width:
+                    calc(100% - 55px);
+            }
+
+
+            .nav-brand img {
+
+                width:
+                    36px;
+
+                height:
+                    36px;
+            }
+
+
+            .nav-brand span {
+
+                font-size:
+                    0.98rem;
+
+                overflow:
+                    hidden;
+
+                text-overflow:
+                    ellipsis;
+            }
+
+
+            .menu-toggle {
+
+                display:
+                    flex;
+            }
+
+
+            /* MOBILE MENU */
+
+            .nav-links {
+
+                display:
+                    none;
+
+                position:
+                    absolute;
+
+                top:
+                    calc(100% + 8px);
+
+                right:
+                    14px;
+
+                width:
+                    225px;
+
+                padding:
+                    10px;
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    stretch;
+
+                gap:
+                    4px;
+
+                background:
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0.99
+                    );
+
+                border:
+                    1px solid var(--border);
+
+                border-radius:
+                    16px;
+
+                box-shadow:
+                    0 15px 40px
+                    rgba(
+                        15,
+                        23,
+                        42,
+                        0.12
+                    );
+            }
+
+
+            .nav-links.open {
+
+                display:
+                    flex;
+            }
+
+
+            .nav-links a {
+
+                display:
+                    block;
+
+                width:
+                    100%;
+
+                padding:
+                    13px 14px;
+
+                font-size:
+                    0.74rem;
+
+                border-radius:
+                    10px;
+            }
+
+
+            .nav-links a:hover {
+
+                background:
+                    var(--primary-soft);
+            }
+
+
+            .nav-links .admin-link {
+
+                text-align:
+                    center;
+            }
+
+
+            /* CONTENT */
+
+            .page-container {
+
+                padding:
+                    0 16px;
+            }
+
+
+            .back-section {
+
+                padding-top:
+                    20px;
+            }
+
+
+            .terms-hero {
+
+                padding:
+                    40px 5px 32px;
+            }
+
+
+            .terms-icon {
+
+                width:
+                    72px;
+
+                height:
+                    72px;
+
+                border-radius:
+                    20px;
+
+                font-size:
+                    2rem;
+            }
+
+
+            .terms-hero h1 {
+
+                font-size:
+                    2.2rem;
+            }
+
+
+            .terms-hero p {
+
+                font-size:
+                    0.9rem;
+
+                line-height:
+                    1.7;
+            }
+
+
+            .terms-card {
+
+                padding:
+                    26px 21px;
+
+                border-radius:
+                    20px;
+
+                margin-bottom:
+                    14px;
+            }
+
+
+            .section-heading {
+
+                gap:
+                    10px;
+            }
+
+
+            .section-icon {
+
+                width:
+                    39px;
+
+                height:
+                    39px;
+
+                font-size:
+                    1.15rem;
+            }
+
+
+            .section-heading h2 {
+
+                font-size:
+                    1.22rem;
+            }
+
+
+            .terms-card p {
+
+                font-size:
+                    0.88rem;
+
+                line-height:
+                    1.75;
+            }
+
+
+            .terms-card li {
+
+                font-size:
+                    0.87rem;
+
+                line-height:
+                    1.7;
+            }
+
+
+            /* PROCESS */
+
+            .process-item {
+
+                padding:
+                    13px;
+            }
+
+
+            .process-item strong {
+
+                font-size:
+                    0.86rem;
+            }
+
+
+            .process-item span {
+
+                font-size:
+                    0.8rem;
+            }
+
+
+            /* LINKS */
+
+            .policy-links {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    9px;
+            }
+
+
+            .policy-link {
+
+                padding:
+                    14px;
+            }
+
+
+            /* CTA */
+
+            .cta-card {
+
+                padding:
+                    35px 21px;
+
+                border-radius:
+                    20px;
+            }
+
+
+            .cta-card h2 {
+
+                font-size:
+                    1.4rem;
+            }
+
+
+            .cta-card p {
+
+                font-size:
+                    0.85rem;
+            }
+
+
+            /* FOOTER */
+
+            .footer-links {
+
+                gap:
+                    10px 16px;
+            }
+
+        }
+
+
+        /* =====================================================
+           ÇOX KİÇİK EKRAN
+        ====================================================== */
+
+        @media (max-width: 380px) {
+
+
+            .nav-container {
+
+                padding-left:
+                    13px;
+
+                padding-right:
+                    13px;
+            }
+
+
+            .nav-brand img {
+
+                width:
+                    33px;
+
+                height:
+                    33px;
+            }
+
+
+            .nav-brand span {
+
+                font-size:
+                    0.9rem;
+            }
+
+
+            .terms-hero h1 {
+
+                font-size:
+                    1.95rem;
+            }
+
+
+            .terms-card {
+
+                padding:
+                    23px 17px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <nav>
+
+        <div class="nav-container">
+
+
+            <!-- LOGO -->
+
+            <a href="index.html"
+               class="nav-brand">
+
+                <img
+                    src="image/logo.png"
+                    alt="Gunel's story logo">
+
+                <span>
+                    Gunel's story
+                </span>
+
+            </a>
+
+
+            <!-- HAMBURGER -->
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Menyu"
+                aria-expanded="false">
+
+                ☰
+
+            </button>
+
+
+            <!-- MENYU -->
+
+            <div
+                class="nav-links"
+                id="navLinks">
+
+
+                <a href="haqqimizda.html">
+                    HAQQIMIZDA
+                </a>
+
+
+                <a href="portfolio.html">
+                    PORTFOLİO
+                </a>
+
+
+                <a href="mexfilik.html">
+                    MƏXFİLİK SİYASƏTİ
+                </a>
+
+
+                <a href="xidmet-sertleri.html"
+                   class="active">
+                    XİDMƏT ŞƏRTLƏRİ
+                </a>
+
+
+                <a href="admin.html"
+                   class="admin-link">
+
+                    ⚙️ ADMİN
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="page-container">
+
+
+        <!-- GERİ -->
+
+        <div class="back-section">
+
+            <a href="index.html"
+               class="back-button">
+
+                ← Əsas səhifəyə qayıt
+
+            </a>
+
+        </div>
+
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="terms-hero">
+
+
+            <div class="terms-icon">
+
+                📄
+
+            </div>
+
+
+            <div class="terms-label">
+
+                XİDMƏT ŞƏRTLƏRİ
+
+            </div>
+
+
+            <h1>
+
+                Xidmət
+                <span>
+                    Şərtləri
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                Gunel's story xidmətlərindən istifadə,
+                fərdi kitab sifarişlərinin hazırlanması
+                və təqdim edilməsi ilə bağlı əsas şərtlər.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             1. ÜMUMİ ŞƏRTLƏR
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    📋
+                </div>
+
+                <h2>
+                    Ümumi şərtlər
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Gunel's story fərdi uşaq kitablarının
+                hazırlanması və təqdim edilməsi üzrə
+                xidmət göstərir.
+
+            </p>
+
+
+            <p>
+
+                Saytdan istifadə etməklə və sifariş
+                yerləşdirməklə istifadəçi bu Xidmət
+                Şərtləri ilə tanış olduğunu və onları
+                qəbul etdiyini təsdiq edir.
+
+            </p>
+
+
+            <div class="info-box">
+
+                <p>
+
+                    <strong>Qeyd:</strong>
+                    Sifariş verməzdən əvvəl təqdim olunan
+                    məlumatların düzgünlüyünü yoxlamağınız
+                    xahiş olunur.
+
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             2. XİDMƏTİN MƏZMUNU
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    📖
+                </div>
+
+                <h2>
+                    Xidmətin məzmunu
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Gunel's story uşağın fərdi xüsusiyyətləri,
+                adı, maraqları və təqdim olunan məlumatlar
+                əsasında xüsusi hekayə və vizual materiallar
+                hazırlaya bilər.
+
+            </p>
+
+
+            <ul>
+
+                <li>
+                    Fərdi uşaq hekayəsinin hazırlanması
+                </li>
+
+                <li>
+                    Kitab səhifələrinin dizayn edilməsi
+                </li>
+
+                <li>
+                    Təqdim olunan fotoşəkillərin layihəyə
+                    uyğunlaşdırılması
+                </li>
+
+                <li>
+                    Çap və təqdimat üçün hazırlanmış
+                    kitab materiallarının formalaşdırılması
+                </li>
+
+            </ul>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             3. SİFARİŞ PROSESİ
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🛒
+                </div>
+
+                <h2>
+                    Sifariş prosesi
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Sifarişin hazırlanması üçün istifadəçidən
+                tələb olunan məlumatların tam və düzgün
+                təqdim edilməsi vacibdir.
+
+            </p>
+
+
+            <div class="process-list">
+
+
+                <div class="process-item">
+
+                    <div class="process-number">
+                        1
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Məlumatların təqdim edilməsi
+                        </strong>
+
+                        <span>
+                            Uşaq və sifarişlə bağlı
+                            zəruri məlumatlar təqdim edilir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="process-item">
+
+                    <div class="process-number">
+                        2
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Hekayənin hazırlanması
+                        </strong>
+
+                        <span>
+                            Təqdim olunan məlumatlar əsasında
+                            fərdi hekayə hazırlanır.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="process-item">
+
+                    <div class="process-number">
+                        3
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Dizayn mərhələsi
+                        </strong>
+
+                        <span>
+                            Hekayəyə uyğun vizual və
+                            səhifə dizaynı hazırlanır.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="process-item">
+
+                    <div class="process-number">
+                        4
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Yekun təqdimat
+                        </strong>
+
+                        <span>
+                            Hazırlanmış məhsul razılaşdırılmış
+                            formada təqdim edilir.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             4. İSTİFADƏÇİNİN MƏSULİYYƏTİ
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    👤
+                </div>
+
+                <h2>
+                    İstifadəçinin məsuliyyəti
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                İstifadəçi sifariş zamanı təqdim etdiyi
+                məlumatların düzgünlüyünə və həmin
+                məlumatlardan istifadə etmək hüququna
+                malik olmasına görə məsuliyyət daşıyır.
+
+            </p>
+
+
+            <ul>
+
+                <li>
+                    Təqdim olunan ad və məlumatların düzgün olması
+                </li>
+
+                <li>
+                    Fotoşəkillərdən istifadə üçün lazımi hüquqa
+                    malik olması
+                </li>
+
+                <li>
+                    Sifariş məlumatlarının yoxlanılması
+                </li>
+
+                <li>
+                    Sifarişlə bağlı vacib dəyişikliklərin
+                    vaxtında bildirilməsi
+                </li>
+
+            </ul>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             5. FOTOŞƏKİLLƏR VƏ MATERİALLAR
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    📸
+                </div>
+
+                <h2>
+                    Fotoşəkillər və təqdim olunan materiallar
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                İstifadəçi tərəfindən təqdim olunan
+                fotoşəkillər və digər materiallar
+                sifarişin hazırlanması məqsədilə istifadə
+                edilə bilər.
+
+            </p>
+
+
+            <p>
+
+                İstifadəçi təqdim etdiyi materiallardan
+                istifadə etmək hüququna malik olduğunu
+                təsdiq etməlidir.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             6. DƏYİŞİKLİKLƏR
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    ✏️
+                </div>
+
+                <h2>
+                    Dəyişiklik və düzəlişlər
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Sifariş hazırlanarkən istifadəçi tərəfindən
+                təqdim olunan məlumatların dəyişdirilməsi
+                və ya düzəlişlərin edilməsi müəyyən hallarda
+                mümkün ola bilər.
+
+            </p>
+
+
+            <p>
+
+                Dizayn və ya hekayə hazırlanması başa
+                çatdıqdan sonra edilən əlavə dəyişikliklər
+                əlavə iş tələb edə bilər.
+
+            </p>
+
+
+            <div class="info-box">
+
+                <p>
+
+                    <strong>Tövsiyə:</strong>
+                    Sifariş təsdiqlənməzdən əvvəl bütün
+                    məlumatları diqqətlə yoxlayın.
+
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             7. ÖDƏNİŞ
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    💳
+                </div>
+
+                <h2>
+                    Ödəniş
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Xidmətin qiyməti sifarişin növünə,
+                seçilmiş məhsula və əlavə xidmətlərə
+                uyğun olaraq müəyyən edilir.
+
+            </p>
+
+
+            <p>
+
+                Sifariş zamanı tətbiq olunan qiymət və
+                ödəniş qaydaları istifadəçiyə əvvəlcədən
+                bildirilməlidir.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             8. MÜDDƏT
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    ⏱️
+                </div>
+
+                <h2>
+                    Hazırlanma müddəti
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Fərdi kitabın hazırlanma müddəti sifarişin
+                məzmunundan, seçilmiş xidmətlərdən və
+                layihənin həcmindən asılı olaraq dəyişə bilər.
+
+            </p>
+
+
+            <p>
+
+                Təxmini hazırlanma müddəti sifariş zamanı
+                istifadəçiyə bildirilməlidir.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             9. LƏĞV VƏ GERİ QAYTARMA
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🔄
+                </div>
+
+                <h2>
+                    Sifarişin ləğvi və geri qaytarılması
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Fərdi hazırlanmış məhsullar xüsusi olaraq
+                konkret istifadəçi və uşaq üçün hazırlandığı
+                üçün sifarişin ləğvi və ödənişin geri
+                qaytarılması məhsulun hazırlanma mərhələsindən
+                asılı ola bilər.
+
+            </p>
+
+
+            <p>
+
+                Geri qaytarma və ləğv şərtləri konkret
+                sifariş üzrə əvvəlcədən razılaşdırıla bilər.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             10. MÜƏLLİFLİK VƏ MƏZMUN
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    ©️
+                </div>
+
+                <h2>
+                    Müəlliflik və məzmun hüquqları
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Gunel's story tərəfindən hazırlanmış
+                hekayə, dizayn, illüstrasiya və digər
+                yaradıcı materiallar müvafiq müəlliflik
+                hüquqları ilə qoruna bilər.
+
+            </p>
+
+
+            <p>
+
+                Hazırlanmış fərdi məhsulun şəxsi istifadə
+                məqsədilə istifadəsi ilə kommersiya məqsədilə
+                çoxaldılması və yayılması eyni hüquqi məna
+                daşımır.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             11. XİDMƏTDƏ DƏYİŞİKLİKLƏR
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🔧
+                </div>
+
+                <h2>
+                    Xidmətlərdə dəyişikliklər
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Gunel's story xidmətlərin məzmununda,
+                dizaynında, təqdim olunma formasında və
+                digər xüsusiyyətlərində dəyişiklik etmək
+                hüququnu özündə saxlayır.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             12. ŞƏRTLƏRƏ DƏYİŞİKLİK
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    📑
+                </div>
+
+                <h2>
+                    Xidmət şərtlərində dəyişikliklər
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Bu Xidmət Şərtləri gələcəkdə yenilənə və
+                dəyişdirilə bilər. Yenilənmiş versiya
+                bu səhifədə yayımlandığı tarixdən etibarən
+                qüvvəyə minir.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             DİGƏR SƏHİFƏLƏR
+        ================================================== -->
+
+        <section class="terms-card">
+
+
+            <div class="section-heading">
+
+                <div class="section-icon">
+                    🔗
+                </div>
+
+                <h2>
+                    Digər səhifələr
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                Gunel's story haqqında və məlumatların
+                qorunması ilə bağlı daha ətraflı məlumat
+                üçün aşağıdakı səhifələrə keçə bilərsiniz.
+
+            </p>
+
+
+            <div class="policy-links">
+
+
+                <a href="mexfilik.html"
+                   class="policy-link">
+
+                    🔒
+
+                    <span>
+                        Məxfilik siyasəti
+                    </span>
+
+                </a>
+
+
+                <a href="haqqimizda.html"
+                   class="policy-link">
+
+                    ℹ️
+
+                    <span>
+                        Haqqımızda
+                    </span>
+
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             CTA
+        ================================================== -->
+
+        <section class="cta-card">
+
+
+            <h2>
+
+                Sifarişinizə başlamağa hazırsınız?
+
+            </h2>
+
+
+            <p>
+
+                Uşağınız üçün xüsusi və unudulmaz
+                bir hekayə yaratmağa başlaya bilərsiniz.
+
+            </p>
+
+
+            <a href="index.html"
+               class="cta-button">
+
+                Əsas səhifəyə keç →
+
+            </a>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+
+        <div class="footer-links">
+
+
+            <a href="index.html">
+                Əsas səhifə
+            </a>
+
+
+            <a href="haqqimizda.html">
+                Haqqımızda
+            </a>
+
+
+            <a href="portfolio.html">
+                Portfolio
+            </a>
+
+
+            <a href="mexfilik.html">
+                Məxfilik siyasəti
+            </a>
+
+
+            <a href="xidmet-sertleri.html">
+                Xidmət şərtləri
+            </a>
+
+
+        </div>
+
+
+        <p>
+
+            © 2026 Gunel's story. Bütün hüquqlar qorunur.
+
+        </p>
+
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         MOBILE MENU SCRIPT
+    ====================================================== -->
+
+    <script>
+
+
+        const menuToggle =
+            document.getElementById(
+                "menuToggle"
+            );
+
+
+        const navLinks =
+            document.getElementById(
+                "navLinks"
+            );
+
+
+        /* MENU AÇ / BAĞLA */
+
+        menuToggle.addEventListener(
+            "click",
+            function (event) {
+
+
+                event.stopPropagation();
+
+
+                navLinks.classList.toggle(
+                    "open"
+                );
+
+
+                const isOpen =
+                    navLinks.classList.contains(
+                        "open"
+                    );
+
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                );
+
+
+                menuToggle.textContent =
+                    isOpen
+                        ? "✕"
+                        : "☰";
+
+            }
+        );
+
+
+        /* LINKƏ BASILDIQDA MENYU BAĞLANSIN */
+
+        navLinks
+            .querySelectorAll("a")
+            .forEach(
+                function (link) {
+
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+
+                            navLinks.classList.remove(
+                                "open"
+                            );
+
+
+                            menuToggle.textContent =
+                                "☰";
+
+
+                            menuToggle.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* MENYU XARİCİNƏ BASILDIQDA BAĞLANSIN */
+
+        document.addEventListener(
+            "click",
+            function (event) {
+
+
+                if (
+                    !event.target.closest(
+                        ".nav-container"
+                    )
+                ) {
+
+
+                    navLinks.classList.remove(
+                        "open"
+                    );
+
+
+                    menuToggle.textContent =
+                        "☰";
+
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* EKRAN BÖYÜDÜKDƏ MENYU RESET */
+
+        window.addEventListener(
+            "resize",
+            function () {
+
+
+                if (
+                    window.innerWidth > 768
+                ) {
+
+
+                    navLinks.classList.remove(
+                        "open"
+                    );
+
+
+                    menuToggle.textContent =
+                        "☰";
+
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
