@@ -1,2562 +1,2250 @@
 <!DOCTYPE html>
+
 <html lang="az">
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-    <title>Xidmət Şərtləri | Gunel's story</title>
+<title>Gunel's story - Hazırladığımız Sehrli Kitablar</title>
 
-    <meta name="description"
-          content="Gunel's story xidmət şərtləri. Fərdi uşaq kitablarının hazırlanması, sifariş, ödəniş, dəyişiklik və istifadə şərtləri.">
+<link rel="icon"
+      type="image/png"
+      href="image/favicon.png">
 
-    <link rel="icon"
-          type="image/png"
-          href="image/favicon.png">
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
 
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
 
-    <!-- =====================================================
-         ŞRİFTLƏR
-    ====================================================== -->
-
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@600;700&display=swap"
-          rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
 
-    <style>
+<style>
 
-        /* =====================================================
-           ROOT
-        ====================================================== */
+    /* =====================================================
+       ROOT
+    ====================================================== */
 
-        :root {
+    :root {
 
-            --bg-color: #fafbfc;
+        --bg-color: #FAF8F5;
 
-            --primary: #4f46e5;
+        --primary-blue: #0F1A5C;
 
-            --primary-soft: #f0f0ff;
+        --accent-gold: #D97706;
 
-            --text-main: #1a1a24;
+        --text-dark: #1E293B;
 
-            --text-sub: #64748b;
+        --text-muted: #64748B;
 
-            --white: #ffffff;
+        --white: #ffffff;
 
-            --border: #e8edf3;
+        --border-radius-lg: 24px;
 
-            --radius-xl: 24px;
+        --border-radius-sm: 14px;
 
-            --radius-md: 16px;
+        --border-color:
+            rgba(15, 26, 92, 0.04);
 
-            --shadow-soft:
-                0 10px 35px
-                rgba(15, 23, 42, 0.04);
+        --shadow-sm:
+            0 4px 20px
+            rgba(15, 26, 92, 0.02);
 
-            --shadow-hover:
-                0 18px 45px
-                rgba(79, 70, 229, 0.08);
+        --shadow-md:
+            0 20px 40px
+            rgba(15, 26, 92, 0.04);
+
+        --shadow-lg:
+            0 30px 60px
+            rgba(15, 26, 92, 0.08);
+
+        --transition:
+            all 0.5s
+            cubic-bezier(
+                0.16,
+                1,
+                0.3,
+                1
+            );
+    }
+
+
+    /* =====================================================
+       RESET
+    ====================================================== */
+
+    * {
+
+        margin: 0;
+
+        padding: 0;
+
+        box-sizing: border-box;
+
+        font-family:
+            'Plus Jakarta Sans',
+            sans-serif;
+
+        -webkit-font-smoothing:
+            antialiased;
+
+        -webkit-tap-highlight-color:
+            transparent;
+    }
+
+
+    /* =====================================================
+       BODY
+    ====================================================== */
+
+    body {
+
+        background-color:
+            var(--bg-color);
+
+        color:
+            var(--text-dark);
+
+        padding-bottom:
+            100px;
+
+        background-image:
+            radial-gradient(
+                rgba(15, 26, 92, 0.02)
+                1.5px,
+                transparent 1.5px
+            );
+
+        background-size:
+            32px 32px;
+    }
+
+
+    body.modal-open {
+
+        overflow: hidden;
+    }
+
+
+    /* =====================================================
+       CONTAINER
+    ====================================================== */
+
+    .container {
+
+        max-width:
+            1200px;
+
+        margin:
+            0 auto;
+
+        padding:
+            0 24px;
+    }
+
+
+    /* =====================================================
+       NAVİQASİYA
+    ====================================================== */
+
+    .nav-bar {
+
+        display:
+            flex;
+
+        justify-content:
+            space-between;
+
+        align-items:
+            center;
+
+        padding:
+            35px 0;
+
+        margin-bottom:
+            20px;
+    }
+
+
+    .back-btn {
+
+        display:
+            inline-flex;
+
+        align-items:
+            center;
+
+        gap:
+            10px;
+
+        background-color:
+            var(--white);
+
+        color:
+            var(--primary-blue);
+
+        text-decoration:
+            none;
+
+        padding:
+            14px 28px;
+
+        border-radius:
+            50px;
+
+        font-weight:
+            700;
+
+        font-size:
+            0.9rem;
+
+        box-shadow:
+            var(--shadow-sm);
+
+        border:
+            1px solid
+            var(--border-color);
+
+        transition:
+            var(--transition);
+    }
+
+
+    .back-btn svg {
+
+        width:
+            18px;
+
+        height:
+            18px;
+
+        fill:
+            none;
+
+        stroke:
+            currentColor;
+
+        stroke-width:
+            2.5;
+
+        stroke-linecap:
+            round;
+
+        stroke-linejoin:
+            round;
+
+        transition:
+            transform 0.3s ease;
+    }
+
+
+    .back-btn:hover {
+
+        background-color:
+            var(--primary-blue);
+
+        color:
+            var(--white);
+
+        transform:
+            translateY(-2px);
+
+        box-shadow:
+            0 12px 30px
+            rgba(15, 26, 92, 0.15);
+
+        border-color:
+            transparent;
+    }
+
+
+    .back-btn:hover svg {
+
+        transform:
+            translateX(-4px);
+    }
+
+
+    /* =====================================================
+       BAŞLIQ
+    ====================================================== */
+
+    header {
+
+        text-align:
+            center;
+
+        padding:
+            40px 0 70px;
+    }
+
+
+    header h1 {
+
+        font-size:
+            3rem;
+
+        font-weight:
+            800;
+
+        margin-bottom:
+            18px;
+
+        color:
+            var(--primary-blue);
+
+        letter-spacing:
+            -1px;
+    }
+
+
+    header p {
+
+        font-size:
+            1.15rem;
+
+        color:
+            var(--text-muted);
+
+        max-width:
+            680px;
+
+        margin:
+            0 auto;
+
+        line-height:
+            1.7;
+
+        font-weight:
+            500;
+    }
+
+
+    /* =====================================================
+       GALLERY
+    ====================================================== */
+
+    .gallery-grid {
+
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:
+            48px;
+    }
+
+
+    /* =====================================================
+       BOOK CARD
+    ====================================================== */
+
+    .book-card {
+
+        background-color:
+            var(--white);
+
+        border-radius:
+            var(--border-radius-lg);
+
+        overflow:
+            hidden;
+
+        box-shadow:
+            var(--shadow-md);
+
+        border:
+            1px solid
+            var(--border-color);
+
+        transition:
+            var(--transition);
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        position:
+            relative;
+    }
+
+
+    @media (min-width: 769px) {
+
+        .book-card:nth-child(even) {
+
+            transform:
+                translateY(35px);
         }
 
 
-        /* =====================================================
-           RESET
-        ====================================================== */
+        .gallery-grid {
 
-        * {
-
-            margin: 0;
-
-            padding: 0;
-
-            box-sizing: border-box;
-
-            -webkit-tap-highlight-color: transparent;
+            padding-bottom:
+                45px;
         }
+    }
 
 
-        html {
+    .book-card:hover {
 
-            scroll-behavior: smooth;
-        }
+        transform:
+            translateY(-10px) !important;
 
+        box-shadow:
+            var(--shadow-lg);
+
+        border-color:
+            rgba(15, 26, 92, 0.08);
+    }
+
+
+    /* =====================================================
+       IMAGE
+    ====================================================== */
+
+    .book-img-box {
+
+        width:
+            100%;
+
+        aspect-ratio:
+            16 / 11;
+
+        background-color:
+            #F8FAFC;
+
+        overflow:
+            hidden;
+
+        position:
+            relative;
+    }
+
+
+    .book-img-box img {
+
+        width:
+            100%;
+
+        height:
+            100%;
+
+        object-fit:
+            cover;
+
+        display:
+            block;
+
+        transition:
+            transform 0.8s
+            cubic-bezier(
+                0.16,
+                1,
+                0.3,
+                1
+            );
+    }
+
+
+    .book-card:hover
+    .book-img-box img {
+
+        transform:
+            scale(1.05);
+    }
+
+
+    .book-img-box::after {
+
+        content: '';
+
+        position:
+            absolute;
+
+        top:
+            0;
+
+        left:
+            0;
+
+        width:
+            100%;
+
+        height:
+            100%;
+
+        background:
+            linear-gradient(
+                to bottom,
+                transparent 60%,
+                rgba(15, 26, 92, 0.02)
+            );
+
+        pointer-events:
+            none;
+    }
+
+
+    /* =====================================================
+       MOBİL GÖZ İKONU
+       YALNIZCA MOBİLDƏ GÖRÜNÜR
+    ====================================================== */
+
+    .mobile-view-btn {
+
+        display:
+            none;
+
+        position:
+            absolute;
+
+        top:
+            10px;
+
+        right:
+            10px;
+
+        width:
+            38px;
+
+        height:
+            38px;
+
+        border:
+            none;
+
+        border-radius:
+            50%;
+
+        background:
+            rgba(255, 255, 255, 0.94);
+
+        color:
+            var(--primary-blue);
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        cursor:
+            pointer;
+
+        z-index:
+            10;
+
+        box-shadow:
+            0 4px 14px
+            rgba(15, 26, 92, 0.18);
+
+        backdrop-filter:
+            blur(8px);
+
+        -webkit-backdrop-filter:
+            blur(8px);
+
+        transition:
+            all 0.25s ease;
+    }
+
+
+    .mobile-view-btn svg {
+
+        width:
+            19px;
+
+        height:
+            19px;
+
+        fill:
+            none;
+
+        stroke:
+            currentColor;
+
+        stroke-width:
+            2;
+
+        stroke-linecap:
+            round;
+
+        stroke-linejoin:
+            round;
+    }
+
+
+    .mobile-view-btn:active {
+
+        transform:
+            scale(0.9);
+    }
+
+
+    /* =====================================================
+       INFO
+    ====================================================== */
+
+    .book-info {
+
+        padding:
+            35px 40px;
+
+        background-color:
+            var(--white);
+
+        flex-grow:
+            1;
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        justify-content:
+            space-between;
+
+        gap:
+            20px;
+
+        border-top:
+            1px solid
+            rgba(15, 26, 92, 0.02);
+    }
+
+
+    .book-info h3 {
+
+        font-size:
+            1.5rem;
+
+        font-weight:
+            800;
+
+        color:
+            var(--primary-blue);
+
+        line-height:
+            1.4;
+
+        letter-spacing:
+            -0.3px;
+    }
+
+
+    .book-author-badge {
+
+        display:
+            inline-flex;
+
+        align-items:
+            center;
+
+        gap:
+            8px;
+
+        color:
+            var(--accent-gold);
+
+        background-color:
+            rgba(217, 119, 6, 0.06);
+
+        padding:
+            6px 14px;
+
+        border-radius:
+            50px;
+
+        font-size:
+            0.85rem;
+
+        font-weight:
+            700;
+
+        width:
+            fit-content;
+    }
+
+
+    .book-author-badge svg {
+
+        width:
+            14px;
+
+        height:
+            14px;
+
+        fill:
+            currentColor;
+    }
+
+
+    /* =====================================================
+       LOADING
+    ====================================================== */
+
+    .portfolio-loading {
+
+        grid-column:
+            1 / -1;
+
+        padding:
+            70px 20px;
+
+        text-align:
+            center;
+
+        color:
+            var(--text-muted);
+
+        font-weight:
+            600;
+    }
+
+
+    .portfolio-error {
+
+        grid-column:
+            1 / -1;
+
+        padding:
+            40px 20px;
+
+        text-align:
+            center;
+
+        color:
+            #B91C1C;
+
+        background:
+            #FEF2F2;
+
+        border-radius:
+            var(--border-radius-lg);
+    }
+
+
+    /* =====================================================
+       EMPTY
+    ====================================================== */
+
+    .portfolio-empty {
+
+        grid-column:
+            1 / -1;
+
+        padding:
+            60px 20px;
+
+        text-align:
+            center;
+
+        color:
+            var(--text-muted);
+
+        background:
+            var(--white);
+
+        border-radius:
+            var(--border-radius-lg);
+
+        border:
+            1px dashed
+            rgba(15, 26, 92, 0.12);
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ====================================================== */
+
+    .gallery-footer {
+
+        text-align:
+            center;
+
+        margin-top:
+            120px;
+
+        background:
+            radial-gradient(
+                circle at top right,
+                #1E2A78 0%,
+                #0F1A5C 100%
+            );
+
+        padding:
+            70px 40px;
+
+        border-radius:
+            var(--border-radius-lg);
+
+        box-shadow:
+            0 30px 70px
+            rgba(15, 26, 92, 0.25);
+
+        position:
+            relative;
+
+        overflow:
+            hidden;
+    }
+
+
+    .gallery-footer::before {
+
+        content:
+            '';
+
+        position:
+            absolute;
+
+        top:
+            -40%;
+
+        right:
+            -10%;
+
+        width:
+            400px;
+
+        height:
+            400px;
+
+        border-radius:
+            50%;
+
+        background:
+            rgba(217, 119, 6, 0.15);
+
+        filter:
+            blur(80px);
+    }
+
+
+    .gallery-footer h2 {
+
+        font-size:
+            2.3rem;
+
+        font-weight:
+            800;
+
+        margin-bottom:
+            14px;
+
+        color:
+            var(--white);
+
+        position:
+            relative;
+
+        z-index:
+            1;
+
+        letter-spacing:
+            -0.5px;
+    }
+
+
+    .gallery-footer p {
+
+        font-size:
+            1.15rem;
+
+        color:
+            rgba(255, 255, 255, 0.75);
+
+        margin-bottom:
+            35px;
+
+        position:
+            relative;
+
+        z-index:
+            1;
+
+        font-weight:
+            500;
+
+        max-width:
+            600px;
+
+        margin-left:
+            auto;
+
+        margin-right:
+            auto;
+    }
+
+
+    /* =====================================================
+       IMAGE MODAL
+    ====================================================== */
+
+    .image-modal {
+
+        position:
+            fixed;
+
+        inset:
+            0;
+
+        width:
+            100%;
+
+        height:
+            100%;
+
+        background:
+            rgba(8, 13, 40, 0.94);
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        padding:
+            55px 20px 25px;
+
+        z-index:
+            99999;
+
+        opacity:
+            0;
+
+        visibility:
+            hidden;
+
+        pointer-events:
+            none;
+
+        transition:
+            opacity 0.3s ease,
+            visibility 0.3s ease;
+
+        backdrop-filter:
+            blur(10px);
+
+        -webkit-backdrop-filter:
+            blur(10px);
+    }
+
+
+    .image-modal.active {
+
+        opacity:
+            1;
+
+        visibility:
+            visible;
+
+        pointer-events:
+            auto;
+    }
+
+
+    .modal-image {
+
+        max-width:
+            min(95vw, 1000px);
+
+        max-height:
+            88vh;
+
+        width:
+            auto;
+
+        height:
+            auto;
+
+        object-fit:
+            contain;
+
+        border-radius:
+            14px;
+
+        box-shadow:
+            0 30px 80px
+            rgba(0, 0, 0, 0.4);
+
+        transform:
+            scale(0.92);
+
+        transition:
+            transform 0.35s
+            cubic-bezier(
+                0.16,
+                1,
+                0.3,
+                1
+            );
+    }
+
+
+    .image-modal.active
+    .modal-image {
+
+        transform:
+            scale(1);
+    }
+
+
+    /* =====================================================
+       MODAL X DÜYMƏSİ
+    ====================================================== */
+
+    .modal-close {
+
+        position:
+            absolute;
+
+        top:
+            18px;
+
+        right:
+            18px;
+
+        width:
+            44px;
+
+        height:
+            44px;
+
+        border:
+            none;
+
+        border-radius:
+            50%;
+
+        background:
+            rgba(255, 255, 255, 0.95);
+
+        color:
+            var(--primary-blue);
+
+        display:
+            flex;
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        cursor:
+            pointer;
+
+        z-index:
+            100000;
+
+        font-size:
+            30px;
+
+        line-height:
+            1;
+
+        font-weight:
+            400;
+
+        box-shadow:
+            0 5px 20px
+            rgba(0, 0, 0, 0.25);
+
+        transition:
+            all 0.25s ease;
+    }
+
+
+    .modal-close:hover {
+
+        transform:
+            rotate(90deg)
+            scale(1.05);
+
+        background:
+            var(--white);
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ====================================================== */
+
+    @media (max-width: 768px) {
 
         body {
-
-            background:
-                var(--bg-color);
-
-            color:
-                var(--text-main);
-
-            font-family:
-                'Plus Jakarta Sans',
-                sans-serif;
-
-            min-height:
-                100vh;
 
             padding-bottom:
                 60px;
         }
 
 
-        h1,
-        h2,
-        h3 {
-
-            font-family:
-                'Quicksand',
-                sans-serif;
-        }
-
-
-        /* =====================================================
-           NAVIGATION
-        ====================================================== */
-
-        nav {
-
-            position:
-                sticky;
-
-            top:
-                0;
-
-            z-index:
-                1000;
-
-            background:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.94
-                );
-
-            backdrop-filter:
-                blur(12px);
-
-            -webkit-backdrop-filter:
-                blur(12px);
-
-            border-bottom:
-                1px solid var(--border);
-        }
-
-
-        .nav-container {
-
-            max-width:
-                1000px;
-
-            margin:
-                0 auto;
+        .container {
 
             padding:
-                12px 24px;
-
-            min-height:
-                64px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                space-between;
-
-            position:
-                relative;
+                0 12px;
         }
 
 
-        /* =====================================================
-           LOGO
-        ====================================================== */
+        /* NAV */
 
-        .nav-brand {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                9px;
-
-            text-decoration:
-                none;
-
-            color:
-                var(--text-main);
-
-            flex-shrink:
-                0;
-        }
-
-
-        .nav-brand img {
-
-            width:
-                40px;
-
-            height:
-                40px;
-
-            object-fit:
-                contain;
-
-            display:
-                block;
-        }
-
-
-        .nav-brand span {
-
-            font-size:
-                1.15rem;
-
-            font-weight:
-                700;
-
-            letter-spacing:
-                -0.4px;
-
-            white-space:
-                nowrap;
-        }
-
-
-        /* =====================================================
-           NAV LINKS
-        ====================================================== */
-
-        .nav-links {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                20px;
-        }
-
-
-        .nav-links a {
-
-            text-decoration:
-                none;
-
-            color:
-                var(--text-sub);
-
-            font-size:
-                0.78rem;
-
-            font-weight:
-                700;
-
-            letter-spacing:
-                0.3px;
-
-            transition:
-                color 0.2s ease;
-        }
-
-
-        .nav-links a:hover {
-
-            color:
-                var(--primary);
-        }
-
-
-        .nav-links a.active {
-
-            color:
-                var(--primary);
-        }
-
-
-        .nav-links .admin-link {
-
-            color:
-                var(--white);
-
-            background:
-                var(--primary);
+        .nav-bar {
 
             padding:
-                9px 17px;
-
-            border-radius:
-                50px;
-
-            box-shadow:
-                0 5px 15px
-                rgba(
-                    79,
-                    70,
-                    229,
-                    0.18
-                );
-        }
-
-
-        .nav-links .admin-link:hover {
-
-            color:
-                var(--white);
-        }
-
-
-        /* =====================================================
-           HAMBURGER
-        ====================================================== */
-
-        .menu-toggle {
-
-            display:
-                none;
-
-            width:
-                40px;
-
-            height:
-                40px;
-
-            border:
-                none;
-
-            background:
-                transparent;
-
-            color:
-                var(--text-main);
-
-            font-size:
-                27px;
-
-            line-height:
-                1;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            cursor:
-                pointer;
-
-            z-index:
-                1100;
-        }
-
-
-        /* =====================================================
-           MAIN
-        ====================================================== */
-
-        .page-container {
-
-            max-width:
-                900px;
-
-            margin:
-                0 auto;
-
-            padding:
-                0 20px;
-        }
-
-
-        /* =====================================================
-           BACK BUTTON
-        ====================================================== */
-
-        .back-section {
-
-            padding:
-                28px 0 0;
-        }
-
-
-        .back-button {
-
-            display:
-                inline-flex;
-
-            align-items:
-                center;
-
-            gap:
-                8px;
-
-            text-decoration:
-                none;
-
-            color:
-                var(--text-sub);
-
-            font-size:
-                0.86rem;
-
-            font-weight:
-                700;
-
-            padding:
-                10px 16px;
-
-            background:
-                var(--white);
-
-            border:
-                1px solid var(--border);
-
-            border-radius:
-                50px;
-
-            transition:
-                all 0.2s ease;
-        }
-
-
-        .back-button:hover {
-
-            color:
-                var(--primary);
-
-            border-color:
-                rgba(
-                    79,
-                    70,
-                    229,
-                    0.25
-                );
-
-            transform:
-                translateX(-2px);
-        }
-
-
-        /* =====================================================
-           HERO
-        ====================================================== */
-
-        .terms-hero {
-
-            text-align:
-                center;
-
-            padding:
-                55px 10px 45px;
-        }
-
-
-        .terms-icon {
-
-            width:
-                82px;
-
-            height:
-                82px;
-
-            margin:
-                0 auto 20px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            background:
-                var(--primary-soft);
-
-            border-radius:
-                24px;
-
-            font-size:
-                2.4rem;
-        }
-
-
-        .terms-label {
-
-            display:
-                inline-block;
-
-            background:
-                var(--primary-soft);
-
-            color:
-                var(--primary);
-
-            padding:
-                7px 17px;
-
-            border-radius:
-                50px;
-
-            font-size:
-                0.76rem;
-
-            font-weight:
-                800;
-
-            letter-spacing:
-                0.8px;
+                20px 0;
 
             margin-bottom:
-                17px;
+                5px;
         }
 
 
-        .terms-hero h1 {
+        .back-btn {
+
+            padding:
+                11px 16px;
 
             font-size:
-                2.8rem;
+                0.75rem;
+
+            gap:
+                7px;
+        }
+
+
+        .back-btn svg {
+
+            width:
+                16px;
+
+            height:
+                16px;
+        }
+
+
+        /* HEADER */
+
+        header {
+
+            padding:
+                20px 5px 35px;
+        }
+
+
+        header h1 {
+
+            font-size:
+                2rem;
 
             line-height:
                 1.2;
-
-            letter-spacing:
-                -1px;
-
-            margin-bottom:
-                14px;
-        }
-
-
-        .terms-hero h1 span {
-
-            color:
-                var(--primary);
-        }
-
-
-        .terms-hero p {
-
-            max-width:
-                680px;
-
-            margin:
-                0 auto;
-
-            color:
-                var(--text-sub);
-
-            font-size:
-                0.98rem;
-
-            line-height:
-                1.75;
-        }
-
-
-        /* =====================================================
-           CONTENT CARDS
-        ====================================================== */
-
-        .terms-card {
-
-            background:
-                var(--white);
-
-            border:
-                1px solid var(--border);
-
-            border-radius:
-                var(--radius-xl);
-
-            padding:
-                38px 42px;
-
-            margin-bottom:
-                18px;
-
-            box-shadow:
-                var(--shadow-soft);
-
-            transition:
-                all 0.3s ease;
-        }
-
-
-        .terms-card:hover {
-
-            transform:
-                translateY(-1px);
-
-            box-shadow:
-                var(--shadow-hover);
-        }
-
-
-        .section-heading {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                13px;
-
-            margin-bottom:
-                17px;
-        }
-
-
-        .section-icon {
-
-            width:
-                43px;
-
-            height:
-                43px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            background:
-                var(--primary-soft);
-
-            border-radius:
-                13px;
-
-            font-size:
-                1.3rem;
-
-            flex-shrink:
-                0;
-        }
-
-
-        .section-heading h2 {
-
-            font-size:
-                1.4rem;
-
-            letter-spacing:
-                -0.3px;
-        }
-
-
-        .terms-card p {
-
-            color:
-                var(--text-sub);
-
-            font-size:
-                0.94rem;
-
-            line-height:
-                1.8;
 
             margin-bottom:
                 12px;
         }
 
 
-        .terms-card p:last-child {
-
-            margin-bottom:
-                0;
-        }
-
-
-        .terms-card ul {
-
-            margin:
-                12px 0 0 20px;
-
-            color:
-                var(--text-sub);
-        }
-
-
-        .terms-card li {
-
-            font-size:
-                0.93rem;
-
-            line-height:
-                1.8;
-
-            margin-bottom:
-                8px;
-
-            padding-left:
-                5px;
-        }
-
-
-        .terms-card strong {
-
-            color:
-                var(--text-main);
-        }
-
-
-        /* =====================================================
-           INFO BOX
-        ====================================================== */
-
-        .info-box {
-
-            background:
-                #f7f7ff;
-
-            border:
-                1px solid #e7e5ff;
-
-            border-radius:
-                16px;
-
-            padding:
-                20px;
-
-            margin-top:
-                16px;
-        }
-
-
-        .info-box p {
-
-            margin:
-                0;
-
-            color:
-                var(--text-main);
+        header p {
 
             font-size:
                 0.9rem;
-        }
-
-
-        /* =====================================================
-           PROCESS
-        ====================================================== */
-
-        .process-list {
-
-            display:
-                grid;
-
-            gap:
-                10px;
-
-            margin-top:
-                18px;
-        }
-
-
-        .process-item {
-
-            display:
-                flex;
-
-            align-items:
-                flex-start;
-
-            gap:
-                13px;
-
-            padding:
-                15px;
-
-            background:
-                #f8fafc;
-
-            border:
-                1px solid #edf2f7;
-
-            border-radius:
-                14px;
-        }
-
-
-        .process-number {
-
-            width:
-                32px;
-
-            height:
-                32px;
-
-            min-width:
-                32px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            background:
-                var(--primary);
-
-            color:
-                var(--white);
-
-            border-radius:
-                50%;
-
-            font-size:
-                0.78rem;
-
-            font-weight:
-                800;
-        }
-
-
-        .process-item strong {
-
-            display:
-                block;
-
-            margin-bottom:
-                3px;
-
-            font-size:
-                0.9rem;
-        }
-
-
-        .process-item span {
-
-            display:
-                block;
-
-            color:
-                var(--text-sub);
-
-            font-size:
-                0.83rem;
 
             line-height:
                 1.6;
         }
 
 
-        /* =====================================================
-           OTHER LINKS
-        ====================================================== */
+        /* =================================================
+           MOBİLDƏ 2 SÜTUN
+        ================================================== */
 
-        .policy-links {
-
-            display:
-                grid;
+        .gallery-grid {
 
             grid-template-columns:
-                repeat(2, 1fr);
+                repeat(2, minmax(0, 1fr));
+
+            gap:
+                14px;
+
+            padding-bottom:
+                0;
+        }
+
+
+        /* =================================================
+           MOBİL KART
+        ================================================== */
+
+        .book-card {
+
+            border-radius:
+                16px;
+
+            min-width:
+                0;
+
+            transform:
+                none !important;
+        }
+
+
+        .book-card:hover {
+
+            transform:
+                none !important;
+
+            box-shadow:
+                var(--shadow-md);
+        }
+
+
+        /* =================================================
+           GÖZ İKONU MOBİLDƏ AKTİV
+        ================================================== */
+
+        .mobile-view-btn {
+
+            display:
+                flex;
+        }
+
+
+        /* MOBİLDƏ ŞƏKİL */
+
+        .book-img-box {
+
+            aspect-ratio:
+                1 / 1;
+
+            border-radius:
+                0;
+        }
+
+
+        .book-img-box img {
+
+            transition:
+                none;
+        }
+
+
+        .book-card:hover
+        .book-img-box img {
+
+            transform:
+                none;
+        }
+
+
+        /* INFO */
+
+        .book-info {
+
+            padding:
+                15px 12px;
 
             gap:
                 12px;
-
-            margin-top:
-                20px;
         }
 
 
-        .policy-link {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                10px;
-
-            text-decoration:
-                none;
-
-            background:
-                #f8fafc;
-
-            border:
-                1px solid #edf2f7;
-
-            color:
-                var(--text-main);
-
-            padding:
-                16px;
-
-            border-radius:
-                14px;
+        .book-info h3 {
 
             font-size:
-                0.86rem;
-
-            font-weight:
-                700;
-
-            transition:
-                all 0.2s ease;
-        }
-
-
-        .policy-link:hover {
-
-            color:
-                var(--primary);
-
-            background:
-                var(--primary-soft);
-
-            border-color:
-                #e4e2ff;
-
-            transform:
-                translateY(-2px);
-        }
-
-
-        /* =====================================================
-           CTA
-        ====================================================== */
-
-        .cta-card {
-
-            margin-top:
-                22px;
-
-            padding:
-                40px 30px;
-
-            text-align:
-                center;
-
-            background:
-                var(--primary);
-
-            color:
-                var(--white);
-
-            border-radius:
-                var(--radius-xl);
-
-            box-shadow:
-                0 15px 40px
-                rgba(
-                    79,
-                    70,
-                    229,
-                    0.16
-                );
-        }
-
-
-        .cta-card h2 {
-
-            font-size:
-                1.7rem;
-
-            margin-bottom:
-                11px;
-        }
-
-
-        .cta-card p {
-
-            max-width:
-                600px;
-
-            margin:
-                0 auto 22px;
-
-            color:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.82
-                );
+                0.88rem;
 
             line-height:
-                1.7;
+                1.35;
+
+            letter-spacing:
+                -0.1px;
+        }
+
+
+        .book-author-badge {
+
+            padding:
+                5px 8px;
+
+            gap:
+                5px;
+
+            font-size:
+                0.62rem;
+
+            line-height:
+                1.25;
+
+            border-radius:
+                30px;
+        }
+
+
+        .book-author-badge svg {
+
+            width:
+                11px;
+
+            height:
+                11px;
+
+            flex-shrink:
+                0;
+        }
+
+
+        /* FOOTER */
+
+        .gallery-footer {
+
+            margin-top:
+                60px;
+
+            padding:
+                45px 20px;
+
+            border-radius:
+                18px;
+        }
+
+
+        .gallery-footer h2 {
+
+            font-size:
+                1.5rem;
+
+            line-height:
+                1.35;
+        }
+
+
+        .gallery-footer p {
 
             font-size:
                 0.9rem;
+
+            line-height:
+                1.6;
         }
 
 
-        .cta-button {
+        /* MODAL */
 
-            display:
-                inline-flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            text-decoration:
-                none;
-
-            background:
-                var(--white);
-
-            color:
-                var(--primary);
+        .image-modal {
 
             padding:
-                12px 22px;
+                60px 12px 20px;
+        }
+
+
+        .modal-image {
+
+            max-width:
+                94vw;
+
+            max-height:
+                82vh;
 
             border-radius:
-                50px;
+                10px;
+        }
 
-            font-weight:
-                800;
+
+        .modal-close {
+
+            top:
+                12px;
+
+            right:
+                12px;
+
+            width:
+                42px;
+
+            height:
+                42px;
 
             font-size:
-                0.85rem;
-
-            transition:
-                all 0.2s ease;
+                28px;
         }
+    }
 
 
-        .cta-button:hover {
+    /* =====================================================
+       ÇOX KİÇİK EKRANLAR
+    ====================================================== */
 
-            transform:
-                translateY(-2px);
+    @media (max-width: 380px) {
 
-            box-shadow:
-                0 8px 20px
-                rgba(
-                    0,
-                    0,
-                    0,
-                    0.12
-                );
-        }
-
-
-        /* =====================================================
-           FOOTER
-        ====================================================== */
-
-        footer {
-
-            text-align:
-                center;
+        .container {
 
             padding:
-                35px 20px 10px;
-
-            color:
-                var(--text-sub);
-
-            font-size:
-                0.77rem;
+                0 9px;
         }
 
 
-        .footer-links {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            flex-wrap:
-                wrap;
+        .gallery-grid {
 
             gap:
-                12px 20px;
-
-            margin-bottom:
-                15px;
+                10px;
         }
 
 
-        .footer-links a {
+        .book-info {
 
-            color:
-                var(--text-sub);
-
-            text-decoration:
-                none;
-
-            font-weight:
-                700;
-
-            transition:
-                color 0.2s ease;
+            padding:
+                12px 9px;
         }
 
 
-        .footer-links a:hover {
+        .book-info h3 {
 
-            color:
-                var(--primary);
+            font-size:
+                0.78rem;
         }
 
 
-        /* =====================================================
-           MOBİL
-        ====================================================== */
+        .book-author-badge {
 
-        @media (max-width: 768px) {
+            font-size:
+                0.55rem;
 
-
-            .nav-container {
-
-                padding:
-                    11px 16px;
-            }
-
-
-            .nav-brand {
-
-                max-width:
-                    calc(100% - 55px);
-            }
-
-
-            .nav-brand img {
-
-                width:
-                    36px;
-
-                height:
-                    36px;
-            }
-
-
-            .nav-brand span {
-
-                font-size:
-                    0.98rem;
-
-                overflow:
-                    hidden;
-
-                text-overflow:
-                    ellipsis;
-            }
-
-
-            .menu-toggle {
-
-                display:
-                    flex;
-            }
-
-
-            /* MOBILE MENU */
-
-            .nav-links {
-
-                display:
-                    none;
-
-                position:
-                    absolute;
-
-                top:
-                    calc(100% + 8px);
-
-                right:
-                    14px;
-
-                width:
-                    225px;
-
-                padding:
-                    10px;
-
-                flex-direction:
-                    column;
-
-                align-items:
-                    stretch;
-
-                gap:
-                    4px;
-
-                background:
-                    rgba(
-                        255,
-                        255,
-                        255,
-                        0.99
-                    );
-
-                border:
-                    1px solid var(--border);
-
-                border-radius:
-                    16px;
-
-                box-shadow:
-                    0 15px 40px
-                    rgba(
-                        15,
-                        23,
-                        42,
-                        0.12
-                    );
-            }
-
-
-            .nav-links.open {
-
-                display:
-                    flex;
-            }
-
-
-            .nav-links a {
-
-                display:
-                    block;
-
-                width:
-                    100%;
-
-                padding:
-                    13px 14px;
-
-                font-size:
-                    0.74rem;
-
-                border-radius:
-                    10px;
-            }
-
-
-            .nav-links a:hover {
-
-                background:
-                    var(--primary-soft);
-            }
-
-
-            .nav-links .admin-link {
-
-                text-align:
-                    center;
-            }
-
-
-            /* CONTENT */
-
-            .page-container {
-
-                padding:
-                    0 16px;
-            }
-
-
-            .back-section {
-
-                padding-top:
-                    20px;
-            }
-
-
-            .terms-hero {
-
-                padding:
-                    40px 5px 32px;
-            }
-
-
-            .terms-icon {
-
-                width:
-                    72px;
-
-                height:
-                    72px;
-
-                border-radius:
-                    20px;
-
-                font-size:
-                    2rem;
-            }
-
-
-            .terms-hero h1 {
-
-                font-size:
-                    2.2rem;
-            }
-
-
-            .terms-hero p {
-
-                font-size:
-                    0.9rem;
-
-                line-height:
-                    1.7;
-            }
-
-
-            .terms-card {
-
-                padding:
-                    26px 21px;
-
-                border-radius:
-                    20px;
-
-                margin-bottom:
-                    14px;
-            }
-
-
-            .section-heading {
-
-                gap:
-                    10px;
-            }
-
-
-            .section-icon {
-
-                width:
-                    39px;
-
-                height:
-                    39px;
-
-                font-size:
-                    1.15rem;
-            }
-
-
-            .section-heading h2 {
-
-                font-size:
-                    1.22rem;
-            }
-
-
-            .terms-card p {
-
-                font-size:
-                    0.88rem;
-
-                line-height:
-                    1.75;
-            }
-
-
-            .terms-card li {
-
-                font-size:
-                    0.87rem;
-
-                line-height:
-                    1.7;
-            }
-
-
-            /* PROCESS */
-
-            .process-item {
-
-                padding:
-                    13px;
-            }
-
-
-            .process-item strong {
-
-                font-size:
-                    0.86rem;
-            }
-
-
-            .process-item span {
-
-                font-size:
-                    0.8rem;
-            }
-
-
-            /* LINKS */
-
-            .policy-links {
-
-                grid-template-columns:
-                    1fr;
-
-                gap:
-                    9px;
-            }
-
-
-            .policy-link {
-
-                padding:
-                    14px;
-            }
-
-
-            /* CTA */
-
-            .cta-card {
-
-                padding:
-                    35px 21px;
-
-                border-radius:
-                    20px;
-            }
-
-
-            .cta-card h2 {
-
-                font-size:
-                    1.4rem;
-            }
-
-
-            .cta-card p {
-
-                font-size:
-                    0.85rem;
-            }
-
-
-            /* FOOTER */
-
-            .footer-links {
-
-                gap:
-                    10px 16px;
-            }
-
+            padding:
+                4px 6px;
         }
 
 
-        /* =====================================================
-           ÇOX KİÇİK EKRAN
-        ====================================================== */
+        .mobile-view-btn {
 
-        @media (max-width: 380px) {
+            width:
+                34px;
 
+            height:
+                34px;
 
-            .nav-container {
+            top:
+                7px;
 
-                padding-left:
-                    13px;
-
-                padding-right:
-                    13px;
-            }
-
-
-            .nav-brand img {
-
-                width:
-                    33px;
-
-                height:
-                    33px;
-            }
-
-
-            .nav-brand span {
-
-                font-size:
-                    0.9rem;
-            }
-
-
-            .terms-hero h1 {
-
-                font-size:
-                    1.95rem;
-            }
-
-
-            .terms-card {
-
-                padding:
-                    23px 17px;
-            }
-
+            right:
+                7px;
         }
 
-    </style>
+
+        .mobile-view-btn svg {
+
+            width:
+                17px;
+
+            height:
+                17px;
+        }
+    }
+
+</style>
 
 </head>
 
-
 <body>
 
+<div class="container">
 
-    <!-- =====================================================
-         NAVIGATION
-    ====================================================== -->
+<!-- =====================================================
+     NAVİQASİYA
+====================================================== -->
 
-    <nav>
+<div class="nav-bar">
 
-        <div class="nav-container">
+    <a
+        href="index.html"
+        class="back-btn"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+        >
+
+            <line
+                x1="19"
+                y1="12"
+                x2="5"
+                y2="12"
+            ></line>
+
+            <polyline
+                points="12 19 5 12 12 5"
+            ></polyline>
+
+        </svg>
+
+        Əsas Səhifəyə Qayıt
+
+    </a>
+
+</div>
 
 
-            <!-- LOGO -->
+<!-- =====================================================
+     BAŞLIQ
+====================================================== -->
 
-            <a href="index.html"
-               class="nav-brand">
+<header>
+
+    <h1>
+        Hazırladığımız Sehrli Kitablar
+    </h1>
+
+    <p>
+        Hər biri real uşaq hekayələri və xüsusi
+        illüstrasiyalar əsasında hazırlanmış lüks
+        cildli xatirə kitablarımızdan eksklüziv nümunələr.
+    </p>
+
+</header>
+
+
+<!-- =====================================================
+     FIRESTORE PORTFOLIO
+====================================================== -->
+
+<div
+    class="gallery-grid"
+    id="portfolioGallery"
+>
+
+    <div class="portfolio-loading">
+        Portfolio yüklənir...
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CTA
+====================================================== -->
+
+<div class="gallery-footer">
+
+    <h2>
+        Övladınız Üçün Belə Bir Kitab İstəyirsiniz?
+    </h2>
+
+    <p>
+        Hekayəni birlikdə yazaq, xüsusi illüstrasiyalarla
+        onu unudulmaz bir xatirə kitabına çevirək!
+    </p>
+
+</div>
+
+</div>
+
+<!-- =====================================================
+     ŞƏKİL MODALI
+====================================================== -->
+
+<div
+    class="image-modal"
+    id="imageModal"
+    aria-hidden="true"
+>
+
+<button
+    type="button"
+    class="modal-close"
+    id="modalClose"
+    aria-label="Bağla"
+>
+    ×
+</button>
+
+
+<img
+    src=""
+    alt=""
+    class="modal-image"
+    id="modalImage"
+>
+
+</div>
+
+<!-- =====================================================
+     FIREBASE
+====================================================== -->
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<script>
+
+    /* =====================================================
+       FIREBASE CONFIG
+    ====================================================== */
+
+    const firebaseConfig = {
+
+        apiKey:
+            "AIzaSyDWqLPM2X89vyqOYocw4KEBh65WKMutZOI",
+
+        authDomain:
+            "gunelsstory-6d3a9.firebaseapp.com",
+
+        projectId:
+            "gunelsstory-6d3a9",
+
+        storageBucket:
+            "gunelsstory-6d3a9.firebasestorage.app",
+
+        messagingSenderId:
+            "903174908342",
+
+        appId:
+            "1:903174908342:web:f73871214550442e553917",
+
+        measurementId:
+            "G-5Q48RSFFH9"
+    };
+
+
+    /* =====================================================
+       FIREBASE-I BAŞLAT
+    ====================================================== */
+
+    firebase.initializeApp(
+        firebaseConfig
+    );
+
+
+    /* =====================================================
+       FIRESTORE
+    ====================================================== */
+
+    const db =
+        firebase.firestore();
+
+
+    /* =====================================================
+       FALLBACK PORTFOLIO
+    ====================================================== */
+
+    const fallbackPortfolio = [
+
+        {
+
+            title:
+                "Anlamaq və Sevmək: Ürəyimdə yaşayan ailə",
+
+            author:
+                "Psixoloq Günel Mahmudqızı",
+
+            imageUrl:
+                "image/cild.png"
+        },
+
+
+        {
+
+            title:
+                "Özünəinam Hekayəsi: Çiçəkdən şahzadəyə",
+
+            author:
+                "Psixoloq Günel Mahmudqızı",
+
+            imageUrl:
+                "image/İsimsiz-1.png"
+        },
+
+
+        {
+
+            title:
+                "Sara və dovşan Miminin göyqurşağına səyahəti",
+
+            author:
+                "Psixoloq Günel Mahmudqızı",
+
+            imageUrl:
+                "image/sara.jpg"
+        }
+
+    ];
+
+
+    /* =====================================================
+       HTML ESCAPE
+    ====================================================== */
+
+    function escapeHtml(value) {
+
+        return String(value || "")
+
+            .replace(/&/g, "&amp;")
+
+            .replace(/</g, "&lt;")
+
+            .replace(/>/g, "&gt;")
+
+            .replace(/"/g, "&quot;")
+
+            .replace(/'/g, "&#039;");
+    }
+
+
+    /* =====================================================
+       PORTFOLIO KARTI
+    ====================================================== */
+
+    function createPortfolioCard(data) {
+
+        const card =
+            document.createElement("div");
+
+
+        card.className =
+            "book-card";
+
+
+        const title =
+            data.title ||
+            "Adsız portfolio";
+
+
+        const author =
+            data.author ||
+            "Müəllif qeyd edilməyib";
+
+
+        const imageUrl =
+            data.imageUrl ||
+            "";
+
+
+        card.innerHTML = `
+
+            <div class="book-img-box">
 
                 <img
-                    src="image/logo.png"
-                    alt="Gunel's story logo">
-
-                <span>
-                    Gunel's story
-                </span>
-
-            </a>
+                    src="${escapeHtml(imageUrl)}"
+                    alt="${escapeHtml(title)}"
+                    loading="lazy"
+                >
 
 
-            <!-- HAMBURGER -->
+                <!-- MOBİL GÖZ İKONU -->
 
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-                aria-label="Menyu"
-                aria-expanded="false">
+                <button
+                    type="button"
+                    class="mobile-view-btn"
+                    aria-label="Kitaba bax"
+                    data-image="${escapeHtml(imageUrl)}"
+                    data-title="${escapeHtml(title)}"
+                >
 
-                ☰
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
 
-            </button>
+                        <path
+                            d="
+                                M2 12
+                                C4.5 7
+                                8 5
+                                12 5
+                                C16 5
+                                19.5 7
+                                22 12
+                                C19.5 17
+                                16 19
+                                12 19
+                                C8 19
+                                4.5 17
+                                2 12
+                                Z
+                            "
+                        />
 
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="3"
+                        />
 
-            <!-- MENYU -->
+                    </svg>
 
-            <div
-                class="nav-links"
-                id="navLinks">
-
-
-                <a href="haqqimizda.html">
-                    HAQQIMIZDA
-                </a>
-
-
-                <a href="portfolio.html">
-                    PORTFOLİO
-                </a>
-
-
-                <a href="mexfilik.html">
-                    MƏXFİLİK SİYASƏTİ
-                </a>
-
-
-                <a href="xidmet-sertleri.html"
-                   class="active">
-                    XİDMƏT ŞƏRTLƏRİ
-                </a>
-
-
-                <a href="admin.html"
-                   class="admin-link">
-
-                    ⚙️ ADMİN
-
-                </a>
-
-
-            </div>
-
-        </div>
-
-    </nav>
-
-
-
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
-
-    <main class="page-container">
-
-
-        <!-- GERİ -->
-
-        <div class="back-section">
-
-            <a href="index.html"
-               class="back-button">
-
-                ← Əsas səhifəyə qayıt
-
-            </a>
-
-        </div>
-
-
-
-        <!-- =================================================
-             HERO
-        ================================================== -->
-
-        <section class="terms-hero">
-
-
-            <div class="terms-icon">
-
-                📄
+                </button>
 
             </div>
 
 
-            <div class="terms-label">
-
-                XİDMƏT ŞƏRTLƏRİ
-
-            </div>
-
-
-            <h1>
-
-                Xidmət
-                <span>
-                    Şərtləri
-                </span>
-
-            </h1>
-
-
-            <p>
-
-                <b>Gunel's story</b> xidmətlərindən istifadə,
-                fərdi kitab sifarişlərinin hazırlanması
-                və təqdim edilməsi ilə bağlı əsas şərtlər.
-
-            </p>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             1. ÜMUMİ ŞƏRTLƏR
-        ================================================== -->
-
-        <section class="terms-card">
-
-
-            <div class="section-heading">
-
-                <div class="section-icon">
-                    📋
-                </div>
-
-                <h2>
-                    Ümumi şərtlər
-                </h2>
-
-            </div>
-
-
-            <p>
-
-                <b>Gunel's story</b> fərdi uşaq kitablarının
-                hazırlanması və təqdim edilməsi üzrə
-                xidmət göstərir.
-
-            </p>
-
-
-            <p>
-
-                Saytdan istifadə etməklə və sifariş
-                yerləşdirməklə istifadəçi bu <b>Xidmət
-                Şərtləri</b> ilə tanış olduğunu və onları
-                qəbul etdiyini təsdiq edir.
-
-            </p>
-
-
-            <div class="info-box">
-
-                <p>
-
-                    <strong>Qeyd:</strong>
-                    Sifariş verməzdən əvvəl təqdim olunan
-                    məlumatların düzgünlüyünü yoxlamağınız
-                    xahiş olunur.
-
-                </p>
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             2. XİDMƏTİN MƏZMUNU
-        ================================================== -->
-
-        <section class="terms-card">
-
-
-            <div class="section-heading">
-
-                <div class="section-icon">
-                    📖
-                </div>
-
-                <h2>
-                    Xidmətin məzmunu
-                </h2>
-
-            </div>
-
-
-            <p>
-
-                <b>Gunel's story</b>b> uşağın fərdi xüsusiyyətləri,
-                adı, maraqları və təqdim olunan məlumatlar
-                əsasında xüsusi hekayə və vizual materiallar
-                hazırlayanır.
-
-            </p>
-
-
-            <ul>
-
-                <li>
-                    Fərdi uşaq hekayəsinin hazırlanması
-                </li>
-
-                <li>
-                    Kitab səhifələrinin dizayn edilməsi
-                </li>
-
-                <li>
-                    Təqdim olunan fotoşəkillərin layihəyə
-                    uyğunlaşdırılması
-                </li>
-
-                <li>
-                    Çap və təqdimat üçün hazırlanmış
-                    kitab materiallarının formalaşdırılması
-                </li>
-
-            </ul>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             3. SİFARİŞ PROSESİ
-        ================================================== -->
-
-        <section class="terms-card">
-
-
-            <div class="section-heading">
-
-                <div class="section-icon">
-                    🛒
-                </div>
-
-                <h2>
-                    Sifariş prosesi
-                </h2>
-
-            </div>
-
-
-            <p>
-
-                Sifarişin hazırlanması üçün istifadəçidən
-                tələb olunan məlumatların tam və düzgün
-                təqdim edilməsi vacibdir.
-
-            </p>
-
-
-            <div class="process-list">
-
-
-                <div class="process-item">
-
-                    <div class="process-number">
-                        1
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Məlumatların təqdim edilməsi
-                        </strong>
-
-                        <span>
-                            Uşaq və sifarişlə bağlı
-                            zəruri məlumatlar təqdim olunmalıdır.
-                        </span>
-
-                    </div>
+            <div class="book-info">
+
+                <h3>
+                    ${escapeHtml(title)}
+                </h3>
+
+
+                <div class="book-author-badge">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+
+                        <path
+                            d="
+                                M12 17.27
+                                L18.18 21
+                                L16.54 13.97
+                                L22 9.24
+                                L14.81 8.63
+                                L12 2
+                                L9.19 8.63
+                                L2 9.24
+                                L7.46 13.97
+                                L5.82 21
+                                Z
+                            "
+                        />
+
+                    </svg>
+
+                    ${escapeHtml(author)}
 
                 </div>
 
-
-                <div class="process-item">
-
-                    <div class="process-number">
-                        2
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Hekayənin hazırlanması
-                        </strong>
-
-                        <span>
-                            Təqdim olunan məlumatlar əsasında
-                            fərdi hekayə hazırlanır.
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="process-item">
-
-                    <div class="process-number">
-                        3
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Dizayn mərhələsi
-                        </strong>
-
-                        <span>
-                            Hekayəyə uyğun vizual və
-                            səhifə dizaynı hazırlanır.
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="process-item">
-
-                    <div class="process-number">
-                        4
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Yekun təqdimat
-                        </strong>
-
-                        <span>
-                            Hazırlanmış məhsul razılaşdırılmış
-                            formada təqdim edilir.
-                        </span>
-
-                    </div>
-
-                </div>
-
-
             </div>
 
+        `;
 
-        </section>
 
+        return card;
+    }
 
 
-        <!-- =================================================
-             4. İSTİFADƏÇİNİN MƏSULİYYƏTİ
-        ================================================== -->
+    /* =====================================================
+       FALLBACK GÖSTƏR
+    ====================================================== */
 
-        <section class="terms-card">
+    function renderFallbackPortfolio() {
 
-
-            <div class="section-heading">
-
-                <div class="section-icon">
-                    👤
-                </div>
-
-                <h2>
-                    İstifadəçinin məsuliyyəti
-                </h2>
-
-            </div>
-
-
-            <p>
-
-                İstifadəçi sifariş zamanı təqdim etdiyi
-                məlumatların düzgünlüyünə və həmin
-                məlumatlardan istifadə etmək hüququna
-                malik olmasına görə məsuliyyət daşıyır.
-
-            </p>
-
-
-            <ul>
-
-                <li>
-                    Təqdim olunan ad və məlumatların düzgün olması
-                </li>
-
-                <li>
-                    Fotoşəkillərdən istifadə üçün lazımi hüquqa
-                    malik olması
-                </li>
-
-                <li>
-                    Sifariş məlumatlarının yoxlanılması
-                </li>
-
-                <li>
-                    Sifarişlə bağlı vacib dəyişikliklərin
-                    vaxtında bildirilməsi
-                </li>
-
-            </ul>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             5. FOTOŞƏKİLLƏR VƏ MATERİALLAR
-        ================================================== -->
-
-        <section class="terms-card">
-
-
-            <div class="section-heading">
-
-                <div class="section-icon">
-                    📸
-                </div>
-
-                <h2>
-                    Fotoşəkillər və təqdim olunan materiallar
-                </h2>
-
-            </div>
-
-
-            <p>
-
-                İstifadəçi tərəfindən təqdim olunan
-                fotoşəkillər və digər materiallar
-                sifarişin hazırlanması məqsədilə istifadə
-                edilir.
-
-            </p>
-
-
-            <p>
-
-                İstifadəçi təqdim etdiyi materiallardan
-                istifadə etmək hüququna malik olduğunu
-                təsdiq etməlidir.
-
-            </p>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             6. DƏYİŞİKLİKLƏR
-        ================================================== -->
-
-        <section class="terms-card">
-
-
-            <div class="section-heading">
-
-                <div class="section-icon">
-                    ✏️
-                </div>
-
-                <h2>
-                    Dəyişiklik və düzəlişlər
-                </h2>
-
-            </div>
-
-
-            <p>
-
-                Sifariş hazırlanarkən istifadəçi tərəfindən
-                təqdim olunan məlumatların dəyişdirilməsi
-                və ya düzəlişlərin edilməsi müəyyən hallarda
-                mümkün ola bilər.
-
-            </p>
-
-
-            <p>
-
-                Dizayn və ya hekayə hazırlanması başa
-                çatdıqdan sonra edilən əlavə dəyişikliklər
-                əlavə iş tələb edə bilər.
-
-            </p>
-
-
-            <div class="info-box">
-
-                <p>
-
-                    <strong>Tövsiyə:</strong>
-                    Sifariş təsdiqlənməzdən əvvəl bütün
-                    məlumatları diqqətlə yoxlayın.
-
-                </p>
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             7. ÖDƏNİŞ
-        ================================================== -->
-
-        <section class="terms-card">
-
-
-            <div class="section-heading">
-
-                <div class="section-icon">
-                    💳
-                </div>
-
-                <h2>
-                    Ödəniş
-                </h2>
-
-            </div>
-
-
-            <p>
-
-                Xidmətin qiyməti sifarişin növünə,
-                seçilmiş məhsula və əlavə xidmətlərə
-                uyğun olaraq müəyyən edilir.
-
-            </p>
-
-
-            <p>
-
-                Sifariş zamanı tətbiq olunan qiymət və
-                ödəniş qaydaları istifadəçiyə əvvəlcədən
-                bildirilir.
-
-            </p>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             8. MÜDDƏT
-        ================================================== -->
-
-        <section class="terms-card">
-
-
-            <div class="section-heading">
-
-                <div class="section-icon">
-                    ⏱️
-                </div>
-
-                <h2>
-                    Hazırlanma müddəti
-                </h2>
-
-            </div>
-
-
-            <p>
-
-                Fərdi kitabın hazırlanma müddəti sifarişin
-                məzmunundan, seçilmiş xidmətlərdən və
-                layihənin həcmindən asılı olaraq dəyişə bilər.
-
-            </p>
-
-
-            <p>
-
-                Hekayənin nəşr və dizayn üçün təqdim edildiyi üçüncü tərəflərin 
-                işlərindən və digər gözlənilməyən texniki işlərdən asılıdır.
-
-            </p>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             9. LƏĞV VƏ GERİ QAYTARMA
-        ================================================== -->
-
-        <section class="terms-card">
-
-
-            <div class="section-heading">
-
-                <div class="section-icon">
-                    🔄
-                </div>
-
-                <h2>
-                    Sifarişin ləğvi və geri qaytarılması
-                </h2>
-
-            </div>
-
-
-            <p>
-
-                Fərdi hazırlanmış məhsullar xüsusi olaraq
-                konkret istifadəçi və uşaq üçün hazırlandığı
-                üçün sifarişin ləğvi və ödənişin geri
-                qaytarılması məhsulun hazırlanma mərhələsindən
-                asılıdır.
-
-            </p>
-
-
-            <p>
-
-                Geri qaytarma və ləğv şərtləri konkret
-                sifariş üzrə əvvəlcədən razılaşdırılmalıdır.
-
-            </p>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             10. MÜƏLLİFLİK VƏ MƏZMUN
-        ================================================== -->
-
-        <section class="terms-card">
-
-
-            <div class="section-heading">
-
-                <div class="section-icon">
-                    ©️
-                </div>
-
-                <h2>
-                    Müəlliflik və məzmun hüquqları
-                </h2>
-
-            </div>
-
-
-            <p>
-
-                <b>Gunel's story</b>b> tərəfindən hazırlanmış
-                hekayə, dizayn, illüstrasiya və digər
-                yaradıcı materiallar müvafiq müəlliflik
-                hüquqları ilə qorunur. Hazırlanan fərdi kitabın
-                bütün müəlliflik hüququ <b>Gunel's story</b>ə məxsusdur.
-
-            </p>
-
-
-            <p>
-
-                Hazırlanmış fərdi məhsulun şəxsi istifadə
-                məqsədilə istifadəsi ilə kommersiya məqsədilə
-                çoxaldılması və yayılması eyni hüquqi məna
-                daşımır.
-
-            </p>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             11. XİDMƏTDƏ DƏYİŞİKLİKLƏR
-        ================================================== -->
-
-        <section class="terms-card">
-
-
-            <div class="section-heading">
-
-                <div class="section-icon">
-                    🔧
-                </div>
-
-                <h2>
-                    Xidmətlərdə dəyişikliklər
-                </h2>
-
-            </div>
-
-
-            <p>
-
-                <b>Gunel's story</b> xidmətlərin məzmununda,
-                dizaynında, təqdim olunma formasında və
-                digər xüsusiyyətlərində dəyişiklik etmək
-                hüququnu özündə saxlayır.
-
-            </p>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             12. ŞƏRTLƏRƏ DƏYİŞİKLİK
-        ================================================== -->
-
-        <section class="terms-card">
-
-
-            <div class="section-heading">
-
-                <div class="section-icon">
-                    📑
-                </div>
-
-                <h2>
-                    Xidmət şərtlərində dəyişikliklər
-                </h2>
-
-            </div>
-
-
-            <p>
-
-                Bu <b>Xidmət Şərtləri</b> gələcəkdə yenilənə və
-                dəyişdirilə bilər. Yenilənmiş versiya
-                bu səhifədə yayımlandığı tarixdən etibarən
-                qüvvəyə minir.
-
-            </p>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             DİGƏR SƏHİFƏLƏR
-        ================================================== -->
-
-        <section class="terms-card">
-
-
-            <div class="section-heading">
-
-                <div class="section-icon">
-                    🔗
-                </div>
-
-                <h2>
-                    Digər səhifələr
-                </h2>
-
-            </div>
-
-
-            <p>
-
-                Gunel's story haqqında və məlumatların
-                qorunması ilə bağlı daha ətraflı məlumat
-                üçün aşağıdakı səhifələrə keçə bilərsiniz.
-
-            </p>
-
-
-        <!-- =================================================
-             CTA
-        ================================================== -->
-
-        <section class="cta-card">
-
-
-            <h2>
-
-                Sifarişinizə başlamağa hazırsınız?
-
-            </h2>
-
-
-            <p>
-
-                Uşağınız üçün xüsusi və unudulmaz
-                bir hekayə yaratmağa başlaya bilərsiniz.
-
-            </p>
-
-
-            <a href="index.html"
-               class="cta-button">
-
-                Əsas səhifəyə keç →
-
-            </a>
-
-
-        </section>
-
-
-    </main>
-
-
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-
-    <footer>
-
-
-        <p>
-
-            © 2026 Gunel's story. Bütün hüquqlar qorunur.
-
-        </p>
-
-
-    </footer>
-
-
-
-    <!-- =====================================================
-         MOBILE MENU SCRIPT
-    ====================================================== -->
-
-    <script>
-
-
-        const menuToggle =
+        const gallery =
             document.getElementById(
-                "menuToggle"
+                "portfolioGallery"
             );
 
 
-        const navLinks =
-            document.getElementById(
-                "navLinks"
-            );
+        gallery.innerHTML =
+            "";
 
 
-        /* MENU AÇ / BAĞLA */
+        fallbackPortfolio.forEach(
+            function (item) {
 
-        menuToggle.addEventListener(
-            "click",
-            function (event) {
-
-
-                event.stopPropagation();
-
-
-                navLinks.classList.toggle(
-                    "open"
+                gallery.appendChild(
+                    createPortfolioCard(item)
                 );
-
-
-                const isOpen =
-                    navLinks.classList.contains(
-                        "open"
-                    );
-
-
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    isOpen
-                );
-
-
-                menuToggle.textContent =
-                    isOpen
-                        ? "✕"
-                        : "☰";
 
             }
         );
+    }
 
 
-        /* LINKƏ BASILDIQDA MENYU BAĞLANSIN */
+    /* =====================================================
+       FIRESTORE PORTFOLIO YÜKLƏ
+    ====================================================== */
 
-        navLinks
-            .querySelectorAll("a")
-            .forEach(
-                function (link) {
+    function startPortfolioListener() {
 
-
-                    link.addEventListener(
-                        "click",
-                        function () {
-
-
-                            navLinks.classList.remove(
-                                "open"
-                            );
+        const gallery =
+            document.getElementById(
+                "portfolioGallery"
+            );
 
 
-                            menuToggle.textContent =
-                                "☰";
+        db.collection("portfolio")
+            .onSnapshot(
+
+                function (snapshot) {
+
+                    /*
+                     * Firestore boşdursa fallback
+                     */
+
+                    if (snapshot.empty) {
+
+                        renderFallbackPortfolio();
+
+                        return;
+                    }
 
 
-                            menuToggle.setAttribute(
-                                "aria-expanded",
-                                "false"
+                    const portfolioItems = [];
+
+
+                    snapshot.forEach(
+                        function (doc) {
+
+                            const data =
+                                doc.data();
+
+
+                            portfolioItems.push({
+
+                                id:
+                                    doc.id,
+
+                                title:
+                                    data.title || "",
+
+                                author:
+                                    data.author || "",
+
+                                imageUrl:
+                                    data.imageUrl || "",
+
+                                createdAt:
+                                    data.createdAt || null
+
+                            });
+
+                        }
+                    );
+
+
+                    /*
+                     * Ən yeni kitab yuxarıda
+                     */
+
+                    portfolioItems.sort(
+                        function (a, b) {
+
+                            let aTime =
+                                0;
+
+                            let bTime =
+                                0;
+
+
+                            if (
+                                a.createdAt &&
+                                typeof
+                                a.createdAt.toMillis
+                                === "function"
+                            ) {
+
+                                aTime =
+                                    a.createdAt.toMillis();
+                            }
+
+
+                            if (
+                                b.createdAt &&
+                                typeof
+                                b.createdAt.toMillis
+                                === "function"
+                            ) {
+
+                                bTime =
+                                    b.createdAt.toMillis();
+                            }
+
+
+                            return bTime - aTime;
+
+                        }
+                    );
+
+
+                    /*
+                     * Ekranı təmizlə
+                     */
+
+                    gallery.innerHTML =
+                        "";
+
+
+                    /*
+                     * Kitabları əlavə et
+                     */
+
+                    portfolioItems.forEach(
+                        function (item) {
+
+                            gallery.appendChild(
+                                createPortfolioCard(item)
                             );
 
                         }
                     );
 
+                },
+
+
+                function (error) {
+
+                    console.error(
+                        "Firestore portfolio xətası:",
+                        error
+                    );
+
+
+                    renderFallbackPortfolio();
+
                 }
+
             );
 
+    }
 
-        /* MENYU XARİCİNƏ BASILDIQDA BAĞLANSIN */
 
-        document.addEventListener(
-            "click",
-            function (event) {
+    /* =====================================================
+       MOBİL ŞƏKİL MODALI
+    ====================================================== */
 
+    const imageModal =
+        document.getElementById(
+            "imageModal"
+        );
+
+
+    const modalImage =
+        document.getElementById(
+            "modalImage"
+        );
+
+
+    const modalClose =
+        document.getElementById(
+            "modalClose"
+        );
+
+
+    /* =====================================================
+       MODALI AÇ
+    ====================================================== */
+
+    function openImageModal(
+        imageUrl,
+        title
+    ) {
+
+        if (!imageUrl) {
+            return;
+        }
+
+
+        modalImage.src =
+            imageUrl;
+
+
+        modalImage.alt =
+            title || "Kitab";
+
+
+        imageModal.classList.add(
+            "active"
+        );
+
+
+        imageModal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+
+        document.body.classList.add(
+            "modal-open"
+        );
+    }
+
+
+    /* =====================================================
+       MODALI BAĞLA
+    ====================================================== */
+
+    function closeImageModal() {
+
+        imageModal.classList.remove(
+            "active"
+        );
+
+
+        imageModal.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+
+        document.body.classList.remove(
+            "modal-open"
+        );
+
+
+        /*
+         * Animasiya bitəndən sonra şəkli təmizlə
+         */
+
+        setTimeout(
+            function () {
 
                 if (
-                    !event.target.closest(
-                        ".nav-container"
+                    !imageModal.classList.contains(
+                        "active"
                     )
                 ) {
 
+                    modalImage.src =
+                        "";
 
-                    navLinks.classList.remove(
-                        "open"
-                    );
-
-
-                    menuToggle.textContent =
-                        "☰";
-
-
-                    menuToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
+                    modalImage.alt =
+                        "";
                 }
 
-            }
+            },
+            300
         );
+    }
 
 
-        /* EKRAN BÖYÜDÜKDƏ MENYU RESET */
+    /* =====================================================
+       GÖZ İKONUNA KLİK
+    ====================================================== */
 
-        window.addEventListener(
-            "resize",
-            function () {
+    document.addEventListener(
+        "click",
+        function (event) {
 
-
-                if (
-                    window.innerWidth > 768
-                ) {
-
-
-                    navLinks.classList.remove(
-                        "open"
-                    );
+            const viewButton =
+                event.target.closest(
+                    ".mobile-view-btn"
+                );
 
 
-                    menuToggle.textContent =
-                        "☰";
+            if (!viewButton) {
+                return;
+            }
 
 
-                    menuToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
+            event.preventDefault();
 
-                }
+            event.stopPropagation();
+
+
+            const imageUrl =
+                viewButton.dataset.image;
+
+
+            const title =
+                viewButton.dataset.title;
+
+
+            openImageModal(
+                imageUrl,
+                title
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       X DÜYMƏSİ
+    ====================================================== */
+
+    modalClose.addEventListener(
+        "click",
+        function (event) {
+
+            event.stopPropagation();
+
+            closeImageModal();
+
+        }
+    );
+
+
+    /* =====================================================
+       MODALIN BOŞ SAHƏSİNƏ KLİK
+    ====================================================== */
+
+    imageModal.addEventListener(
+        "click",
+        function (event) {
+
+            /*
+             * Yalnız qaranlıq fonun özünə
+             * klik ediləndə bağla.
+             */
+
+            if (
+                event.target === imageModal
+            ) {
+
+                closeImageModal();
 
             }
-        );
+
+        }
+    );
 
 
-    </script>
+    /* =====================================================
+       ESC İLƏ BAĞLAMA
+    ====================================================== */
 
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape" &&
+                imageModal.classList.contains(
+                    "active"
+                )
+            ) {
+
+                closeImageModal();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       DOM READY
+    ====================================================== */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            startPortfolioListener();
+
+        }
+    );
+
+</script>
 
 </body>
 
