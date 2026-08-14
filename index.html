@@ -1247,87 +1247,218 @@
 
 
         /* =====================================================
-           QİYMƏT BİLDİRİŞİ
+           QİYMƏT BİLDİRİŞİ — PREMIUM DİZAYN
         ====================================================== */
 
         .price-notice {
+
             width: 100%;
-            display: flex;
-            align-items: center;
-            gap: 22px;
-            padding: 28px 30px;
-            margin: 0 auto 28px;
-            background: linear-gradient(135deg, #f7f7ff 0%, #ffffff 100%);
-            border: 1px solid #e8e7ff;
-            border-radius: 24px;
-            box-shadow: 0 10px 35px rgba(15, 23, 42, 0.04);
+
             position: relative;
+
+            display: grid;
+
+            grid-template-columns: auto 1fr auto;
+
+            align-items: center;
+
+            gap: 22px;
+
+            padding: 24px 26px;
+
+            margin: 0 auto 28px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffffff 0%,
+                    #f8f7ff 100%
+                );
+
+            border: 1px solid #e9e7ff;
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 12px 35px
+                rgba(79, 70, 229, 0.06);
+
             overflow: hidden;
         }
 
-        .price-notice::after {
+
+        .price-notice::before {
+
             content: "";
+
             position: absolute;
-            width: 130px;
-            height: 130px;
-            right: -45px;
-            top: -55px;
-            background: rgba(79, 70, 229, 0.06);
-            border-radius: 50%;
+
+            left: 0;
+
+            top: 0;
+
+            bottom: 0;
+
+            width: 4px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #4f46e5,
+                    #8b5cf6
+                );
+        }
+
+
+        .price-notice::after {
+
+            content: "✨";
+
+            position: absolute;
+
+            right: 24px;
+
+            bottom: -18px;
+
+            font-size: 4.5rem;
+
+            opacity: 0.045;
+
             pointer-events: none;
         }
 
+
         .price-notice-icon {
-            width: 58px;
-            height: 58px;
-            min-width: 58px;
+
+            width: 56px;
+
+            height: 56px;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
-            background: #f0f0ff;
-            border-radius: 18px;
-            font-size: 1.55rem;
+
+            background: #f0efff;
+
+            border: 1px solid #e4e2ff;
+
+            border-radius: 17px;
+
+            font-size: 1.45rem;
+
+            flex-shrink: 0;
+
             position: relative;
+
             z-index: 1;
         }
+
 
         .price-notice-content {
+
+            min-width: 0;
+
             position: relative;
+
             z-index: 1;
-            flex: 1;
         }
+
 
         .price-notice-label {
-            display: inline-block;
-            margin-bottom: 7px;
+
+            display: block;
+
+            margin-bottom: 5px;
+
             color: #4f46e5;
-            font-size: 0.72rem;
+
+            font-size: 0.68rem;
+
             font-weight: 800;
-            letter-spacing: 1px;
+
+            letter-spacing: 1.2px;
         }
 
+
         .price-notice h2 {
-            margin: 0 0 8px;
+
+            margin: 0 0 6px;
+
             color: #1a1a24;
-            font-family: 'Quicksand', sans-serif;
-            font-size: 1.35rem;
+
+            font-family:
+                'Quicksand',
+                sans-serif;
+
+            font-size: 1.3rem;
+
             line-height: 1.3;
+
             letter-spacing: -0.3px;
         }
 
+
         .price-notice p {
+
             margin: 0;
-            max-width: 720px;
+
             color: #64748b;
-            font-size: 0.9rem;
-            line-height: 1.7;
+
+            font-size: 0.86rem;
+
+            line-height: 1.65;
         }
 
+
         .price-notice-small {
-            margin-top: 7px !important;
-            font-size: 0.78rem !important;
+
+            margin-top: 5px !important;
+
             color: #94a3b8 !important;
+
+            font-size: 0.75rem !important;
+
+            line-height: 1.5 !important;
         }
+
+
+        .price-notice-badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            white-space: nowrap;
+
+            padding: 9px 14px;
+
+            background: #ffffff;
+
+            color: #4f46e5;
+
+            border: 1px solid #e4e2ff;
+
+            border-radius: 50px;
+
+            font-size: 0.7rem;
+
+            font-weight: 800;
+
+            letter-spacing: 0.5px;
+
+            box-shadow:
+                0 5px 15px
+                rgba(79, 70, 229, 0.07);
+
+            position: relative;
+
+            z-index: 1;
+        }
+
 
         /* =====================================================
            MOBİL
@@ -1602,6 +1733,109 @@
             }
 
         }
+
+
+        /* =====================================================
+           QİYMƏT BİLDİRİŞİ — MOBİL
+        ====================================================== */
+
+        @media (max-width: 768px) {
+
+            .price-notice {
+
+                grid-template-columns: auto 1fr;
+
+                gap: 15px;
+
+                padding: 21px 18px;
+
+                margin-bottom: 20px;
+
+                border-radius: 19px;
+            }
+
+
+            .price-notice-icon {
+
+                width: 48px;
+
+                height: 48px;
+
+                border-radius: 14px;
+
+                font-size: 1.25rem;
+            }
+
+
+            .price-notice-label {
+
+                font-size: 0.63rem;
+
+                letter-spacing: 1px;
+            }
+
+
+            .price-notice h2 {
+
+                font-size: 1.12rem;
+
+                line-height: 1.35;
+            }
+
+
+            .price-notice p {
+
+                font-size: 0.81rem;
+
+                line-height: 1.65;
+            }
+
+
+            .price-notice-small {
+
+                font-size: 0.71rem !important;
+
+                line-height: 1.55 !important;
+            }
+
+
+            .price-notice-badge {
+
+                grid-column: 1 / -1;
+
+                justify-self: start;
+
+                padding: 8px 13px;
+
+                font-size: 0.65rem;
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .price-notice {
+
+                padding: 19px 15px;
+
+                border-radius: 18px;
+            }
+
+
+            .price-notice h2 {
+
+                font-size: 1.05rem;
+            }
+
+
+            .price-notice p {
+
+                font-size: 0.78rem;
+            }
+
+        }
+
 
     </style>
 
@@ -2075,7 +2309,7 @@
                     <div class="step-img-box">
 
                         <img
-                            src="image/step5.png"
+                            src="image/step4.png"
                             alt="Hədiyyə paketlənməsi"
                         >
 
@@ -2125,8 +2359,8 @@
 
         <section class="price-notice" aria-label="Qiymət məlumatı">
 
-            <div class="price-notice-icon">
-                💜
+            <div class="price-notice-icon" aria-hidden="true">
+                ✨
             </div>
 
             <div class="price-notice-content">
@@ -2136,21 +2370,25 @@
                 </span>
 
                 <h2>
-                    Qiymət təklifi tezliklə
+                    Fərdi qiymət təklifi
                 </h2>
 
                 <p>
-                    Gunel's story fərdi kitablarının qiymətləri və
-                    paket seçimləri ilə bağlı ətraflı məlumat
-                    tezliklə burada təqdim olunacaq.
+                    Gunel's story kitablarının qiymət və paket
+                    seçimləri ilə bağlı ətraflı məlumat tezliklə
+                    burada paylaşılacaq.
                 </p>
 
                 <p class="price-notice-small">
-                    Fərdi kitabın hazırlanma xüsusiyyətlərinə uyğun
-                    qiymət təklifi ayrıca müəyyən ediləcək.
+                    Hər sifarişin xüsusiyyətlərinə uyğun fərdi
+                    qiymət təklifi təqdim ediləcək.
                 </p>
 
             </div>
+
+            <span class="price-notice-badge">
+                TEZLİKLƏ
+            </span>
 
         </section>
 
