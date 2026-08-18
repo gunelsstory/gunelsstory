@@ -14,7 +14,6 @@
           type="image/png"
           href="image/favicon.png">
 
-
     <!-- =====================================================
          PREMIUM ŞRİFTLƏR
     ====================================================== -->
@@ -114,6 +113,7 @@
         h1,
         h2,
         h3,
+        h4,
         .subtitle,
         .step-number {
 
@@ -163,10 +163,6 @@
         }
 
 
-        /* =====================================================
-           SPLASH CONTENT
-        ====================================================== */
-
         .story-splash-content {
 
             width:
@@ -195,10 +191,6 @@
         }
 
 
-        /* =====================================================
-           SPLASH LOGO
-        ====================================================== */
-
         .story-splash-logo {
 
             width:
@@ -217,10 +209,6 @@
                 0 auto 28px;
         }
 
-
-        /* =====================================================
-           SPLASH SLOQAN
-        ====================================================== */
 
         .story-splash-quote {
 
@@ -251,16 +239,11 @@
         }
 
 
-        /* =====================================================
-           AÇILIŞ ANİMASİYASI
-        ====================================================== */
-
         @keyframes splashContentIn {
 
             0% {
 
-                opacity:
-                    0;
+                opacity: 0;
 
                 transform:
                     translateY(14px)
@@ -269,8 +252,7 @@
 
             60% {
 
-                opacity:
-                    1;
+                opacity: 1;
 
                 transform:
                     translateY(0)
@@ -279,8 +261,7 @@
 
             100% {
 
-                opacity:
-                    1;
+                opacity: 1;
 
                 transform:
                     translateY(0)
@@ -289,20 +270,13 @@
         }
 
 
-        /* =====================================================
-           SPLASH YOX OLMA
-        ====================================================== */
-
         #story-splash.hide {
 
-            opacity:
-                0;
+            opacity: 0;
 
-            visibility:
-                hidden;
+            visibility: hidden;
 
-            pointer-events:
-                none;
+            pointer-events: none;
         }
 
 
@@ -333,7 +307,7 @@
                 0;
 
             z-index:
-                100;
+                1000;
 
             border-bottom:
                 1px solid #e2e8f0;
@@ -361,10 +335,6 @@
                 18px 24px;
         }
 
-
-        /* =====================================================
-           NAV LOGO
-        ====================================================== */
 
         .nav-logo {
 
@@ -453,16 +423,15 @@
         }
 
 
-        /* =====================================================
-           MƏXFİLİK / XİDMƏT ŞƏRTLƏRİ NAVBAR LINKLƏRİ
-        ====================================================== */
-
         .nav-links .legal-nav-link {
+
             color:
                 var(--text-sub);
         }
 
+
         .nav-links .legal-nav-link:hover {
+
             color:
                 var(--primary-magic);
         }
@@ -495,7 +464,6 @@
 
         /* =====================================================
            HAMBURGER
-           DEFAULT OLARAQ DESKTOPDA GİZLİDİR
         ====================================================== */
 
         .hamburger {
@@ -560,10 +528,6 @@
                 opacity 0.3s ease;
         }
 
-
-        /* =====================================================
-           HAMBURGER → X
-        ====================================================== */
 
         .hamburger.active span:nth-child(1) {
 
@@ -662,6 +626,7 @@
 
 
         .mobile-menu .mobile-legal-link {
+
             color:
                 var(--text-main);
 
@@ -669,7 +634,9 @@
                 #ffffff;
         }
 
+
         .mobile-menu .mobile-legal-link:hover {
+
             color:
                 var(--primary-magic);
 
@@ -1057,38 +1024,401 @@
 
 
         /* =====================================================
-           SİFARİŞ FORMASI
+           SİFARİŞ + QİYMƏT BÖLMƏSİ
+           
+           DESKTOP:
+           SOL  = QİYMƏT
+           SAĞ  = SİFARİŞ FORMASI
+
+           QEYD:
+           DESKTOPDA "Sifariş üçün müraciət et" DÜYMƏSİ YOXDUR.
         ====================================================== */
+
+        .order-section {
+
+            width:
+                100%;
+
+            margin:
+                35px auto 0;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid #e2e8f0;
+
+            border-radius:
+                24px;
+
+            box-shadow:
+                0 10px 35px
+                rgba(
+                    15,
+                    23,
+                    42,
+                    0.04
+                );
+
+            overflow:
+                hidden;
+        }
+
+
+        .order-desktop-layout {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                0.85fr 1.15fr;
+
+            align-items:
+                stretch;
+        }
+
+
+        /* =====================================================
+           QİYMƏT PANELİ — DESKTOP
+        ====================================================== */
+
+        .price-panel {
+
+            padding:
+                42px 34px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #f8f7ff 0%,
+                    #ffffff 100%
+                );
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            text-align:
+                center;
+
+            border-right:
+                1px solid #edf2f7;
+        }
+
+
+        .price-small-title {
+
+            font-size:
+                0.78rem;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                1.5px;
+
+            color:
+                var(--primary-magic);
+
+            margin-bottom:
+                12px;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .price-title {
+
+            font-family:
+                'Quicksand',
+                sans-serif;
+
+            font-size:
+                1.55rem;
+
+            font-weight:
+                700;
+
+            line-height:
+                1.25;
+
+            color:
+                var(--text-main);
+
+            margin-bottom:
+                12px;
+        }
+
+
+        .price-value {
+
+            display:
+                flex;
+
+            align-items:
+                baseline;
+
+            justify-content:
+                center;
+
+            gap:
+                6px;
+
+            margin:
+                8px 0 12px;
+        }
+
+
+        .price-number {
+
+            font-family:
+                'Quicksand',
+                sans-serif;
+
+            font-size:
+                3.8rem;
+
+            line-height:
+                1;
+
+            font-weight:
+                700;
+
+            color:
+                var(--primary-magic);
+
+            letter-spacing:
+                -2px;
+        }
+
+
+        .price-currency {
+
+            font-family:
+                'Quicksand',
+                sans-serif;
+
+            font-size:
+                1.45rem;
+
+            font-weight:
+                700;
+
+            color:
+                var(--primary-magic);
+        }
+
+
+        .price-description {
+
+            max-width:
+                260px;
+
+            font-size:
+                0.86rem;
+
+            line-height:
+                1.6;
+
+            color:
+                var(--text-sub);
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .price-features {
+
+            width:
+                100%;
+
+            max-width:
+                270px;
+
+            margin:
+                0 auto;
+
+            text-align:
+                left;
+        }
+
+
+        .price-feature {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                9px;
+
+            font-size:
+                0.82rem;
+
+            font-weight:
+                600;
+
+            color:
+                var(--text-main);
+
+            margin-bottom:
+                11px;
+        }
+
+
+        .price-feature span:first-child {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            width:
+                22px;
+
+            height:
+                22px;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--primary-soft);
+
+            color:
+                var(--primary-magic);
+
+            font-size:
+                0.75rem;
+
+            flex-shrink:
+                0;
+        }
+
+
+        /* =====================================================
+           DESKTOPDA QİYMƏT DÜYMƏSİ GİZLİDİR
+           
+           Mobil düymə ayrıca .mobile-price-panel daxilindədir.
+        ====================================================== */
+
+        .price-panel .price-action-btn {
+
+            display:
+                none;
+        }
+
+
+        /* =====================================================
+           FORM PANELİ
+        ====================================================== */
+
+        .form-panel {
+
+            padding:
+                34px;
+        }
+
 
         .order-form-container {
 
             max-width:
-                460px;
+                none;
 
             margin:
-                30px auto 0;
+                0;
+
+            padding:
+                0;
 
             text-align:
                 left;
 
             background:
-                #ffffff;
-
-            padding:
-                30px;
-
-            border-radius:
-                var(--radius-md);
+                transparent;
 
             border:
-                1px solid #e2e8f0;
+                none;
+        }
+
+
+        .form-top {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            margin-bottom:
+                24px;
+        }
+
+
+        .form-heading {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+        }
+
+
+        .form-heading-icon {
+
+            width:
+                38px;
+
+            height:
+                38px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                11px;
+
+            background:
+                var(--primary-soft);
+
+            font-size:
+                1.1rem;
         }
 
 
         .order-form-container h4 {
 
-            margin-bottom:
-                24px;
+            margin:
+                0;
 
             color:
                 var(--primary-magic);
@@ -1100,14 +1430,34 @@
                 700;
 
             text-align:
-                center;
+                left;
+        }
+
+
+        .desktop-price-note {
+
+            font-size:
+                0.75rem;
+
+            color:
+                var(--text-sub);
+
+            font-weight:
+                600;
+        }
+
+
+        .mobile-back-btn {
+
+            display:
+                none;
         }
 
 
         .form-group {
 
             margin-bottom:
-                18px;
+                16px;
         }
 
 
@@ -1120,10 +1470,10 @@
                 600;
 
             margin-bottom:
-                8px;
+                7px;
 
             font-size:
-                0.85rem;
+                0.82rem;
 
             color:
                 var(--text-main);
@@ -1137,7 +1487,7 @@
                 100%;
 
             padding:
-                12px 14px;
+                11px 13px;
 
             border-radius:
                 10px;
@@ -1146,7 +1496,7 @@
                 1px solid #cbd5e1;
 
             font-size:
-                0.95rem;
+                0.92rem;
 
             outline:
                 none;
@@ -1161,7 +1511,8 @@
                 inherit;
 
             transition:
-                border-color 0.2s;
+                border-color 0.2s,
+                box-shadow 0.2s;
         }
 
 
@@ -1200,10 +1551,10 @@
                 var(--white);
 
             padding:
-                16px;
+                15px;
 
             font-size:
-                1.05rem;
+                1rem;
 
             font-weight:
                 700;
@@ -1264,7 +1615,7 @@
         .whatsapp-note {
 
             font-size:
-                0.85rem;
+                0.78rem;
 
             font-weight:
                 500;
@@ -1273,7 +1624,21 @@
                 var(--text-sub);
 
             margin-top:
-                20px;
+                15px;
+
+            line-height:
+                1.5;
+        }
+
+
+        /* =====================================================
+           MOBİL SLIDER
+        ====================================================== */
+
+        .mobile-order-wrapper {
+
+            display:
+                none;
         }
 
 
@@ -1362,16 +1727,12 @@
             }
 
 
-            /* Desktop menyunu mobilde gizlə */
-
             .nav-links {
 
                 display:
                     none;
             }
 
-
-            /* Hamburgeri mobilde göstər */
 
             .hamburger {
 
@@ -1402,6 +1763,16 @@
 
                 font-size:
                     1.1rem;
+            }
+
+
+            .main-badge {
+
+                font-size:
+                    0.78rem;
+
+                padding:
+                    8px 14px;
             }
 
 
@@ -1498,13 +1869,432 @@
 
 
             /* =================================================
-               FORM
+               MOBİL SİFARİŞ BÖLMƏSİ
             ================================================== */
 
-            .order-form-container {
+            .order-section {
+
+                position:
+                    relative;
+
+                margin:
+                    28px auto 0;
+
+                border-radius:
+                    20px;
+
+                overflow:
+                    hidden;
+            }
+
+
+            .order-desktop-layout {
+
+                display:
+                    none;
+            }
+
+
+            .mobile-order-wrapper {
+
+                display:
+                    block;
+
+                width:
+                    100%;
+
+                overflow:
+                    hidden;
+            }
+
+
+            .mobile-order-track {
+
+                display:
+                    flex;
+
+                width:
+                    200%;
+
+                transform:
+                    translateX(0);
+
+                transition:
+                    transform 0.45s
+                    cubic-bezier(
+                        0.22,
+                        1,
+                        0.36,
+                        1
+                    );
+            }
+
+
+            .mobile-order-track.show-form {
+
+                transform:
+                    translateX(-50%);
+            }
+
+
+            .mobile-order-panel {
+
+                width:
+                    50%;
+
+                flex:
+                    0 0 50%;
+
+                min-width:
+                    50%;
+            }
+
+
+            /* =================================================
+               MOBİL QİYMƏT
+            ================================================== */
+
+            .mobile-price-panel {
 
                 padding:
-                    20px 14px;
+                    32px 22px 28px;
+
+                background:
+                    linear-gradient(
+                        145deg,
+                        #f8f7ff 0%,
+                        #ffffff 100%
+                    );
+
+                text-align:
+                    center;
+            }
+
+
+            .price-small-title {
+
+                font-size:
+                    0.72rem;
+
+                margin-bottom:
+                    10px;
+            }
+
+
+            .price-title {
+
+                font-size:
+                    1.35rem;
+
+                margin-bottom:
+                    10px;
+            }
+
+
+            .price-number {
+
+                font-size:
+                    3.3rem;
+            }
+
+
+            .price-currency {
+
+                font-size:
+                    1.25rem;
+            }
+
+
+            .price-description {
+
+                font-size:
+                    0.82rem;
+
+                max-width:
+                    280px;
+
+                margin:
+                    0 auto 20px;
+            }
+
+
+            .price-features {
+
+                max-width:
+                    285px;
+
+                margin-bottom:
+                    22px;
+            }
+
+
+            .price-feature {
+
+                font-size:
+                    0.79rem;
+
+                margin-bottom:
+                    9px;
+            }
+
+
+            /*
+               MOBİL DÜYMƏ BURADA QALIR
+            */
+
+            .mobile-price-panel .price-action-btn {
+
+                display:
+                    block;
+
+                width:
+                    100%;
+
+                max-width:
+                    100%;
+
+                border:
+                    none;
+
+                background:
+                    var(--gold-gradient);
+
+                color:
+                    #ffffff;
+
+                padding:
+                    14px 18px;
+
+                border-radius:
+                    12px;
+
+                font-family:
+                    'Quicksand',
+                    sans-serif;
+
+                font-size:
+                    0.98rem;
+
+                font-weight:
+                    700;
+
+                cursor:
+                    pointer;
+
+                box-shadow:
+                    0 6px 20px
+                    rgba(
+                        255,
+                        107,
+                        107,
+                        0.18
+                    );
+
+                transition:
+                    transform 0.2s ease,
+                    box-shadow 0.2s ease;
+            }
+
+
+            .mobile-price-panel .price-action-btn:hover {
+
+                transform:
+                    translateY(-2px);
+
+                box-shadow:
+                    0 10px 25px
+                    rgba(
+                        255,
+                        107,
+                        107,
+                        0.25
+                    );
+            }
+
+
+            /* =================================================
+               MOBİL FORM
+            ================================================== */
+
+            .mobile-form-panel {
+
+                padding:
+                    24px 18px 22px;
+
+                background:
+                    #ffffff;
+            }
+
+
+            .form-top {
+
+                margin-bottom:
+                    20px;
+            }
+
+
+            .form-heading {
+
+                gap:
+                    8px;
+            }
+
+
+            .form-heading-icon {
+
+                width:
+                    34px;
+
+                height:
+                    34px;
+
+                font-size:
+                    1rem;
+            }
+
+
+            .order-form-container h4 {
+
+                font-size:
+                    1.1rem;
+            }
+
+
+            .desktop-price-note {
+
+                display:
+                    none;
+            }
+
+
+            .mobile-back-btn {
+
+                display:
+                    flex;
+
+                align-items:
+                    center;
+
+                justify-content:
+                    center;
+
+                gap:
+                    4px;
+
+                width:
+                    38px;
+
+                height:
+                    38px;
+
+                border:
+                    1px solid #e2e8f0;
+
+                background:
+                    #f8fafc;
+
+                border-radius:
+                    10px;
+
+                color:
+                    var(--text-main);
+
+                font-size:
+                    1.1rem;
+
+                cursor:
+                    pointer;
+            }
+
+
+            .form-group {
+
+                margin-bottom:
+                    14px;
+            }
+
+
+            .form-group label {
+
+                font-size:
+                    0.78rem;
+
+                margin-bottom:
+                    6px;
+            }
+
+
+            .form-group input,
+            .form-group textarea {
+
+                padding:
+                    11px 12px;
+
+                font-size:
+                    0.88rem;
+            }
+
+
+            .order-btn {
+
+                padding:
+                    14px;
+
+                font-size:
+                    0.95rem;
+            }
+
+
+            .whatsapp-note {
+
+                font-size:
+                    0.74rem;
+
+                margin-top:
+                    12px;
+            }
+
+        }
+
+
+        /* =====================================================
+           ÇOX KİÇİK EKRANLAR
+        ====================================================== */
+
+        @media (max-width: 380px) {
+
+            .nav-logo span {
+
+                font-size:
+                    0.9rem;
+            }
+
+
+            .step-card {
+
+                padding:
+                    20px 16px;
+            }
+
+
+            .mobile-price-panel {
+
+                padding:
+                    28px 17px 24px;
+            }
+
+
+            .price-number {
+
+                font-size:
+                    3rem;
+            }
+
+
+            .mobile-form-panel {
+
+                padding:
+                    22px 15px 20px;
             }
 
         }
@@ -1525,16 +2315,11 @@
 
         <div class="story-splash-content">
 
-            <!-- YALNIZCA LOGO -->
-
             <img
                 src="image/logo.png"
                 alt="Gunel's story"
                 class="story-splash-logo"
             >
-
-
-            <!-- YALNIZCA SLOQAN -->
 
             <p class="story-splash-quote">
 
@@ -1556,9 +2341,6 @@
     <nav>
 
         <div class="nav-container">
-
-
-            <!-- LOGO -->
 
             <a
                 href="index.html"
@@ -1613,9 +2395,7 @@
             </div>
 
 
-            <!-- =================================================
-                 MOBİL HAMBURGER
-            ================================================== -->
+            <!-- MOBİL HAMBURGER -->
 
             <button
                 class="hamburger"
@@ -1626,9 +2406,7 @@
             >
 
                 <span></span>
-
                 <span></span>
-
                 <span></span>
 
             </button>
@@ -1686,19 +2464,13 @@
     <div class="container">
 
 
-        <!-- =================================================
-             HEADER
-        ================================================== -->
+        <!-- HEADER -->
 
         <header>
 
-
             <h1>
-
                 Gunel's story
-
             </h1>
-
 
             <div class="subtitle">
 
@@ -1706,7 +2478,6 @@
                 günəş kimi parlayan uşaqlar üçün...☀️
 
             </div>
-
 
             <div class="main-badge">
 
@@ -1722,7 +2493,6 @@
         ================================================== -->
 
         <div class="step-card">
-
 
             <div class="step-header">
 
@@ -1740,7 +2510,6 @@
 
             </div>
 
-
             <p class="step-desc">
 
                 Uşağınızın adı, sevimli heyvanları və xəyalları
@@ -1748,9 +2517,7 @@
 
             </p>
 
-
             <div class="step-body">
-
 
                 <div class="step-img-side">
 
@@ -1765,9 +2532,7 @@
 
                 </div>
 
-
                 <div class="step-features-side">
-
 
                     <div class="feature-sub-card">
 
@@ -1780,7 +2545,6 @@
                         </p>
 
                     </div>
-
 
                     <div class="feature-sub-card">
 
@@ -1807,7 +2571,6 @@
 
         <div class="step-card">
 
-
             <div class="step-header">
 
                 <div class="step-number">
@@ -1824,7 +2587,6 @@
 
             </div>
 
-
             <p class="step-desc">
 
                 Uşağınızın real şəkli hekayənin səhifələrinə
@@ -1832,9 +2594,7 @@
 
             </p>
 
-
             <div class="step-body">
-
 
                 <div class="step-img-side">
 
@@ -1849,9 +2609,7 @@
 
                 </div>
 
-
                 <div class="step-features-side">
-
 
                     <div class="feature-sub-card">
 
@@ -1864,7 +2622,6 @@
                         </p>
 
                     </div>
-
 
                     <div class="feature-sub-card">
 
@@ -1891,7 +2648,6 @@
 
         <div class="step-card">
 
-
             <div class="step-header">
 
                 <div class="step-number">
@@ -1908,7 +2664,6 @@
 
             </div>
 
-
             <p class="step-desc">
 
                 Yüksək sıxlıqlı premium kağız,
@@ -1916,9 +2671,7 @@
 
             </p>
 
-
             <div class="step-body">
-
 
                 <div class="step-img-side">
 
@@ -1933,9 +2686,7 @@
 
                 </div>
 
-
                 <div class="step-features-side">
-
 
                     <div class="feature-sub-card">
 
@@ -1948,7 +2699,6 @@
                         </p>
 
                     </div>
-
 
                     <div class="feature-sub-card">
 
@@ -1975,7 +2725,6 @@
 
         <div class="step-card">
 
-
             <div class="step-header">
 
                 <div class="step-number">
@@ -1992,7 +2741,6 @@
 
             </div>
 
-
             <p class="step-desc">
 
                 Kitab xüsusi dizaynlı zərif hədiyyə paketi
@@ -2000,9 +2748,7 @@
 
             </p>
 
-
             <div class="step-body">
-
 
                 <div class="step-img-side">
 
@@ -2017,9 +2763,7 @@
 
                 </div>
 
-
                 <div class="step-features-side">
-
 
                     <div class="feature-sub-card">
 
@@ -2032,7 +2776,6 @@
                         </p>
 
                     </div>
-
 
                     <div class="feature-sub-card">
 
@@ -2053,118 +2796,496 @@
         </div>
 
 
-        <!-- =================================================
-             SİFARİŞ FORMASI
-        ================================================== -->
+        <!-- =====================================================
+             QİYMƏT + SİFARİŞ
+        ====================================================== -->
 
-        <div class="order-form-container">
-
-
-            <h4>
-                Sifariş Müraciəti
-            </h4>
+        <div class="order-section">
 
 
-            <form id="firebaseOrderForm">
+            <!-- =================================================
+                 DESKTOP VERSİYA
+                 
+                 SOL: QİYMƏT
+                 SAĞ: SİFARİŞ FORMASI
+                 
+                 QEYD:
+                 DESKTOPDA DÜYMƏ YOXDUR.
+            ================================================== -->
+
+            <div class="order-desktop-layout">
 
 
-                <div class="form-group">
+                <!-- QİYMƏT -->
 
-                    <label for="parentName">
-                        Valideynin Adı və Soyadı *
-                    </label>
+                <div class="price-panel">
 
-                    <input
-                        type="text"
-                        id="parentName"
-                        required
-                        placeholder="Nümunə: Aysel Məmmədova"
-                    >
+                    <div class="price-small-title">
+                        XÜSUSİ HEKAYƏ KİTABI
+                    </div>
+
+                    <div class="price-title">
+                        Bir kitabın qiyməti
+                    </div>
+
+                    <div class="price-value">
+
+                        <span class="price-number">
+                            25
+                        </span>
+
+                        <span class="price-currency">
+                            AZN
+                        </span>
+
+                    </div>
+
+                    <p class="price-description">
+
+                        Uşağınız üçün fərdi hazırlanmış,
+                        dizayn edilmiş və premium çap olunan
+                        xüsusi hekayə kitabı.
+
+                    </p>
+
+                    <div class="price-features">
+
+                        <div class="price-feature">
+
+                            <span>✓</span>
+
+                            <span>
+                                Fərdi hekayə
+                            </span>
+
+                        </div>
+
+                        <div class="price-feature">
+
+                            <span>✓</span>
+
+                            <span>
+                                Uşağın şəkli ilə dizayn
+                            </span>
+
+                        </div>
+
+                        <div class="price-feature">
+
+                            <span>✓</span>
+
+                            <span>
+                                Premium keyfiyyətli çap
+                            </span>
+
+                        </div>
+
+                        <div class="price-feature">
+
+                            <span>✓</span>
+
+                            <span>
+                                Hədiyyə qablaşdırması
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <!-- DESKTOPDA DÜYMƏ QƏSDƏN YOXDUR -->
 
                 </div>
 
 
-                <div class="form-group">
+                <!-- SİFARİŞ FORMASI -->
 
-                    <label for="parentPhone">
-                        Telefon Nömrəniz *
-                    </label>
+                <div class="form-panel">
 
-                    <input
-                        type="tel"
-                        id="parentPhone"
-                        required
-                        placeholder="Nümunə: +994 50 123 45 67"
-                    >
+                    <div class="order-form-container">
+
+                        <div class="form-top">
+
+                            <div class="form-heading">
+
+                                <div class="form-heading-icon">
+                                    📝
+                                </div>
+
+                                <h4>
+                                    Sifariş Müraciəti
+                                </h4>
+
+                            </div>
+
+                            <div class="desktop-price-note">
+                                Qiymət: 25 AZN
+                            </div>
+
+                        </div>
+
+
+                        <form id="firebaseOrderForm">
+
+
+                            <div class="form-group">
+
+                                <label for="parentName">
+                                    Valideynin Adı və Soyadı *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="parentName"
+                                    required
+                                    placeholder="Nümunə: Aysel Məmmədova"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="parentPhone">
+                                    Telefon Nömrəniz *
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="parentPhone"
+                                    required
+                                    placeholder="Nümunə: +994 50 123 45 67"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="childName">
+                                    Uşağın Adı *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="childName"
+                                    required
+                                    placeholder="Nümunə: Ömər"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="childAge">
+                                    Uşağın Yaşı
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="childAge"
+                                    placeholder="Nümunə: 5"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="childInterests">
+                                    Uşağın Sevimli Personajları / Maraqları
+                                </label>
+
+                                <textarea
+                                    id="childInterests"
+                                    rows="3"
+                                    placeholder="Nümunə: Dinozavrlar, kosmos və sevimli iti Bobbi..."
+                                ></textarea>
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="order-btn"
+                            >
+                                MÜRACİƏTİ TAMAMLA ✨
+                            </button>
+
+
+                        </form>
+
+
+                        <p class="whatsapp-note">
+
+                            <b>
+                                * Əlaqə nömrəsində WhatsApp aktiv olan nömrəni qeyd edin.
+                            </b>
+
+                        </p>
+
+                    </div>
 
                 </div>
 
-
-                <div class="form-group">
-
-                    <label for="childName">
-                        Uşağın Adı *
-                    </label>
-
-                    <input
-                        type="text"
-                        id="childName"
-                        required
-                        placeholder="Nümunə: Ömər"
-                    >
-
-                </div>
+            </div>
 
 
-                <div class="form-group">
+            <!-- =================================================
+                 MOBİL VERSİYA
+                 
+                 QİYMƏT → SİFARİŞ
+            ================================================== -->
 
-                    <label for="childAge">
-                        Uşağın Yaşı
-                    </label>
+            <div class="mobile-order-wrapper">
 
-                    <input
-                        type="number"
-                        id="childAge"
-                        placeholder="Nümunə: 5"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="childInterests">
-                        Uşağın Sevimli Personajları / Maraqları
-                    </label>
-
-                    <textarea
-                        id="childInterests"
-                        rows="3"
-                        placeholder="Nümunə: Dinozavrlar, kosmos və sevimli iti Bobbi..."
-                    ></textarea>
-
-                </div>
-
-
-                <button
-                    type="submit"
-                    class="order-btn"
+                <div
+                    class="mobile-order-track"
+                    id="mobileOrderTrack"
                 >
-                    MÜRACİƏTİ TAMAMLA
-                </button>
 
 
-            </form>
+                    <!-- MOBİL QİYMƏT -->
+
+                    <div class="mobile-order-panel">
+
+                        <div class="mobile-price-panel">
+
+                            <div class="price-small-title">
+                                XÜSUSİ HEKAYƏ KİTABI
+                            </div>
+
+                            <div class="price-title">
+                                Bir kitabın qiyməti
+                            </div>
+
+                            <div class="price-value">
+
+                                <span class="price-number">
+                                    25
+                                </span>
+
+                                <span class="price-currency">
+                                    AZN
+                                </span>
+
+                            </div>
+
+                            <p class="price-description">
+
+                                Uşağınız üçün fərdi hazırlanmış,
+                                dizayn edilmiş və premium çap olunan
+                                xüsusi hekayə kitabı.
+
+                            </p>
 
 
-            <p class="whatsapp-note">
+                            <div class="price-features">
 
-                <b>*Əlaqə nömrəsində WhatsApp aktiv olan nömrəni qeyd edin.</b>
+                                <div class="price-feature">
 
-            </p>
+                                    <span>✓</span>
+
+                                    <span>
+                                        Fərdi hekayə
+                                    </span>
+
+                                </div>
+
+                                <div class="price-feature">
+
+                                    <span>✓</span>
+
+                                    <span>
+                                        Uşağın şəkli ilə dizayn
+                                    </span>
+
+                                </div>
+
+                                <div class="price-feature">
+
+                                    <span>✓</span>
+
+                                    <span>
+                                        Premium keyfiyyətli çap
+                                    </span>
+
+                                </div>
+
+                                <div class="price-feature">
+
+                                    <span>✓</span>
+
+                                    <span>
+                                        Hədiyyə qablaşdırması
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- MOBİL DÜYMƏSİ QALIR -->
+
+                            <button
+                                type="button"
+                                class="price-action-btn"
+                                id="goToOrderBtn"
+                            >
+
+                                Sifariş üçün müraciət et →
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- MOBİL FORM -->
+
+                    <div class="mobile-order-panel">
+
+                        <div class="mobile-form-panel">
+
+                            <div class="order-form-container">
+
+                                <div class="form-top">
+
+                                    <div class="form-heading">
+
+                                        <button
+                                            type="button"
+                                            class="mobile-back-btn"
+                                            id="backToPriceBtn"
+                                            aria-label="Qiymətə qayıt"
+                                        >
+                                            ←
+                                        </button>
+
+                                        <div class="form-heading-icon">
+                                            📝
+                                        </div>
+
+                                        <h4>
+                                            Sifariş Müraciəti
+                                        </h4>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div id="mobileFormContent">
+
+                                    <div class="form-group">
+
+                                        <label for="mobileParentName">
+                                            Valideynin Adı və Soyadı *
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            id="mobileParentName"
+                                            required
+                                            placeholder="Nümunə: Aysel Məmmədova"
+                                        >
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="mobileParentPhone">
+                                            Telefon Nömrəniz *
+                                        </label>
+
+                                        <input
+                                            type="tel"
+                                            id="mobileParentPhone"
+                                            required
+                                            placeholder="Nümunə: +994 50 123 45 67"
+                                        >
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="mobileChildName">
+                                            Uşağın Adı *
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            id="mobileChildName"
+                                            required
+                                            placeholder="Nümunə: Ömər"
+                                        >
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="mobileChildAge">
+                                            Uşağın Yaşı
+                                        </label>
+
+                                        <input
+                                            type="number"
+                                            id="mobileChildAge"
+                                            placeholder="Nümunə: 5"
+                                        >
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="mobileChildInterests">
+                                            Uşağın Sevimli Personajları / Maraqları
+                                        </label>
+
+                                        <textarea
+                                            id="mobileChildInterests"
+                                            rows="3"
+                                            placeholder="Nümunə: Dinozavrlar, kosmos və sevimli iti Bobbi..."
+                                        ></textarea>
+
+                                    </div>
+
+
+                                    <button
+                                        type="button"
+                                        class="order-btn"
+                                        id="mobileSubmitBtn"
+                                    >
+                                        MÜRACİƏTİ TAMAMLA ✨
+                                    </button>
+
+
+                                    <p class="whatsapp-note">
+
+                                        <b>
+                                            * Əlaqə nömrəsində WhatsApp aktiv olan nömrəni qeyd edin.
+                                        </b>
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
-
 
     </div>
 
@@ -2219,127 +3340,330 @@
 
 
         /* =====================================================
-           SİFARİŞ FORMU
+           DESKTOP SİFARİŞ FORMU
         ====================================================== */
 
-        document
-            .getElementById("firebaseOrderForm")
-            .addEventListener(
-                "submit",
-                function (e) {
-
-                    e.preventDefault();
-
-
-                    const submitBtn =
-                        e.target.querySelector(
-                            ".order-btn"
-                        );
-
-
-                    submitBtn.disabled =
-                        true;
-
-
-                    submitBtn.innerText =
-                        "GÖNDƏRİLİR...";
-
-
-                    db.collection("orders")
-                        .add({
-
-                            parentName:
-                                document
-                                    .getElementById(
-                                        "parentName"
-                                    )
-                                    .value,
-
-                            parentPhone:
-                                document
-                                    .getElementById(
-                                        "parentPhone"
-                                    )
-                                    .value,
-
-                            childName:
-                                document
-                                    .getElementById(
-                                        "childName"
-                                    )
-                                    .value,
-
-                            childAge:
-                                document
-                                    .getElementById(
-                                        "childAge"
-                                    )
-                                    .value,
-
-                            childInterests:
-                                document
-                                    .getElementById(
-                                        "childInterests"
-                                    )
-                                    .value,
-
-                            createdAt:
-                                firebase
-                                    .firestore
-                                    .FieldValue
-                                    .serverTimestamp()
-
-                        })
-
-                        .then(
-                            function () {
-
-                                alert(
-                                    "Müraciətiniz uğurla göndərildi!"
-                                );
-
-
-                                document
-                                    .getElementById(
-                                        "firebaseOrderForm"
-                                    )
-                                    .reset();
-
-                            }
-                        )
-
-                        .catch(
-                            function (error) {
-
-                                console.error(
-                                    "Xəta:",
-                                    error
-                                );
-
-
-                                alert(
-                                    "Xəta baş verdi: " +
-                                    error.message
-                                );
-
-                            }
-                        )
-
-                        .finally(
-                            function () {
-
-                                submitBtn.disabled =
-                                    false;
-
-
-                                submitBtn.innerText =
-                                    "MÜRACİƏTİ TAMAMLA ✨";
-
-                            }
-                        );
-
-                }
+        const desktopForm =
+            document.getElementById(
+                "firebaseOrderForm"
             );
+
+
+        desktopForm.addEventListener(
+            "submit",
+            function (e) {
+
+                e.preventDefault();
+
+
+                const submitBtn =
+                    e.target.querySelector(
+                        ".order-btn"
+                    );
+
+
+                submitBtn.disabled =
+                    true;
+
+
+                submitBtn.innerText =
+                    "GÖNDƏRİLİR...";
+
+
+                db.collection("orders")
+                    .add({
+
+                        parentName:
+                            document
+                                .getElementById(
+                                    "parentName"
+                                )
+                                .value,
+
+                        parentPhone:
+                            document
+                                .getElementById(
+                                    "parentPhone"
+                                )
+                                .value,
+
+                        childName:
+                            document
+                                .getElementById(
+                                    "childName"
+                                )
+                                .value,
+
+                        childAge:
+                            document
+                                .getElementById(
+                                    "childAge"
+                                )
+                                .value,
+
+                        childInterests:
+                            document
+                                .getElementById(
+                                    "childInterests"
+                                )
+                                .value,
+
+                        price:
+                            "25 AZN",
+
+                        createdAt:
+                            firebase
+                                .firestore
+                                .FieldValue
+                                .serverTimestamp()
+
+                    })
+
+                    .then(
+                        function () {
+
+                            alert(
+                                "Müraciətiniz uğurla göndərildi!"
+                            );
+
+
+                            desktopForm.reset();
+
+                        }
+                    )
+
+                    .catch(
+                        function (error) {
+
+                            console.error(
+                                "Xəta:",
+                                error
+                            );
+
+
+                            alert(
+                                "Xəta baş verdi: " +
+                                error.message
+                            );
+
+                        }
+                    )
+
+                    .finally(
+                        function () {
+
+                            submitBtn.disabled =
+                                false;
+
+
+                            submitBtn.innerText =
+                                "MÜRACİƏTİ TAMAMLA ✨";
+
+                        }
+                    );
+
+            }
+        );
+
+
+        /* =====================================================
+           MOBİL FORMUN FIREBASE-A GÖNDƏRİLMƏSİ
+        ====================================================== */
+
+        const mobileSubmitBtn =
+            document.getElementById(
+                "mobileSubmitBtn"
+            );
+
+
+        mobileSubmitBtn.addEventListener(
+            "click",
+            function () {
+
+
+                const parentName =
+                    document
+                        .getElementById(
+                            "mobileParentName"
+                        )
+                        .value
+                        .trim();
+
+
+                const parentPhone =
+                    document
+                        .getElementById(
+                            "mobileParentPhone"
+                        )
+                        .value
+                        .trim();
+
+
+                const childName =
+                    document
+                        .getElementById(
+                            "mobileChildName"
+                        )
+                        .value
+                        .trim();
+
+
+                const childAge =
+                    document
+                        .getElementById(
+                            "mobileChildAge"
+                        )
+                        .value
+                        .trim();
+
+
+                const childInterests =
+                    document
+                        .getElementById(
+                            "mobileChildInterests"
+                        )
+                        .value
+                        .trim();
+
+
+                if (
+                    !parentName ||
+                    !parentPhone ||
+                    !childName
+                ) {
+
+                    alert(
+                        "Zəhmət olmasa məcburi sahələri doldurun."
+                    );
+
+                    return;
+                }
+
+
+                mobileSubmitBtn.disabled =
+                    true;
+
+
+                mobileSubmitBtn.innerText =
+                    "GÖNDƏRİLİR...";
+
+
+                db.collection("orders")
+                    .add({
+
+                        parentName:
+                            parentName,
+
+                        parentPhone:
+                            parentPhone,
+
+                        childName:
+                            childName,
+
+                        childAge:
+                            childAge,
+
+                        childInterests:
+                            childInterests,
+
+                        price:
+                            "25 AZN",
+
+                        createdAt:
+                            firebase
+                                .firestore
+                                .FieldValue
+                                .serverTimestamp()
+
+                    })
+
+                    .then(
+                        function () {
+
+                            alert(
+                                "Müraciətiniz uğurla göndərildi!"
+                            );
+
+
+                            document
+                                .getElementById(
+                                    "mobileParentName"
+                                )
+                                .value = "";
+
+
+                            document
+                                .getElementById(
+                                    "mobileParentPhone"
+                                )
+                                .value = "";
+
+
+                            document
+                                .getElementById(
+                                    "mobileChildName"
+                                )
+                                .value = "";
+
+
+                            document
+                                .getElementById(
+                                    "mobileChildAge"
+                                )
+                                .value = "";
+
+
+                            document
+                                .getElementById(
+                                    "mobileChildInterests"
+                                )
+                                .value = "";
+
+
+                            document
+                                .getElementById(
+                                    "mobileOrderTrack"
+                                )
+                                .classList
+                                .remove(
+                                    "show-form"
+                                );
+
+                        }
+                    )
+
+                    .catch(
+                        function (error) {
+
+                            console.error(
+                                "Xəta:",
+                                error
+                            );
+
+
+                            alert(
+                                "Xəta baş verdi: " +
+                                error.message
+                            );
+
+                        }
+                    )
+
+                    .finally(
+                        function () {
+
+                            mobileSubmitBtn.disabled =
+                                false;
+
+
+                            mobileSubmitBtn.innerText =
+                                "MÜRACİƏTİ TAMAMLA ✨";
+
+                        }
+                    );
+
+            }
+        );
 
 
         /* =====================================================
@@ -2412,7 +3736,7 @@
 
 
         /* =====================================================
-           MENYU LINKİNƏ BASILDIQDA MENYUNU BAĞLA
+           MOBİL MENU LINKLƏRİ
         ====================================================== */
 
         const mobileMenuLinks =
@@ -2451,22 +3775,26 @@
 
 
         /* =====================================================
-           EKRAN BÖYÜDÜKDƏ MOBİL MENYUNU TƏMİZLƏ
+           EKRAN BÖYÜDÜKDƏ MOBİL MENYU TƏMİZLƏ
         ====================================================== */
 
         window.addEventListener(
             "resize",
             function () {
 
-                if (window.innerWidth > 768) {
+                if (
+                    window.innerWidth > 768
+                ) {
 
                     hamburger.classList.remove(
                         "active"
                     );
 
+
                     mobileMenu.classList.remove(
                         "show"
                     );
+
 
                     hamburger.setAttribute(
                         "aria-expanded",
@@ -2478,8 +3806,53 @@
             }
         );
 
-    </script>
 
+        /* =====================================================
+           MOBİL QİYMƏT → SİFARİŞ
+        ====================================================== */
+
+        const mobileOrderTrack =
+            document.getElementById(
+                "mobileOrderTrack"
+            );
+
+
+        const goToOrderBtn =
+            document.getElementById(
+                "goToOrderBtn"
+            );
+
+
+        const backToPriceBtn =
+            document.getElementById(
+                "backToPriceBtn"
+            );
+
+
+        goToOrderBtn.addEventListener(
+            "click",
+            function () {
+
+                mobileOrderTrack.classList.add(
+                    "show-form"
+                );
+
+            }
+        );
+
+
+        backToPriceBtn.addEventListener(
+            "click",
+            function () {
+
+                mobileOrderTrack.classList.remove(
+                    "show-form"
+                );
+
+            }
+        );
+
+    </script>
 
 </body>
 
