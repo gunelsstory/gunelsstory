@@ -55,164 +55,139 @@
 
 
         /* =====================================================
-   İNTERAKTİV NAĞIL QURUCUSU VƏ VİP BİLET EKRANI
-===================================================== */
-#maintenance-screen {
-    position: fixed;
-    inset: 0;
-    z-index: 99999;
-    background: #0f172a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    overflow-y: auto;
-}
+           SAYT İNKİŞAF MƏRHƏLƏSİ EKRANI
+           Sonradan bu bölməni asanlıqla silə bilərik.
+        ===================================================== */
 
-.game-container {
-    width: 100%;
-    max-width: 440px;
-    background: #1e293b;
-    border: 2px solid #334155;
-    border-radius: 24px;
-    padding: 28px 20px;
-    color: #fff;
-    text-align: center;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-}
+        #maintenance-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
 
-.game-header {
-    margin-bottom: 20px;
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-.game-badge {
-    display: inline-block;
-    background: rgba(255, 209, 102, 0.15);
-    color: #ffd166;
-    padding: 6px 14px;
-    border-radius: 50px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
+            background:
+                radial-gradient(circle at 50% 35%, rgba(79, 70, 229, 0.08), transparent 35%),
+                #fafbfc;
 
-.game-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #f8fafc;
-}
+            padding: 30px;
+            text-align: center;
+        }
 
-/* Seçim addımları */
-.step-view {
-    display: none;
-    animation: fadeIn 0.3s ease forwards;
-}
+        .maintenance-content {
+            width: 100%;
+            max-width: 520px;
+            animation: maintenanceFade 0.8s ease forwards;
+        }
 
-.step-view.active {
-    display: block;
-}
+        .maintenance-logo {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 28px;
 
-.option-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin: 18px 0;
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-.option-btn {
-    background: #334155;
-    border: 2px solid transparent;
-    border-radius: 14px;
-    padding: 14px 6px;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.2s;
-}
+            animation: logoFloat 3s ease-in-out infinite;
+        }
 
-.option-btn:hover {
-    border-color: #ffd166;
-    background: #475569;
-    transform: translateY(-2px);
-}
+        .maintenance-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
 
-.option-btn .icon {
-    font-size: 1.8rem;
-    display: block;
-    margin-bottom: 6px;
-}
+        .maintenance-content h1 {
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 14px;
+            letter-spacing: -0.5px;
+        }
 
-.option-btn span {
-    font-size: 0.78rem;
-    font-weight: 600;
-}
+        .maintenance-content .maintenance-title {
+            display: inline-block;
+            color: var(--primary-magic);
+            background: var(--primary-soft);
+            padding: 9px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
 
-.game-input {
-    width: 100%;
-    padding: 14px;
-    border-radius: 12px;
-    border: 2px solid #475569;
-    background: #0f172a;
-    color: #fff;
-    font-size: 1rem;
-    margin: 18px 0;
-    outline: none;
-    text-align: center;
-}
+        .maintenance-content p {
+            color: var(--text-sub);
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 440px;
+            margin: 0 auto;
+        }
 
-.game-input:focus {
-    border-color: #ffd166;
-}
+        .maintenance-dots {
+            display: flex;
+            justify-content: center;
+            gap: 7px;
+            margin-top: 30px;
+        }
 
-.next-action-btn {
-    width: 100%;
-    padding: 14px;
-    border-radius: 12px;
-    border: none;
-    background: linear-gradient(135deg, #ffd166 0%, #ff7675 100%);
-    color: #0f172a;
-    font-weight: 800;
-    font-size: 0.95rem;
-    cursor: pointer;
-}
+        .maintenance-dots span {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--primary-magic);
+            opacity: 0.25;
+            animation: dotPulse 1.4s infinite ease-in-out;
+        }
 
-/* Yaranan VIP Bilet Kartı */
-.vip-ticket {
-    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
-    border: 2px dashed #ffd166;
-    border-radius: 18px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
+        .maintenance-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
 
-.ticket-name {
-    font-size: 1.3rem;
-    color: #ffd166;
-    font-weight: 700;
-    margin: 8px 0;
-}
+        .maintenance-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
 
-.ticket-desc {
-    font-size: 0.85rem;
-    color: #94a3b8;
-    line-height: 1.5;
-}
+        @keyframes maintenanceFade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
 
-.ticket-code {
-    display: inline-block;
-    background: #0f172a;
-    color: #38bdf8;
-    padding: 6px 14px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 0.85rem;
-    margin-top: 10px;
-    letter-spacing: 1px;
-}
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+        @keyframes logoFloat {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        @keyframes dotPulse {
+            0%,
+            100% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.25);
+            }
+        }
+
+
         /* =====================================================
            ÜST MENYU
         ===================================================== */
@@ -713,87 +688,46 @@
 <body>
 
 
-   <div id="maintenance-screen">
-    <div class="game-container">
-        
-        <div class="game-header">
-            <div class="game-badge">✨ Sayt Tezliklə Açılır</div>
-            <h2 class="game-title">Öz Nağılını Qur</h2>
-        </div>
+    <!-- =====================================================
+         SAYT İNKİŞAF MƏRHƏLƏSİ
+         
+         Hazırda istifadəçiyə bu ekran görünür.
+         Saytı aktiv etmək istəyəndə yalnız bu bölməni
+         silmək və ya gizlətmək kifayətdir.
+    ====================================================== -->
 
-        <!-- Addım 1: Ad daxil etmə -->
-        <div class="step-view active" id="step1">
-            <p style="font-size: 0.9rem; color: #94a3b8;">Baş qəhrəmanın (uşağınızın) adı nədir?</p>
-            <input type="text" id="heroNameInput" class="game-input" placeholder="Məsələn: Dəniz">
-            <button class="next-action-btn" onclick="goToStep(2)">Növbəti Addım →</button>
-        </div>
+    <div id="maintenance-screen">
 
-        <!-- Addım 2: Nağıl Yoldaşı Seçimi -->
-        <div class="step-view" id="step2">
-            <p style="font-size: 0.9rem; color: #94a3b8;">Nağılda ona kim yoldaşlıq etsin?</p>
-            <div class="option-grid">
-                <button class="option-btn" onclick="chooseCompanion('🦄 Sevimli Təkbuynuz')">
-                    <span class="icon">🦄</span>
-                    <span>Təkbuynuz</span>
-                </button>
-                <button class="option-btn" onclick="chooseCompanion('🐲 Balaca Əjdaha')">
-                    <span class="icon">🐲</span>
-                    <span>Əjdaha</span>
-                </button>
-                <button class="option-btn" onclick="chooseCompanion('🚀 Kosmik Robot')">
-                    <span class="icon">🚀</span>
-                    <span>Robot</span>
-                </button>
-            </div>
-        </div>
+        <div class="maintenance-content">
 
-        <!-- Addım 3: Nəticə və VIP Bilet -->
-        <div class="step-view" id="step3">
-            <div class="vip-ticket">
-                <div style="font-size: 0.75rem; color: #38bdf8; text-transform: uppercase;">✨ VIP Açılış Bileti</div>
-                <div class="ticket-name" id="ticketTitle"></div>
-                <p class="ticket-desc" id="ticketSummary"></p>
-                <div class="ticket-code">KOD: NAĞIL2026 (-20%)</div>
+            <div class="maintenance-logo">
+                <img src="image/logo.png" alt="Gunel's story">
             </div>
 
-            <a id="waSendBtn" href="#" target="_blank" class="next-action-btn" style="display: block; text-decoration: none; padding: 14px;">
-                💬 Bileti WhatsApp-da Təsdiqlə
-            </a>
+            <h1>Gunel's story</h1>
+
+            <div class="maintenance-title">
+                Sayt inkişaf mərhələsindədir
+            </div>
+
+            <p>
+                Hazırda saytımız üzərində iş gedir.
+                Daha gözəl və rahat istifadə üçün
+                son hazırlıqları tamamlayırıq.
+                Səbriniz üçün təşəkkür edirik.
+            </p>
+
+            <div class="maintenance-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
         </div>
 
     </div>
-</div>
 
-<script>
-    let heroName = "Balaca Qəhrəman";
-    let companion = "";
 
-    function goToStep(step) {
-        if(step === 2) {
-            const inputVal = document.getElementById("heroNameInput").value.trim();
-            if(!inputVal) {
-                alert("Zəhmət olmasa uşağın adını qeyd edin");
-                return;
-            }
-            heroName = inputVal;
-        }
-
-        document.querySelectorAll(".step-view").forEach(el => el.classList.remove("active"));
-        document.getElementById("step" + step).classList.add("active");
-    }
-
-    function chooseCompanion(selected) {
-        companion = selected;
-        document.getElementById("ticketTitle").innerText = heroName + " və " + companion.split(" ")[1];
-        document.getElementById("ticketSummary").innerText = "Saytımız açılanda " + heroName + " üçün hazırlanacaq kitaba 20% xüsusi endiriminiz qeydə alındı!";
-
-        // WhatsApp üçün hazır mesaj linki
-        const waText = encodeURIComponent("Salam! Gunel's Story saytında bilet yaratdım. Qəhrəman: " + heroName + ", Yoldaş: " + companion + ". Kodum: NAĞIL2026. Açılışda xəbərdar olmaq istəyirəm.");
-        document.getElementById("waSendBtn").href = "https://wa.me/994501234567?text=" + waText;
-
-        goToStep(3);
-    }
-</script>
     <!-- =====================================================
          ƏSAS SAYT
     ===================================================== -->
