@@ -57,47 +57,127 @@
         /* =====================================================
    SAYT İNKİŞAF MƏRHƏLƏSİ EKRANI (SEHRLİ NAĞIL DÜNYASI)
 ===================================================== */
+/* =====================================================
+   LƏLƏK QƏLƏM VƏ NAĞIL VƏRƏQİ EKRANI
+===================================================== */
 #maintenance-screen {
-    position: fixed; inset: 0; z-index: 99999;
-    background: radial-gradient(circle at center, #1e1b4b 0%, #0f172a 100%);
-    display: flex; align-items: center; justify-content: center;
-    padding: 20px; font-family: 'Plus Jakarta Sans', sans-serif;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: radial-gradient(circle at center, #1e1b4b 0%, #090a0f 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
 }
-.magic-book-card {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 28px;
-    padding: 35px 25px;
-    width: 100%; max-width: 440px;
-    text-align: center; color: #fff;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+
+/* Qədim/Müasir Nağıl Vərəqi */
+.storybook-parchment {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    border-radius: 32px;
+    padding: 45px 35px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(255, 215, 0, 0.05);
+    text-align: center;
+    color: #f8fafc;
 }
-.book-cover {
-    width: 140px; height: 190px;
-    background: linear-gradient(135deg, #ff7675, #6c5ce7);
+
+/* Loqo və Qızılı Hissəciklər */
+.quill-header-logo {
+    width: 85px;
+    height: 85px;
     margin: 0 auto 20px;
-    border-radius: 10px 18px 18px 10px;
-    box-shadow: -6px 0 0 #2d3436, 0 15px 30px rgba(108, 92, 231, 0.4);
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: center;
-    padding: 12px; border-left: 5px solid rgba(255,255,255,0.3);
-    transition: transform 0.4s ease;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 215, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
 }
-.book-cover:hover { transform: rotateY(-10deg) scale(1.05); }
-.book-cover span { font-size: 0.7rem; opacity: 0.8; text-transform: uppercase; }
-.book-cover h3 { font-size: 1rem; margin-top: 5px; color: #ffd166; font-family: 'Quicksand', sans-serif; word-break: break-word; }
-.input-magic-group {
-    display: flex; gap: 8px; margin: 20px 0;
+
+.quill-header-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
-.input-magic-group input {
-    flex: 1; padding: 12px 16px; border-radius: 50px;
-    border: 1px solid rgba(255,255,255,0.2);
-    background: rgba(255,255,255,0.1); color: #fff; outline: none;
+
+.story-heading {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.8rem;
+    color: #ffd166;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
 }
-.input-magic-group button {
-    padding: 12px 20px; border-radius: 50px; border: none;
-    background: #ff7675; color: #fff; font-weight: 700; cursor: pointer;
+
+/* Nağıl Mətni və Lələk İkonu */
+.story-text-container {
+    position: relative;
+    min-height: 110px;
+    margin-bottom: 25px;
+    text-align: left;
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    border-left: 3px solid #ffd166;
+}
+
+#typewriter-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #e2e8f0;
+    font-style: italic;
+}
+
+/* Yellənən Lələk Qələm */
+.quill-pen {
+    display: inline-block;
+    font-size: 1.3rem;
+    margin-left: 5px;
+    animation: quillWrite 0.6s infinite alternate ease-in-out;
+    filter: drop-shadow(0 0 8px #ffd166);
+}
+
+@keyframes quillWrite {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-4px) rotate(-15deg); }
+}
+
+/* Əlaqə və Bildiriş Düyməsi */
+.story-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #ffd166 0%, #ff7675 100%);
+    color: #0f172a;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 14px 28px;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(255, 209, 102, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+}
+
+.story-action-btn.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.story-action-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 30px rgba(255, 209, 102, 0.45);
 }
         /* =====================================================
            ÜST MENYU
@@ -602,36 +682,51 @@
     <!-- =====================================================
      SAYT İNKİŞAF MƏRHƏLƏSİ (YENİLƏNMİŞ FORMAT)
 ====================================================== -->
+<!-- =====================================================
+     LƏLƏK QƏLƏM MƏRHƏLƏSİ EKRANI
+====================================================== -->
 <div id="maintenance-screen">
-    <div class="magic-book-card">
-        <div class="book-cover" id="previewBook">
-            <span>✨ Nağıl Kitabı</span>
-            <h3 id="bookHeroName">Körpənizin Adı</h3>
-        </div>
-        <h2>Sehrli Dünya Çox Yaxında!</h2>
-        <p style="font-size: 0.88rem; color: #94a3b8; margin-top: 6px;">
-            Övladınızın adını yazın və onun nağıl kitabının üz qabığında necə görünəcəyini indidən yoxlayın:
-        </p>
-
-        <div class="input-magic-group">
-            <input type="text" id="demoChildName" placeholder="Məs: Aylin" maxlength="15">
-            <button onclick="updateCover()">Yarat ✨</button>
+    <div class="storybook-parchment">
+        
+        <div class="quill-header-logo">
+            <img src="image/logo.png" alt="Gunel's story">
         </div>
 
-        <a href="https://wa.me/994501234567" target="_blank" style="color: #ffd166; font-size: 0.85rem; text-decoration: none; font-weight: 600;">
-            💬 İlk sifarişçilərdən olmaq üçün WhatsApp-a yazın →
+        <h2 class="story-heading">Sehrli Hekayə Yazılır...</h2>
+
+        <div class="story-text-container">
+            <span id="typewriter-text"></span>
+            <span class="quill-pen" id="quillPen">🪶</span>
+        </div>
+
+        <a href="https://wa.me/994501234567" target="_blank" class="story-action-btn" id="storyBtn">
+            ✨ Nağılı İlk Qarşılayan Sən Ol (WhatsApp)
         </a>
+
     </div>
 </div>
 
 <script>
-function updateCover() {
-    const val = document.getElementById('demoChildName').value.trim();
-    const target = document.getElementById('bookHeroName');
-    if(val) {
-        target.innerText = val + " və Sehrli Meşə";
+    const storyText = "Biri var idi, biri yox idi... Hər bir uşağın öz nağılının baş qəhrəmanına çevrildiyi sehrli bir dünya qurulurdu. Çox az qaldı, səhifələr tamamlanır...";
+    let textIndex = 0;
+    const speed = 45; // Yazılma sürəti (ms)
+
+    function typeWriterEffect() {
+        if (textIndex < storyText.length) {
+            document.getElementById("typewriter-text").innerHTML += storyText.charAt(textIndex);
+            textIndex++;
+            setTimeout(typeWriterEffect, speed);
+        } else {
+            // Yazı bitdikdə lələk gizlənir və düymə parıldayaraq görünür
+            document.getElementById("quillPen").style.display = "none";
+            document.getElementById("storyBtn").classList.add("show");
+        }
     }
-}
+
+    // Səhifə yüklənəndə animasiya başlasın
+    window.addEventListener("DOMContentLoaded", () => {
+        setTimeout(typeWriterEffect, 600);
+    });
 </script>
     <!-- =====================================================
          ƏSAS SAYT
