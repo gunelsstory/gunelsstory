@@ -58,147 +58,46 @@
    SAYT İNKİŞAF MƏRHƏLƏSİ EKRANI (SEHRLİ NAĞIL DÜNYASI)
 ===================================================== */
 #maintenance-screen {
-    position: fixed;
-    inset: 0;
-    z-index: 99999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #0f172a; /* Dərin gecə səması */
-    padding: 24px;
-    overflow: hidden;
+    position: fixed; inset: 0; z-index: 99999;
+    background: radial-gradient(circle at center, #1e1b4b 0%, #0f172a 100%);
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px; font-family: 'Plus Jakarta Sans', sans-serif;
 }
-
-/* Arxa fonda üzən canlı sehrli rənglər */
-.magic-blob {
-    position: absolute;
-    width: 320px;
-    height: 320px;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.5;
-    animation: blobFloat 8s infinite alternate ease-in-out;
-}
-.magic-blob.one {
-    top: 10%;
-    left: 15%;
-    background: #6366f1;
-}
-.magic-blob.two {
-    bottom: 10%;
-    right: 15%;
-    background: #ec4899;
-    animation-delay: -4s;
-}
-
-/* Şüşə effekti kartı (Glassmorphism) */
-.maintenance-card {
-    position: relative;
-    width: 100%;
-    max-width: 480px;
-    background: rgba(255, 255, 255, 0.07);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+.magic-book-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 32px;
-    padding: 45px 30px;
-    text-align: center;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border-radius: 28px;
+    padding: 35px 25px;
+    width: 100%; max-width: 440px;
+    text-align: center; color: #fff;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
-
-/* Parıltılı Loqo Çərçivəsi */
-.maintenance-logo-wrap {
-    position: relative;
-    width: 110px;
-    height: 110px;
-    margin: 0 auto 24px;
+.book-cover {
+    width: 140px; height: 190px;
+    background: linear-gradient(135deg, #ff7675, #6c5ce7);
+    margin: 0 auto 20px;
+    border-radius: 10px 18px 18px 10px;
+    box-shadow: -6px 0 0 #2d3436, 0 15px 30px rgba(108, 92, 231, 0.4);
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    padding: 12px; border-left: 5px solid rgba(255,255,255,0.3);
+    transition: transform 0.4s ease;
 }
-.maintenance-logo-wrap::before {
-    content: '';
-    position: absolute;
-    inset: -6px;
-    border-radius: 50%;
-    background: linear-gradient(45deg, #ec4899, #8b5cf6, #3b82f6);
-    animation: spinSlow 6s linear infinite;
-    filter: blur(4px);
+.book-cover:hover { transform: rotateY(-10deg) scale(1.05); }
+.book-cover span { font-size: 0.7rem; opacity: 0.8; text-transform: uppercase; }
+.book-cover h3 { font-size: 1rem; margin-top: 5px; color: #ffd166; font-family: 'Quicksand', sans-serif; word-break: break-word; }
+.input-magic-group {
+    display: flex; gap: 8px; margin: 20px 0;
 }
-.maintenance-logo {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background: #ffffff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    overflow: hidden;
+.input-magic-group input {
+    flex: 1; padding: 12px 16px; border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.1); color: #fff; outline: none;
 }
-.maintenance-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.maintenance-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 18px;
-    border-radius: 50px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #ffd166;
-    font-size: 0.85rem;
-    font-weight: 700;
-    margin-bottom: 18px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.maintenance-card h1 {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: #ffffff;
-    margin-bottom: 12px;
-    letter-spacing: -0.5px;
-}
-
-.maintenance-card p {
-    color: #cbd5e1;
-    font-size: 0.98rem;
-    line-height: 1.65;
-    margin-bottom: 28px;
-}
-
-/* Sayt hazırlanarkən əlaqə saxlamaq üçün düymə */
-.maintenance-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: linear-gradient(135deg, #ff7675 0%, #e84393 100%);
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.95rem;
-    padding: 14px 28px;
-    border-radius: 50px;
-    box-shadow: 0 10px 25px rgba(232, 67, 147, 0.4);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-.maintenance-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(232, 67, 147, 0.5);
-}
-
-@keyframes spinSlow {
-    100% { transform: rotate(360deg); }
-}
-
-@keyframes blobFloat {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(30px, -30px) scale(1.15); }
+.input-magic-group button {
+    padding: 12px 20px; border-radius: 50px; border: none;
+    background: #ff7675; color: #fff; font-weight: 700; cursor: pointer;
 }
         /* =====================================================
            ÜST MENYU
@@ -704,33 +603,36 @@
      SAYT İNKİŞAF MƏRHƏLƏSİ (YENİLƏNMİŞ FORMAT)
 ====================================================== -->
 <div id="maintenance-screen">
-    <!-- Arxa fondakı sehrli işıqlar -->
-    <div class="magic-blob one"></div>
-    <div class="magic-blob two"></div>
-
-    <div class="maintenance-card">
-        <div class="maintenance-logo-wrap">
-            <div class="maintenance-logo">
-                <img src="image/logo.png" alt="Gunel's story">
-            </div>
+    <div class="magic-book-card">
+        <div class="book-cover" id="previewBook">
+            <span>✨ Nağıl Kitabı</span>
+            <h3 id="bookHeroName">Körpənizin Adı</h3>
         </div>
-
-        <div class="maintenance-badge">
-            ✨ Nağıl Dünyası Hazırlanır
-        </div>
-
-        <h1>Gunel's story</h1>
-
-        <p>
-            Balacaların özlərini sehrli hekayələrin baş qəhrəmanı kimi hiss edəcəkləri yeni platformamız çox yaxında xidmətinizdə olacaq!
+        <h2>Sehrli Dünya Çox Yaxında!</h2>
+        <p style="font-size: 0.88rem; color: #94a3b8; margin-top: 6px;">
+            Övladınızın adını yazın və onun nağıl kitabının üz qabığında necə görünəcəyini indidən yoxlayın:
         </p>
 
-        <!-- Sifariş və ya öncədən əlaqə üçün WhatsApp keçidi -->
-        <a href="https://wa.me/994501234567" target="_blank" class="maintenance-btn">
-            💬 İndidən Əlaqə Saxla
+        <div class="input-magic-group">
+            <input type="text" id="demoChildName" placeholder="Məs: Aylin" maxlength="15">
+            <button onclick="updateCover()">Yarat ✨</button>
+        </div>
+
+        <a href="https://wa.me/994501234567" target="_blank" style="color: #ffd166; font-size: 0.85rem; text-decoration: none; font-weight: 600;">
+            💬 İlk sifarişçilərdən olmaq üçün WhatsApp-a yazın →
         </a>
     </div>
 </div>
+
+<script>
+function updateCover() {
+    const val = document.getElementById('demoChildName').value.trim();
+    const target = document.getElementById('bookHeroName');
+    if(val) {
+        target.innerText = val + " və Sehrli Meşə";
+    }
+}
+</script>
     <!-- =====================================================
          ƏSAS SAYT
     ===================================================== -->
