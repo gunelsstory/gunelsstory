@@ -1676,7 +1676,7 @@
 
             <button class="admin-tab" onclick="switchAdminTab('portfolio', this)">Portfolio</button>
 
-            <button class="admin-tab" onclick="switchAdminTab('notifications', this)">Notifications</button>
+            <button class="admin-tab" onclick="switchAdminTab('notifications', this)">📢 Notifications</button>
 
         </div>
 
@@ -1878,7 +1878,7 @@
 
             <div class="form-group">
 
-                <label class="form-label">Notification Title *</label>
+                <label class="form-label">Bildiriş Başlığı *</label>
 
                 <input type="text" id="noticeTitle" class="form-input" placeholder="Məsələn: Yaz Kampaniyası başladı!">
 
@@ -1886,7 +1886,7 @@
 
             <div class="form-group">
 
-                <label class="form-label">Notification Text *</label>
+                <label class="form-label">Bildiriş Mətni *</label>
 
                 <!-- FORMATLAMA DÜYMƏLƏRİ -->
                 <div class="rich-toolbar">
@@ -2814,15 +2814,15 @@
 
                 <div class="portfolio-list-header" style="grid-template-columns: minmax(180px, 1.2fr) minmax(240px, 2fr) 140px 140px 200px;">
 
-                    <div>Title</div>
+                    <div>Başlıq</div>
 
-                    <div>Content / Message</div>
+                    <div>Məzmun</div>
 
                     <div>Status</div>
 
-                    <div>Date</div>
+                    <div>Tarix</div>
 
-                    <div style="text-align:right">Action</div>
+                    <div style="text-align:right">Əməliyyat</div>
 
                 </div>
 
@@ -2924,7 +2924,7 @@
 
         function openNotificationModal() {
 
-            document.getElementById("noticeModalTitle").innerText = "Create New Notification";
+            document.getElementById("noticeModalTitle").innerText = "Yeni Bildiriş Yarat";
 
             document.getElementById("noticeDocId").value = "";
 
@@ -2956,7 +2956,7 @@
 
                 const data = doc.data();
 
-                document.getElementById("noticeModalTitle").innerText = ""Edit Notification";
+                document.getElementById("noticeModalTitle").innerText = "Bildirişi Redaktə Et";
 
                 document.getElementById("noticeDocId").value = docId;
 
