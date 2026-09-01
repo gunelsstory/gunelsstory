@@ -3290,7 +3290,7 @@
             if (!overlay) return;
 
             document.getElementById("notificationTitle").innerText = title;
-            document.getElementById("notificationMessage").innerText = message;
+            document.getElementById("notificationMessage").innerHTML = message;
             overlay.style.display = "flex";
         }
 
