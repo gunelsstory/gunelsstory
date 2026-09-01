@@ -14,10 +14,6 @@
           type="image/png"
           href="image/favicon.png">
 
-    <!-- =====================================================
-         PREMIUM ŞRİFTLƏR
-    ====================================================== -->
-
     <link rel="preconnect"
           href="https://fonts.googleapis.com">
 
@@ -1571,7 +1567,7 @@
 
 
         /* =====================================================
-           BİLDİRİŞ POP-UP MODALI (EN ÜST Z-INDEX)
+           BİLDİRİŞ POP-UP MODALI (EN YÜKSƏK Z-INDEX)
         ====================================================== */
 
         .site-notification-overlay {
@@ -1580,13 +1576,13 @@
 
             inset: 0;
 
-            background: rgba(15, 23, 42, 0.65);
+            background: rgba(15, 23, 42, 0.7);
 
             backdrop-filter: blur(8px);
 
             -webkit-backdrop-filter: blur(8px);
 
-            z-index: 1000000;
+            z-index: 9999999;
 
             display: none;
 
@@ -1595,18 +1591,6 @@
             justify-content: center;
 
             padding: 20px;
-
-            opacity: 0;
-
-            transition: opacity 0.3s ease;
-        }
-
-
-        .site-notification-overlay.show {
-
-            display: flex !important;
-
-            opacity: 1 !important;
         }
 
 
@@ -1622,23 +1606,26 @@
 
             border-radius: 24px;
 
-            padding: 34px 26px 26px;
+            padding: 35px 26px 26px;
 
             text-align: center;
 
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
 
-            transform: translateY(20px) scale(0.95);
+            border: 1px solid rgba(79, 70, 229, 0.15);
 
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-
-            border: 1px solid rgba(79, 70, 229, 0.1);
+            animation: popupAppear 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-
-        .site-notification-overlay.show .site-notification-card {
-
-            transform: translateY(0) scale(1);
+        @keyframes popupAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
 
@@ -1666,7 +1653,9 @@
 
             justify-content: center;
 
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+
+            line-height: 1;
 
             color: #64748b;
 
@@ -1686,7 +1675,7 @@
 
         .site-notification-icon {
 
-            font-size: 2.8rem;
+            font-size: 3rem;
 
             margin-bottom: 12px;
 
@@ -1696,7 +1685,7 @@
 
         .site-notification-title {
 
-            font-size: 1.3rem;
+            font-size: 1.35rem;
 
             font-weight: 700;
 
@@ -1710,7 +1699,7 @@
 
         .site-notification-message {
 
-            font-size: 0.94rem;
+            font-size: 0.95rem;
 
             color: var(--text-sub);
 
@@ -1736,7 +1725,7 @@
 
             border: none;
 
-            padding: 13px;
+            padding: 14px;
 
             border-radius: 12px;
 
@@ -2295,10 +2284,6 @@
 <body>
 
 
-    <!-- =====================================================
-         GUNEL'S STORY — AÇILIŞ EKRANI
-    ====================================================== -->
-
     <div id="story-splash">
 
         <div class="story-splash-content">
@@ -2322,10 +2307,6 @@
     </div>
 
 
-    <!-- =====================================================
-         ÜST MENYU
-    ====================================================== -->
-
     <nav>
 
         <div class="nav-container">
@@ -2346,8 +2327,6 @@
 
             </a>
 
-
-            <!-- DESKTOP MENU -->
 
             <div class="nav-links">
 
@@ -2383,8 +2362,6 @@
             </div>
 
 
-            <!-- MOBİL HAMBURGER -->
-
             <button
                 class="hamburger"
                 id="hamburger"
@@ -2401,10 +2378,6 @@
 
         </div>
 
-
-        <!-- =====================================================
-             MOBİL AÇILAN MENYU
-        ====================================================== -->
 
         <div
             class="mobile-menu"
@@ -2445,14 +2418,8 @@
     </nav>
 
 
-    <!-- =====================================================
-         ƏSAS KONTEYNER
-    ====================================================== -->
-
     <div class="container">
 
-
-        <!-- HEADER -->
 
         <header>
 
@@ -2475,10 +2442,6 @@
 
         </header>
 
-
-        <!-- =================================================
-             ADDIM 1
-        ================================================== -->
 
         <div class="step-card">
 
@@ -2553,10 +2516,6 @@
         </div>
 
 
-        <!-- =================================================
-             ADDIM 2
-        ================================================== -->
-
         <div class="step-card">
 
             <div class="step-header">
@@ -2629,10 +2588,6 @@
 
         </div>
 
-
-        <!-- =================================================
-             ADDIM 3
-        ================================================== -->
 
         <div class="step-card">
 
@@ -2707,10 +2662,6 @@
         </div>
 
 
-        <!-- =================================================
-             ADDIM 4
-        ================================================== -->
-
         <div class="step-card">
 
             <div class="step-header">
@@ -2784,21 +2735,11 @@
         </div>
 
 
-        <!-- =====================================================
-             QİYMƏT + SİFARİŞ
-        ====================================================== -->
-
         <div class="order-section">
 
 
-            <!-- =================================================
-                 DESKTOP VERSİYA
-            ================================================== -->
-
             <div class="order-desktop-layout">
 
-
-                <!-- QİYMƏT -->
 
                 <div class="price-panel">
 
@@ -2874,8 +2815,6 @@
 
                 </div>
 
-
-                <!-- SİFARİŞ FORMASI -->
 
                 <div class="form-panel">
 
@@ -3001,10 +2940,6 @@
             </div>
 
 
-            <!-- =================================================
-                 MOBİL VERSİYA
-            ================================================== -->
-
             <div class="mobile-order-wrapper">
 
                 <div
@@ -3012,8 +2947,6 @@
                     id="mobileOrderTrack"
                 >
 
-
-                    <!-- MOBİL QİYMƏT -->
 
                     <div class="mobile-order-panel">
 
@@ -3105,8 +3038,6 @@
 
                     </div>
 
-
-                    <!-- MOBİL FORM -->
 
                     <div class="mobile-order-panel">
 
@@ -3250,10 +3181,6 @@
     </div>
 
 
-    <!-- =====================================================
-         BİLDİRİŞ POP-UP ELEMENTİ
-    ====================================================== -->
-
     <div class="site-notification-overlay" id="siteNotificationOverlay">
 
         <div class="site-notification-card">
@@ -3272,10 +3199,6 @@
 
     </div>
 
-
-    <!-- =====================================================
-         FIREBASE
-    ====================================================== -->
 
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 
@@ -3323,95 +3246,69 @@
 
 
         /* =====================================================
-           BİLDİRİŞ SİSTEMİ (FIRESTORE REAL-TIME DİNLƏMƏ)
+           BİLDİRİŞ SİSTEMİ (ZƏMANƏTLİ GÖSTƏRİLMƏ)
         ====================================================== */
-
-        let currentActiveNoticeId = null;
 
         function initNotificationListener() {
 
-            // Bütün kolleksiyanı dinləyirik və filtrləməni JS-də edirik (İndeks xətalarının qarşısını alır)
-            db.collection("notifications")
-                .onSnapshot(function (snapshot) {
+            db.collection("notifications").onSnapshot(function (snapshot) {
 
-                    if (snapshot.empty) {
-                        hideSiteNotification(false);
-                        return;
+                if (snapshot.empty) {
+                    hideSiteNotification();
+                    return;
+                }
+
+                const activeNotices = [];
+
+                snapshot.forEach(function (doc) {
+                    const data = doc.data();
+                    if (data.isActive === true) {
+                        activeNotices.push({
+                            id: doc.id,
+                            title: data.title || "Xüsusi Bildiriş",
+                            message: data.message || ""
+                        });
                     }
-
-                    const activeNotices = [];
-
-                    snapshot.forEach(function (doc) {
-                        const data = doc.data();
-                        if (data.isActive === true) {
-                            activeNotices.push({
-                                id: doc.id,
-                                title: data.title,
-                                message: data.message,
-                                time: data.updatedAt ? data.updatedAt.toMillis() : (data.createdAt ? data.createdAt.toMillis() : 0)
-                            });
-                        }
-                    });
-
-                    if (activeNotices.length === 0) {
-                        hideSiteNotification(false);
-                        return;
-                    }
-
-                    // Ən son aktiv edilmiş bildirişi seçirik
-                    activeNotices.sort(function (a, b) {
-                        return b.time - a.time;
-                    });
-
-                    const latestNotice = activeNotices[0];
-
-                    // Əgər cari sessiyada bağlanmayıbsa ekranda göstəririk
-                    const isClosed = sessionStorage.getItem("dismissed_notice_" + latestNotice.id);
-
-                    if (!isClosed) {
-                        currentActiveNoticeId = latestNotice.id;
-                        showSiteNotification(latestNotice.title, latestNotice.message);
-                    } else {
-                        hideSiteNotification(false);
-                    }
-
-                }, function (error) {
-                    console.error("Bildiriş dinləmə xətası:", error);
                 });
+
+                if (activeNotices.length > 0) {
+                    // Ən sonuncu aktiv bildirişi ekrana veririk
+                    const notice = activeNotices[activeNotices.length - 1];
+                    showSiteNotification(notice.title, notice.message);
+                } else {
+                    hideSiteNotification();
+                }
+
+            }, function (error) {
+                console.error("Bildiriş xətası:", error);
+            });
         }
 
         function showSiteNotification(title, message) {
 
             const overlay = document.getElementById("siteNotificationOverlay");
+            if (!overlay) return;
 
-            document.getElementById("notificationTitle").innerText = title || "Xüsusi Bildiriş";
-
-            document.getElementById("notificationMessage").innerText = message || "";
-
-            overlay.classList.add("show");
+            document.getElementById("notificationTitle").innerText = title;
+            document.getElementById("notificationMessage").innerText = message;
+            overlay.style.display = "flex";
         }
 
-        function hideSiteNotification(saveSession = true) {
+        function hideSiteNotification() {
 
             const overlay = document.getElementById("siteNotificationOverlay");
-
-            overlay.classList.remove("show");
-
-            if (saveSession && currentActiveNoticeId) {
-                sessionStorage.setItem("dismissed_notice_" + currentActiveNoticeId, "true");
+            if (overlay) {
+                overlay.style.display = "none";
             }
         }
 
-        document.getElementById("closeNotificationX").addEventListener("click", function () {
-            hideSiteNotification(true);
-        });
+        window.addEventListener("DOMContentLoaded", function () {
 
-        document.getElementById("closeNotificationBtn").addEventListener("click", function () {
-            hideSiteNotification(true);
-        });
+            initNotificationListener();
 
-        // Bildiriş dinləyicisini dərhal aktivləşdiririk
-        initNotificationListener();
+            document.getElementById("closeNotificationX").addEventListener("click", hideSiteNotification);
+            document.getElementById("closeNotificationBtn").addEventListener("click", hideSiteNotification);
+        });
 
 
         /* =====================================================
