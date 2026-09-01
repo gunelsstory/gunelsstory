@@ -2,3845 +2,1299 @@
 <html lang="az">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Gunel's story - Uşağınız Hekayənin Baş Qəhrəmanıdır!</title>
+    <link rel="icon" type="image/png" href="image/favicon.png">
 
-    <link rel="icon"
-          type="image/png"
-          href="image/favicon.png">
-
-    <!-- =====================================================
-         PREMIUM ŞRİFTLƏR
-    ====================================================== -->
-
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@600;700&display=swap"
-          rel="stylesheet">
-
+    <!-- PREMIUM ŞRİFTLƏR -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
 
     <style>
-
-        /* =====================================================
-           ROOT
-        ====================================================== */
-
         :root {
-
             --bg-color: #fafbfc;
-
             --primary-magic: #4f46e5;
-
             --primary-soft: #f0f0ff;
-
             --accent-rose: #ff7675;
-
-            --gold-gradient:
-                linear-gradient(
-                    135deg,
-                    #ff9f43 0%,
-                    #ff6b6b 100%
-                );
-
+            --gold-gradient: linear-gradient(135deg, #ff9f43 0%, #ff6b6b 100%);
             --card-bg: #ffffff;
-
             --text-main: #1a1a24;
-
             --text-sub: #64748b;
-
             --white: #ffffff;
-
             --radius-xl: 24px;
-
             --radius-md: 16px;
-
-            --shadow-soft:
-                0 8px 30px
-                rgba(0, 0, 0, 0.02);
-
-            --shadow-hover:
-                0 16px 40px
-                rgba(79, 70, 229, 0.08);
+            --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.02);
+            --shadow-hover: 0 16px 40px rgba(79, 70, 229, 0.08);
         }
 
-
-        /* =====================================================
-           RESET
-        ====================================================== */
-
         * {
-
             margin: 0;
-
             padding: 0;
-
             box-sizing: border-box;
-
             -webkit-tap-highlight-color: transparent;
         }
 
-
         body {
-
-            background:
-                var(--bg-color);
-
-            color:
-                var(--text-main);
-
-            font-family:
-                'Plus Jakarta Sans',
-                sans-serif;
-
-            padding-bottom:
-                80px;
-
-            min-height:
-                100vh;
+            background: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            padding-bottom: 80px;
+            min-height: 100vh;
         }
 
-
-        h1,
-        h2,
-        h3,
-        h4,
-        .subtitle,
-        .step-number {
-
-            font-family:
-                'Quicksand',
-                sans-serif;
+        h1, h2, h3, h4, .subtitle, .step-number {
+            font-family: 'Quicksand', sans-serif;
         }
 
-
-        /* =====================================================
-           GUNEL'S STORY — AÇILIŞ EKRANI
-        ====================================================== */
-
+        /* GUNEL'S STORY — AÇILIŞ EKRANI */
         #story-splash {
-
             position: fixed;
-
             inset: 0;
-
             width: 100%;
-
             height: 100vh;
-
             height: 100dvh;
-
             z-index: 99999;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             text-align: center;
-
             background: #faf7f0;
-
             opacity: 1;
-
             visibility: visible;
-
-            transition:
-                opacity 0.9s ease,
-                visibility 0.9s ease;
-
+            transition: opacity 0.9s ease, visibility 0.9s ease;
             overflow: hidden;
         }
 
-
         .story-splash-content {
-
-            width:
-                min(90%, 430px);
-
-            text-align:
-                center;
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            animation:
-                splashContentIn
-                1.2s
-                ease
-                forwards;
+            width: min(90%, 430px);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: splashContentIn 1.2s ease forwards;
         }
-
 
         .story-splash-logo {
-
-            width:
-                145px;
-
-            height:
-                145px;
-
-            object-fit:
-                contain;
-
-            display:
-                block;
-
-            margin:
-                0 auto 28px;
+            width: 145px;
+            height: 145px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto 28px;
         }
-
 
         .story-splash-quote {
-
-            margin:
-                0;
-
-            max-width:
-                360px;
-
-            font-family:
-                'Quicksand',
-                sans-serif;
-
-            font-size:
-                0.98rem;
-
-            line-height:
-                1.75;
-
-            font-weight:
-                600;
-
-            color:
-                #64748b;
-
-            letter-spacing:
-                0.1px;
+            margin: 0;
+            max-width: 360px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.98rem;
+            line-height: 1.75;
+            font-weight: 600;
+            color: #64748b;
+            letter-spacing: 0.1px;
         }
-
 
         @keyframes splashContentIn {
-
-            0% {
-
-                opacity: 0;
-
-                transform:
-                    translateY(14px)
-                    scale(0.96);
-            }
-
-            60% {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0)
-                    scale(1.02);
-            }
-
-            100% {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0)
-                    scale(1);
-            }
+            0% { opacity: 0; transform: translateY(14px) scale(0.96); }
+            60% { opacity: 1; transform: translateY(0) scale(1.02); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-
         #story-splash.hide {
-
             opacity: 0;
-
             visibility: hidden;
-
             pointer-events: none;
         }
 
-
-        /* =====================================================
-           NAV
-        ====================================================== */
-
+        /* NAV */
         nav {
-
-            background:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.9
-                );
-
-            backdrop-filter:
-                blur(10px);
-
-            -webkit-backdrop-filter:
-                blur(10px);
-
-            position:
-                sticky;
-
-            top:
-                0;
-
-            z-index:
-                1000;
-
-            border-bottom:
-                1px solid #e2e8f0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e2e8f0;
         }
-
 
         .nav-container {
-
-            max-width:
-                1000px;
-
-            margin:
-                0 auto;
-
-            display:
-                flex;
-
-            justify-content:
-                space-between;
-
-            align-items:
-                center;
-
-            padding:
-                18px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 24px;
         }
-
 
         .nav-logo {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                9px;
-
-            font-size:
-                1.25rem;
-
-            font-weight:
-                700;
-
-            color:
-                var(--text-main);
-
-            text-decoration:
-                none;
-
-            letter-spacing:
-                -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: -0.5px;
         }
-
 
         .nav-logo img {
-
-            width:
-                38px;
-
-            height:
-                38px;
-
-            object-fit:
-                contain;
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
         }
-
-
-        /* =====================================================
-           DESKTOP MENU
-        ====================================================== */
 
         .nav-links {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                24px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
         }
-
 
         .nav-links a {
-
-            text-decoration:
-                none;
-
-            font-size:
-                0.85rem;
-
-            font-weight:
-                700;
-
-            color:
-                var(--text-sub);
-
-            transition:
-                color 0.2s ease;
-
-            letter-spacing:
-                0.5px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-sub);
+            transition: color 0.2s ease;
+            letter-spacing: 0.5px;
         }
 
-
-        .nav-links a:hover {
-
-            color:
-                var(--primary-magic);
-        }
-
-
-        .nav-links .legal-nav-link {
-
-            color:
-                var(--text-sub);
-        }
-
-
-        .nav-links .legal-nav-link:hover {
-
-            color:
-                var(--primary-magic);
-        }
-
+        .nav-links a:hover { color: var(--primary-magic); }
+        .nav-links .legal-nav-link { color: var(--text-sub); }
+        .nav-links .legal-nav-link:hover { color: var(--primary-magic); }
 
         .nav-links .admin-link {
-
-            color:
-                var(--white);
-
-            background:
-                var(--primary-magic);
-
-            padding:
-                9px 18px;
-
-            border-radius:
-                50px;
-
-            box-shadow:
-                0 4px 14px
-                rgba(
-                    79,
-                    70,
-                    229,
-                    0.2
-                );
+            color: var(--white);
+            background: var(--primary-magic);
+            padding: 9px 18px;
+            border-radius: 50px;
+            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.2);
         }
-
-
-        /* =====================================================
-           HAMBURGER
-        ====================================================== */
 
         .hamburger {
-
-            display:
-                none;
-
-            width:
-                42px;
-
-            height:
-                42px;
-
-            border:
-                none;
-
-            background:
-                transparent;
-
-            cursor:
-                pointer;
-
-            padding:
-                8px;
-
-            flex-direction:
-                column;
-
-            justify-content:
-                center;
-
-            align-items:
-                center;
-
-            gap:
-                5px;
-
-            border-radius:
-                10px;
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            padding: 8px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            border-radius: 10px;
         }
-
 
         .hamburger span {
-
-            display:
-                block;
-
-            width:
-                23px;
-
-            height:
-                2px;
-
-            background:
-                var(--text-main);
-
-            border-radius:
-                10px;
-
-            transition:
-                transform 0.3s ease,
-                opacity 0.3s ease;
+            display: block;
+            width: 23px;
+            height: 2px;
+            background: var(--text-main);
+            border-radius: 10px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
-
-        .hamburger.active span:nth-child(1) {
-
-            transform:
-                translateY(7px)
-                rotate(45deg);
-        }
-
-
-        .hamburger.active span:nth-child(2) {
-
-            opacity:
-                0;
-        }
-
-
-        .hamburger.active span:nth-child(3) {
-
-            transform:
-                translateY(-7px)
-                rotate(-45deg);
-        }
-
-
-        /* =====================================================
-           MOBİL MENYU
-        ====================================================== */
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
         .mobile-menu {
-
-            display:
-                none;
-
-            max-width:
-                1000px;
-
-            margin:
-                0 auto;
-
-            padding:
-                0 16px 14px;
+            display: none;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 16px 14px;
         }
-
 
         .mobile-menu a {
-
-            display:
-                block;
-
-            text-decoration:
-                none;
-
-            color:
-                var(--text-main);
-
-            font-size:
-                0.9rem;
-
-            font-weight:
-                700;
-
-            padding:
-                13px 16px;
-
-            margin-top:
-                6px;
-
-            background:
-                #ffffff;
-
-            border:
-                1px solid #edf2f7;
-
-            border-radius:
-                12px;
-
-            transition:
-                background 0.2s ease,
-                color 0.2s ease,
-                transform 0.2s ease;
+            display: block;
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 700;
+            padding: 13px 16px;
+            margin-top: 6px;
+            background: #ffffff;
+            border: 1px solid #edf2f7;
+            border-radius: 12px;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
         }
 
-
-        .mobile-menu a:hover {
-
-            color:
-                var(--primary-magic);
-        }
-
-
-        .mobile-menu a:active {
-
-            transform:
-                scale(0.98);
-        }
-
-
-        .mobile-menu .mobile-legal-link {
-
-            color:
-                var(--text-main);
-
-            background:
-                #ffffff;
-        }
-
-
-        .mobile-menu .mobile-legal-link:hover {
-
-            color:
-                var(--primary-magic);
-
-            background:
-                var(--primary-soft);
-        }
-
-
+        .mobile-menu a:hover { color: var(--primary-magic); }
+        .mobile-menu a:active { transform: scale(0.98); }
+        .mobile-menu .mobile-legal-link:hover { color: var(--primary-magic); background: var(--primary-soft); }
         .mobile-menu .mobile-admin-link {
-
-            color:
-                var(--white);
-
-            background:
-                var(--primary-magic);
-
-            border-color:
-                var(--primary-magic);
+            color: var(--white);
+            background: var(--primary-magic);
+            border-color: var(--primary-magic);
         }
+        .mobile-menu.show { display: block; }
 
-
-        .mobile-menu.show {
-
-            display:
-                block;
-        }
-
-
-        /* =====================================================
-           ƏSAS KONTEYNER
-        ====================================================== */
-
+        /* CONTAINER & CARDS */
         .container {
-
-            max-width:
-                900px;
-
-            margin:
-                0 auto;
-
-            padding:
-                0 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-
-
-        /* =====================================================
-           HEADER
-        ====================================================== */
 
         header {
-
-            text-align:
-                center;
-
-            padding:
-                50px 10px 45px;
+            text-align: center;
+            padding: 50px 10px 45px;
         }
-
 
         header h1 {
-
-            font-size:
-                2.8rem;
-
-            font-weight:
-                700;
-
-            color:
-                var(--text-main);
-
-            margin-bottom:
-                8px;
-
-            letter-spacing:
-                -1px;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            letter-spacing: -1px;
         }
-
 
         header .subtitle {
-
-            font-size:
-                1.25rem;
-
-            font-weight:
-                600;
-
-            color:
-                var(--primary-magic);
-
-            margin-bottom:
-                24px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-magic);
+            margin-bottom: 24px;
         }
-
 
         .main-badge {
-
-            display:
-                inline-block;
-
-            background:
-                var(--primary-soft);
-
-            color:
-                var(--primary-magic);
-
-            padding:
-                8px 20px;
-
-            border-radius:
-                50px;
-
-            font-weight:
-                700;
-
-            font-size:
-                0.88rem;
+            display: inline-block;
+            background: var(--primary-soft);
+            color: var(--primary-magic);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.88rem;
         }
-
-
-        /* =====================================================
-           ADDIM KARTLARI
-        ====================================================== */
 
         .step-card {
-
-            background:
-                var(--card-bg);
-
-            border-radius:
-                var(--radius-xl);
-
-            padding:
-                40px;
-
-            margin-bottom:
-                24px;
-
-            box-shadow:
-                var(--shadow-soft);
-
-            border:
-                1px solid #edf2f7;
-
-            transition:
-                all 0.3s
-                cubic-bezier(
-                    0.165,
-                    0.84,
-                    0.44,
-                    1
-                );
+            background: var(--card-bg);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid #edf2f7;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
-
 
         .step-card:hover {
-
-            transform:
-                translateY(-3px);
-
-            box-shadow:
-                var(--shadow-hover);
-
-            border-color:
-                rgba(
-                    79,
-                    70,
-                    229,
-                    0.15
-                );
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(79, 70, 229, 0.15);
         }
-
 
         .step-header {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                16px;
-
-            margin-bottom:
-                16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
         }
-
 
         .step-number {
-
-            background:
-                var(--primary-soft);
-
-            color:
-                var(--primary-magic);
-
-            font-weight:
-                700;
-
-            font-size:
-                1.2rem;
-
-            width:
-                40px;
-
-            height:
-                40px;
-
-            border-radius:
-                12px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            flex-shrink:
-                0;
+            background: var(--primary-soft);
+            color: var(--primary-magic);
+            font-weight: 700;
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
-
 
         .step-title h2 {
-
-            font-size:
-                1.45rem;
-
-            font-weight:
-                700;
-
-            color:
-                var(--text-main);
-
-            letter-spacing:
-                -0.3px;
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.3px;
         }
-
 
         .step-desc {
-
-            font-size:
-                1rem;
-
-            color:
-                var(--text-sub);
-
-            margin-bottom:
-                28px;
-
-            line-height:
-                1.6;
+            font-size: 1rem;
+            color: var(--text-sub);
+            margin-bottom: 28px;
+            line-height: 1.6;
         }
-
 
         .step-body {
-
-            display:
-                flex;
-
-            gap:
-                30px;
-
-            align-items:
-                center;
+            display: flex;
+            gap: 30px;
+            align-items: center;
         }
 
-
-        .step-img-side {
-
-            flex:
-                1.3;
-        }
-
-
+        .step-img-side { flex: 1.3; }
         .step-img-box {
-
-            width:
-                100%;
-
-            aspect-ratio:
-                16 / 10;
-
-            background:
-                #f7fafc;
-
-            border-radius:
-                var(--radius-md);
-
-            overflow:
-                hidden;
-
-            border:
-                1px solid #e2e8f0;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background: #f7fafc;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
         }
-
 
         .step-img-box img {
-
-            width:
-                100%;
-
-            height:
-                100%;
-
-            object-fit:
-                cover;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-
 
         .step-features-side {
-
-            flex:
-                1;
-
-            display:
-                flex;
-
-            gap:
-                16px;
+            flex: 1;
+            display: flex;
+            gap: 16px;
         }
-
 
         .feature-sub-card {
-
-            flex:
-                1;
-
-            background:
-                #f8fafc;
-
-            border-radius:
-                var(--radius-md);
-
-            padding:
-                24px 12px;
-
-            text-align:
-                center;
-
-            border:
-                1px solid #edf2f7;
-
-            transition:
-                background 0.2s ease;
+            flex: 1;
+            background: #f8fafc;
+            border-radius: var(--radius-md);
+            padding: 24px 12px;
+            text-align: center;
+            border: 1px solid #edf2f7;
+            transition: background 0.2s ease;
         }
 
-
-        .feature-sub-card:hover {
-
-            background:
-                #f1f5f9;
-        }
-
-
+        .feature-sub-card:hover { background: #f1f5f9; }
         .feature-icon {
-
-            font-size:
-                2.2rem;
-
-            margin-bottom:
-                8px;
-
-            display:
-                inline-block;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            display: inline-block;
         }
-
 
         .feature-sub-card p {
-
-            font-size:
-                0.88rem;
-
-            font-weight:
-                600;
-
-            color:
-                var(--text-main);
-
-            line-height:
-                1.3;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-main);
+            line-height: 1.3;
         }
 
-
-        /* =====================================================
-           SİFARİŞ + QİYMƏT BÖLMƏSİ
-           
-           DESKTOP:
-           SOL  = QİYMƏT
-           SAĞ  = SİFARİŞ FORMASI
-
-           QEYD:
-           DESKTOPDA "Sifariş üçün müraciət et" DÜYMƏSİ YOXDUR.
-        ====================================================== */
-
+        /* ORDER SECTION */
         .order-section {
-
-            width:
-                100%;
-
-            margin:
-                35px auto 0;
-
-            background:
-                #ffffff;
-
-            border:
-                1px solid #e2e8f0;
-
-            border-radius:
-                24px;
-
-            box-shadow:
-                0 10px 35px
-                rgba(
-                    15,
-                    23,
-                    42,
-                    0.04
-                );
-
-            overflow:
-                hidden;
+            width: 100%;
+            margin: 35px auto 0;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            box-shadow: 0 10px 35px rgba(15, 23, 42, 0.04);
+            overflow: hidden;
         }
-
 
         .order-desktop-layout {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                0.85fr 1.15fr;
-
-            align-items:
-                stretch;
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            align-items: stretch;
         }
-
-
-        /* =====================================================
-           QİYMƏT PANELİ — DESKTOP
-        ====================================================== */
 
         .price-panel {
-
-            padding:
-                42px 34px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #f8f7ff 0%,
-                    #ffffff 100%
-                );
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            justify-content:
-                center;
-
-            align-items:
-                center;
-
-            text-align:
-                center;
-
-            border-right:
-                1px solid #edf2f7;
+            padding: 42px 34px;
+            background: linear-gradient(145deg, #f8f7ff 0%, #ffffff 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-right: 1px solid #edf2f7;
         }
-
 
         .price-small-title {
-
-            font-size:
-                0.78rem;
-
-            font-weight:
-                800;
-
-            letter-spacing:
-                1.5px;
-
-            color:
-                var(--primary-magic);
-
-            margin-bottom:
-                12px;
-
-            text-transform:
-                uppercase;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: var(--primary-magic);
+            margin-bottom: 12px;
+            text-transform: uppercase;
         }
-
 
         .price-title {
-
-            font-family:
-                'Quicksand',
-                sans-serif;
-
-            font-size:
-                1.55rem;
-
-            font-weight:
-                700;
-
-            line-height:
-                1.25;
-
-            color:
-                var(--text-main);
-
-            margin-bottom:
-                12px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.55rem;
+            font-weight: 700;
+            line-height: 1.25;
+            color: var(--text-main);
+            margin-bottom: 12px;
         }
-
 
         .price-value {
-
-            display:
-                flex;
-
-            align-items:
-                baseline;
-
-            justify-content:
-                center;
-
-            gap:
-                6px;
-
-            margin:
-                8px 0 12px;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 6px;
+            margin: 8px 0 12px;
         }
-
 
         .price-number {
-
-            font-family:
-                'Quicksand',
-                sans-serif;
-
-            font-size:
-                3.8rem;
-
-            line-height:
-                1;
-
-            font-weight:
-                700;
-
-            color:
-                var(--primary-magic);
-
-            letter-spacing:
-                -2px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 3.8rem;
+            line-height: 1;
+            font-weight: 700;
+            color: var(--primary-magic);
+            letter-spacing: -2px;
         }
-
 
         .price-currency {
-
-            font-family:
-                'Quicksand',
-                sans-serif;
-
-            font-size:
-                1.45rem;
-
-            font-weight:
-                700;
-
-            color:
-                var(--primary-magic);
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--primary-magic);
         }
-
 
         .price-description {
-
-            max-width:
-                260px;
-
-            font-size:
-                0.86rem;
-
-            line-height:
-                1.6;
-
-            color:
-                var(--text-sub);
-
-            margin-bottom:
-                20px;
+            max-width: 260px;
+            font-size: 0.86rem;
+            line-height: 1.6;
+            color: var(--text-sub);
+            margin-bottom: 20px;
         }
-
 
         .price-features {
-
-            width:
-                100%;
-
-            max-width:
-                270px;
-
-            margin:
-                0 auto;
-
-            text-align:
-                left;
+            width: 100%;
+            max-width: 270px;
+            margin: 0 auto;
+            text-align: left;
         }
-
 
         .price-feature {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                9px;
-
-            font-size:
-                0.82rem;
-
-            font-weight:
-                600;
-
-            color:
-                var(--text-main);
-
-            margin-bottom:
-                11px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 11px;
         }
-
 
         .price-feature span:first-child {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            width:
-                22px;
-
-            height:
-                22px;
-
-            border-radius:
-                50%;
-
-            background:
-                var(--primary-soft);
-
-            color:
-                var(--primary-magic);
-
-            font-size:
-                0.75rem;
-
-            flex-shrink:
-                0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--primary-soft);
+            color: var(--primary-magic);
+            font-size: 0.75rem;
+            flex-shrink: 0;
         }
 
+        .price-panel .price-action-btn { display: none; }
 
-        /* =====================================================
-           DESKTOPDA QİYMƏT DÜYMƏSİ GİZLİDİR
-           
-           Mobil düymə ayrıca .mobile-price-panel daxilindədir.
-        ====================================================== */
-
-        .price-panel .price-action-btn {
-
-            display:
-                none;
-        }
-
-
-        /* =====================================================
-           FORM PANELİ
-        ====================================================== */
-
-        .form-panel {
-
-            padding:
-                34px;
-        }
-
-
+        .form-panel { padding: 34px; }
         .order-form-container {
-
-            max-width:
-                none;
-
-            margin:
-                0;
-
-            padding:
-                0;
-
-            text-align:
-                left;
-
-            background:
-                transparent;
-
-            border:
-                none;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+            background: transparent;
+            border: none;
         }
-
 
         .form-top {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                space-between;
-
-            margin-bottom:
-                24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
         }
-
 
         .form-heading {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-
-
-        .form-heading-icon {
-
-            width:
-                38px;
-
-            height:
-                38px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            border-radius:
-                11px;
-
-            background:
-                var(--primary-soft);
-
-            font-size:
-                1.1rem;
-        }
-
 
         .order-form-container h4 {
-
-            margin:
-                0;
-
-            color:
-                var(--primary-magic);
-
-            font-size:
-                1.25rem;
-
-            font-weight:
-                700;
-
-            text-align:
-                left;
+            margin: 0;
+            color: var(--primary-magic);
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-align: left;
         }
 
-
-        .desktop-price-note {
-
-            font-size:
-                0.75rem;
-
-            color:
-                var(--text-sub);
-
-            font-weight:
-                600;
-        }
-
-
-        .mobile-back-btn {
-
-            display:
-                none;
-        }
-
-
-        .form-group {
-
-            margin-bottom:
-                16px;
-        }
-
-
+        .form-group { margin-bottom: 16px; }
         .form-group label {
-
-            display:
-                block;
-
-            font-weight:
-                600;
-
-            margin-bottom:
-                7px;
-
-            font-size:
-                0.82rem;
-
-            color:
-                var(--text-main);
+            display: block;
+            font-weight: 600;
+            margin-bottom: 7px;
+            font-size: 0.82rem;
+            color: var(--text-main);
         }
 
-
-        .form-group input,
-        .form-group textarea {
-
-            width:
-                100%;
-
-            padding:
-                11px 13px;
-
-            border-radius:
-                10px;
-
-            border:
-                1px solid #cbd5e1;
-
-            font-size:
-                0.92rem;
-
-            outline:
-                none;
-
-            background:
-                #fff;
-
-            color:
-                var(--text-main);
-
-            font-family:
-                inherit;
-
-            transition:
-                border-color 0.2s,
-                box-shadow 0.2s;
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 11px 13px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+            font-size: 0.92rem;
+            outline: none;
+            background: #fff;
+            color: var(--text-main);
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
 
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-
-            border-color:
-                var(--primary-magic);
-
-            box-shadow:
-                0 0 0 3px
-                rgba(
-                    79,
-                    70,
-                    229,
-                    0.1
-                );
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--primary-magic);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
         }
-
 
         .order-btn {
-
-            display:
-                block;
-
-            width:
-                100%;
-
-            border:
-                none;
-
-            background:
-                var(--gold-gradient);
-
-            color:
-                var(--white);
-
-            padding:
-                15px;
-
-            font-size:
-                1rem;
-
-            font-weight:
-                700;
-
-            font-family:
-                'Quicksand',
-                sans-serif;
-
-            border-radius:
-                12px;
-
-            cursor:
-                pointer;
-
-            box-shadow:
-                0 6px 20px
-                rgba(
-                    255,
-                    107,
-                    107,
-                    0.2
-                );
-
-            transition:
-                all 0.2s ease;
+            display: block;
+            width: 100%;
+            border: none;
+            background: var(--gold-gradient);
+            color: var(--white);
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Quicksand', sans-serif;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.2);
+            transition: all 0.2s ease;
         }
-
 
         .order-btn:hover {
-
-            transform:
-                translateY(-1px);
-
-            box-shadow:
-                0 10px 25px
-                rgba(
-                    255,
-                    107,
-                    107,
-                    0.25
-                );
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.25);
         }
-
 
         .order-btn:disabled {
-
-            opacity:
-                0.7;
-
-            cursor:
-                not-allowed;
-
-            transform:
-                none;
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
         }
-
 
         .whatsapp-note {
-
-            font-size:
-                0.78rem;
-
-            font-weight:
-                500;
-
-            color:
-                var(--text-sub);
-
-            margin-top:
-                15px;
-
-            line-height:
-                1.5;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text-sub);
+            margin-top: 15px;
+            line-height: 1.5;
         }
 
+        .mobile-order-wrapper { display: none; }
 
         /* =====================================================
-           MOBİL SLIDER
+           BİLDİRİŞ MODALI / POPUP (İSTİFADƏÇİ ÜÇÜN)
         ====================================================== */
-
-        .mobile-order-wrapper {
-
-            display:
-                none;
+        .site-notification-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 100000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
+        .site-notification-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
 
-        /* =====================================================
-           MOBİL
-        ====================================================== */
+        .site-notification-card {
+            position: relative;
+            width: 100%;
+            max-width: 440px;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 32px 26px 26px;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.22);
+            transform: translateY(20px) scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(79, 70, 229, 0.08);
+        }
 
+        .site-notification-overlay.show .site-notification-card {
+            transform: translateY(0) scale(1);
+        }
+
+        .site-notification-close-x {
+            position: absolute;
+            top: 16px;
+            right: 18px;
+            background: #f1f5f9;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #64748b;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .site-notification-close-x:hover {
+            background: #e2e8f0;
+            color: #1e293b;
+        }
+
+        .site-notification-icon {
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+            display: inline-block;
+            animation: bellBounce 1.5s infinite ease-in-out;
+        }
+
+        @keyframes bellBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .site-notification-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .site-notification-message {
+            font-size: 0.94rem;
+            color: var(--text-sub);
+            line-height: 1.6;
+            margin-bottom: 24px;
+            white-space: pre-line;
+            max-height: 240px;
+            overflow-y: auto;
+        }
+
+        .site-notification-btn {
+            width: 100%;
+            background: var(--primary-magic);
+            color: #ffffff;
+            border: none;
+            padding: 13px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            font-family: 'Quicksand', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(79, 70, 229, 0.25);
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .site-notification-btn:hover {
+            background: #4338ca;
+            transform: translateY(-1px);
+        }
+
+        /* MOBİL RESPONSIVE */
         @media (max-width: 768px) {
-
-
-            /* =================================================
-               SPLASH
-            ================================================== */
-
-            #story-splash {
-
-                background:
-                    #faf7f0;
-            }
-
-
-            .story-splash-content {
-
-                width:
-                    88%;
-
-                max-width:
-                    360px;
-            }
-
-
-            .story-splash-logo {
-
-                width:
-                    115px;
-
-                height:
-                    115px;
-
-                margin-bottom:
-                    24px;
-            }
-
-
-            .story-splash-quote {
-
-                font-size:
-                    0.86rem;
-
-                line-height:
-                    1.7;
-
-                padding:
-                    0 8px;
-            }
-
-
-            /* =================================================
-               NAV
-            ================================================== */
-
-            .nav-container {
-
-                padding:
-                    12px 16px;
-            }
-
-
-            .nav-logo {
-
-                font-size:
-                    1rem;
-
-                gap:
-                    8px;
-            }
-
-
-            .nav-logo img {
-
-                width:
-                    34px;
-
-                height:
-                    34px;
-            }
-
-
-            .nav-links {
-
-                display:
-                    none;
-            }
-
-
-            .hamburger {
-
-                display:
-                    flex;
-            }
-
-
-            /* =================================================
-               HEADER
-            ================================================== */
-
-            header {
-
-                padding:
-                    35px 5px;
-            }
-
-
-            header h1 {
-
-                font-size:
-                    2.1rem;
-            }
-
-
-            header .subtitle {
-
-                font-size:
-                    1.1rem;
-            }
-
-
-            .main-badge {
-
-                font-size:
-                    0.78rem;
-
-                padding:
-                    8px 14px;
-            }
-
-
-            /* =================================================
-               CARDS
-            ================================================== */
-
-            .container {
-
-                padding:
-                    0 16px;
-            }
-
-
-            .step-card {
-
-                padding:
-                    24px 20px;
-
-                border-radius:
-                    20px;
-
-                margin-bottom:
-                    16px;
-            }
-
-
-            .step-title h2 {
-
-                font-size:
-                    1.25rem;
-            }
-
-
-            .step-desc {
-
-                font-size:
-                    0.95rem;
-
-                margin-bottom:
-                    20px;
-            }
-
-
-            .step-body {
-
-                flex-direction:
-                    column;
-
-                gap:
-                    20px;
-            }
-
-
-            .step-img-side {
-
-                width:
-                    100%;
-            }
-
-
-            .step-features-side {
-
-                width:
-                    100%;
-
-                gap:
-                    12px;
-            }
-
-
-            .feature-sub-card {
-
-                padding:
-                    16px 8px;
-
-                border-radius:
-                    12px;
-            }
-
-
-            .feature-icon {
-
-                font-size:
-                    1.8rem;
-            }
-
-
-            .feature-sub-card p {
-
-                font-size:
-                    0.78rem;
-            }
-
-
-            /* =================================================
-               MOBİL SİFARİŞ BÖLMƏSİ
-            ================================================== */
-
-            .order-section {
-
-                position:
-                    relative;
-
-                margin:
-                    28px auto 0;
-
-                border-radius:
-                    20px;
-
-                overflow:
-                    hidden;
-            }
-
-
-            .order-desktop-layout {
-
-                display:
-                    none;
-            }
-
-
-            .mobile-order-wrapper {
-
-                display:
-                    block;
-
-                width:
-                    100%;
-
-                overflow:
-                    hidden;
-            }
-
-
+            .nav-container { padding: 12px 16px; }
+            .nav-logo { font-size: 1rem; gap: 8px; }
+            .nav-logo img { width: 34px; height: 34px; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+
+            header { padding: 35px 5px; }
+            header h1 { font-size: 2.1rem; }
+            header .subtitle { font-size: 1.1rem; }
+            .main-badge { font-size: 0.78rem; padding: 8px 14px; }
+
+            .container { padding: 0 16px; }
+            .step-card { padding: 24px 20px; border-radius: 20px; margin-bottom: 16px; }
+            .step-title h2 { font-size: 1.25rem; }
+            .step-desc { font-size: 0.95rem; margin-bottom: 20px; }
+            .step-body { flex-direction: column; gap: 20px; }
+            .step-img-side, .step-features-side { width: 100%; }
+            .step-features-side { gap: 12px; }
+            .feature-sub-card { padding: 16px 8px; border-radius: 12px; }
+            .feature-icon { font-size: 1.8rem; }
+            .feature-sub-card p { font-size: 0.78rem; }
+
+            .order-section { position: relative; margin: 28px auto 0; border-radius: 20px; overflow: hidden; }
+            .order-desktop-layout { display: none; }
+            .mobile-order-wrapper { display: block; width: 100%; overflow: hidden; }
             .mobile-order-track {
-
-                display:
-                    flex;
-
-                width:
-                    200%;
-
-                transform:
-                    translateX(0);
-
-                transition:
-                    transform 0.45s
-                    cubic-bezier(
-                        0.22,
-                        1,
-                        0.36,
-                        1
-                    );
+                display: flex;
+                width: 200%;
+                transform: translateX(0);
+                transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
             }
+            .mobile-order-track.show-form { transform: translateX(-50%); }
+            .mobile-order-panel { width: 50%; flex: 0 0 50%; min-width: 50%; }
 
-
-            .mobile-order-track.show-form {
-
-                transform:
-                    translateX(-50%);
-            }
-
-
-            .mobile-order-panel {
-
-                width:
-                    50%;
-
-                flex:
-                    0 0 50%;
-
-                min-width:
-                    50%;
-            }
-
-
-            /* =================================================
-               MOBİL QİYMƏT
-            ================================================== */
-
-            .mobile-price-panel {
-
-                padding:
-                    32px 22px 28px;
-
-                background:
-                    linear-gradient(
-                        145deg,
-                        #f8f7ff 0%,
-                        #ffffff 100%
-                    );
-
-                text-align:
-                    center;
-            }
-
-
-            .price-small-title {
-
-                font-size:
-                    0.72rem;
-
-                margin-bottom:
-                    10px;
-            }
-
-
-            .price-title {
-
-                font-size:
-                    1.35rem;
-
-                margin-bottom:
-                    10px;
-            }
-
-
-            .price-number {
-
-                font-size:
-                    3.3rem;
-            }
-
-
-            .price-currency {
-
-                font-size:
-                    1.25rem;
-            }
-
-
-            .price-description {
-
-                font-size:
-                    0.82rem;
-
-                max-width:
-                    280px;
-
-                margin:
-                    0 auto 20px;
-            }
-
-
-            .price-features {
-
-                max-width:
-                    285px;
-
-                margin-bottom:
-                    22px;
-            }
-
-
-            .price-feature {
-
-                font-size:
-                    0.79rem;
-
-                margin-bottom:
-                    9px;
-            }
-
-
-            /*
-               MOBİL DÜYMƏ BURADA QALIR
-            */
+            .mobile-price-panel { padding: 32px 22px 28px; background: linear-gradient(145deg, #f8f7ff 0%, #ffffff 100%); text-align: center; }
+            .price-small-title { font-size: 0.72rem; margin-bottom: 10px; }
+            .price-title { font-size: 1.35rem; margin-bottom: 10px; }
+            .price-number { font-size: 3.3rem; }
+            .price-currency { font-size: 1.25rem; }
+            .price-description { font-size: 0.82rem; max-width: 280px; margin: 0 auto 20px; }
+            .price-features { max-width: 285px; margin-bottom: 22px; }
+            .price-feature { font-size: 0.79rem; margin-bottom: 9px; }
 
             .mobile-price-panel .price-action-btn {
-
-                display:
-                    block;
-
-                width:
-                    100%;
-
-                max-width:
-                    100%;
-
-                border:
-                    none;
-
-                background:
-                    var(--gold-gradient);
-
-                color:
-                    #ffffff;
-
-                padding:
-                    14px 18px;
-
-                border-radius:
-                    12px;
-
-                font-family:
-                    'Quicksand',
-                    sans-serif;
-
-                font-size:
-                    0.98rem;
-
-                font-weight:
-                    700;
-
-                cursor:
-                    pointer;
-
-                box-shadow:
-                    0 6px 20px
-                    rgba(
-                        255,
-                        107,
-                        107,
-                        0.18
-                    );
-
-                transition:
-                    transform 0.2s ease,
-                    box-shadow 0.2s ease;
+                display: block;
+                width: 100%;
+                border: none;
+                background: var(--gold-gradient);
+                color: #ffffff;
+                padding: 14px 18px;
+                border-radius: 12px;
+                font-family: 'Quicksand', sans-serif;
+                font-size: 0.98rem;
+                font-weight: 700;
+                cursor: pointer;
+                box-shadow: 0 6px 20px rgba(255, 107, 107, 0.18);
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
             }
 
-
-            .mobile-price-panel .price-action-btn:hover {
-
-                transform:
-                    translateY(-2px);
-
-                box-shadow:
-                    0 10px 25px
-                    rgba(
-                        255,
-                        107,
-                        107,
-                        0.25
-                    );
-            }
-
-
-            /* =================================================
-               MOBİL FORM
-            ================================================== */
-
-            .mobile-form-panel {
-
-                padding:
-                    24px 18px 22px;
-
-                background:
-                    #ffffff;
-            }
-
-
-            .form-top {
-
-                margin-bottom:
-                    20px;
-            }
-
-
-            .form-heading {
-
-                gap:
-                    8px;
-            }
-
-
-            .form-heading-icon {
-
-                width:
-                    34px;
-
-                height:
-                    34px;
-
-                font-size:
-                    1rem;
-            }
-
-
-            .order-form-container h4 {
-
-                font-size:
-                    1.1rem;
-            }
-
-
-            .desktop-price-note {
-
-                display:
-                    none;
-            }
-
-
+            .mobile-form-panel { padding: 24px 18px 22px; background: #ffffff; }
+            .form-top { margin-bottom: 20px; }
+            .form-heading { gap: 8px; }
+            .order-form-container h4 { font-size: 1.1rem; }
             .mobile-back-btn {
-
-                display:
-                    flex;
-
-                align-items:
-                    center;
-
-                justify-content:
-                    center;
-
-                gap:
-                    4px;
-
-                width:
-                    38px;
-
-                height:
-                    38px;
-
-                border:
-                    1px solid #e2e8f0;
-
-                background:
-                    #f8fafc;
-
-                border-radius:
-                    10px;
-
-                color:
-                    var(--text-main);
-
-                font-size:
-                    1.1rem;
-
-                cursor:
-                    pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 4px;
+                width: 38px;
+                height: 38px;
+                border: 1px solid #e2e8f0;
+                background: #f8fafc;
+                border-radius: 10px;
+                color: var(--text-main);
+                font-size: 1.1rem;
+                cursor: pointer;
             }
-
-
-            .form-group {
-
-                margin-bottom:
-                    14px;
-            }
-
-
-            .form-group label {
-
-                font-size:
-                    0.78rem;
-
-                margin-bottom:
-                    6px;
-            }
-
-
-            .form-group input,
-            .form-group textarea {
-
-                padding:
-                    11px 12px;
-
-                font-size:
-                    0.88rem;
-            }
-
-
-            .order-btn {
-
-                padding:
-                    14px;
-
-                font-size:
-                    0.95rem;
-            }
-
-
-            .whatsapp-note {
-
-                font-size:
-                    0.74rem;
-
-                margin-top:
-                    12px;
-            }
-
+            .form-group { margin-bottom: 14px; }
+            .form-group label { font-size: 0.78rem; margin-bottom: 6px; }
+            .form-group input, .form-group textarea { padding: 11px 12px; font-size: 0.88rem; }
+            .order-btn { padding: 14px; font-size: 0.95rem; }
+            .whatsapp-note { font-size: 0.74rem; margin-top: 12px; }
         }
-
-
-        /* =====================================================
-           ÇOX KİÇİK EKRANLAR
-        ====================================================== */
-
-        @media (max-width: 380px) {
-
-            .nav-logo span {
-
-                font-size:
-                    0.9rem;
-            }
-
-
-            .step-card {
-
-                padding:
-                    20px 16px;
-            }
-
-
-            .mobile-price-panel {
-
-                padding:
-                    28px 17px 24px;
-            }
-
-
-            .price-number {
-
-                font-size:
-                    3rem;
-            }
-
-
-            .mobile-form-panel {
-
-                padding:
-                    22px 15px 20px;
-            }
-
-        }
-
     </style>
-
 </head>
-
 
 <body>
 
-
-    <!-- =====================================================
-         GUNEL'S STORY — AÇILIŞ EKRANI
-    ====================================================== -->
-
+    <!-- GUNEL'S STORY — AÇILIŞ EKRANI -->
     <div id="story-splash">
-
         <div class="story-splash-content">
-
-            <img
-                src="image/logo.png"
-                alt="Gunel's story"
-                class="story-splash-logo"
-            >
-
+            <img src="image/logo.png" alt="Gunel's story" class="story-splash-logo">
             <p class="story-splash-quote">
-
                 Sevgi ilə yazılan hekayələr,<br>
-
                 günəş kimi parlayan uşaqlar üçün.
-
             </p>
-
         </div>
-
     </div>
 
-
-    <!-- =====================================================
-         ÜST MENYU
-    ====================================================== -->
-
+    <!-- ÜST MENYU -->
     <nav>
-
         <div class="nav-container">
-
-            <a
-                href="index.html"
-                class="nav-logo"
-            >
-
-                <img
-                    src="image/logo.png"
-                    alt="Gunel's story"
-                >
-
-                <span>
-                    Gunel's story
-                </span>
-
+            <a href="index.html" class="nav-logo">
+                <img src="image/logo.png" alt="Gunel's story">
+                <span>Gunel's story</span>
             </a>
-
 
             <!-- DESKTOP MENU -->
-
             <div class="nav-links">
-
-                <a href="haqqimizda.html">
-                    HAQQIMIZDA
-                </a>
-
-                <a href="portfolio.html">
-                    PORTFOLİO
-                </a>
-
-                <a
-                    href="mexfilik.html"
-                    class="legal-nav-link"
-                >
-                    MƏXFİLİK SİYASƏTİ
-                </a>
-
-                <a
-                    href="xidmet-sertleri.html"
-                    class="legal-nav-link"
-                >
-                    XİDMƏT ŞƏRTLƏRİ
-                </a>
-
-                <a
-                    href="admin.html"
-                    class="admin-link"
-                >
-                    ⚙️ ADMİN
-                </a>
-
+                <a href="haqqimizda.html">HAQQIMIZDA</a>
+                <a href="portfolio.html">PORTFOLİO</a>
+                <a href="mexfilik.html" class="legal-nav-link">MƏXFİLİK SİYASƏTİ</a>
+                <a href="xidmet-sertleri.html" class="legal-nav-link">XİDMƏT ŞƏRTLƏRİ</a>
+                <a href="admin.html" class="admin-link">⚙️ ADMİN</a>
             </div>
-
 
             <!-- MOBİL HAMBURGER -->
-
-            <button
-                class="hamburger"
-                id="hamburger"
-                aria-label="Menyu"
-                aria-expanded="false"
-                type="button"
-            >
-
+            <button class="hamburger" id="hamburger" aria-label="Menyu" aria-expanded="false" type="button">
                 <span></span>
                 <span></span>
                 <span></span>
-
             </button>
-
         </div>
 
-
-        <!-- =====================================================
-             MOBİL AÇILAN MENYU
-        ====================================================== -->
-
-        <div
-            class="mobile-menu"
-            id="mobileMenu"
-        >
-
-            <a href="haqqimizda.html">
-                HAQQIMIZDA
-            </a>
-
-            <a href="portfolio.html">
-                PORTFOLİO
-            </a>
-
-            <a
-                href="mexfilik.html"
-                class="mobile-legal-link"
-            >
-                MƏXFİLİK SİYASƏTİ
-            </a>
-
-            <a
-                href="xidmet-sertleri.html"
-                class="mobile-legal-link"
-            >
-                XİDMƏT ŞƏRTLƏRİ
-            </a>
-
-            <a
-                href="admin.html"
-                class="mobile-admin-link"
-            >
-                ⚙️ ADMİN
-            </a>
-
+        <!-- MOBİL AÇILAN MENYU -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="haqqimizda.html">HAQQIMIZDA</a>
+            <a href="portfolio.html">PORTFOLİO</a>
+            <a href="mexfilik.html" class="mobile-legal-link">MƏXFİLİK SİYASƏTİ</a>
+            <a href="xidmet-sertleri.html" class="mobile-legal-link">XİDMƏT ŞƏRTLƏRİ</a>
+            <a href="admin.html" class="mobile-admin-link">⚙️ ADMİN</a>
         </div>
-
     </nav>
 
-
-    <!-- =====================================================
-         ƏSAS KONTEYNER
-    ====================================================== -->
-
+    <!-- ƏSAS KONTEYNER -->
     <div class="container">
-
-
         <!-- HEADER -->
-
         <header>
-
-            <h1>
-                Gunel's story
-            </h1>
-
+            <h1>Gunel's story</h1>
             <div class="subtitle">
-
-                Sevgi ilə yazılan hekayələr,
-                günəş kimi parlayan uşaqlar üçün...☀️
-
+                Sevgi ilə yazılan hekayələr, günəş kimi parlayan uşaqlar üçün...☀️
             </div>
-
             <div class="main-badge">
-
                 🌕 100% xüsusi və fərdi hekayə kitabları
-
             </div>
-
         </header>
 
-
-        <!-- =================================================
-             ADDIM 1
-        ================================================== -->
-
+        <!-- ADDIM 1 -->
         <div class="step-card">
-
             <div class="step-header">
-
-                <div class="step-number">
-                    1
-                </div>
-
+                <div class="step-number">1</div>
                 <div class="step-title">
-
-                    <h2>
-                        Uşağınız Üçün Xüsusi Hekayə
-                    </h2>
-
+                    <h2>Uşağınız Üçün Xüsusi Hekayə</h2>
                 </div>
-
             </div>
-
             <p class="step-desc">
-
-                Uşağınızın adı, sevimli heyvanları və xəyalları
-                əsasında tam fərdi hekayə hazırlanır.
-
+                Uşağınızın adı, sevimli heyvanları və xəyalları əsasında tam fərdi hekayə hazırlanır.
             </p>
-
             <div class="step-body">
-
                 <div class="step-img-side">
-
                     <div class="step-img-box">
-
-                        <img
-                            src="image/step1.png"
-                            alt="Uşaq üçün fərdi hekayə"
-                        >
-
+                        <img src="image/step1.png" alt="Uşaq üçün fərdi hekayə">
                     </div>
-
                 </div>
-
                 <div class="step-features-side">
-
                     <div class="feature-sub-card">
-
-                        <div class="feature-icon">
-                            👶
-                        </div>
-
-                        <p>
-                            Uşağınızın adı
-                        </p>
-
+                        <div class="feature-icon">👶</div>
+                        <p>Uşağınızın adı</p>
                     </div>
-
                     <div class="feature-sub-card">
-
-                        <div class="feature-icon">
-                            🦄
-                        </div>
-
-                        <p>
-                            Sevimli personajlar
-                        </p>
-
+                        <div class="feature-icon">🦄</div>
+                        <p>Sevimli personajlar</p>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
 
-
-        <!-- =================================================
-             ADDIM 2
-        ================================================== -->
-
+        <!-- ADDIM 2 -->
         <div class="step-card">
-
             <div class="step-header">
-
-                <div class="step-number">
-                    2
-                </div>
-
+                <div class="step-number">2</div>
                 <div class="step-title">
-
-                    <h2>
-                        Uşağınızın Şəkli ilə Dizayn
-                    </h2>
-
+                    <h2>Uşağınızın Şəkli ilə Dizayn</h2>
                 </div>
-
             </div>
-
             <p class="step-desc">
-
-                Uşağınızın real şəkli hekayənin səhifələrinə
-                peşəkar şəkildə inteqrasiya olunur.
-
+                Uşağınızın real şəkli hekayənin səhifələrinə peşəkar şəkildə inteqrasiya olunur.
             </p>
-
             <div class="step-body">
-
                 <div class="step-img-side">
-
                     <div class="step-img-box">
-
-                        <img
-                            src="image/step2.png"
-                            alt="Şəkilli kitab dizaynı"
-                        >
-
+                        <img src="image/step2.png" alt="Şəkilli kitab dizaynı">
                     </div>
-
                 </div>
-
                 <div class="step-features-side">
-
                     <div class="feature-sub-card">
-
-                        <div class="feature-icon">
-                            📷
-                        </div>
-
-                        <p>
-                            Real foto
-                        </p>
-
+                        <div class="feature-icon">📷</div>
+                        <p>Real foto</p>
                     </div>
-
                     <div class="feature-sub-card">
-
-                        <div class="feature-icon">
-                            🎨
-                        </div>
-
-                        <p>
-                            Peşəkar dizayn
-                        </p>
-
+                        <div class="feature-icon">🎨</div>
+                        <p>Peşəkar dizayn</p>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
 
-
-        <!-- =================================================
-             ADDIM 3
-        ================================================== -->
-
+        <!-- ADDIM 3 -->
         <div class="step-card">
-
             <div class="step-header">
-
-                <div class="step-number">
-                    3
-                </div>
-
+                <div class="step-number">3</div>
                 <div class="step-title">
-
-                    <h2>
-                        Premium Keyfiyyətli Çap
-                    </h2>
-
+                    <h2>Premium Keyfiyyətli Çap</h2>
                 </div>
-
             </div>
-
             <p class="step-desc">
-
-                Yüksək sıxlıqlı premium kağız,
-                parlaq və HD canlı rənglər.
-
+                Yüksək sıxlıqlı premium kağız, parlaq və HD canlı rənglər.
             </p>
-
             <div class="step-body">
-
                 <div class="step-img-side">
-
                     <div class="step-img-box">
-
-                        <img
-                            src="image/step3.png"
-                            alt="Premium çap"
-                        >
-
+                        <img src="image/step3.png" alt="Premium çap">
                     </div>
-
                 </div>
-
                 <div class="step-features-side">
-
                     <div class="feature-sub-card">
-
-                        <div class="feature-icon">
-                            📄
-                        </div>
-
-                        <p>
-                            Premium kağız
-                        </p>
-
+                        <div class="feature-icon">📄</div>
+                        <p>Premium kağız</p>
                     </div>
-
                     <div class="feature-sub-card">
-
-                        <div class="feature-icon">
-                            🌈
-                        </div>
-
-                        <p>
-                            HD rənglər
-                        </p>
-
+                        <div class="feature-icon">🌈</div>
+                        <p>HD rənglər</p>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
 
-
-        <!-- =================================================
-             ADDIM 4
-        ================================================== -->
-
+        <!-- ADDIM 4 -->
         <div class="step-card">
-
             <div class="step-header">
-
-                <div class="step-number">
-                    4
-                </div>
-
+                <div class="step-number">4</div>
                 <div class="step-title">
-
-                    <h2>
-                        Xüsusi Hədiyyə Qablaşdırma
-                    </h2>
-
+                    <h2>Xüsusi Hədiyyə Qablaşdırma</h2>
                 </div>
-
             </div>
-
             <p class="step-desc">
-
-                Kitab xüsusi dizaynlı zərif hədiyyə paketi
-                ilə təqdim olunur.
-
+                Kitab xüsusi dizaynlı zərif hədiyyə paketi ilə təqdim olunur.
             </p>
-
             <div class="step-body">
-
                 <div class="step-img-side">
-
                     <div class="step-img-box">
-
-                        <img
-                            src="image/step4.png"
-                            alt="Hədiyyə paketlənməsi"
-                        >
-
+                        <img src="image/step4.png" alt="Hədiyyə paketlənməsi">
                     </div>
-
                 </div>
-
                 <div class="step-features-side">
-
                     <div class="feature-sub-card">
-
-                        <div class="feature-icon">
-                            🎀
-                        </div>
-
-                        <p>
-                            Dizayn paketləmə
-                        </p>
-
+                        <div class="feature-icon">🎀</div>
+                        <p>Dizayn paketləmə</p>
                     </div>
-
                     <div class="feature-sub-card">
-
-                        <div class="feature-icon">
-                            ❤️
-                        </div>
-
-                        <p>
-                            Hədiyyə paketi
-                        </p>
-
+                        <div class="feature-icon">❤️</div>
+                        <p>Hədiyyə paketi</p>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
 
-
-        <!-- =====================================================
-             QİYMƏT + SİFARİŞ
-        ====================================================== -->
-
+        <!-- QİYMƏT + SİFARİŞ -->
         <div class="order-section">
-
-
-            <!-- =================================================
-                 DESKTOP VERSİYA
-                 
-                 SOL: QİYMƏT
-                 SAĞ: SİFARİŞ FORMASI
-                 
-                 QEYD:
-                 DESKTOPDA DÜYMƏ YOXDUR.
-            ================================================== -->
-
+            <!-- DESKTOP VERSİYA -->
             <div class="order-desktop-layout">
-
-
-                <!-- QİYMƏT -->
-
                 <div class="price-panel">
-
-                    <div class="price-small-title">
-                        XÜSUSİ QİYMƏT TƏKLİFİ
-                    </div>
-
-                    <div class="price-title">
-                        Bir kitabın qiyməti
-                    </div>
-
+                    <div class="price-small-title">XÜSUSİ QİYMƏT TƏKLİFİ</div>
+                    <div class="price-title">Bir kitabın qiyməti</div>
                     <div class="price-value">
-
-                        <span class="price-number">
-                            80
-                        </span>
-
-                        <span class="price-currency">
-                            AZN
-                        </span>
-
+                        <span class="price-number">80</span>
+                        <span class="price-currency">AZN</span>
                     </div>
-
                     <p class="price-description">
-
-                       “Hər uşaq bir hekayənin baş qəhrəmanı olmağa layiqdir.”
-
+                        “Hər uşaq bir hekayənin baş qəhrəmanı olmağa layiqdir.”
                     </p>
-
                     <div class="price-features">
-
-                        <div class="price-feature">
-
-                            <span>✓</span>
-
-                            <span>
-                                Fərdi hekayə
-                            </span>
-
-                        </div>
-
-                        <div class="price-feature">
-
-                            <span>✓</span>
-
-                            <span>
-                                Uşağın şəkli ilə dizayn
-                            </span>
-
-                        </div>
-
-                        <div class="price-feature">
-
-                            <span>✓</span>
-
-                            <span>
-                                Premium keyfiyyətli çap
-                            </span>
-
-                        </div>
-
-                        <div class="price-feature">
-
-                            <span>✓</span>
-
-                            <span>
-                                Hədiyyə qablaşdırması
-                            </span>
-
-                        </div>
-
+                        <div class="price-feature"><span>✓</span><span>Fərdi hekayə</span></div>
+                        <div class="price-feature"><span>✓</span><span>Uşağın şəkli ilə dizayn</span></div>
+                        <div class="price-feature"><span>✓</span><span>Premium keyfiyyətli çap</span></div>
+                        <div class="price-feature"><span>✓</span><span>Hədiyyə qablaşdırması</span></div>
                     </div>
-
-                    <!-- DESKTOPDA DÜYMƏ QƏSDƏN YOXDUR -->
-
                 </div>
-
-
-                <!-- SİFARİŞ FORMASI -->
 
                 <div class="form-panel">
-
                     <div class="order-form-container">
-
                         <div class="form-top">
-
                             <div class="form-heading">
-
-                               
-
-                                <h4>
-                                    Sifariş Müraciəti
-                                </h4>
-
+                                <h4>Sifariş Müraciəti</h4>
                             </div>
-
                         </div>
-
 
                         <form id="firebaseOrderForm">
-
-
                             <div class="form-group">
-
-                                <label for="parentName">
-                                    Valideynin Adı və Soyadı *
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="parentName"
-                                    required
-                                    placeholder="Nümunə: Aysel Məmmədova"
-                                >
-
+                                <label for="parentName">Valideynin Adı və Soyadı *</label>
+                                <input type="text" id="parentName" required placeholder="Nümunə: Aysel Məmmədova">
                             </div>
-
-
                             <div class="form-group">
-
-                                <label for="parentPhone">
-                                    Telefon Nömrəniz *
-                                </label>
-
-                                <input
-                                    type="tel"
-                                    id="parentPhone"
-                                    required
-                                    placeholder="Nümunə: +994 50 123 45 67"
-                                >
-
+                                <label for="parentPhone">Telefon Nömrəniz *</label>
+                                <input type="tel" id="parentPhone" required placeholder="Nümunə: +994 50 123 45 67">
                             </div>
-
-
                             <div class="form-group">
-
-                                <label for="childName">
-                                    Uşağın Adı *
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="childName"
-                                    required
-                                    placeholder="Nümunə: Ömər"
-                                >
-
+                                <label for="childName">Uşağın Adı *</label>
+                                <input type="text" id="childName" required placeholder="Nümunə: Ömər">
                             </div>
-
-
                             <div class="form-group">
-
-                                <label for="childAge">
-                                    Uşağın Yaşı
-                                </label>
-
-                                <input
-                                    type="number"
-                                    id="childAge"
-                                    placeholder="Nümunə: 5"
-                                >
-
+                                <label for="childAge">Uşağın Yaşı</label>
+                                <input type="number" id="childAge" placeholder="Nümunə: 5">
                             </div>
-
-
                             <div class="form-group">
-
-                                <label for="childInterests">
-                                    Uşağın Sevimli Personajları / Maraqları
-                                </label>
-
-                                <textarea
-                                    id="childInterests"
-                                    rows="3"
-                                    placeholder="Nümunə: Dinozavrlar, kosmos və sevimli iti Bobbi..."
-                                ></textarea>
-
+                                <label for="childInterests">Uşağın Sevimli Personajları / Maraqları</label>
+                                <textarea id="childInterests" rows="3" placeholder="Nümunə: Dinozavrlar, kosmos və sevimli iti Bobbi..."></textarea>
                             </div>
-
-
-                            <button
-                                type="submit"
-                                class="order-btn"
-                            >
-                                MÜRACİƏTİ TAMAMLA ✨
-                            </button>
-
-
+                            <button type="submit" class="order-btn">MÜRACİƏTİ TAMAMLA ✨</button>
                         </form>
-
-
                         <p class="whatsapp-note">
-
-                            <b>
-                                * Əlaqə nömrəsində WhatsApp aktiv olan nömrəni qeyd edin.
-                            </b>
-
+                            <b>* Əlaqə nömrəsində WhatsApp aktiv olan nömrəni qeyd edin.</b>
                         </p>
-
                     </div>
-
                 </div>
-
             </div>
 
-
-            <!-- =================================================
-                 MOBİL VERSİYA
-                 
-                 QİYMƏT → SİFARİŞ
-            ================================================== -->
-
+            <!-- MOBİL VERSİYA -->
             <div class="mobile-order-wrapper">
-
-                <div
-                    class="mobile-order-track"
-                    id="mobileOrderTrack"
-                >
-
-
-                    <!-- MOBİL QİYMƏT -->
-
+                <div class="mobile-order-track" id="mobileOrderTrack">
                     <div class="mobile-order-panel">
-
                         <div class="mobile-price-panel">
-
-                            <div class="price-small-title">
-                                XÜSUSİ QİYMƏT TƏKLİFİ
-                            </div>
-
-                            <div class="price-title">
-                                Bir kitabın qiyməti
-                            </div>
-
+                            <div class="price-small-title">XÜSUSİ QİYMƏT TƏKLİFİ</div>
+                            <div class="price-title">Bir kitabın qiyməti</div>
                             <div class="price-value">
-
-                                <span class="price-number">
-                                    80
-                                </span>
-
-                                <span class="price-currency">
-                                    AZN
-                                </span>
-
+                                <span class="price-number">80</span>
+                                <span class="price-currency">AZN</span>
                             </div>
-
                             <p class="price-description">
-
                                 “Hər uşaq bir hekayənin baş qəhrəmanı olmağa layiqdir.”
-
                             </p>
-
-
                             <div class="price-features">
-
-                                <div class="price-feature">
-
-                                    <span>✓</span>
-
-                                    <span>
-                                        Fərdi hekayə
-                                    </span>
-
-                                </div>
-
-                                <div class="price-feature">
-
-                                    <span>✓</span>
-
-                                    <span>
-                                        Uşağın şəkli ilə dizayn
-                                    </span>
-
-                                </div>
-
-                                <div class="price-feature">
-
-                                    <span>✓</span>
-
-                                    <span>
-                                        Premium keyfiyyətli çap
-                                    </span>
-
-                                </div>
-
-                                <div class="price-feature">
-
-                                    <span>✓</span>
-
-                                    <span>
-                                        Hədiyyə qablaşdırması
-                                    </span>
-
-                                </div>
-
+                                <div class="price-feature"><span>✓</span><span>Fərdi hekayə</span></div>
+                                <div class="price-feature"><span>✓</span><span>Uşağın şəkli ilə dizayn</span></div>
+                                <div class="price-feature"><span>✓</span><span>Premium keyfiyyətli çap</span></div>
+                                <div class="price-feature"><span>✓</span><span>Hədiyyə qablaşdırması</span></div>
                             </div>
-
-
-                            <!-- MOBİL DÜYMƏSİ QALIR -->
-
-                            <button
-                                type="button"
-                                class="price-action-btn"
-                                id="goToOrderBtn"
-                            >
-
+                            <button type="button" class="price-action-btn" id="goToOrderBtn">
                                 Sifariş üçün müraciət et →
-
                             </button>
-
                         </div>
-
                     </div>
-
-
-                    <!-- MOBİL FORM -->
 
                     <div class="mobile-order-panel">
-
                         <div class="mobile-form-panel">
-
                             <div class="order-form-container">
-
                                 <div class="form-top">
-
                                     <div class="form-heading">
-
-                                        <button
-                                            type="button"
-                                            class="mobile-back-btn"
-                                            id="backToPriceBtn"
-                                            aria-label="Qiymətə qayıt"
-                                        >
-                                            ←
-                                        </button>
-
-                                        
-                                        <h4>
-                                            Sifariş Müraciəti
-                                        </h4>
-
+                                        <button type="button" class="mobile-back-btn" id="backToPriceBtn" aria-label="Qiymətə qayıt">←</button>
+                                        <h4>Sifariş Müraciəti</h4>
                                     </div>
-
                                 </div>
-
-
                                 <div id="mobileFormContent">
-
                                     <div class="form-group">
-
-                                        <label for="mobileParentName">
-                                            Valideynin Adı və Soyadı *
-                                        </label>
-
-                                        <input
-                                            type="text"
-                                            id="mobileParentName"
-                                            required
-                                            placeholder="Nümunə: Aysel Məmmədova"
-                                        >
-
+                                        <label for="mobileParentName">Valideynin Adı və Soyadı *</label>
+                                        <input type="text" id="mobileParentName" required placeholder="Nümunə: Aysel Məmmədova">
                                     </div>
-
-
                                     <div class="form-group">
-
-                                        <label for="mobileParentPhone">
-                                            Telefon Nömrəniz *
-                                        </label>
-
-                                        <input
-                                            type="tel"
-                                            id="mobileParentPhone"
-                                            required
-                                            placeholder="Nümunə: +994 50 123 45 67"
-                                        >
-
+                                        <label for="mobileParentPhone">Telefon Nömrəniz *</label>
+                                        <input type="tel" id="mobileParentPhone" required placeholder="Nümunə: +994 50 123 45 67">
                                     </div>
-
-
                                     <div class="form-group">
-
-                                        <label for="mobileChildName">
-                                            Uşağın Adı *
-                                        </label>
-
-                                        <input
-                                            type="text"
-                                            id="mobileChildName"
-                                            required
-                                            placeholder="Nümunə: Ömər"
-                                        >
-
+                                        <label for="mobileChildName">Uşağın Adı *</label>
+                                        <input type="text" id="mobileChildName" required placeholder="Nümunə: Ömər">
                                     </div>
-
-
                                     <div class="form-group">
-
-                                        <label for="mobileChildAge">
-                                            Uşağın Yaşı
-                                        </label>
-
-                                        <input
-                                            type="number"
-                                            id="mobileChildAge"
-                                            placeholder="Nümunə: 5"
-                                        >
-
+                                        <label for="mobileChildAge">Uşağın Yaşı</label>
+                                        <input type="number" id="mobileChildAge" placeholder="Nümunə: 5">
                                     </div>
-
-
                                     <div class="form-group">
-
-                                        <label for="mobileChildInterests">
-                                            Uşağın Sevimli Personajları / Maraqları
-                                        </label>
-
-                                        <textarea
-                                            id="mobileChildInterests"
-                                            rows="3"
-                                            placeholder="Nümunə: Dinozavrlar, kosmos və sevimli iti Bobbi..."
-                                        ></textarea>
-
+                                        <label for="mobileChildInterests">Uşağın Sevimli Personajları / Maraqları</label>
+                                        <textarea id="mobileChildInterests" rows="3" placeholder="Nümunə: Dinozavrlar, kosmos və sevimli iti Bobbi..."></textarea>
                                     </div>
-
-
-                                    <button
-                                        type="button"
-                                        class="order-btn"
-                                        id="mobileSubmitBtn"
-                                    >
-                                        MÜRACİƏTİ TAMAMLA ✨
-                                    </button>
-
-
+                                    <button type="button" class="order-btn" id="mobileSubmitBtn">MÜRACİƏTİ TAMAMLA ✨</button>
                                     <p class="whatsapp-note">
-
-                                        <b>
-                                            * Əlaqə nömrəsində WhatsApp aktiv olan nömrəni qeyd edin.
-                                        </b>
-
+                                        <b>* Əlaqə nömrəsində WhatsApp aktiv olan nömrəni qeyd edin.</b>
                                     </p>
-
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
-
     <!-- =====================================================
-         FIREBASE
+         BİLDİRİŞ POP-UP ELEMENTİ
     ====================================================== -->
+    <div class="site-notification-overlay" id="siteNotificationOverlay">
+        <div class="site-notification-card">
+            <button type="button" class="site-notification-close-x" id="closeNotificationX" title="Bağla">×</button>
+            <div class="site-notification-icon">📢</div>
+            <h3 class="site-notification-title" id="notificationTitle">Bildiriş</h3>
+            <div class="site-notification-message" id="notificationMessage"></div>
+            <button type="button" class="site-notification-btn" id="closeNotificationBtn">Oldu, anladım</button>
+        </div>
+    </div>
 
+    <!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
-
     <script>
-
-        /* =====================================================
-           FIREBASE KONFİQURASİYASI
-        ====================================================== */
-
         const firebaseConfig = {
-
-            apiKey:
-                "AIzaSyDWqLPM2X89vyqOYocw4KEBh65WKMutZOI",
-
-            authDomain:
-                "gunelsstory-6d3a9.firebaseapp.com",
-
-            projectId:
-                "gunelsstory-6d3a9",
-
-            storageBucket:
-                "gunelsstory-6d3a9.firebasestorage.app",
-
-            messagingSenderId:
-                "903174908342",
-
-            appId:
-                "1:903174908342:web:f73871214550442e553917",
-
-            measurementId:
-                "G-5Q48RSFFH9"
+            apiKey: "AIzaSyDWqLPM2X89vyqOYocw4KEBh65WKMutZOI",
+            authDomain: "gunelsstory-6d3a9.firebaseapp.com",
+            projectId: "gunelsstory-6d3a9",
+            storageBucket: "gunelsstory-6d3a9.firebasestorage.app",
+            messagingSenderId: "903174908342",
+            appId: "1:903174908342:web:f73871214550442e553917",
+            measurementId: "G-5Q48RSFFH9"
         };
 
-
-        firebase.initializeApp(
-            firebaseConfig
-        );
-
-
-        const db =
-            firebase.firestore();
-
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
 
         /* =====================================================
-           DESKTOP SİFARİŞ FORMU
+           BİLDİRİŞ SİSTEMİ (FIRESTORE REAL-TIME DİNLƏMƏ)
         ====================================================== */
-
-        const desktopForm =
-            document.getElementById(
-                "firebaseOrderForm"
-            );
-
-
-        desktopForm.addEventListener(
-            "submit",
-            function (e) {
-
-                e.preventDefault();
-
-
-                const submitBtn =
-                    e.target.querySelector(
-                        ".order-btn"
-                    );
-
-
-                submitBtn.disabled =
-                    true;
-
-
-                submitBtn.innerText =
-                    "GÖNDƏRİLİR...";
-
-
-                db.collection("orders")
-                    .add({
-
-                        parentName:
-                            document
-                                .getElementById(
-                                    "parentName"
-                                )
-                                .value,
-
-                        parentPhone:
-                            document
-                                .getElementById(
-                                    "parentPhone"
-                                )
-                                .value,
-
-                        childName:
-                            document
-                                .getElementById(
-                                    "childName"
-                                )
-                                .value,
-
-                        childAge:
-                            document
-                                .getElementById(
-                                    "childAge"
-                                )
-                                .value,
-
-                        childInterests:
-                            document
-                                .getElementById(
-                                    "childInterests"
-                                )
-                                .value,
-
-                        price:
-                            "80 AZN",
-
-                        createdAt:
-                            firebase
-                                .firestore
-                                .FieldValue
-                                .serverTimestamp()
-
-                    })
-
-                    .then(
-                        function () {
-
-                            alert(
-                                "Müraciətiniz uğurla göndərildi!"
-                            );
-
-
-                            desktopForm.reset();
-
-                        }
-                    )
-
-                    .catch(
-                        function (error) {
-
-                            console.error(
-                                "Xəta:",
-                                error
-                            );
-
-
-                            alert(
-                                "Xəta baş verdi: " +
-                                error.message
-                            );
-
-                        }
-                    )
-
-                    .finally(
-                        function () {
-
-                            submitBtn.disabled =
-                                false;
-
-
-                            submitBtn.innerText =
-                                "MÜRACİƏTİ TAMAMLA ✨";
-
-                        }
-                    );
-
-            }
-        );
-
-
-        /* =====================================================
-           MOBİL FORMUN FIREBASE-A GÖNDƏRİLMƏSİ
-        ====================================================== */
-
-        const mobileSubmitBtn =
-            document.getElementById(
-                "mobileSubmitBtn"
-            );
-
-
-        mobileSubmitBtn.addEventListener(
-            "click",
-            function () {
-
-
-                const parentName =
-                    document
-                        .getElementById(
-                            "mobileParentName"
-                        )
-                        .value
-                        .trim();
-
-
-                const parentPhone =
-                    document
-                        .getElementById(
-                            "mobileParentPhone"
-                        )
-                        .value
-                        .trim();
-
-
-                const childName =
-                    document
-                        .getElementById(
-                            "mobileChildName"
-                        )
-                        .value
-                        .trim();
-
-
-                const childAge =
-                    document
-                        .getElementById(
-                            "mobileChildAge"
-                        )
-                        .value
-                        .trim();
-
-
-                const childInterests =
-                    document
-                        .getElementById(
-                            "mobileChildInterests"
-                        )
-                        .value
-                        .trim();
-
-
-                if (
-                    !parentName ||
-                    !parentPhone ||
-                    !childName
-                ) {
-
-                    alert(
-                        "Zəhmət olmasa məcburi sahələri doldurun."
-                    );
-
-                    return;
-                }
-
-
-                mobileSubmitBtn.disabled =
-                    true;
-
-
-                mobileSubmitBtn.innerText =
-                    "GÖNDƏRİLİR...";
-
-
-                db.collection("orders")
-                    .add({
-
-                        parentName:
-                            parentName,
-
-                        parentPhone:
-                            parentPhone,
-
-                        childName:
-                            childName,
-
-                        childAge:
-                            childAge,
-
-                        childInterests:
-                            childInterests,
-
-                        price:
-                            "80 AZN",
-
-                        createdAt:
-                            firebase
-                                .firestore
-                                .FieldValue
-                                .serverTimestamp()
-
-                    })
-
-                    .then(
-                        function () {
-
-                            alert(
-                                "Müraciətiniz uğurla göndərildi!"
-                            );
-
-
-                            document
-                                .getElementById(
-                                    "mobileParentName"
-                                )
-                                .value = "";
-
-
-                            document
-                                .getElementById(
-                                    "mobileParentPhone"
-                                )
-                                .value = "";
-
-
-                            document
-                                .getElementById(
-                                    "mobileChildName"
-                                )
-                                .value = "";
-
-
-                            document
-                                .getElementById(
-                                    "mobileChildAge"
-                                )
-                                .value = "";
-
-
-                            document
-                                .getElementById(
-                                    "mobileChildInterests"
-                                )
-                                .value = "";
-
-
-                            document
-                                .getElementById(
-                                    "mobileOrderTrack"
-                                )
-                                .classList
-                                .remove(
-                                    "show-form"
-                                );
-
-                        }
-                    )
-
-                    .catch(
-                        function (error) {
-
-                            console.error(
-                                "Xəta:",
-                                error
-                            );
-
-
-                            alert(
-                                "Xəta baş verdi: " +
-                                error.message
-                            );
-
-                        }
-                    )
-
-                    .finally(
-                        function () {
-
-                            mobileSubmitBtn.disabled =
-                                false;
-
-
-                            mobileSubmitBtn.innerText =
-                                "MÜRACİƏTİ TAMAMLA ✨";
-
-                        }
-                    );
-
-            }
-        );
-
-
-        /* =====================================================
-           3 SANİYƏLİK SPLASH
-        ====================================================== */
-
-        window.addEventListener(
-            "load",
-            function () {
-
-                const splash =
-                    document.getElementById(
-                        "story-splash"
-                    );
-
-
-                setTimeout(
-                    function () {
-
-                        splash.classList.add(
-                            "hide"
-                        );
-
-                    },
-                    3000
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           MOBİL HAMBURGER MENU
-        ====================================================== */
-
-        const hamburger =
-            document.getElementById(
-                "hamburger"
-            );
-
-
-        const mobileMenu =
-            document.getElementById(
-                "mobileMenu"
-            );
-
-
-        hamburger.addEventListener(
-            "click",
-            function () {
-
-                const isOpen =
-                    hamburger.classList.toggle(
-                        "active"
-                    );
-
-
-                mobileMenu.classList.toggle(
-                    "show"
-                );
-
-
-                hamburger.setAttribute(
-                    "aria-expanded",
-                    isOpen
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           MOBİL MENU LINKLƏRİ
-        ====================================================== */
-
-        const mobileMenuLinks =
-            mobileMenu.querySelectorAll(
-                "a"
-            );
-
-
-        mobileMenuLinks.forEach(
-            function (link) {
-
-                link.addEventListener(
-                    "click",
-                    function () {
-
-                        hamburger.classList.remove(
-                            "active"
-                        );
-
-
-                        mobileMenu.classList.remove(
-                            "show"
-                        );
-
-
-                        hamburger.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
-
+        let currentNotificationId = null;
+
+        function initNotificationListener() {
+            db.collection("notifications")
+                .where("isActive", "==", true)
+                .onSnapshot(function(snapshot) {
+                    if (snapshot.empty) {
+                        hideSiteNotification();
+                        return;
                     }
-                );
 
+                    // Ən son yenilənmiş aktiv bildirişi götürək
+                    const docs = [];
+                    snapshot.forEach(doc => docs.push({ id: doc.id, ...doc.data() }));
+                    
+                    docs.sort((a, b) => {
+                        const timeA = a.updatedAt ? a.updatedAt.toMillis() : (a.createdAt ? a.createdAt.toMillis() : 0);
+                        const timeB = b.updatedAt ? b.updatedAt.toMillis() : (b.createdAt ? b.createdAt.toMillis() : 0);
+                        return timeB - timeA;
+                    });
+
+                    const activeNotice = docs[0];
+                    currentNotificationId = activeNotice.id;
+
+                    // İstifadəçi artıq bu aktiv bildirişi bağlayıbsa göstərmirik
+                    const closedKey = "closed_notice_" + activeNotice.id;
+                    const isClosed = localStorage.getItem(closedKey);
+
+                    if (!isClosed) {
+                        showSiteNotification(activeNotice.title, activeNotice.message);
+                    }
+                }, function(error) {
+                    console.log("Bildiriş xətası:", error);
+                });
+        }
+
+        function showSiteNotification(title, message) {
+            const overlay = document.getElementById("siteNotificationOverlay");
+            document.getElementById("notificationTitle").innerText = title || "Xüsusi Bildiriş";
+            document.getElementById("notificationMessage").innerText = message || "";
+            overlay.classList.add("show");
+        }
+
+        function hideSiteNotification() {
+            const overlay = document.getElementById("siteNotificationOverlay");
+            overlay.classList.remove("show");
+            if (currentNotificationId) {
+                localStorage.setItem("closed_notice_" + currentNotificationId, "true");
             }
-        );
+        }
 
+        document.getElementById("closeNotificationX").addEventListener("click", hideSiteNotification);
+        document.getElementById("closeNotificationBtn").addEventListener("click", hideSiteNotification);
 
-        /* =====================================================
-           EKRAN BÖYÜDÜKDƏ MOBİL MENYU TƏMİZLƏ
-        ====================================================== */
+        // Səhifə açıldıqda bildiriş dinləyicisini başladırıq
+        initNotificationListener();
 
-        window.addEventListener(
-            "resize",
-            function () {
+        /* DESKTOP SİFARİŞ FORMU */
+        const desktopForm = document.getElementById("firebaseOrderForm");
+        desktopForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const submitBtn = e.target.querySelector(".order-btn");
+            submitBtn.disabled = true;
+            submitBtn.innerText = "GÖNDƏRİLİR...";
 
-                if (
-                    window.innerWidth > 768
-                ) {
+            db.collection("orders").add({
+                parentName: document.getElementById("parentName").value,
+                parentPhone: document.getElementById("parentPhone").value,
+                childName: document.getElementById("childName").value,
+                childAge: document.getElementById("childAge").value,
+                childInterests: document.getElementById("childInterests").value,
+                price: "80 AZN",
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then(function () {
+                alert("Müraciətiniz uğurla göndərildi!");
+                desktopForm.reset();
+            })
+            .catch(function (error) {
+                alert("Xəta baş verdi: " + error.message);
+            })
+            .finally(function () {
+                submitBtn.disabled = false;
+                submitBtn.innerText = "MÜRACİƏTİ TAMAMLA ✨";
+            });
+        });
 
-                    hamburger.classList.remove(
-                        "active"
-                    );
+        /* MOBİL SİFARİŞ FORMU */
+        const mobileSubmitBtn = document.getElementById("mobileSubmitBtn");
+        mobileSubmitBtn.addEventListener("click", function () {
+            const parentName = document.getElementById("mobileParentName").value.trim();
+            const parentPhone = document.getElementById("mobileParentPhone").value.trim();
+            const childName = document.getElementById("mobileChildName").value.trim();
+            const childAge = document.getElementById("mobileChildAge").value.trim();
+            const childInterests = document.getElementById("mobileChildInterests").value.trim();
 
-
-                    mobileMenu.classList.remove(
-                        "show"
-                    );
-
-
-                    hamburger.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                }
-
+            if (!parentName || !parentPhone || !childName) {
+                alert("Zəhmət olmasa məcburi sahələri doldurun.");
+                return;
             }
-        );
 
+            mobileSubmitBtn.disabled = true;
+            mobileSubmitBtn.innerText = "GÖNDƏRİLİR...";
 
-        /* =====================================================
-           MOBİL QİYMƏT → SİFARİŞ
-        ====================================================== */
+            db.collection("orders").add({
+                parentName: parentName,
+                parentPhone: parentPhone,
+                childName: childName,
+                childAge: childAge,
+                childInterests: childInterests,
+                price: "80 AZN",
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then(function () {
+                alert("Müraciətiniz uğurla göndərildi!");
+                document.getElementById("mobileParentName").value = "";
+                document.getElementById("mobileParentPhone").value = "";
+                document.getElementById("mobileChildName").value = "";
+                document.getElementById("mobileChildAge").value = "";
+                document.getElementById("mobileChildInterests").value = "";
+                document.getElementById("mobileOrderTrack").classList.remove("show-form");
+            })
+            .catch(function (error) {
+                alert("Xəta baş verdi: " + error.message);
+            })
+            .finally(function () {
+                mobileSubmitBtn.disabled = false;
+                mobileSubmitBtn.innerText = "MÜRACİƏTİ TAMAMLA ✨";
+            });
+        });
 
-        const mobileOrderTrack =
-            document.getElementById(
-                "mobileOrderTrack"
-            );
+        /* SPLASH EKRANI */
+        window.addEventListener("load", function () {
+            const splash = document.getElementById("story-splash");
+            setTimeout(function () {
+                splash.classList.add("hide");
+            }, 3000);
+        });
 
+        /* HAMBURGER MENYU */
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobileMenu");
 
-        const goToOrderBtn =
-            document.getElementById(
-                "goToOrderBtn"
-            );
+        hamburger.addEventListener("click", function () {
+            const isOpen = hamburger.classList.toggle("active");
+            mobileMenu.classList.toggle("show");
+            hamburger.setAttribute("aria-expanded", isOpen);
+        });
 
+        mobileMenu.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                hamburger.classList.remove("active");
+                mobileMenu.classList.remove("show");
+                hamburger.setAttribute("aria-expanded", "false");
+            });
+        });
 
-        const backToPriceBtn =
-            document.getElementById(
-                "backToPriceBtn"
-            );
-
-
-        goToOrderBtn.addEventListener(
-            "click",
-            function () {
-
-                mobileOrderTrack.classList.add(
-                    "show-form"
-                );
-
+        window.addEventListener("resize", function () {
+            if (window.innerWidth > 768) {
+                hamburger.classList.remove("active");
+                mobileMenu.classList.remove("show");
+                hamburger.setAttribute("aria-expanded", "false");
             }
-        );
+        });
 
-
-        backToPriceBtn.addEventListener(
-            "click",
-            function () {
-
-                mobileOrderTrack.classList.remove(
-                    "show-form"
-                );
-
-            }
-        );
-
+        /* MOBİL SLİDER */
+        const mobileOrderTrack = document.getElementById("mobileOrderTrack");
+        document.getElementById("goToOrderBtn").addEventListener("click", function () {
+            mobileOrderTrack.classList.add("show-form");
+        });
+        document.getElementById("backToPriceBtn").addEventListener("click", function () {
+            mobileOrderTrack.classList.remove("show-form");
+        });
     </script>
-
 </body>
-
 </html>
