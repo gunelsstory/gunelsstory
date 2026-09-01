@@ -1,3881 +1,1557 @@
 <!DOCTYPE html>
 <html lang="az">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gunel's Story - Admin Panel</title>
+    <link rel="icon" type="image/png" href="image/favicon.png">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-    <title>Gunel's story - Uşağınız Hekayənin Baş Qəhrəmanıdır!</title>
-
-    <link rel="icon"
-          type="image/png"
-          href="image/favicon.png">
-
-    <!-- =====================================================
-         PREMIUM ŞRİFTLƏR
-    ====================================================== -->
-
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@600;700&display=swap"
-          rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-
-        /* =====================================================
-           ROOT
-        ====================================================== */
-
         :root {
-
-            --bg-color: #fafbfc;
-
-            --primary-magic: #4f46e5;
-
-            --primary-soft: #f0f0ff;
-
-            --accent-rose: #ff7675;
-
-            --gold-gradient:
-                linear-gradient(
-                    135deg,
-                    #ff9f43 0%,
-                    #ff6b6b 100%
-                );
-
-            --card-bg: #ffffff;
-
-            --text-main: #1a1a24;
-
-            --text-sub: #64748b;
-
+            --bg-base: #FAF8F5;
+            --primary-lux: #0F1A5C;
+            --accent-gold: #D97706;
+            --accent-gold-hover: #B45309;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
             --white: #ffffff;
-
-            --radius-xl: 24px;
-
+            --success: #059669;
+            --success-bg: #E6F4EA;
+            --danger: #DC2626;
+            --danger-bg: #FEE2E2;
+            --edit: #2563EB;
+            --edit-bg: #EFF6FF;
+            --row-waiting-bg: #FFFBEB;
+            --row-waiting-border: #F59E0B;
+            --row-viewed-bg: #F0FDF4;
+            --row-viewed-border: #10B981;
+            --whatsapp: #16A34A;
+            --whatsapp-bg: #DCFCE7;
+            --shadow-sm: 0 2px 8px rgba(15,26,92,.04);
+            --shadow-md: 0 12px 34px rgba(15,26,92,.06);
+            --shadow-lg: 0 30px 70px rgba(15,26,92,.12);
+            --radius-lg: 24px;
             --radius-md: 16px;
-
-            --shadow-soft:
-                0 8px 30px
-                rgba(0, 0, 0, 0.02);
-
-            --shadow-hover:
-                0 16px 40px
-                rgba(79, 70, 229, 0.08);
+            --radius-sm: 12px;
+            --transition: all .35s cubic-bezier(.16,1,.3,1);
         }
-
-
-        /* =====================================================
-           RESET
-        ====================================================== */
 
         * {
-
             margin: 0;
-
             padding: 0;
-
             box-sizing: border-box;
-
-            -webkit-tap-highlight-color: transparent;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
-
 
         body {
-
-            background:
-                var(--bg-color);
-
-            color:
-                var(--text-main);
-
-            font-family:
-                'Plus Jakarta Sans',
-                sans-serif;
-
-            padding-bottom:
-                80px;
-
-            min-height:
-                100vh;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 0 20px 80px;
+            background-image: radial-gradient(rgba(15,26,92,.03) 1.5px, transparent 1.5px);
+            background-size: 32px 32px;
         }
 
-
-        h1,
-        h2,
-        h3,
-        h4,
-        .subtitle,
-        .step-number {
-
-            font-family:
-                'Quicksand',
-                sans-serif;
-        }
-
-
-        /* =====================================================
-           GUNEL'S STORY — AÇILIŞ EKRANI
-        ====================================================== */
-
-        #story-splash {
-
+        /* LOGIN */
+        .login-overlay {
             position: fixed;
-
             inset: 0;
-
-            width: 100%;
-
-            height: 100vh;
-
-            height: 100dvh;
-
-            z-index: 99999;
-
+            background: radial-gradient(circle at 10% 20%, rgba(15,26,92,.98) 0%, rgba(5,10,40,1) 90%);
             display: flex;
-
-            align-items: center;
-
             justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 24px;
+        }
 
+        .login-overlay::before, .login-overlay::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-gold), rgba(217,119,6,0));
+            filter: blur(120px);
+            opacity: .15;
+        }
+
+        .login-overlay::before { top: -10%; left: -10%; }
+        .login-overlay::after { bottom: -10%; right: -10%; background: linear-gradient(135deg, #3B82F6, rgba(0,0,0,0)); }
+
+        .login-box {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 460px;
+            padding: 50px 45px;
+            background: rgba(255,255,255,.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255,255,255,.6);
+            box-shadow: var(--shadow-lg);
             text-align: center;
+        }
 
-            background: #faf7f0;
+        .login-box h2 {
+            color: var(--primary-lux);
+            margin-bottom: 8px;
+            font-size: 2rem;
+            font-weight: 800;
+        }
 
-            opacity: 1;
+        .login-subtitle {
+            color: var(--text-muted);
+            font-size: .95rem;
+            margin-bottom: 35px;
+        }
 
-            visibility: visible;
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
 
-            transition:
-                opacity 0.9s ease,
-                visibility 0.9s ease;
+        .input-label {
+            display: block;
+            margin-bottom: 8px;
+            padding-left: 4px;
+            color: var(--primary-lux);
+            font-size: .8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
 
+        .login-input, .form-input {
+            width: 100%;
+            padding: 15px 18px;
+            border: 1.5px solid rgba(15,26,92,.08);
+            border-radius: var(--radius-sm);
+            outline: none;
+            color: var(--text-main);
+            font-size: .95rem;
+            background: #F8FAFC;
+            transition: var(--transition);
+        }
+
+        .login-input:focus, .form-input:focus {
+            border-color: var(--primary-lux);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(15,26,92,.06);
+        }
+
+        .password-container { position: relative; }
+        .password-container .login-input { padding-right: 55px; }
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .toggle-password svg { width: 20px; height: 20px; fill: currentColor; }
+
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            margin-top: 15px;
+            border: none;
+            border-radius: var(--radius-sm);
+            background: var(--primary-lux);
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            background: #09103b;
+        }
+
+        .login-btn:disabled { opacity: .6; cursor: wait; }
+        .login-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: .9rem;
+            font-weight: 600;
+        }
+        .login-back-btn:hover { color: var(--accent-gold); }
+
+        #loginError {
+            display: none;
+            margin-top: 20px;
+            padding: 12px;
+            background: var(--danger-bg);
+            color: var(--danger);
+            border-radius: var(--radius-sm);
+            font-size: .85rem;
+            font-weight: 600;
+        }
+
+        /* ADMIN CONTAINER */
+        .admin-container {
+            display: none;
+            max-width: 1400px;
+            margin: 40px auto 0;
+            padding: 40px;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(15,26,92,.06);
+        }
+
+        .admin-header h1 {
+            color: var(--primary-lux);
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .logout-btn {
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--radius-sm);
+            background: var(--danger-bg);
+            color: var(--danger);
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .logout-btn:hover { background: var(--danger); color: white; }
+
+        /* TABS */
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            padding: 6px;
+            background: #F8FAFC;
+            border-radius: var(--radius-md);
+            width: fit-content;
+        }
+
+        .admin-tab {
+            border: none;
+            padding: 13px 22px;
+            border-radius: 10px;
+            background: transparent;
+            color: var(--text-muted);
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .admin-tab.active {
+            background: var(--primary-lux);
+            color: white;
+            box-shadow: 0 6px 15px rgba(15,26,92,.15);
+        }
+
+        .admin-section { display: none; }
+        .admin-section.active { display: block; }
+
+        /* ORDERS & TABLE */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(15,26,92,.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            text-align: left;
+        }
+
+        th {
+            padding: 18px 20px;
+            background: #F8FAFC;
+            color: var(--text-muted);
+            font-size: .75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .7px;
+        }
+
+        td {
+            padding: 18px 20px;
+            border-top: 1px solid rgba(15,26,92,.04);
+            vertical-align: middle;
+            font-size: .9rem;
+        }
+
+        tr.status-waiting { background: var(--row-waiting-bg); border-left: 4px solid var(--row-waiting-border); }
+        tr.status-viewed { background: var(--row-viewed-bg); border-left: 4px solid var(--row-viewed-border); }
+
+        .parent-name-cell { color: var(--primary-lux); font-weight: 700; }
+        .phone-container { display: flex; flex-direction: column; gap: 7px; }
+        .phone-wrapper { display: flex; align-items: center; gap: 7px; }
+        .phone-link { color: var(--text-main); text-decoration: none; font-weight: 600; }
+        .phone-link.blurred { filter: blur(5px); pointer-events: none; user-select: none; }
+        .toggle-blur-btn { border: none; background: none; color: var(--text-muted); cursor: pointer; }
+        .toggle-blur-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            width: fit-content;
+            padding: 6px 11px;
+            border-radius: 8px;
+            background: var(--whatsapp-bg);
+            color: var(--whatsapp);
+            text-decoration: none;
+            font-size: .75rem;
+            font-weight: 700;
+        }
+
+        .age-badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 8px;
+            background: rgba(15,26,92,.05);
+            color: var(--primary-lux);
+            font-size: .8rem;
+            font-weight: 700;
+        }
+
+        .interests-cell { max-width: 250px; color: var(--text-muted); }
+        .action-container { display: flex; align-items: center; gap: 8px; }
+
+        .status-btn {
+            border: none;
+            padding: 8px 12px;
+            border-radius: 9px;
+            background: #FEF3C7;
+            color: #D97706;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .status-btn.checked { background: var(--success-bg); color: var(--success); }
+
+        .delete-btn {
+            border: 1px solid rgba(220,38,38,.15);
+            padding: 8px;
+            border-radius: 9px;
+            background: transparent;
+            color: var(--danger);
+            cursor: pointer;
+        }
+        .delete-btn:hover { background: var(--danger-bg); }
+        .delete-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+        /* PORTFOLIO & NOTIFICATION TOOLBAR */
+        .portfolio-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .section-title h2 {
+            color: var(--primary-lux);
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .section-title p {
+            margin-top: 5px;
+            color: var(--text-muted);
+            font-size: .85rem;
+        }
+
+        .add-portfolio-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 20px;
+            border: none;
+            border-radius: var(--radius-sm);
+            background: var(--primary-lux);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .add-portfolio-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(15,26,92,.18);
+        }
+
+        /* PORTFOLIO LIST */
+        .portfolio-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border: 1px solid rgba(15,26,92,.07);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: white;
+        }
+
+        .portfolio-list-header {
+            display: grid;
+            grid-template-columns: 90px minmax(200px, 1.4fr) minmax(180px, 1fr) 170px 190px;
+            align-items: center;
+            min-height: 52px;
+            padding: 0 20px;
+            background: #F8FAFC;
+            color: var(--text-muted);
+            font-size: .72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .6px;
+        }
+
+        .portfolio-list-item {
+            display: grid;
+            grid-template-columns: 90px minmax(200px, 1.4fr) minmax(180px, 1fr) 170px 190px;
+            align-items: center;
+            min-height: 92px;
+            padding: 10px 20px;
+            border-top: 1px solid rgba(15,26,92,.05);
+            transition: background .25s ease;
+        }
+
+        .portfolio-list-item:hover { background: #FAFBFF; }
+        .portfolio-thumbnail-wrap { display: flex; align-items: center; }
+        .portfolio-thumbnail {
+            width: 62px;
+            height: 62px;
+            object-fit: cover;
+            display: block;
+            border-radius: 10px;
+            border: 1px solid rgba(15,26,92,.08);
+            background: #F8FAFC;
+            box-shadow: 0 3px 10px rgba(15,26,92,.07);
+        }
+
+        .portfolio-no-image {
+            width: 62px;
+            height: 62px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: #F1F5F9;
+            color: var(--text-muted);
+            font-size: .65rem;
+            text-align: center;
+        }
+
+        .portfolio-list-title {
+            color: var(--primary-lux);
+            font-size: .92rem;
+            font-weight: 800;
+            line-height: 1.4;
+            padding-right: 15px;
+        }
+
+        .portfolio-list-author { color: var(--accent-gold); font-size: .82rem; font-weight: 700; }
+        .portfolio-date { color: var(--text-muted); font-size: .78rem; line-height: 1.5; }
+        .portfolio-list-actions { display: flex; align-items: center; justify-content: flex-end; gap: 7px; }
+
+        .portfolio-action-btn {
+            border: none;
+            min-height: 38px;
+            padding: 9px 12px;
+            border-radius: 9px;
+            font-size: .76rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .portfolio-action-btn:hover { transform: translateY(-1px); }
+
+        .view-image-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            padding: 0;
+            background: #F1F5F9;
+            color: var(--primary-lux);
+        }
+        .view-image-btn:hover { background: var(--primary-lux); color: white; }
+        .view-image-btn svg { width: 19px; height: 19px; fill: currentColor; }
+
+        .edit-portfolio-btn { background: var(--edit-bg); color: var(--edit); }
+        .edit-portfolio-btn:hover { background: var(--edit); color: white; }
+        .delete-portfolio-btn { background: var(--danger-bg); color: var(--danger); }
+        .delete-portfolio-btn:hover { background: var(--danger); color: white; }
+
+        /* BİLDİRİŞ STATUS DÜYMƏLƏRİ */
+        .publish-btn { background: var(--success-bg); color: var(--success); }
+        .publish-btn:hover { background: var(--success); color: white; }
+        .unpublish-btn { background: #FEF3C7; color: #D97706; }
+        .unpublish-btn:hover { background: #D97706; color: white; }
+
+        .empty-portfolio {
+            padding: 60px 20px;
+            text-align: center;
+            color: var(--text-muted);
+            border: 1px dashed rgba(15,26,92,.12);
+            border-radius: var(--radius-md);
+            background: white;
+        }
+
+        .loading-text {
+            text-align: center;
+            padding: 50px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* FORMATLAMA TOOLBAR */
+        .rich-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+            background: #F1F5F9;
+            padding: 6px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(15,26,92,.08);
+            width: fit-content;
+        }
+
+        .rich-btn {
+            background: white;
+            border: 1px solid #CBD5E1;
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary-lux);
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            height: 30px;
+        }
+
+        .rich-btn:hover {
+            background: var(--primary-lux);
+            color: white;
+            border-color: var(--primary-lux);
+        }
+
+        /* MODALLAR */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(5,10,40,.65);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+        }
+
+        .modal-overlay.active { display: flex; }
+        .portfolio-modal {
+            width: 100%;
+            max-width: 650px;
+            max-height: 92vh;
+            overflow-y: auto;
+            padding: 30px;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .modal-header h2 { color: var(--primary-lux); font-size: 1.4rem; }
+        .modal-close {
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            background: #F1F5F9;
+            color: var(--text-muted);
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        .form-group { margin-bottom: 18px; }
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--primary-lux);
+            font-size: .8rem;
+            font-weight: 700;
+        }
+
+        textarea.form-input { min-height: 100px; resize: vertical; }
+
+        .image-upload-area {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 220px;
+            padding: 20px;
+            border: 2px dashed rgba(15,26,92,.15);
+            border-radius: var(--radius-md);
+            background: #F8FAFC;
+            cursor: pointer;
             overflow: hidden;
         }
 
-
-        .story-splash-content {
-
-            width:
-                min(90%, 430px);
-
-            text-align:
-                center;
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            animation:
-                splashContentIn
-                1.2s
-                ease
-                forwards;
-        }
-
-
-        .story-splash-logo {
-
-            width:
-                145px;
-
-            height:
-                145px;
-
-            object-fit:
-                contain;
-
-            display:
-                block;
-
-            margin:
-                0 auto 28px;
-        }
-
-
-        .story-splash-quote {
-
-            margin:
-                0;
-
-            max-width:
-                360px;
-
-            font-family:
-                'Quicksand',
-                sans-serif;
-
-            font-size:
-                0.98rem;
-
-            line-height:
-                1.75;
-
-            font-weight:
-                600;
-
-            color:
-                #64748b;
-
-            letter-spacing:
-                0.1px;
-        }
-
-
-        @keyframes splashContentIn {
-
-            0% {
-
-                opacity: 0;
-
-                transform:
-                    translateY(14px)
-                    scale(0.96);
-            }
-
-            60% {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0)
-                    scale(1.02);
-            }
-
-            100% {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0)
-                    scale(1);
-            }
-        }
-
-
-        #story-splash.hide {
-
-            opacity: 0;
-
-            visibility: hidden;
-
-            pointer-events: none;
-        }
-
-
-        /* =====================================================
-           NAV
-        ====================================================== */
-
-        nav {
-
-            background:
-                rgba(
-                    255,
-                    255,
-                    255,
-                    0.9
-                );
-
-            backdrop-filter:
-                blur(10px);
-
-            -webkit-backdrop-filter:
-                blur(10px);
-
-            position:
-                sticky;
-
-            top:
-                0;
-
-            z-index:
-                1000;
-
-            border-bottom:
-                1px solid #e2e8f0;
-        }
-
-
-        .nav-container {
-
-            max-width:
-                1000px;
-
-            margin:
-                0 auto;
-
-            display:
-                flex;
-
-            justify-content:
-                space-between;
-
-            align-items:
-                center;
-
-            padding:
-                18px 24px;
-        }
-
-
-        .nav-logo {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                9px;
-
-            font-size:
-                1.25rem;
-
-            font-weight:
-                700;
-
-            color:
-                var(--text-main);
-
-            text-decoration:
-                none;
-
-            letter-spacing:
-                -0.5px;
-        }
-
-
-        .nav-logo img {
-
-            width:
-                38px;
-
-            height:
-                38px;
-
-            object-fit:
-                contain;
-        }
-
-
-        /* =====================================================
-           DESKTOP MENU
-        ====================================================== */
-
-        .nav-links {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                24px;
-        }
-
-
-        .nav-links a {
-
-            text-decoration:
-                none;
-
-            font-size:
-                0.85rem;
-
-            font-weight:
-                700;
-
-            color:
-                var(--text-sub);
-
-            transition:
-                color 0.2s ease;
-
-            letter-spacing:
-                0.5px;
-        }
-
-
-        .nav-links a:hover {
-
-            color:
-                var(--primary-magic);
-        }
-
-
-        .nav-links .legal-nav-link {
-
-            color:
-                var(--text-sub);
-        }
-
-
-        .nav-links .legal-nav-link:hover {
-
-            color:
-                var(--primary-magic);
-        }
-
-
-        .nav-links .admin-link {
-
-            color:
-                var(--white);
-
-            background:
-                var(--primary-magic);
-
-            padding:
-                9px 18px;
-
-            border-radius:
-                50px;
-
-            box-shadow:
-                0 4px 14px
-                rgba(
-                    79,
-                    70,
-                    229,
-                    0.2
-                );
-        }
-
-
-        /* =====================================================
-           HAMBURGER
-        ====================================================== */
-
-        .hamburger {
-
-            display:
-                none;
-
-            width:
-                42px;
-
-            height:
-                42px;
-
-            border:
-                none;
-
-            background:
-                transparent;
-
-            cursor:
-                pointer;
-
-            padding:
-                8px;
-
-            flex-direction:
-                column;
-
-            justify-content:
-                center;
-
-            align-items:
-                center;
-
-            gap:
-                5px;
-
-            border-radius:
-                10px;
-        }
-
-
-        .hamburger span {
-
-            display:
-                block;
-
-            width:
-                23px;
-
-            height:
-                2px;
-
-            background:
-                var(--text-main);
-
-            border-radius:
-                10px;
-
-            transition:
-                transform 0.3s ease,
-                opacity 0.3s ease;
-        }
-
-
-        .hamburger.active span:nth-child(1) {
-
-            transform:
-                translateY(7px)
-                rotate(45deg);
-        }
-
-
-        .hamburger.active span:nth-child(2) {
-
-            opacity:
-                0;
-        }
-
-
-        .hamburger.active span:nth-child(3) {
-
-            transform:
-                translateY(-7px)
-                rotate(-45deg);
-        }
-
-
-        /* =====================================================
-           MOBİL MENYU
-        ====================================================== */
-
-        .mobile-menu {
-
-            display:
-                none;
-
-            max-width:
-                1000px;
-
-            margin:
-                0 auto;
-
-            padding:
-                0 16px 14px;
-        }
-
-
-        .mobile-menu a {
-
-            display:
-                block;
-
-            text-decoration:
-                none;
-
-            color:
-                var(--text-main);
-
-            font-size:
-                0.9rem;
-
-            font-weight:
-                700;
-
-            padding:
-                13px 16px;
-
-            margin-top:
-                6px;
-
-            background:
-                #ffffff;
-
-            border:
-                1px solid #edf2f7;
-
-            border-radius:
-                12px;
-
-            transition:
-                background 0.2s ease,
-                color 0.2s ease,
-                transform 0.2s ease;
-        }
-
-
-        .mobile-menu a:hover {
-
-            color:
-                var(--primary-magic);
-        }
-
-
-        .mobile-menu a:active {
-
-            transform:
-                scale(0.98);
-        }
-
-
-        .mobile-menu .mobile-legal-link {
-
-            color:
-                var(--text-main);
-
-            background:
-                #ffffff;
-        }
-
-
-        .mobile-menu .mobile-legal-link:hover {
-
-            color:
-                var(--primary-magic);
-
-            background:
-                var(--primary-soft);
-        }
-
-
-        .mobile-menu .mobile-admin-link {
-
-            color:
-                var(--white);
-
-            background:
-                var(--primary-magic);
-
-            border-color:
-                var(--primary-magic);
-        }
-
-
-        .mobile-menu.show {
-
-            display:
-                block;
-        }
-
-
-        /* =====================================================
-           ƏSAS KONTEYNER
-        ====================================================== */
-
-        .container {
-
-            max-width:
-                900px;
-
-            margin:
-                0 auto;
-
-            padding:
-                0 20px;
-        }
-
-
-        /* =====================================================
-           HEADER
-        ====================================================== */
-
-        header {
-
-            text-align:
-                center;
-
-            padding:
-                50px 10px 45px;
-        }
-
-
-        header h1 {
-
-            font-size:
-                2.8rem;
-
-            font-weight:
-                700;
-
-            color:
-                var(--text-main);
-
-            margin-bottom:
-                8px;
-
-            letter-spacing:
-                -1px;
-        }
-
-
-        header .subtitle {
-
-            font-size:
-                1.25rem;
-
-            font-weight:
-                600;
-
-            color:
-                var(--primary-magic);
-
-            margin-bottom:
-                24px;
-        }
-
-
-        .main-badge {
-
-            display:
-                inline-block;
-
-            background:
-                var(--primary-soft);
-
-            color:
-                var(--primary-magic);
-
-            padding:
-                8px 20px;
-
-            border-radius:
-                50px;
-
-            font-weight:
-                700;
-
-            font-size:
-                0.88rem;
-        }
-
-
-        /* =====================================================
-           ADDIM KARTLARI
-        ====================================================== */
-
-        .step-card {
-
-            background:
-                var(--card-bg);
-
-            border-radius:
-                var(--radius-xl);
-
-            padding:
-                40px;
-
-            margin-bottom:
-                24px;
-
-            box-shadow:
-                var(--shadow-soft);
-
-            border:
-                1px solid #edf2f7;
-
-            transition:
-                all 0.3s
-                cubic-bezier(
-                    0.165,
-                    0.84,
-                    0.44,
-                    1
-                );
-        }
-
-
-        .step-card:hover {
-
-            transform:
-                translateY(-3px);
-
-            box-shadow:
-                var(--shadow-hover);
-
-            border-color:
-                rgba(
-                    79,
-                    70,
-                    229,
-                    0.15
-                );
-        }
-
-
-        .step-header {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                16px;
-
-            margin-bottom:
-                16px;
-        }
-
-
-        .step-number {
-
-            background:
-                var(--primary-soft);
-
-            color:
-                var(--primary-magic);
-
-            font-weight:
-                700;
-
-            font-size:
-                1.2rem;
-
-            width:
-                40px;
-
-            height:
-                40px;
-
-            border-radius:
-                12px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            flex-shrink:
-                0;
-        }
-
-
-        .step-title h2 {
-
-            font-size:
-                1.45rem;
-
-            font-weight:
-                700;
-
-            color:
-                var(--text-main);
-
-            letter-spacing:
-                -0.3px;
-        }
-
-
-        .step-desc {
-
-            font-size:
-                1rem;
-
-            color:
-                var(--text-sub);
-
-            margin-bottom:
-                28px;
-
-            line-height:
-                1.6;
-        }
-
-
-        .step-body {
-
-            display:
-                flex;
-
-            gap:
-                30px;
-
-            align-items:
-                center;
-        }
-
-
-        .step-img-side {
-
-            flex:
-                1.3;
-        }
-
-
-        .step-img-box {
-
-            width:
-                100%;
-
-            aspect-ratio:
-                16 / 10;
-
-            background:
-                #f7fafc;
-
-            border-radius:
-                var(--radius-md);
-
-            overflow:
-                hidden;
-
-            border:
-                1px solid #e2e8f0;
-        }
-
-
-        .step-img-box img {
-
-            width:
-                100%;
-
-            height:
-                100%;
-
-            object-fit:
-                cover;
-        }
-
-
-        .step-features-side {
-
-            flex:
-                1;
-
-            display:
-                flex;
-
-            gap:
-                16px;
-        }
-
-
-        .feature-sub-card {
-
-            flex:
-                1;
-
-            background:
-                #f8fafc;
-
-            border-radius:
-                var(--radius-md);
-
-            padding:
-                24px 12px;
-
-            text-align:
-                center;
-
-            border:
-                1px solid #edf2f7;
-
-            transition:
-                background 0.2s ease;
-        }
-
-
-        .feature-sub-card:hover {
-
-            background:
-                #f1f5f9;
-        }
-
-
-        .feature-icon {
-
-            font-size:
-                2.2rem;
-
-            margin-bottom:
-                8px;
-
-            display:
-                inline-block;
-        }
-
-
-        .feature-sub-card p {
-
-            font-size:
-                0.88rem;
-
-            font-weight:
-                600;
-
-            color:
-                var(--text-main);
-
-            line-height:
-                1.3;
-        }
-
-
-        /* =====================================================
-           SİFARİŞ + QİYMƏT BÖLMƏSİ
-        ====================================================== */
-
-        .order-section {
-
-            width:
-                100%;
-
-            margin:
-                35px auto 0;
-
-            background:
-                #ffffff;
-
-            border:
-                1px solid #e2e8f0;
-
-            border-radius:
-                24px;
-
-            box-shadow:
-                0 10px 35px
-                rgba(
-                    15,
-                    23,
-                    42,
-                    0.04
-                );
-
-            overflow:
-                hidden;
-        }
-
-
-        .order-desktop-layout {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                0.85fr 1.15fr;
-
-            align-items:
-                stretch;
-        }
-
-
-        /* =====================================================
-           QİYMƏT PANELİ — DESKTOP
-        ====================================================== */
-
-        .price-panel {
-
-            padding:
-                42px 34px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #f8f7ff 0%,
-                    #ffffff 100%
-                );
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            justify-content:
-                center;
-
-            align-items:
-                center;
-
-            text-align:
-                center;
-
-            border-right:
-                1px solid #edf2f7;
-        }
-
-
-        .price-small-title {
-
-            font-size:
-                0.78rem;
-
-            font-weight:
-                800;
-
-            letter-spacing:
-                1.5px;
-
-            color:
-                var(--primary-magic);
-
-            margin-bottom:
-                12px;
-
-            text-transform:
-                uppercase;
-        }
-
-
-        .price-title {
-
-            font-family:
-                'Quicksand',
-                sans-serif;
-
-            font-size:
-                1.55rem;
-
-            font-weight:
-                700;
-
-            line-height:
-                1.25;
-
-            color:
-                var(--text-main);
-
-            margin-bottom:
-                12px;
-        }
-
-
-        .price-value {
-
-            display:
-                flex;
-
-            align-items:
-                baseline;
-
-            justify-content:
-                center;
-
-            gap:
-                6px;
-
-            margin:
-                8px 0 12px;
-        }
-
-
-        .price-number {
-
-            font-family:
-                'Quicksand',
-                sans-serif;
-
-            font-size:
-                3.8rem;
-
-            line-height:
-                1;
-
-            font-weight:
-                700;
-
-            color:
-                var(--primary-magic);
-
-            letter-spacing:
-                -2px;
-        }
-
-
-        .price-currency {
-
-            font-family:
-                'Quicksand',
-                sans-serif;
-
-            font-size:
-                1.45rem;
-
-            font-weight:
-                700;
-
-            color:
-                var(--primary-magic);
-        }
-
-
-        .price-description {
-
-            max-width:
-                260px;
-
-            font-size:
-                0.86rem;
-
-            line-height:
-                1.6;
-
-            color:
-                var(--text-sub);
-
-            margin-bottom:
-                20px;
-        }
-
-
-        .price-features {
-
-            width:
-                100%;
-
-            max-width:
-                270px;
-
-            margin:
-                0 auto;
-
-            text-align:
-                left;
-        }
-
-
-        .price-feature {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                9px;
-
-            font-size:
-                0.82rem;
-
-            font-weight:
-                600;
-
-            color:
-                var(--text-main);
-
-            margin-bottom:
-                11px;
-        }
-
-
-        .price-feature span:first-child {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            width:
-                22px;
-
-            height:
-                22px;
-
-            border-radius:
-                50%;
-
-            background:
-                var(--primary-soft);
-
-            color:
-                var(--primary-magic);
-
-            font-size:
-                0.75rem;
-
-            flex-shrink:
-                0;
-        }
-
-
-        .price-panel .price-action-btn {
-
-            display:
-                none;
-        }
-
-
-        /* =====================================================
-           FORM PANELİ
-        ====================================================== */
-
-        .form-panel {
-
-            padding:
-                34px;
-        }
-
-
-        .order-form-container {
-
-            max-width:
-                none;
-
-            margin:
-                0;
-
-            padding:
-                0;
-
-            text-align:
-                left;
-
-            background:
-                transparent;
-
-            border:
-                none;
-        }
-
-
-        .form-top {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                space-between;
-
-            margin-bottom:
-                24px;
-        }
-
-
-        .form-heading {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            gap:
-                10px;
-        }
-
-
-        .order-form-container h4 {
-
-            margin:
-                0;
-
-            color:
-                var(--primary-magic);
-
-            font-size:
-                1.25rem;
-
-            font-weight:
-                700;
-
-            text-align:
-                left;
-        }
-
-
-        .form-group {
-
-            margin-bottom:
-                16px;
-        }
-
-
-        .form-group label {
-
-            display:
-                block;
-
-            font-weight:
-                600;
-
-            margin-bottom:
-                7px;
-
-            font-size:
-                0.82rem;
-
-            color:
-                var(--text-main);
-        }
-
-
-        .form-group input,
-        .form-group textarea {
-
-            width:
-                100%;
-
-            padding:
-                11px 13px;
-
-            border-radius:
-                10px;
-
-            border:
-                1px solid #cbd5e1;
-
-            font-size:
-                0.92rem;
-
-            outline:
-                none;
-
-            background:
-                #fff;
-
-            color:
-                var(--text-main);
-
-            font-family:
-                inherit;
-
-            transition:
-                border-color 0.2s,
-                box-shadow 0.2s;
-        }
-
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-
-            border-color:
-                var(--primary-magic);
-
-            box-shadow:
-                0 0 0 3px
-                rgba(
-                    79,
-                    70,
-                    229,
-                    0.1
-                );
-        }
-
-
-        .order-btn {
-
-            display:
-                block;
-
-            width:
-                100%;
-
-            border:
-                none;
-
-            background:
-                var(--gold-gradient);
-
-            color:
-                var(--white);
-
-            padding:
-                15px;
-
-            font-size:
-                1rem;
-
-            font-weight:
-                700;
-
-            font-family:
-                'Quicksand',
-                sans-serif;
-
-            border-radius:
-                12px;
-
-            cursor:
-                pointer;
-
-            box-shadow:
-                0 6px 20px
-                rgba(
-                    255,
-                    107,
-                    107,
-                    0.2
-                );
-
-            transition:
-                all 0.2s ease;
-        }
-
-
-        .order-btn:hover {
-
-            transform:
-                translateY(-1px);
-
-            box-shadow:
-                0 10px 25px
-                rgba(
-                    255,
-                    107,
-                    107,
-                    0.25
-                );
-        }
-
-
-        .order-btn:disabled {
-
-            opacity:
-                0.7;
-
-            cursor:
-                not-allowed;
-
-            transform:
-                none;
-        }
-
-
-        .whatsapp-note {
-
-            font-size:
-                0.78rem;
-
-            font-weight:
-                500;
-
-            color:
-                var(--text-sub);
-
-            margin-top:
-                15px;
-
-            line-height:
-                1.5;
-        }
-
-
-        /* =====================================================
-           BİLDİRİŞ POP-UP MODALI (HTML FORMATLI)
-        ====================================================== */
-
-        .site-notification-overlay {
-
+        .image-upload-area:hover { border-color: var(--primary-lux); }
+        .image-upload-area input { display: none; }
+        .upload-placeholder { text-align: center; color: var(--text-muted); }
+        .upload-placeholder strong { display: block; margin-bottom: 5px; color: var(--primary-lux); }
+        #imagePreview { display: none; max-width: 100%; max-height: 300px; object-fit: contain; border-radius: 10px; }
+
+        .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 25px; }
+        .modal-btn { padding: 12px 20px; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; }
+        .cancel-btn { background: #F1F5F9; color: var(--text-muted); }
+        .save-btn { background: var(--primary-lux); color: white; }
+        .save-btn:disabled { opacity: .6; cursor: wait; }
+
+        /* IMAGE VIEWER */
+        .image-viewer-overlay {
             position: fixed;
-
             inset: 0;
-
-            background: rgba(15, 23, 42, 0.7);
-
-            backdrop-filter: blur(8px);
-
-            -webkit-backdrop-filter: blur(8px);
-
-            z-index: 9999999;
-
             display: none;
-
             align-items: center;
-
             justify-content: center;
-
-            padding: 20px;
+            padding: 30px;
+            background: rgba(5,10,40,.72);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            z-index: 20000;
+            opacity: 0;
+            transition: opacity .25s ease;
         }
 
-
-        .site-notification-card {
-
+        .image-viewer-overlay.active { display: flex; opacity: 1; }
+        .image-viewer-content {
             position: relative;
-
-            width: 100%;
-
-            max-width: 440px;
-
-            background: #ffffff;
-
-            border-radius: 24px;
-
-            padding: 35px 26px 26px;
-
-            text-align: center;
-
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
-
-            border: 1px solid rgba(79, 70, 229, 0.15);
-
-            animation: popupAppear 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        @keyframes popupAppear {
-            0% {
-                opacity: 0;
-                transform: translateY(20px) scale(0.95);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-
-        .site-notification-close-x {
-
-            position: absolute;
-
-            top: 15px;
-
-            right: 15px;
-
-            background: #f1f5f9;
-
-            border: none;
-
-            width: 34px;
-
-            height: 34px;
-
-            border-radius: 50%;
-
+            max-width: min(1000px, 92vw);
+            max-height: 90vh;
             display: flex;
-
             align-items: center;
-
             justify-content: center;
+        }
 
-            font-size: 1.4rem;
+        .image-viewer-image {
+            display: block;
+            max-width: 100%;
+            max-height: 84vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 14px;
+            background: white;
+            box-shadow: 0 30px 90px rgba(0,0,0,.35);
+        }
 
+        .image-viewer-close {
+            position: fixed;
+            top: 25px;
+            right: 28px;
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,.25);
+            border-radius: 50%;
+            background: rgba(255,255,255,.12);
+            color: white;
+            font-size: 28px;
             line-height: 1;
-
-            color: #64748b;
-
             cursor: pointer;
-
-            transition: background 0.2s, color 0.2s;
+            backdrop-filter: blur(8px);
+            transition: var(--transition);
+            z-index: 2;
         }
 
-
-        .site-notification-close-x:hover {
-
-            background: #e2e8f0;
-
-            color: #1e293b;
-        }
-
-
-        .site-notification-icon {
-
-            font-size: 3rem;
-
-            margin-bottom: 12px;
-
-            display: inline-block;
-        }
-
-
-        .site-notification-title {
-
-            font-size: 1.35rem;
-
+        .image-viewer-close:hover { background: white; color: var(--primary-lux); transform: rotate(90deg); }
+        .image-viewer-title {
+            position: fixed;
+            left: 50%;
+            bottom: 25px;
+            transform: translateX(-50%);
+            max-width: 80%;
+            padding: 10px 18px;
+            border-radius: 10px;
+            background: rgba(255,255,255,.92);
+            color: var(--primary-lux);
+            font-size: .82rem;
             font-weight: 700;
-
-            color: var(--text-main);
-
-            margin-bottom: 10px;
-
-            font-family: 'Quicksand', sans-serif;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,.15);
+            backdrop-filter: blur(8px);
         }
 
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            body { padding: 0 10px 50px; }
+            .admin-container { margin-top: 10px; padding: 20px; border-radius: 18px; }
+            .admin-header { align-items: flex-start; gap: 15px; flex-direction: column; }
+            .admin-tabs { width: 100%; }
+            .admin-tab { flex: 1; text-align: center; padding: 12px 10px; font-size: 0.85rem; }
 
-        .site-notification-message {
+            table, thead, tbody, th, td, tr { display: block; }
+            thead { display: none; }
+            tr { margin-bottom: 20px; padding: 15px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+            td { display: flex; justify-content: space-between; align-items: center; gap: 15px; padding: 12px 0; border-top: 1px dashed rgba(15,26,92,.08); text-align: right; }
+            td:first-child { border-top: none; }
+            td::before { content: attr(data-label); flex-shrink: 0; color: var(--text-muted); font-size: .7rem; font-weight: 700; text-transform: uppercase; }
+            .action-container { justify-content: flex-end; }
 
-            font-size: 0.95rem;
-
-            color: var(--text-sub);
-
-            line-height: 1.6;
-
-            margin-bottom: 24px;
-
-            white-space: pre-line;
-
-            max-height: 250px;
-
-            overflow-y: auto;
+            .portfolio-list { border: none; background: transparent; overflow: visible; gap: 12px; }
+            .portfolio-list-header { display: none; }
+            .portfolio-list-item {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                padding: 18px;
+                background: white;
+                border: 1px solid rgba(15,26,92,.07);
+                border-radius: var(--radius-md);
+                box-shadow: var(--shadow-sm);
+            }
+            .portfolio-list-actions { width: 100%; justify-content: flex-start; flex-wrap: wrap; margin-top: 10px; border-top: 1px dashed rgba(15,26,92,.08); padding-top: 10px; }
         }
-
-        /* Link və Formatlama Dizaynı */
-        .site-notification-message b,
-        .site-notification-message strong {
-            color: var(--text-main);
-            font-weight: 700;
-        }
-
-        .site-notification-message a {
-            color: var(--primary-magic);
-            font-weight: 700;
-            text-decoration: underline;
-            transition: color 0.2s;
-        }
-
-        .site-notification-message a:hover {
-            color: #312e81;
-        }
-
-
-        .site-notification-btn {
-
-            width: 100%;
-
-            background: var(--primary-magic);
-
-            color: #ffffff;
-
-            border: none;
-
-            padding: 14px;
-
-            border-radius: 12px;
-
-            font-weight: 700;
-
-            font-size: 0.95rem;
-
-            font-family: 'Quicksand', sans-serif;
-
-            cursor: pointer;
-
-            box-shadow: 0 6px 18px rgba(79, 70, 229, 0.25);
-
-            transition: transform 0.2s ease, background 0.2s ease;
-        }
-
-
-        .site-notification-btn:hover {
-
-            background: #4338ca;
-
-            transform: translateY(-1px);
-        }
-
-
-        /* =====================================================
-           MOBİL
-        ====================================================== */
-
-        .mobile-order-wrapper {
-
-            display:
-                none;
-        }
-
-
-        @media (max-width: 768px) {
-
-            .nav-container {
-
-                padding:
-                    12px 16px;
-            }
-
-
-            .nav-logo {
-
-                font-size:
-                    1rem;
-
-                gap:
-                    8px;
-            }
-
-
-            .nav-logo img {
-
-                width:
-                    34px;
-
-                height:
-                    34px;
-            }
-
-
-            .nav-links {
-
-                display:
-                    none;
-            }
-
-
-            .hamburger {
-
-                display:
-                    flex;
-            }
-
-
-            header {
-
-                padding:
-                    35px 5px;
-            }
-
-
-            header h1 {
-
-                font-size:
-                    2.1rem;
-            }
-
-
-            header .subtitle {
-
-                font-size:
-                    1.1rem;
-            }
-
-
-            .main-badge {
-
-                font-size:
-                    0.78rem;
-
-                padding:
-                    8px 14px;
-            }
-
-
-            .container {
-
-                padding:
-                    0 16px;
-            }
-
-
-            .step-card {
-
-                padding:
-                    24px 20px;
-
-                border-radius:
-                    20px;
-
-                margin-bottom:
-                    16px;
-            }
-
-
-            .step-title h2 {
-
-                font-size:
-                    1.25rem;
-            }
-
-
-            .step-desc {
-
-                font-size:
-                    0.95rem;
-
-                margin-bottom:
-                    20px;
-            }
-
-
-            .step-body {
-
-                flex-direction:
-                    column;
-
-                gap:
-                    20px;
-            }
-
-
-            .step-img-side {
-
-                width:
-                    100%;
-            }
-
-
-            .step-features-side {
-
-                width:
-                    100%;
-
-                gap:
-                    12px;
-            }
-
-
-            .feature-sub-card {
-
-                padding:
-                    16px 8px;
-
-                border-radius:
-                    12px;
-            }
-
-
-            .feature-icon {
-
-                font-size:
-                    1.8rem;
-            }
-
-
-            .feature-sub-card p {
-
-                font-size:
-                    0.78rem;
-            }
-
-
-            .order-section {
-
-                position:
-                    relative;
-
-                margin:
-                    28px auto 0;
-
-                border-radius:
-                    20px;
-
-                overflow:
-                    hidden;
-            }
-
-
-            .order-desktop-layout {
-
-                display:
-                    none;
-            }
-
-
-            .mobile-order-wrapper {
-
-                display:
-                    block;
-
-                width:
-                    100%;
-
-                overflow:
-                    hidden;
-            }
-
-
-            .mobile-order-track {
-
-                display:
-                    flex;
-
-                width:
-                    200%;
-
-                transform:
-                    translateX(0);
-
-                transition:
-                    transform 0.45s
-                    cubic-bezier(
-                        0.22,
-                        1,
-                        0.36,
-                        1
-                    );
-            }
-
-
-            .mobile-order-track.show-form {
-
-                transform:
-                    translateX(-50%);
-            }
-
-
-            .mobile-order-panel {
-
-                width:
-                    50%;
-
-                flex:
-                    0 0 50%;
-
-                min-width:
-                    50%;
-            }
-
-
-            .mobile-price-panel {
-
-                padding:
-                    32px 22px 28px;
-
-                background:
-                    linear-gradient(
-                        145deg,
-                        #f8f7ff 0%,
-                        #ffffff 100%
-                    );
-
-                text-align:
-                    center;
-            }
-
-
-            .price-small-title {
-
-                font-size:
-                    0.72rem;
-
-                margin-bottom:
-                    10px;
-            }
-
-
-            .price-title {
-
-                font-size:
-                    1.35rem;
-
-                margin-bottom:
-                    10px;
-            }
-
-
-            .price-number {
-
-                font-size:
-                    3.3rem;
-            }
-
-
-            .price-currency {
-
-                font-size:
-                    1.25rem;
-            }
-
-
-            .price-description {
-
-                font-size:
-                    0.82rem;
-
-                max-width:
-                    280px;
-
-                margin:
-                    0 auto 20px;
-            }
-
-
-            .price-features {
-
-                max-width:
-                    285px;
-
-                margin-bottom:
-                    22px;
-            }
-
-
-            .price-feature {
-
-                font-size:
-                    0.79rem;
-
-                margin-bottom:
-                    9px;
-            }
-
-
-            .mobile-price-panel .price-action-btn {
-
-                display:
-                    block;
-
-                width:
-                    100%;
-
-                max-width:
-                    100%;
-
-                border:
-                    none;
-
-                background:
-                    var(--gold-gradient);
-
-                color:
-                    #ffffff;
-
-                padding:
-                    14px 18px;
-
-                border-radius:
-                    12px;
-
-                font-family:
-                    'Quicksand',
-                    sans-serif;
-
-                font-size:
-                    0.98rem;
-
-                font-weight:
-                    700;
-
-                cursor:
-                    pointer;
-
-                box-shadow:
-                    0 6px 20px
-                    rgba(
-                        255,
-                        107,
-                        107,
-                        0.18
-                    );
-
-                transition:
-                    transform 0.2s ease,
-                    box-shadow 0.2s ease;
-            }
-
-
-            .mobile-price-panel .price-action-btn:hover {
-
-                transform:
-                    translateY(-2px);
-
-                box-shadow:
-                    0 10px 25px
-                    rgba(
-                        255,
-                        107,
-                        107,
-                        0.25
-                    );
-            }
-
-
-            .mobile-form-panel {
-
-                padding:
-                    24px 18px 22px;
-
-                background:
-                    #ffffff;
-            }
-
-
-            .form-top {
-
-                margin-bottom:
-                    20px;
-            }
-
-
-            .form-heading {
-
-                gap:
-                    8px;
-            }
-
-
-            .order-form-container h4 {
-
-                font-size:
-                    1.1rem;
-            }
-
-
-            .mobile-back-btn {
-
-                display:
-                    flex;
-
-                align-items:
-                    center;
-
-                justify-content:
-                    center;
-
-                gap:
-                    4px;
-
-                width:
-                    38px;
-
-                height:
-                    38px;
-
-                border:
-                    1px solid #e2e8f0;
-
-                background:
-                    #f8fafc;
-
-                border-radius:
-                    10px;
-
-                color:
-                    var(--text-main);
-
-                font-size:
-                    1.1rem;
-
-                cursor:
-                    pointer;
-            }
-
-
-            .form-group {
-
-                margin-bottom:
-                    14px;
-            }
-
-
-            .form-group label {
-
-                font-size:
-                    0.78rem;
-
-                margin-bottom:
-                    6px;
-            }
-
-
-            .form-group input,
-            .form-group textarea {
-
-                padding:
-                    11px 12px;
-
-                font-size:
-                    0.88rem;
-            }
-
-
-            .order-btn {
-
-                padding:
-                    14px;
-
-                font-size:
-                    0.95rem;
-            }
-
-
-            .whatsapp-note {
-
-                font-size:
-                    0.74rem;
-
-                margin-top:
-                    12px;
-            }
-
-        }
-
     </style>
-
 </head>
-
 
 <body>
 
-
-    <!-- =====================================================
-         GUNEL'S STORY — AÇILIŞ EKRANI
-    ====================================================== -->
-
-    <div id="story-splash">
-
-        <div class="story-splash-content">
-
-            <img
-                src="image/logo.png"
-                alt="Gunel's story"
-                class="story-splash-logo"
-            >
-
-            <p class="story-splash-quote">
-
-                Sevgi ilə yazılan hekayələr,<br>
-
-                günəş kimi parlayan uşaqlar üçün.
-
-            </p>
-
+    <!-- LOGIN -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-box">
+            <h2>Xoş Gəldiniz</h2>
+            <p class="login-subtitle">Gunel's Story Admin Panelinə giriş edin</p>
+            <div class="input-group">
+                <label class="input-label">İstifadəçi adı</label>
+                <input type="text" id="username" class="login-input" placeholder="admin">
+            </div>
+            <div class="input-group">
+                <label class="input-label">Şifrə</label>
+                <div class="password-container">
+                    <input type="password" id="password" class="login-input" placeholder="••••••••">
+                    <button type="button" onclick="togglePasswordVisibility()" class="toggle-password" id="togglePasswordBtn">
+                        <svg id="eyeClosedIcon" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                        <svg id="eyeOpenIcon" viewBox="0 0 24 24" style="display:none"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-4.5c-5 0-9.27 3.11-11 7.5 1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z"/></svg>
+                    </button>
+                </div>
+            </div>
+            <button onclick="checkFirestoreLogin()" id="loginBtn" class="login-btn">Sistemə Daxil Ol</button>
+            <a href="index.html" class="login-back-btn">← Əsas Səhifəyə Qayıt</a>
+            <div id="loginError">Məlumatlar yanlışdır və ya baza bağlantısı qurulmadı!</div>
         </div>
-
     </div>
 
-
-    <!-- =====================================================
-         ÜST MENYU
-    ====================================================== -->
-
-    <nav>
-
-        <div class="nav-container">
-
-            <a
-                href="index.html"
-                class="nav-logo"
-            >
-
-                <img
-                    src="image/logo.png"
-                    alt="Gunel's story"
-                >
-
-                <span>
-                    Gunel's story
-                </span>
-
-            </a>
-
-
-            <!-- DESKTOP MENU -->
-
-            <div class="nav-links">
-
-                <a href="haqqimizda.html">
-                    HAQQIMIZDA
-                </a>
-
-                <a href="portfolio.html">
-                    PORTFOLİO
-                </a>
-
-                <a
-                    href="mexfilik.html"
-                    class="legal-nav-link"
-                >
-                    MƏXFİLİK SİYASƏTİ
-                </a>
-
-                <a
-                    href="xidmet-sertleri.html"
-                    class="legal-nav-link"
-                >
-                    XİDMƏT ŞƏRTLƏRİ
-                </a>
-
-                <a
-                    href="admin.html"
-                    class="admin-link"
-                >
-                    ⚙️ ADMİN
-                </a>
-
-            </div>
-
-
-            <!-- MOBİL HAMBURGER -->
-
-            <button
-                class="hamburger"
-                id="hamburger"
-                aria-label="Menyu"
-                aria-expanded="false"
-                type="button"
-            >
-
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </button>
-
+    <!-- ADMIN PANEL -->
+    <div class="admin-container" id="adminContainer">
+        <div class="admin-header">
+            <h1>İdarəetmə Paneli</h1>
+            <button onclick="logoutAdmin()" class="logout-btn">Sistemdən çıxış</button>
         </div>
 
-
-        <!-- =====================================================
-             MOBİL AÇILAN MENYU
-        ====================================================== -->
-
-        <div
-            class="mobile-menu"
-            id="mobileMenu"
-        >
-
-            <a href="haqqimizda.html">
-                HAQQIMIZDA
-            </a>
-
-            <a href="portfolio.html">
-                PORTFOLİO
-            </a>
-
-            <a
-                href="mexfilik.html"
-                class="mobile-legal-link"
-            >
-                MƏXFİLİK SİYASƏTİ
-            </a>
-
-            <a
-                href="xidmet-sertleri.html"
-                class="mobile-legal-link"
-            >
-                XİDMƏT ŞƏRTLƏRİ
-            </a>
-
-            <a
-                href="admin.html"
-                class="mobile-admin-link"
-            >
-                ⚙️ ADMİN
-            </a>
-
+        <!-- TABS -->
+        <div class="admin-tabs">
+            <button class="admin-tab active" onclick="switchAdminTab('orders', this)">Sifarişlər</button>
+            <button class="admin-tab" onclick="switchAdminTab('portfolio', this)">Portfolio</button>
+            <button class="admin-tab" onclick="switchAdminTab('notifications', this)">📢 Bildirişlər</button>
         </div>
 
-    </nav>
-
-
-    <!-- =====================================================
-         ƏSAS KONTEYNER
-    ====================================================== -->
-
-    <div class="container">
-
-
-        <!-- HEADER -->
-
-        <header>
-
-            <h1>
-                Gunel's story
-            </h1>
-
-            <div class="subtitle">
-
-                Sevgi ilə yazılan hekayələr,
-                günəş kimi parlayan uşaqlar üçün...☀️
-
+        <!-- ORDERS SECTION -->
+        <section class="admin-section active" id="ordersSection">
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Valideynin adı</th>
+                            <th>Əlaqə</th>
+                            <th>Uşağın adı</th>
+                            <th>Yaş</th>
+                            <th>Maraq və istəklər</th>
+                            <th>Sifariş tarixi</th>
+                            <th>Əməliyyat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                        <tr>
+                            <td colspan="7" style="text-align:center; padding:50px; color:var(--text-muted);">
+                                Məlumatlar yüklənir...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+        </section>
 
-            <div class="main-badge">
-
-                🌕 100% xüsusi və fərdi hekayə kitabları
-
+        <!-- PORTFOLIO SECTION -->
+        <section class="admin-section" id="portfolioSection">
+            <div class="portfolio-toolbar">
+                <div class="section-title">
+                    <h2>Portfolio</h2>
+                    <p>Portfolioda olan kitabların idarəolunma mərkəzi.</p>
+                </div>
+                <button class="add-portfolio-btn" onclick="openPortfolioModal()">+ Kitab əlavə et</button>
             </div>
-
-        </header>
-
-
-        <!-- =================================================
-             ADDIM 1
-        ================================================== -->
-
-        <div class="step-card">
-
-            <div class="step-header">
-
-                <div class="step-number">
-                    1
-                </div>
-
-                <div class="step-title">
-
-                    <h2>
-                        Uşağınız Üçün Xüsusi Hekayə
-                    </h2>
-
-                </div>
-
+            <div id="portfolioAdminGrid">
+                <div class="loading-text">Portfolio yüklənir...</div>
             </div>
+        </section>
 
-            <p class="step-desc">
-
-                Uşağınızın adı, sevimli heyvanları və xəyalları
-                əsasında tam fərdi hekayə hazırlanır.
-
-            </p>
-
-            <div class="step-body">
-
-                <div class="step-img-side">
-
-                    <div class="step-img-box">
-
-                        <img
-                            src="image/step1.png"
-                            alt="Uşaq üçün fərdi hekayə"
-                        >
-
-                    </div>
-
+        <!-- NOTIFICATIONS SECTION -->
+        <section class="admin-section" id="notificationsSection">
+            <div class="portfolio-toolbar">
+                <div class="section-title">
+                    <h2>Sayt Bildirişləri</h2>
+                    <p>Əsas səhifədə istifadəçilərə göstərilən bildirişlərin idarəetmə mərkəzi.</p>
                 </div>
-
-                <div class="step-features-side">
-
-                    <div class="feature-sub-card">
-
-                        <div class="feature-icon">
-                            👶
-                        </div>
-
-                        <p>
-                            Uşağınızın adı
-                        </p>
-
-                    </div>
-
-                    <div class="feature-sub-card">
-
-                        <div class="feature-icon">
-                            🦄
-                        </div>
-
-                        <p>
-                            Sevimli personajlar
-                        </p>
-
-                    </div>
-
-                </div>
-
+                <button class="add-portfolio-btn" onclick="openNotificationModal()">+ Yeni Bildiriş Yarat</button>
             </div>
-
-        </div>
-
-
-        <!-- =================================================
-             ADDIM 2
-        ================================================== -->
-
-        <div class="step-card">
-
-            <div class="step-header">
-
-                <div class="step-number">
-                    2
-                </div>
-
-                <div class="step-title">
-
-                    <h2>
-                        Uşağınızın Şəkli ilə Dizayn
-                    </h2>
-
-                </div>
-
+            <div id="notificationsAdminGrid">
+                <div class="loading-text">Bildirişlər yüklənir...</div>
             </div>
-
-            <p class="step-desc">
-
-                Uşağınızın real şəkli hekayənin səhifələrinə
-                peşəkar şəkildə inteqrasiya olunur.
-
-            </p>
-
-            <div class="step-body">
-
-                <div class="step-img-side">
-
-                    <div class="step-img-box">
-
-                        <img
-                            src="image/step2.png"
-                            alt="Şəkilli kitab dizaynı"
-                        >
-
-                    </div>
-
-                </div>
-
-                <div class="step-features-side">
-
-                    <div class="feature-sub-card">
-
-                        <div class="feature-icon">
-                            📷
-                        </div>
-
-                        <p>
-                            Real foto
-                        </p>
-
-                    </div>
-
-                    <div class="feature-sub-card">
-
-                        <div class="feature-icon">
-                            🎨
-                        </div>
-
-                        <p>
-                            Peşəkar dizayn
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             ADDIM 3
-        ================================================== -->
-
-        <div class="step-card">
-
-            <div class="step-header">
-
-                <div class="step-number">
-                    3
-                </div>
-
-                <div class="step-title">
-
-                    <h2>
-                        Premium Keyfiyyətli Çap
-                    </h2>
-
-                </div>
-
-            </div>
-
-            <p class="step-desc">
-
-                Yüksək sıxlıqlı premium kağız,
-                parlaq və HD canlı rənglər.
-
-            </p>
-
-            <div class="step-body">
-
-                <div class="step-img-side">
-
-                    <div class="step-img-box">
-
-                        <img
-                            src="image/step3.png"
-                            alt="Premium çap"
-                        >
-
-                    </div>
-
-                </div>
-
-                <div class="step-features-side">
-
-                    <div class="feature-sub-card">
-
-                        <div class="feature-icon">
-                            📄
-                        </div>
-
-                        <p>
-                            Premium kağız
-                        </p>
-
-                    </div>
-
-                    <div class="feature-sub-card">
-
-                        <div class="feature-icon">
-                            🌈
-                        </div>
-
-                        <p>
-                            HD rənglər
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             ADDIM 4
-        ================================================== -->
-
-        <div class="step-card">
-
-            <div class="step-header">
-
-                <div class="step-number">
-                    4
-                </div>
-
-                <div class="step-title">
-
-                    <h2>
-                        Xüsusi Hədiyyə Qablaşdırma
-                    </h2>
-
-                </div>
-
-            </div>
-
-            <p class="step-desc">
-
-                Kitab xüsusi dizaynlı zərif hədiyyə paketi
-                ilə təqdim olunur.
-
-            </p>
-
-            <div class="step-body">
-
-                <div class="step-img-side">
-
-                    <div class="step-img-box">
-
-                        <img
-                            src="image/step4.png"
-                            alt="Hədiyyə paketlənməsi"
-                        >
-
-                    </div>
-
-                </div>
-
-                <div class="step-features-side">
-
-                    <div class="feature-sub-card">
-
-                        <div class="feature-icon">
-                            🎀
-                        </div>
-
-                        <p>
-                            Dizayn paketləmə
-                        </p>
-
-                    </div>
-
-                    <div class="feature-sub-card">
-
-                        <div class="feature-icon">
-                            ❤️
-                        </div>
-
-                        <p>
-                            Hədiyyə paketi
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- =====================================================
-             QİYMƏT + SİFARİŞ
-        ====================================================== -->
-
-        <div class="order-section">
-
-
-            <!-- =================================================
-                 DESKTOP VERSİYA
-            ================================================== -->
-
-            <div class="order-desktop-layout">
-
-
-                <!-- QİYMƏT -->
-
-                <div class="price-panel">
-
-                    <div class="price-small-title">
-                        XÜSUSİ QİYMƏT TƏKLİFİ
-                    </div>
-
-                    <div class="price-title">
-                        Bir kitabın qiyməti
-                    </div>
-
-                    <div class="price-value">
-
-                        <span class="price-number">
-                            80
-                        </span>
-
-                        <span class="price-currency">
-                            AZN
-                        </span>
-
-                    </div>
-
-                    <p class="price-description">
-
-                       “Hər uşaq bir hekayənin baş qəhrəmanı olmağa layiqdir.”
-
-                    </p>
-
-                    <div class="price-features">
-
-                        <div class="price-feature">
-
-                            <span>✓</span>
-
-                            <span>
-                                Fərdi hekayə
-                            </span>
-
-                        </div>
-
-                        <div class="price-feature">
-
-                            <span>✓</span>
-
-                            <span>
-                                Uşağın şəkli ilə dizayn
-                            </span>
-
-                        </div>
-
-                        <div class="price-feature">
-
-                            <span>✓</span>
-
-                            <span>
-                                Premium keyfiyyətli çap
-                            </span>
-
-                        </div>
-
-                        <div class="price-feature">
-
-                            <span>✓</span>
-
-                            <span>
-                                Hədiyyə qablaşdırması
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- SİFARİŞ FORMASI -->
-
-                <div class="form-panel">
-
-                    <div class="order-form-container">
-
-                        <div class="form-top">
-
-                            <div class="form-heading">
-
-                                <h4>
-                                    Sifariş Müraciəti
-                                </h4>
-
-                            </div>
-
-                        </div>
-
-
-                        <form id="firebaseOrderForm">
-
-
-                            <div class="form-group">
-
-                                <label for="parentName">
-                                    Valideynin Adı və Soyadı *
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="parentName"
-                                    required
-                                    placeholder="Nümunə: Aysel Məmmədova"
-                                >
-
-                            </div>
-
-
-                            <div class="form-group">
-
-                                <label for="parentPhone">
-                                    Telefon Nömrəniz *
-                                </label>
-
-                                <input
-                                    type="tel"
-                                    id="parentPhone"
-                                    required
-                                    placeholder="Nümunə: +994 50 123 45 67"
-                                >
-
-                            </div>
-
-
-                            <div class="form-group">
-
-                                <label for="childName">
-                                    Uşağın Adı *
-                                </label>
-
-                                <input
-                                    type="text"
-                                    id="childName"
-                                    required
-                                    placeholder="Nümunə: Ömər"
-                                >
-
-                            </div>
-
-
-                            <div class="form-group">
-
-                                <label for="childAge">
-                                    Uşağın Yaşı
-                                </label>
-
-                                <input
-                                    type="number"
-                                    id="childAge"
-                                    placeholder="Nümunə: 5"
-                                >
-
-                            </div>
-
-
-                            <div class="form-group">
-
-                                <label for="childInterests">
-                                    Uşağın Sevimli Personajları / Maraqları
-                                </label>
-
-                                <textarea
-                                    id="childInterests"
-                                    rows="3"
-                                    placeholder="Nümunə: Dinozavrlar, kosmos və sevimli iti Bobbi..."
-                                ></textarea>
-
-                            </div>
-
-
-                            <button
-                                type="submit"
-                                class="order-btn"
-                            >
-                                MÜRACİƏTİ TAMAMLA ✨
-                            </button>
-
-
-                        </form>
-
-
-                        <p class="whatsapp-note">
-
-                            <b>
-                                * Əlaqə nömrəsində WhatsApp aktiv olan nömrəni qeyd edin.
-                            </b>
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- =================================================
-                 MOBİL VERSİYA
-            ================================================== -->
-
-            <div class="mobile-order-wrapper">
-
-                <div
-                    class="mobile-order-track"
-                    id="mobileOrderTrack"
-                >
-
-
-                    <!-- MOBİL QİYMƏT -->
-
-                    <div class="mobile-order-panel">
-
-                        <div class="mobile-price-panel">
-
-                            <div class="price-small-title">
-                                XÜSUSİ QİYMƏT TƏKLİFİ
-                            </div>
-
-                            <div class="price-title">
-                                Bir kitabın qiyməti
-                            </div>
-
-                            <div class="price-value">
-
-                                <span class="price-number">
-                                    80
-                                </span>
-
-                                <span class="price-currency">
-                                    AZN
-                                </span>
-
-                            </div>
-
-                            <p class="price-description">
-
-                                “Hər uşaq bir hekayənin baş qəhrəmanı olmağa layiqdir.”
-
-                            </p>
-
-
-                            <div class="price-features">
-
-                                <div class="price-feature">
-
-                                    <span>✓</span>
-
-                                    <span>
-                                        Fərdi hekayə
-                                    </span>
-
-                                </div>
-
-                                <div class="price-feature">
-
-                                    <span>✓</span>
-
-                                    <span>
-                                        Uşağın şəkli ilə dizayn
-                                    </span>
-
-                                </div>
-
-                                <div class="price-feature">
-
-                                    <span>✓</span>
-
-                                    <span>
-                                        Premium keyfiyyətli çap
-                                    </span>
-
-                                </div>
-
-                                <div class="price-feature">
-
-                                    <span>✓</span>
-
-                                    <span>
-                                        Hədiyyə qablaşdırması
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-
-                            <button
-                                type="button"
-                                class="price-action-btn"
-                                id="goToOrderBtn"
-                            >
-
-                                Sifariş üçün müraciət et →
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- MOBİL FORM -->
-
-                    <div class="mobile-order-panel">
-
-                        <div class="mobile-form-panel">
-
-                            <div class="order-form-container">
-
-                                <div class="form-top">
-
-                                    <div class="form-heading">
-
-                                        <button
-                                            type="button"
-                                            class="mobile-back-btn"
-                                            id="backToPriceBtn"
-                                            aria-label="Qiymətə qayıt"
-                                        >
-                                            ←
-                                        </button>
-
-                                        <h4>
-                                            Sifariş Müraciəti
-                                        </h4>
-
-                                    </div>
-
-                                </div>
-
-
-                                <div id="mobileFormContent">
-
-                                    <div class="form-group">
-
-                                        <label for="mobileParentName">
-                                            Valideynin Adı və Soyadı *
-                                        </label>
-
-                                        <input
-                                            type="text"
-                                            id="mobileParentName"
-                                            required
-                                            placeholder="Nümunə: Aysel Məmmədova"
-                                        >
-
-                                    </div>
-
-
-                                    <div class="form-group">
-
-                                        <label for="mobileParentPhone">
-                                            Telefon Nömrəniz *
-                                        </label>
-
-                                        <input
-                                            type="tel"
-                                            id="mobileParentPhone"
-                                            required
-                                            placeholder="Nümunə: +994 50 123 45 67"
-                                        >
-
-                                    </div>
-
-
-                                    <div class="form-group">
-
-                                        <label for="mobileChildName">
-                                            Uşağın Adı *
-                                        </label>
-
-                                        <input
-                                            type="text"
-                                            id="mobileChildName"
-                                            required
-                                            placeholder="Nümunə: Ömər"
-                                        >
-
-                                    </div>
-
-
-                                    <div class="form-group">
-
-                                        <label for="mobileChildAge">
-                                            Uşağın Yaşı
-                                        </label>
-
-                                        <input
-                                            type="number"
-                                            id="mobileChildAge"
-                                            placeholder="Nümunə: 5"
-                                        >
-
-                                    </div>
-
-
-                                    <div class="form-group">
-
-                                        <label for="mobileChildInterests">
-                                            Uşağın Sevimli Personajları / Maraqları
-                                        </label>
-
-                                        <textarea
-                                            id="mobileChildInterests"
-                                            rows="3"
-                                            placeholder="Nümunə: Dinozavrlar, kosmos və sevimli iti Bobbi..."
-                                        ></textarea>
-
-                                    </div>
-
-
-                                    <button
-                                        type="button"
-                                        class="order-btn"
-                                        id="mobileSubmitBtn"
-                                    >
-                                        MÜRACİƏTİ TAMAMLA ✨
-                                    </button>
-
-
-                                    <p class="whatsapp-note">
-
-                                        <b>
-                                            * Əlaqə nömrəsində WhatsApp aktiv olan nömrəni qeyd edin.
-                                        </b>
-
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
+        </section>
     </div>
 
-
-    <!-- =====================================================
-         BİLDİRİŞ POP-UP ELEMENTİ
-    ====================================================== -->
-
-    <div class="site-notification-overlay" id="siteNotificationOverlay">
-
-        <div class="site-notification-card">
-
-            <button type="button" class="site-notification-close-x" id="closeNotificationX" aria-label="Bağla">×</button>
-
-            <div class="site-notification-icon">📢</div>
-
-            <h3 class="site-notification-title" id="notificationTitle">Bildiriş</h3>
-
-            <div class="site-notification-message" id="notificationMessage"></div>
-
-            <button type="button" class="site-notification-btn" id="closeNotificationBtn">Oldu, anladım</button>
-
+    <!-- PORTFOLIO MODAL -->
+    <div class="modal-overlay" id="portfolioModal">
+        <div class="portfolio-modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">Yeni Portfolio</h2>
+                <button class="modal-close" onclick="closePortfolioModal()">×</button>
+            </div>
+            <input type="hidden" id="portfolioDocId">
+            <div class="form-group">
+                <label class="form-label">Kitab / hekayə adı</label>
+                <input type="text" id="portfolioTitle" class="form-input" placeholder="Məsələn: Sehrli meşədə bir gün">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Müəllif adı</label>
+                <input type="text" id="portfolioAuthor" class="form-input" placeholder="Məsələn: Psixoloq Günel Mahmudqızı">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Şəkil</label>
+                <label class="image-upload-area" for="portfolioImage">
+                    <input type="file" id="portfolioImage" accept="image/*" onchange="previewPortfolioImage(event)">
+                    <div class="upload-placeholder" id="uploadPlaceholder">
+                        <strong>Şəkil seçin</strong>
+                        JPG, PNG və ya WebP
+                    </div>
+                    <img id="imagePreview" alt="Şəkil önizləməsi">
+                </label>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn cancel-btn" onclick="closePortfolioModal()">Ləğv et</button>
+                <button class="modal-btn save-btn" id="savePortfolioBtn" onclick="savePortfolio()">Yadda saxla</button>
+            </div>
         </div>
-
     </div>
 
+    <!-- NOTIFICATION MODAL -->
+    <div class="modal-overlay" id="notificationModal">
+        <div class="portfolio-modal">
+            <div class="modal-header">
+                <h2 id="noticeModalTitle">Yeni Bildiriş</h2>
+                <button class="modal-close" onclick="closeNotificationModal()">×</button>
+            </div>
+            <input type="hidden" id="noticeDocId">
+            <div class="form-group">
+                <label class="form-label">Bildiriş Başlığı *</label>
+                <input type="text" id="noticeTitle" class="form-input" placeholder="Məsələn: Yaz Kampaniyası başladı! 🎉">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Bildiriş Mətni *</label>
+                
+                <!-- FORMATLAMA DÜYMƏLƏRİ -->
+                <div class="rich-toolbar">
+                    <button type="button" class="rich-btn" onclick="formatNoticeText('b')" title="Qalın (Bold)"><b>B</b></button>
+                    <button type="button" class="rich-btn" onclick="formatNoticeText('i')" title="Kursiv (Italic)"><i>I</i></button>
+                    <button type="button" class="rich-btn" onclick="formatNoticeText('u')" title="Altı xətli (Underline)"><u>U</u></button>
+                    <button type="button" class="rich-btn" onclick="formatNoticeLink()" title="Link əlavə et">🔗</button>
+                </div>
 
-    <!-- =====================================================
-         FIREBASE
-    ====================================================== -->
+                <textarea id="noticeMessage" class="form-input" placeholder="Müştərilərin görəcəyi ətraflı mesaj... Mətni seçib yuxarıdakı düymələrlə qalın, italik və ya link edə bilərsiniz."></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                    <input type="checkbox" id="noticeIsActive" style="width: 18px; height: 18px; cursor: pointer;">
+                    Dərhal saytda yayımla (Aktiv et)
+                </label>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn cancel-btn" onclick="closeNotificationModal()">Ləğv et</button>
+                <button class="modal-btn save-btn" id="saveNoticeBtn" onclick="saveNotification()">Yadda saxla</button>
+            </div>
+        </div>
+    </div>
 
+    <!-- IMAGE VIEWER -->
+    <div class="image-viewer-overlay" id="imageViewer">
+        <button class="image-viewer-close" onclick="closeImageViewer()" aria-label="Bağla">×</button>
+        <div class="image-viewer-content">
+            <img id="viewerImage" class="image-viewer-image" src="" alt="Portfolio şəkli">
+        </div>
+        <div id="viewerTitle" class="image-viewer-title"></div>
+    </div>
+
+    <!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
-
     <script>
-
-        /* =====================================================
-           FIREBASE KONFİQURASİYASI
-        ====================================================== */
-
         const firebaseConfig = {
-
-            apiKey:
-                "AIzaSyDWqLPM2X89vyqOYocw4KEBh65WKMutZOI",
-
-            authDomain:
-                "gunelsstory-6d3a9.firebaseapp.com",
-
-            projectId:
-                "gunelsstory-6d3a9",
-
-            storageBucket:
-                "gunelsstory-6d3a9.firebasestorage.app",
-
-            messagingSenderId:
-                "903174908342",
-
-            appId:
-                "1:903174908342:web:f73871214550442e553917",
-
-            measurementId:
-                "G-5Q48RSFFH9"
+            apiKey: "AIzaSyDWqLPM2X89vyqOYocw4KEBh65WKMutZOI",
+            authDomain: "gunelsstory-6d3a9.firebaseapp.com",
+            projectId: "gunelsstory-6d3a9",
+            storageBucket: "gunelsstory-6d3a9.firebasestorage.app",
+            messagingSenderId: "903174908342",
+            appId: "1:903174908342:web:f73871214550442e553917",
+            measurementId: "G-5Q48RSFFH9"
         };
 
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
 
-        firebase.initializeApp(
-            firebaseConfig
-        );
+        /* AUTH & LOGIN */
+        function togglePasswordVisibility() {
+            const input = document.getElementById("password");
+            const open = document.getElementById("eyeOpenIcon");
+            const closed = document.getElementById("eyeClosedIcon");
 
-
-        const db =
-            firebase.firestore();
-
-
-        /* =====================================================
-           BİLDİRİŞ SİSTEMİ (HTML FORMAT DƏSTƏKLİ)
-        ====================================================== */
-
-        function initNotificationListener() {
-
-            db.collection("notifications").onSnapshot(function (snapshot) {
-
-                if (snapshot.empty) {
-                    hideSiteNotification();
-                    return;
-                }
-
-                const activeNotices = [];
-
-                snapshot.forEach(function (doc) {
-                    const data = doc.data();
-                    if (data.isActive === true) {
-                        activeNotices.push({
-                            id: doc.id,
-                            title: data.title || "Xüsusi Bildiriş",
-                            message: data.message || ""
-                        });
-                    }
-                });
-
-                if (activeNotices.length > 0) {
-                    const notice = activeNotices[activeNotices.length - 1];
-                    showSiteNotification(notice.title, notice.message);
-                } else {
-                    hideSiteNotification();
-                }
-
-            }, function (error) {
-                console.error("Bildiriş xətası:", error);
-            });
-        }
-
-        function showSiteNotification(title, message) {
-
-            const overlay = document.getElementById("siteNotificationOverlay");
-            if (!overlay) return;
-
-            document.getElementById("notificationTitle").innerText = title;
-            // Formatlanmış HTML mətni (bold, italic, link) göstərilir
-            document.getElementById("notificationMessage").innerHTML = message;
-            overlay.style.display = "flex";
-        }
-
-        function hideSiteNotification() {
-
-            const overlay = document.getElementById("siteNotificationOverlay");
-            if (overlay) {
-                overlay.style.display = "none";
+            if (input.type === "password") {
+                input.type = "text";
+                open.style.display = "block";
+                closed.style.display = "none";
+            } else {
+                input.type = "password";
+                open.style.display = "none";
+                closed.style.display = "block";
             }
         }
 
         window.addEventListener("DOMContentLoaded", function () {
-
-            initNotificationListener();
-
-            document.getElementById("closeNotificationX").addEventListener("click", hideSiteNotification);
-            document.getElementById("closeNotificationBtn").addEventListener("click", hideSiteNotification);
+            const logged = localStorage.getItem("adminLoggedIn");
+            if (logged === "true") {
+                document.getElementById("loginOverlay").style.display = "none";
+                document.getElementById("adminContainer").style.display = "block";
+                startListeningOrders();
+                startListeningPortfolio();
+                startListeningNotifications();
+            }
         });
 
+        function checkFirestoreLogin() {
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value;
+            const error = document.getElementById("loginError");
+            const btn = document.getElementById("loginBtn");
 
-        /* =====================================================
-           DESKTOP SİFARİŞ FORMU
-        ====================================================== */
+            error.style.display = "none";
+            btn.innerText = "Doğrulanır...";
+            btn.disabled = true;
 
-        const desktopForm =
-            document.getElementById(
-                "firebaseOrderForm"
-            );
+            db.collection("adminConfig").doc("credentials").get()
+                .then(function (doc) {
+                    if (!doc.exists) throw new Error("Admin konfiqurasiyası tapılmadı.");
+                    const data = doc.data();
 
+                    if (username === data.username && password === data.password) {
+                        localStorage.setItem("adminLoggedIn", "true");
+                        document.getElementById("loginOverlay").style.display = "none";
+                        document.getElementById("adminContainer").style.display = "block";
+                        startListeningOrders();
+                        startListeningPortfolio();
+                        startListeningNotifications();
+                    } else {
+                        throw new Error("İstifadəçi adı və ya şifrə yanlışdır.");
+                    }
+                })
+                .catch(function (err) {
+                    error.innerText = err.message || "Giriş zamanı xəta baş verdi.";
+                    error.style.display = "block";
+                })
+                .finally(function () {
+                    btn.innerText = "Sistemə Daxil Ol";
+                    btn.disabled = false;
+                });
+        }
 
-        desktopForm.addEventListener(
-            "submit",
-            function (e) {
+        function logoutAdmin() {
+            localStorage.removeItem("adminLoggedIn");
+            location.reload();
+        }
 
-                e.preventDefault();
+        function switchAdminTab(section, button) {
+            document.querySelectorAll(".admin-tab").forEach(tab => tab.classList.remove("active"));
+            document.querySelectorAll(".admin-section").forEach(s => s.classList.remove("active"));
+            button.classList.add("active");
+            document.getElementById(section + "Section").classList.add("active");
+        }
 
-                const submitBtn =
-                    e.target.querySelector(
-                        ".order-btn"
-                    );
+        /* SİFARİŞLƏR */
+        function toggleStatus(docId, currentStatus) {
+            db.collection("orders").doc(docId).update({ isViewed: !currentStatus });
+        }
 
-                submitBtn.disabled =
-                    true;
+        function deleteOrder(docId, parentName) {
+            if (!confirm(parentName + " adlı müraciəti silmək istəyirsiniz?")) return;
+            db.collection("orders").doc(docId).delete();
+        }
 
-                submitBtn.innerText =
-                    "GÖNDƏRİLİR...";
+        function togglePhoneBlur(button, docId) {
+            const phone = document.getElementById("phone-" + docId);
+            const open = button.querySelector(".eye-open");
+            const closed = button.querySelector(".eye-closed");
 
-                db.collection("orders")
-                    .add({
-
-                        parentName:
-                            document
-                                .getElementById(
-                                    "parentName"
-                                )
-                                .value,
-
-                        parentPhone:
-                            document
-                                .getElementById(
-                                    "parentPhone"
-                                )
-                                .value,
-
-                        childName:
-                            document
-                                .getElementById(
-                                    "childName"
-                                )
-                                .value,
-
-                        childAge:
-                            document
-                                .getElementById(
-                                    "childAge"
-                                )
-                                .value,
-
-                        childInterests:
-                            document
-                                .getElementById(
-                                    "childInterests"
-                                )
-                                .value,
-
-                        price:
-                            "80 AZN",
-
-                        createdAt:
-                            firebase
-                                .firestore
-                                .FieldValue
-                                .serverTimestamp()
-
-                    })
-
-                    .then(
-                        function () {
-
-                            alert(
-                                "Müraciətiniz uğurla göndərildi!"
-                            );
-
-                            desktopForm.reset();
-
-                        }
-                    )
-
-                    .catch(
-                        function (error) {
-
-                            console.error(
-                                "Xəta:",
-                                error
-                            );
-
-                            alert(
-                                "Xəta baş verdi: " +
-                                error.message
-                            );
-
-                        }
-                    )
-
-                    .finally(
-                        function () {
-
-                            submitBtn.disabled =
-                                false;
-
-                            submitBtn.innerText =
-                                "MÜRACİƏTİ TAMAMLA ✨";
-
-                        }
-                    );
-
+            if (phone.classList.contains("blurred")) {
+                phone.classList.remove("blurred");
+                phone.style.pointerEvents = "auto";
+                open.style.display = "block";
+                closed.style.display = "none";
+            } else {
+                phone.classList.add("blurred");
+                phone.style.pointerEvents = "none";
+                open.style.display = "none";
+                closed.style.display = "block";
             }
-        );
+        }
 
-
-        /* =====================================================
-           MOBİL FORMUN FIREBASE-A GÖNDƏRİLMƏSİ
-        ====================================================== */
-
-        const mobileSubmitBtn =
-            document.getElementById(
-                "mobileSubmitBtn"
-            );
-
-
-        mobileSubmitBtn.addEventListener(
-            "click",
-            function () {
-
-                const parentName =
-                    document
-                        .getElementById(
-                            "mobileParentName"
-                        )
-                        .value
-                        .trim();
-
-                const parentPhone =
-                    document
-                        .getElementById(
-                            "mobileParentPhone"
-                        )
-                        .value
-                        .trim();
-
-                const childName =
-                    document
-                        .getElementById(
-                            "mobileChildName"
-                        )
-                        .value
-                        .trim();
-
-                const childAge =
-                    document
-                        .getElementById(
-                            "mobileChildAge"
-                        )
-                        .value
-                        .trim();
-
-                const childInterests =
-                    document
-                        .getElementById(
-                            "mobileChildInterests"
-                        )
-                        .value
-                        .trim();
-
-                if (
-                    !parentName ||
-                    !parentPhone ||
-                    !childName
-                ) {
-
-                    alert(
-                        "Zəhmət olmasa məcburi sahələri doldurun."
-                    );
-
+        function startListeningOrders() {
+            const tbody = document.getElementById("ordersTableBody");
+            db.collection("orders").orderBy("createdAt", "desc").onSnapshot(function (snapshot) {
+                tbody.innerHTML = "";
+                if (snapshot.empty) {
+                    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:50px; color:var(--text-muted);">Hələ heç bir müraciət yoxdur.</td></tr>`;
                     return;
                 }
 
-                mobileSubmitBtn.disabled =
-                    true;
+                snapshot.forEach(function (doc) {
+                    const data = doc.data();
+                    const id = doc.id;
+                    const viewed = data.isViewed || false;
+                    const parent = data.parentName || "Qeyd edilməyib";
+                    let date = "Gözlənilir";
 
-                mobileSubmitBtn.innerText =
-                    "GÖNDƏRİLİR...";
-
-                db.collection("orders")
-                    .add({
-
-                        parentName:
-                            parentName,
-
-                        parentPhone:
-                            parentPhone,
-
-                        childName:
-                            childName,
-
-                        childAge:
-                            childAge,
-
-                        childInterests:
-                            childInterests,
-
-                        price:
-                            "80 AZN",
-
-                        createdAt:
-                            firebase
-                                .firestore
-                                .FieldValue
-                                .serverTimestamp()
-
-                    })
-
-                    .then(
-                        function () {
-
-                            alert(
-                                "Müraciətiniz uğurla göndərildi!"
-                            );
-
-                            document
-                                .getElementById(
-                                    "mobileParentName"
-                                )
-                                .value = "";
-
-                            document
-                                .getElementById(
-                                    "mobileParentPhone"
-                                )
-                                .value = "";
-
-                            document
-                                .getElementById(
-                                    "mobileChildName"
-                                )
-                                .value = "";
-
-                            document
-                                .getElementById(
-                                    "mobileChildAge"
-                                )
-                                .value = "";
-
-                            document
-                                .getElementById(
-                                    "mobileChildInterests"
-                                )
-                                .value = "";
-
-                            document
-                                .getElementById(
-                                    "mobileOrderTrack"
-                                )
-                                .classList
-                                .remove(
-                                    "show-form"
-                                );
-
-                        }
-                    )
-
-                    .catch(
-                        function (error) {
-
-                            console.error(
-                                "Xəta:",
-                                error
-                            );
-
-                            alert(
-                                "Xəta baş verdi: " +
-                                error.message
-                            );
-
-                        }
-                    )
-
-                    .finally(
-                        function () {
-
-                            mobileSubmitBtn.disabled =
-                                false;
-
-                            mobileSubmitBtn.innerText =
-                                "MÜRACİƏTİ TAMAMLA ✨";
-
-                        }
-                    );
-
-            }
-        );
-
-
-        /* =====================================================
-           3 SANİYƏLİK SPLASH
-        ====================================================== */
-
-        window.addEventListener(
-            "load",
-            function () {
-
-                const splash =
-                    document.getElementById(
-                        "story-splash"
-                    );
-
-                setTimeout(
-                    function () {
-
-                        splash.classList.add(
-                            "hide"
-                        );
-
-                    },
-                    3000
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           MOBİL HAMBURGER MENU
-        ====================================================== */
-
-        const hamburger =
-            document.getElementById(
-                "hamburger"
-            );
-
-        const mobileMenu =
-            document.getElementById(
-                "mobileMenu"
-            );
-
-        hamburger.addEventListener(
-            "click",
-            function () {
-
-                const isOpen =
-                    hamburger.classList.toggle(
-                        "active"
-                    );
-
-                mobileMenu.classList.toggle(
-                    "show"
-                );
-
-                hamburger.setAttribute(
-                    "aria-expanded",
-                    isOpen
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           MOBİL MENU LINKLƏRİ
-        ====================================================== */
-
-        const mobileMenuLinks =
-            mobileMenu.querySelectorAll(
-                "a"
-            );
-
-        mobileMenuLinks.forEach(
-            function (link) {
-
-                link.addEventListener(
-                    "click",
-                    function () {
-
-                        hamburger.classList.remove(
-                            "active"
-                        );
-
-                        mobileMenu.classList.remove(
-                            "show"
-                        );
-
-                        hamburger.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
-
+                    if (data.createdAt && typeof data.createdAt.toDate === "function") {
+                        date = data.createdAt.toDate().toLocaleString("az-AZ", {
+                            day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"
+                        });
                     }
-                );
 
+                    const phone = data.parentPhone || "";
+                    const cleanPhone = phone.replace(/\D/g, "");
+                    let whatsapp = "";
+
+                    if (cleanPhone) {
+                        let number = cleanPhone;
+                        if (number.startsWith("0")) number = "994" + number.substring(1);
+                        whatsapp = "https://wa.me/" + number;
+                    }
+
+                    const tr = document.createElement("tr");
+                    tr.className = viewed ? "status-viewed" : "status-waiting";
+                    tr.innerHTML = `
+                        <td data-label="Valideyn" class="parent-name-cell">${escapeHtml(parent)}</td>
+                        <td data-label="Əlaqə">
+                            <div class="phone-container">
+                                <div class="phone-wrapper">
+                                    <a href="tel:${escapeAttribute(phone)}" id="phone-${escapeAttribute(id)}" class="phone-link blurred">
+                                        ${escapeHtml(phone || "Qeyd yoxdur")}
+                                    </a>
+                                    ${phone ? `
+                                        <button class="toggle-blur-btn" onclick="togglePhoneBlur(this,'${escapeAttribute(id)}')" type="button">
+                                            <svg class="eye-closed" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                                            <svg class="eye-open" viewBox="0 0 24 24" style="display:none"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/></svg>
+                                        </button>
+                                    ` : ""}
+                                </div>
+                                ${whatsapp ? `<a href="${escapeAttribute(whatsapp)}" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">WhatsApp</a>` : ""}
+                            </div>
+                        </td>
+                        <td data-label="Uşaq">${escapeHtml(data.childName || "Qeyd edilməyib")}</td>
+                        <td data-label="Yaş"><span class="age-badge">${escapeHtml(String(data.childAge || "-"))} yaş</span></td>
+                        <td data-label="Maraqlar" class="interests-cell">${escapeHtml(data.childInterests || "Qeyd yoxdur")}</td>
+                        <td data-label="Tarix">${escapeHtml(date)}</td>
+                        <td data-label="Əməliyyat">
+                            <div class="action-container">
+                                <button type="button" class="delete-btn" onclick="deleteOrder('${escapeAttribute(id)}', '${escapeAttribute(parent)}')" title="Sil">
+                                    <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                                </button>
+                                <button type="button" class="status-btn ${viewed ? "checked" : ""}" onclick="toggleStatus('${escapeAttribute(id)}', ${viewed})">
+                                    ${viewed ? "✓ Baxıldı" : "• Gözləyir"}
+                                </button>
+                            </div>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            });
+        }
+
+        /* PORTFOLIO METODLARI */
+        let portfolioUnsubscribe = null;
+        function startListeningPortfolio() {
+            if (portfolioUnsubscribe) portfolioUnsubscribe();
+            portfolioUnsubscribe = db.collection("portfolio").orderBy("createdAt", "desc").onSnapshot(function (snapshot) {
+                renderPortfolioAdmin(snapshot);
+            });
+        }
+
+        function renderPortfolioAdmin(snapshot) {
+            const container = document.getElementById("portfolioAdminGrid");
+            container.innerHTML = "";
+            if (snapshot.empty) {
+                container.innerHTML = `<div class="empty-portfolio"><strong>Portfolio boşdur</strong><br><br>İlk kitabı əlavə etmək üçün yuxarıdakı düymədən istifadə edin.</div>`;
+                return;
             }
-        );
 
+            const docs = [];
+            snapshot.forEach(doc => docs.push({ id: doc.id, data: doc.data() }));
 
-        /* =====================================================
-           EKRAN BÖYÜDÜKDƏ MOBİL MENYU TƏMİZLƏ
-        ====================================================== */
+            const list = document.createElement("div");
+            list.className = "portfolio-list";
+            list.innerHTML = `
+                <div class="portfolio-list-header">
+                    <div>Şəkil</div>
+                    <div>Kitab / Hekayə</div>
+                    <div>Müəllif</div>
+                    <div>Tarix</div>
+                    <div style="text-align:right">Əməliyyat</div>
+                </div>
+            `;
 
-        window.addEventListener(
-            "resize",
-            function () {
+            docs.forEach(function (item) {
+                const data = item.data;
+                const itemElement = document.createElement("div");
+                itemElement.className = "portfolio-list-item";
 
-                if (
-                    window.innerWidth > 768
-                ) {
-
-                    hamburger.classList.remove(
-                        "active"
-                    );
-
-                    mobileMenu.classList.remove(
-                        "show"
-                    );
-
-                    hamburger.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
+                let date = "Tarix yoxdur";
+                if (data.createdAt && typeof data.createdAt.toDate === "function") {
+                    date = data.createdAt.toDate().toLocaleString("az-AZ", {
+                        day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"
+                    });
                 }
 
+                const title = data.title || "Adsız portfolio";
+                const author = data.author || "Müəllif qeyd edilməyib";
+                const imageUrl = data.imageUrl || "";
+
+                itemElement.innerHTML = `
+                    <div class="portfolio-thumbnail-wrap">
+                        ${imageUrl ? `<img src="${escapeAttribute(imageUrl)}" class="portfolio-thumbnail" alt="${escapeAttribute(title)}">` : `<div class="portfolio-no-image">Şəkil yoxdur</div>`}
+                    </div>
+                    <div class="portfolio-list-title">${escapeHtml(title)}</div>
+                    <div class="portfolio-list-author">${escapeHtml(author)}</div>
+                    <div class="portfolio-date">${escapeHtml(date)}</div>
+                    <div class="portfolio-list-actions">
+                        ${imageUrl ? `
+                            <button type="button" class="portfolio-action-btn view-image-btn" title="Şəkilə bax" onclick="openImageViewer('${escapeAttribute(imageUrl)}', '${escapeAttribute(title)}')">
+                                <svg viewBox="0 0 24 24"><path d="M12 5c-5 0-9.27 3.11-11 7 1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7zm0 12c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                            </button>
+                        ` : ""}
+                        <button type="button" class="portfolio-action-btn edit-portfolio-btn" onclick="editPortfolio('${escapeAttribute(item.id)}')">Redaktə</button>
+                        <button type="button" class="portfolio-action-btn delete-portfolio-btn" onclick="deletePortfolio('${escapeAttribute(item.id)}', '${escapeAttribute(title)}')">Sil</button>
+                    </div>
+                `;
+                list.appendChild(itemElement);
+            });
+            container.appendChild(list);
+        }
+
+        function openPortfolioModal() {
+            document.getElementById("modalTitle").innerText = "Yeni Portfolio";
+            document.getElementById("portfolioDocId").value = "";
+            document.getElementById("portfolioTitle").value = "";
+            document.getElementById("portfolioAuthor").value = "";
+            document.getElementById("portfolioImage").value = "";
+            document.getElementById("imagePreview").style.display = "none";
+            document.getElementById("uploadPlaceholder").style.display = "block";
+            document.getElementById("portfolioModal").classList.add("active");
+        }
+
+        function closePortfolioModal() {
+            document.getElementById("portfolioModal").classList.remove("active");
+        }
+
+        function editPortfolio(docId) {
+            db.collection("portfolio").doc(docId).get().then(function (doc) {
+                if (!doc.exists) return;
+                const data = doc.data();
+                document.getElementById("modalTitle").innerText = "Portfolioya düzəliş et";
+                document.getElementById("portfolioDocId").value = docId;
+                document.getElementById("portfolioTitle").value = data.title || "";
+                document.getElementById("portfolioAuthor").value = data.author || "";
+                const preview = document.getElementById("imagePreview");
+                if (data.imageUrl) {
+                    preview.src = data.imageUrl;
+                    preview.style.display = "block";
+                    document.getElementById("uploadPlaceholder").style.display = "none";
+                }
+                document.getElementById("portfolioModal").classList.add("active");
+            });
+        }
+
+        function previewPortfolioImage(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const preview = document.getElementById("imagePreview");
+                preview.src = e.target.result;
+                preview.style.display = "block";
+                document.getElementById("uploadPlaceholder").style.display = "none";
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function optimizeImage(file) {
+            return new Promise(function (resolve, reject) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const img = new Image();
+                    img.onload = function () {
+                        const maxSize = 1200;
+                        let width = img.width, height = img.height;
+                        if (width > maxSize || height > maxSize) {
+                            if (width > height) {
+                                height = Math.round(height * maxSize / width);
+                                width = maxSize;
+                            } else {
+                                width = Math.round(width * maxSize / height);
+                                height = maxSize;
+                            }
+                        }
+                        const canvas = document.createElement("canvas");
+                        canvas.width = width; canvas.height = height;
+                        const ctx = canvas.getContext("2d");
+                        ctx.drawImage(img, 0, 0, width, height);
+                        resolve(canvas.toDataURL("image/webp", .72));
+                    };
+                    img.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        async function savePortfolio() {
+            const title = document.getElementById("portfolioTitle").value.trim();
+            const author = document.getElementById("portfolioAuthor").value.trim();
+            const docId = document.getElementById("portfolioDocId").value.trim();
+            const file = document.getElementById("portfolioImage").files[0];
+            const button = document.getElementById("savePortfolioBtn");
+
+            if (!title || !author) { alert("Xanaları tam doldurun."); return; }
+            button.disabled = true;
+
+            try {
+                let imageUrl = null;
+                if (file) imageUrl = await optimizeImage(file);
+                if (docId) {
+                    const updateData = { title, author, updatedAt: firebase.firestore.FieldValue.serverTimestamp() };
+                    if (imageUrl) updateData.imageUrl = imageUrl;
+                    await db.collection("portfolio").doc(docId).update(updateData);
+                } else {
+                    await db.collection("portfolio").add({
+                        title, author, imageUrl,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                }
+                closePortfolioModal();
+            } catch (err) {
+                alert("Xəta: " + err.message);
+            } finally {
+                button.disabled = false;
             }
-        );
+        }
 
+        async function deletePortfolio(docId, title) {
+            if (!confirm(`"${title}" silinsin?`)) return;
+            await db.collection("portfolio").doc(docId).delete();
+        }
 
-        /* =====================================================
-           MOBİL QİYMƏT → SİFARİŞ
-        ====================================================== */
+        /* =========================================================
+           BİLDİRİŞ İDARƏETMƏSİ & MƏTN FORMATLAMA
+        ========================================================= */
+        let notificationUnsubscribe = null;
 
-        const mobileOrderTrack =
-            document.getElementById(
-                "mobileOrderTrack"
-            );
+        function formatNoticeText(tag) {
+            const textarea = document.getElementById("noticeMessage");
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const selectedText = textarea.value.substring(start, end);
 
-        const goToOrderBtn =
-            document.getElementById(
-                "goToOrderBtn"
-            );
-
-        const backToPriceBtn =
-            document.getElementById(
-                "backToPriceBtn"
-            );
-
-        goToOrderBtn.addEventListener(
-            "click",
-            function () {
-
-                mobileOrderTrack.classList.add(
-                    "show-form"
-                );
-
+            if (!selectedText) {
+                alert("Zəhmət olmasa formatlamaq istədiyiniz mətni seçin.");
+                return;
             }
-        );
 
-        backToPriceBtn.addEventListener(
-            "click",
-            function () {
+            const replacement = `<${tag}>${selectedText}</${tag}>`;
+            textarea.setRangeText(replacement, start, end, 'select');
+        }
 
-                mobileOrderTrack.classList.remove(
-                    "show-form"
-                );
+        function formatNoticeLink() {
+            const textarea = document.getElementById("noticeMessage");
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const selectedText = textarea.value.substring(start, end) || "Keçid";
 
+            let url = prompt("Keçid linkini daxil edin (məsələn: https://gunelsstory.com/ və ya tel:+994...):", "https://");
+            if (!url) return;
+
+            const replacement = `<a href="${url}" target="_blank">${selectedText}</a>`;
+            textarea.setRangeText(replacement, start, end, 'select');
+        }
+
+        function startListeningNotifications() {
+            if (notificationUnsubscribe) notificationUnsubscribe();
+            notificationUnsubscribe = db.collection("notifications").orderBy("createdAt", "desc").onSnapshot(function (snapshot) {
+                renderNotificationsAdmin(snapshot);
+            }, function (err) {
+                db.collection("notifications").onSnapshot(renderNotificationsAdmin);
+            });
+        }
+
+        function renderNotificationsAdmin(snapshot) {
+            const container = document.getElementById("notificationsAdminGrid");
+            container.innerHTML = "";
+
+            if (snapshot.empty) {
+                container.innerHTML = `<div class="empty-portfolio"><strong>Hələ heç bir bildiriş yaradılmayıb.</strong><br><br>Yeni bildiriş yaratmaq üçün yuxarıdakı düyməyə klikləyin.</div>`;
+                return;
             }
-        );
 
+            const docs = [];
+            snapshot.forEach(doc => docs.push({ id: doc.id, data: doc.data() }));
+
+            const list = document.createElement("div");
+            list.className = "portfolio-list";
+            list.innerHTML = `
+                <div class="portfolio-list-header" style="grid-template-columns: minmax(180px, 1.2fr) minmax(240px, 2fr) 140px 140px 200px;">
+                    <div>Başlıq</div>
+                    <div>Məzmun</div>
+                    <div>Status</div>
+                    <div>Tarix</div>
+                    <div style="text-align:right">Əməliyyat</div>
+                </div>
+            `;
+
+            docs.forEach(function (item) {
+                const data = item.data;
+                const id = item.id;
+                const isActive = data.isActive || false;
+
+                let date = "Tarix yoxdur";
+                if (data.createdAt && typeof data.createdAt.toDate === "function") {
+                    date = data.createdAt.toDate().toLocaleString("az-AZ", {
+                        day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"
+                    });
+                }
+
+                const itemElement = document.createElement("div");
+                itemElement.className = "portfolio-list-item";
+                itemElement.style.gridTemplateColumns = "minmax(180px, 1.2fr) minmax(240px, 2fr) 140px 140px 200px";
+
+                itemElement.innerHTML = `
+                    <div class="portfolio-list-title" style="font-size: 1rem;">
+                        ${escapeHtml(data.title || "Adsız Bildiriş")}
+                    </div>
+                    <div style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.4; padding-right: 15px;">
+                        ${data.message || ""}
+                    </div>
+                    <div>
+                        <span class="age-badge" style="background: ${isActive ? 'var(--success-bg)' : 'var(--danger-bg)'}; color: ${isActive ? 'var(--success)' : 'var(--danger)'};">
+                            ${isActive ? "● YAYIMDADIR" : "○ DAYANDIRILIB"}
+                        </span>
+                    </div>
+                    <div class="portfolio-date">${escapeHtml(date)}</div>
+                    <div class="portfolio-list-actions">
+                        <button type="button" class="portfolio-action-btn ${isActive ? 'unpublish-btn' : 'publish-btn'}" onclick="toggleNotificationStatus('${escapeAttribute(id)}', ${isActive})">
+                            ${isActive ? "Dayandır" : "Yayımla"}
+                        </button>
+                        <button type="button" class="portfolio-action-btn edit-portfolio-btn" onclick="editNotification('${escapeAttribute(id)}')">
+                            Redaktə
+                        </button>
+                        <button type="button" class="portfolio-action-btn delete-portfolio-btn" onclick="deleteNotification('${escapeAttribute(id)}')">
+                            Sil
+                        </button>
+                    </div>
+                `;
+                list.appendChild(itemElement);
+            });
+            container.appendChild(list);
+        }
+
+        function openNotificationModal() {
+            document.getElementById("noticeModalTitle").innerText = "Yeni Bildiriş Yarat";
+            document.getElementById("noticeDocId").value = "";
+            document.getElementById("noticeTitle").value = "";
+            document.getElementById("noticeMessage").value = "";
+            document.getElementById("noticeIsActive").checked = true;
+            document.getElementById("notificationModal").classList.add("active");
+        }
+
+        function closeNotificationModal() {
+            document.getElementById("notificationModal").classList.remove("active");
+        }
+
+        function editNotification(docId) {
+            db.collection("notifications").doc(docId).get().then(function (doc) {
+                if (!doc.exists) return;
+                const data = doc.data();
+                document.getElementById("noticeModalTitle").innerText = "Bildirişi Redaktə Et";
+                document.getElementById("noticeDocId").value = docId;
+                document.getElementById("noticeTitle").value = data.title || "";
+                document.getElementById("noticeMessage").value = data.message || "";
+                document.getElementById("noticeIsActive").checked = data.isActive || false;
+                document.getElementById("notificationModal").classList.add("active");
+            });
+        }
+
+        async function saveNotification() {
+            const title = document.getElementById("noticeTitle").value.trim();
+            const message = document.getElementById("noticeMessage").value.trim();
+            const isActive = document.getElementById("noticeIsActive").checked;
+            const docId = document.getElementById("noticeDocId").value.trim();
+            const btn = document.getElementById("saveNoticeBtn");
+
+            if (!title || !message) {
+                alert("Zəhmət olmasa bildiriş başlığını və mətnini daxil edin.");
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerText = "Yadda saxlanılır...";
+
+            try {
+                if (docId) {
+                    await db.collection("notifications").doc(docId).update({
+                        title: title,
+                        message: message,
+                        isActive: isActive,
+                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                    alert("Bildiriş yeniləndi!");
+                } else {
+                    await db.collection("notifications").add({
+                        title: title,
+                        message: message,
+                        isActive: isActive,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                    alert("Bildiriş uğurla yaradıldı!");
+                }
+                closeNotificationModal();
+            } catch (err) {
+                alert("Xəta baş verdi: " + err.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "Yadda saxla";
+            }
+        }
+
+        async function toggleNotificationStatus(docId, currentStatus) {
+            try {
+                await db.collection("notifications").doc(docId).update({
+                    isActive: !currentStatus,
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            } catch (err) {
+                alert("Status dəyişdirilmədi: " + err.message);
+            }
+        }
+
+        async function deleteNotification(docId) {
+            if (!confirm("Bu bildirişi tamamilə silmək istədiyinizdən əminsiniz?")) return;
+            try {
+                await db.collection("notifications").doc(docId).delete();
+                alert("Bildiriş silindi.");
+            } catch (err) {
+                alert("Silinmə xətası: " + err.message);
+            }
+        }
+
+        /* IMAGE VIEWER */
+        function openImageViewer(imageUrl, title) {
+            const viewer = document.getElementById("imageViewer");
+            document.getElementById("viewerImage").src = imageUrl;
+            document.getElementById("viewerTitle").innerText = title || "Portfolio";
+            viewer.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeImageViewer() {
+            document.getElementById("imageViewer").classList.remove("active");
+            document.body.style.overflow = "";
+        }
+
+        document.getElementById("imageViewer").addEventListener("click", function (e) {
+            if (e.target === this) closeImageViewer();
+        });
+
+        /* ESCAPE HANDLER */
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+                closeImageViewer();
+                closePortfolioModal();
+                closeNotificationModal();
+            }
+            if (e.key === "Enter" && document.getElementById("loginOverlay").style.display !== "none") {
+                checkFirestoreLogin();
+            }
+        });
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;").replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function escapeAttribute(value) { return escapeHtml(value); }
     </script>
-
 </body>
-
 </html>
