@@ -1878,7 +1878,7 @@
 
             <div class="form-group">
 
-                <label class="form-label">Bildiriş Başlığı *</label>
+                <label class="form-label">Notification Title *</label>
 
                 <input type="text" id="noticeTitle" class="form-input" placeholder="Məsələn: Yaz Kampaniyası başladı!">
 
@@ -1886,7 +1886,7 @@
 
             <div class="form-group">
 
-                <label class="form-label">Bildiriş Mətni *</label>
+                <label class="form-label">Notification Text *</label>
 
                 <!-- FORMATLAMA DÜYMƏLƏRİ -->
                 <div class="rich-toolbar">
@@ -2814,15 +2814,15 @@
 
                 <div class="portfolio-list-header" style="grid-template-columns: minmax(180px, 1.2fr) minmax(240px, 2fr) 140px 140px 200px;">
 
-                    <div>Başlıq</div>
+                    <div>Title</div>
 
-                    <div>Məzmun</div>
+                    <div>Content / Message</div>
 
                     <div>Status</div>
 
-                    <div>Tarix</div>
+                    <div>Date</div>
 
-                    <div style="text-align:right">Əməliyyat</div>
+                    <div style="text-align:right">Action</div>
 
                 </div>
 
@@ -2924,7 +2924,7 @@
 
         function openNotificationModal() {
 
-            document.getElementById("noticeModalTitle").innerText = "Yeni Bildiriş Yarat";
+            document.getElementById("noticeModalTitle").innerText = "Create New Notification";
 
             document.getElementById("noticeDocId").value = "";
 
@@ -2956,7 +2956,7 @@
 
                 const data = doc.data();
 
-                document.getElementById("noticeModalTitle").innerText = "Bildirişi Redaktə Et";
+                document.getElementById("noticeModalTitle").innerText = ""Edit Notification";
 
                 document.getElementById("noticeDocId").value = docId;
 
