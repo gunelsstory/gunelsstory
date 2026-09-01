@@ -1690,7 +1690,7 @@
 
                 <div class="section-title">
 
-                    <h2>Sayt Bildirişləri</h2>
+                    <h2>Bildirişləri</h2>
 
                     <p>Əsas səhifədə istifadəçilərə göstərilən bildirişlərin idarəetmə mərkəzi.</p>
 
@@ -1800,7 +1800,7 @@
 
                 <label class="form-label">Bildiriş Başlığı *</label>
 
-                <input type="text" id="noticeTitle" class="form-input" placeholder="Məsələn: Yaz Kampaniyası başladı! 🎉">
+                <input type="text" id="noticeTitle" class="form-input" placeholder="Məsələn: Yaz Kampaniyası başladı!">
 
             </div>
 
@@ -1813,10 +1813,10 @@
                     <button type="button" class="rich-btn" onclick="formatNoticeText('b')" title="Qalın (Bold)"><b>B</b></button>
                     <button type="button" class="rich-btn" onclick="formatNoticeText('i')" title="Kursiv (Italic)"><i>I</i></button>
                     <button type="button" class="rich-btn" onclick="formatNoticeText('u')" title="Altı xətli (Underline)"><u>U</u></button>
-                    <button type="button" class="rich-btn" onclick="formatNoticeLink()" title="Link əlavə et">🔗</button>
+                    <button type="button" class="rich-btn" onclick="formatNoticeLink()" title="Link əlavə et">⇗</button>
                 </div>
 
-                <textarea id="noticeMessage" class="form-input" placeholder="Müştərilərin görəcəyi ətraflı mesaj..."></textarea>
+                <textarea id="noticeMessage" class="form-input" placeholder="Bildiriş mətni..."></textarea>
 
             </div>
 
@@ -1826,7 +1826,7 @@
 
                     <input type="checkbox" id="noticeIsActive" style="width: 18px; height: 18px; cursor: pointer;">
 
-                    Dərhal saytda yayımla (Aktiv et)
+                    Publish to site
 
                 </label>
 
@@ -2800,7 +2800,7 @@
 
                         <span class="age-badge" style="background: ${isActive ? 'var(--success-bg)' : 'var(--danger-bg)'}; color: ${isActive ? 'var(--success)' : 'var(--danger)'};">
 
-                            ${isActive ? "● YAYIMDADIR" : "○ DAYANDIRILIB"}
+                            ${isActive ? "● PUBLISH" : "○ UNPUBLISH"}
 
                         </span>
 
@@ -2812,19 +2812,19 @@
 
                         <button type="button" class="portfolio-action-btn ${isActive ? 'unpublish-btn' : 'publish-btn'}" onclick="toggleNotificationStatus('${escapeAttribute(id)}', ${isActive})">
 
-                            ${isActive ? "Dayandır" : "Yayımla"}
+                            ${isActive ? "Stop" : "Publish"}
 
                         </button>
 
                         <button type="button" class="portfolio-action-btn edit-portfolio-btn" onclick="editNotification('${escapeAttribute(id)}')">
 
-                            Redaktə
+                            Edit
 
                         </button>
 
                         <button type="button" class="portfolio-action-btn delete-portfolio-btn" onclick="deleteNotification('${escapeAttribute(id)}')">
 
-                            Sil
+                            Delete
 
                         </button>
 
