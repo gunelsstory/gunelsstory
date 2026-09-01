@@ -1064,6 +1064,78 @@
 
 
 
+        /* FORMATLAMA TOOLBAR */
+
+        .rich-toolbar {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            margin-bottom: 8px;
+
+            background: #F1F5F9;
+
+            padding: 6px 10px;
+
+            border-radius: 10px;
+
+            border: 1px solid rgba(15,26,92,.08);
+
+            width: fit-content;
+
+        }
+
+
+
+        .rich-btn {
+
+            background: white;
+
+            border: 1px solid #CBD5E1;
+
+            border-radius: 6px;
+
+            padding: 4px 10px;
+
+            font-size: 0.85rem;
+
+            font-weight: 700;
+
+            color: var(--primary-lux);
+
+            cursor: pointer;
+
+            transition: all 0.2s;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-width: 32px;
+
+            height: 30px;
+
+        }
+
+
+
+        .rich-btn:hover {
+
+            background: var(--primary-lux);
+
+            color: white;
+
+            border-color: var(--primary-lux);
+
+        }
+
+
+
         /* MODALLAR */
 
         .modal-overlay {
@@ -1735,6 +1807,14 @@
             <div class="form-group">
 
                 <label class="form-label">Bildiriş Mətni *</label>
+
+                <!-- FORMATLAMA DÜYMƏLƏRİ -->
+                <div class="rich-toolbar">
+                    <button type="button" class="rich-btn" onclick="formatNoticeText('b')" title="Qalın (Bold)"><b>B</b></button>
+                    <button type="button" class="rich-btn" onclick="formatNoticeText('i')" title="Kursiv (Italic)"><i>I</i></button>
+                    <button type="button" class="rich-btn" onclick="formatNoticeText('u')" title="Altı xətli (Underline)"><u>U</u></button>
+                    <button type="button" class="rich-btn" onclick="formatNoticeLink()" title="Link əlavə et">🔗</button>
+                </div>
 
                 <textarea id="noticeMessage" class="form-input" placeholder="Müştərilərin görəcəyi ətraflı mesaj..."></textarea>
 
@@ -2538,11 +2618,67 @@
 
         /* =========================================================
 
-           BİLDİRİŞ İDARƏETMƏSİ (NOTIFICATIONS CRUD & TOGGLE)
+           BİLDİRİŞ İDARƏETMƏSİ & MƏTN FORMATLAMA
 
         ========================================================= */
 
         let notificationUnsubscribe = null;
+
+
+
+        function formatNoticeText(tag) {
+
+            const textarea = document.getElementById("noticeMessage");
+
+            const start = textarea.selectionStart;
+
+            const end = textarea.selectionEnd;
+
+            const selectedText = textarea.value.substring(start, end);
+
+
+
+            if (!selectedText) {
+
+                alert("Zəhmət olmasa formatlamaq istədiyiniz mətni seçin.");
+
+                return;
+
+            }
+
+
+
+            const replacement = `<${tag}>${selectedText}</${tag}>`;
+
+            textarea.setRangeText(replacement, start, end, 'select');
+
+        }
+
+
+
+        function formatNoticeLink() {
+
+            const textarea = document.getElementById("noticeMessage");
+
+            const start = textarea.selectionStart;
+
+            const end = textarea.selectionEnd;
+
+            const selectedText = textarea.value.substring(start, end) || "Keçid";
+
+
+
+            let url = prompt("Keçid linkini daxil edin (məsələn: https://gunelsstory.com/ və ya tel:+994...):", "https://");
+
+            if (!url) return;
+
+
+
+            const replacement = `<a href="${url}" target="_blank">${selectedText}</a>`;
+
+            textarea.setRangeText(replacement, start, end, 'select');
+
+        }
 
 
 
@@ -2656,7 +2792,7 @@
 
                     <div style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.4; padding-right: 15px;">
 
-                        ${escapeHtml(data.message || "")}
+                        ${data.message || ""}
 
                     </div>
 
