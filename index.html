@@ -1025,13 +1025,6 @@
 
         /* =====================================================
            SİFARİŞ + QİYMƏT BÖLMƏSİ
-           
-           DESKTOP:
-           SOL  = QİYMƏT
-           SAĞ  = SİFARİŞ FORMASI
-
-           QEYD:
-           DESKTOPDA "Sifariş üçün müraciət et" DÜYMƏSİ YOXDUR.
         ====================================================== */
 
         .order-section {
@@ -1311,12 +1304,6 @@
                 0;
         }
 
-
-        /* =====================================================
-           DESKTOPDA QİYMƏT DÜYMƏSİ GİZLİDİR
-           
-           Mobil düymə ayrıca .mobile-price-panel daxilindədir.
-        ====================================================== */
 
         .price-panel .price-action-btn {
 
@@ -1643,15 +1630,207 @@
 
 
         /* =====================================================
+           DİNAMİK BİLDİRİŞ MODALI
+        ====================================================== */
+
+        .announcement-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background: rgba(15, 23, 42, 0.65);
+
+            backdrop-filter: blur(5px);
+
+            -webkit-backdrop-filter: blur(5px);
+
+            z-index: 100000;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition:
+                opacity 0.3s ease,
+                visibility 0.3s ease;
+        }
+
+
+        .announcement-overlay.show {
+
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+
+        .announcement-modal {
+
+            background: #ffffff;
+
+            width: min(92%, 440px);
+
+            border-radius: 24px;
+
+            padding: 34px 26px 28px;
+
+            position: relative;
+
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+
+            text-align: center;
+
+            transform: scale(0.9);
+
+            transition:
+                transform 0.3s
+                cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+
+        .announcement-overlay.show .announcement-modal {
+
+            transform: scale(1);
+        }
+
+
+        .announcement-close-btn {
+
+            position: absolute;
+
+            top: 16px;
+
+            right: 16px;
+
+            background: #f1f5f9;
+
+            border: none;
+
+            width: 34px;
+
+            height: 34px;
+
+            border-radius: 50%;
+
+            font-size: 1.1rem;
+
+            color: #64748b;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition: all 0.2s;
+        }
+
+
+        .announcement-close-btn:hover {
+
+            background: #e2e8f0;
+
+            color: #1a1a24;
+        }
+
+
+        .announcement-icon {
+
+            font-size: 2.7rem;
+
+            margin-bottom: 12px;
+        }
+
+
+        .announcement-title {
+
+            font-family: 'Quicksand', sans-serif;
+
+            font-size: 1.35rem;
+
+            font-weight: 700;
+
+            color: var(--text-main);
+
+            margin-bottom: 10px;
+        }
+
+
+        .announcement-body {
+
+            font-size: 0.92rem;
+
+            color: var(--text-sub);
+
+            line-height: 1.6;
+
+            margin-bottom: 24px;
+
+            white-space: pre-line;
+        }
+
+
+        .announcement-action-btn {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+
+            background: var(--gold-gradient);
+
+            color: #ffffff;
+
+            border-radius: 12px;
+
+            font-weight: 700;
+
+            font-size: 0.95rem;
+
+            font-family: 'Quicksand', sans-serif;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 6px 20px
+                rgba(255, 107, 107, 0.2);
+
+            transition: all 0.2s ease;
+        }
+
+
+        .announcement-action-btn:hover {
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(255, 107, 107, 0.25);
+        }
+
+
+        /* =====================================================
            MOBİL
         ====================================================== */
 
         @media (max-width: 768px) {
 
-
-            /* =================================================
-               SPLASH
-            ================================================== */
 
             #story-splash {
 
@@ -1696,10 +1875,6 @@
             }
 
 
-            /* =================================================
-               NAV
-            ================================================== */
-
             .nav-container {
 
                 padding:
@@ -1741,10 +1916,6 @@
             }
 
 
-            /* =================================================
-               HEADER
-            ================================================== */
-
             header {
 
                 padding:
@@ -1775,10 +1946,6 @@
                     8px 14px;
             }
 
-
-            /* =================================================
-               CARDS
-            ================================================== */
 
             .container {
 
@@ -1868,10 +2035,6 @@
             }
 
 
-            /* =================================================
-               MOBİL SİFARİŞ BÖLMƏSİ
-            ================================================== */
-
             .order-section {
 
                 position:
@@ -1949,10 +2112,6 @@
                     50%;
             }
 
-
-            /* =================================================
-               MOBİL QİYMƏT
-            ================================================== */
 
             .mobile-price-panel {
 
@@ -2038,10 +2197,6 @@
             }
 
 
-            /*
-               MOBİL DÜYMƏ BURADA QALIR
-            */
-
             .mobile-price-panel .price-action-btn {
 
                 display:
@@ -2111,10 +2266,6 @@
                     );
             }
 
-
-            /* =================================================
-               MOBİL FORM
-            ================================================== */
 
             .mobile-form-panel {
 
@@ -2905,8 +3056,6 @@
 
                             <div class="form-heading">
 
-                               
-
                                 <h4>
                                     Sifariş Müraciəti
                                 </h4>
@@ -3153,7 +3302,6 @@
                                             ←
                                         </button>
 
-                                        
                                         <h4>
                                             Sifariş Müraciəti
                                         </h4>
@@ -3278,6 +3426,21 @@
 
 
     <!-- =====================================================
+         DİNAMİK BİLDİRİŞ MODAL STRUKTURU
+    ====================================================== -->
+
+    <div class="announcement-overlay" id="announcementOverlay">
+        <div class="announcement-modal">
+            <button type="button" class="announcement-close-btn" id="closeAnnouncementBtn" aria-label="Bağla">✕</button>
+            <div class="announcement-icon" id="announcementIcon">📢</div>
+            <h3 class="announcement-title" id="announcementTitle">Diqqət!</h3>
+            <p class="announcement-body" id="announcementBody"></p>
+            <button type="button" class="announcement-action-btn" id="confirmAnnouncementBtn">Oldu / Anladım</button>
+        </div>
+    </div>
+
+
+    <!-- =====================================================
          FIREBASE
     ====================================================== -->
 
@@ -3324,6 +3487,53 @@
 
         const db =
             firebase.firestore();
+
+
+        /* =====================================================
+           DİNAMİK BİLDİRİŞİ FİRESTORE-DAN OXU
+        ====================================================== */
+
+        const announcementOverlay = document.getElementById("announcementOverlay");
+        const announcementIcon = document.getElementById("announcementIcon");
+        const announcementTitle = document.getElementById("announcementTitle");
+        const announcementBody = document.getElementById("announcementBody");
+        const closeAnnouncementBtn = document.getElementById("closeAnnouncementBtn");
+        const confirmAnnouncementBtn = document.getElementById("confirmAnnouncementBtn");
+
+        function closeNotificationModal() {
+            if (announcementOverlay) {
+                announcementOverlay.classList.remove("show");
+            }
+        }
+
+        if (closeAnnouncementBtn) {
+            closeAnnouncementBtn.addEventListener("click", closeNotificationModal);
+        }
+
+        if (confirmAnnouncementBtn) {
+            confirmAnnouncementBtn.addEventListener("click", closeNotificationModal);
+        }
+
+        db.collection("settings").doc("popupNotification")
+            .get()
+            .then(function (doc) {
+                if (doc.exists) {
+                    const data = doc.data();
+                    if (data.active === true) {
+                        announcementIcon.innerText = data.icon || "📢";
+                        announcementTitle.innerText = data.title || "Məlumat";
+                        announcementBody.innerText = data.message || "";
+
+                        // Splash animasiyası (3s) bitdikdən dərhal sonra modalı açırıq
+                        setTimeout(function () {
+                            announcementOverlay.classList.add("show");
+                        }, 3200);
+                    }
+                }
+            })
+            .catch(function (error) {
+                console.error("Bildiriş oxunarkən xəta:", error);
+            });
 
 
         /* =====================================================
@@ -3811,9 +4021,10 @@
 
 
         const backToPriceBtn =
-            document.getElementById(
-                "backToPriceBtn"
-            );
+            document
+                .getElementById(
+                    "backToPriceBtn"
+                );
 
 
         goToOrderBtn.addEventListener(
