@@ -1571,7 +1571,7 @@
 
 
         /* =====================================================
-           BİLDİRİŞ POP-UP MODALI (EN YÜKSƏK Z-INDEX)
+           BİLDİRİŞ POP-UP MODALI (TARİX İLƏ BİRGƏ)
         ====================================================== */
 
         .site-notification-overlay {
@@ -1695,9 +1695,23 @@
 
             color: var(--text-main);
 
-            margin-bottom: 10px;
+            margin-bottom: 4px;
 
             font-family: 'Quicksand', sans-serif;
+        }
+
+        /* BİLDİRİŞ TARİXİ */
+        .site-notification-date {
+
+            font-size: 0.78rem;
+
+            font-weight: 600;
+
+            color: var(--text-sub);
+
+            margin-bottom: 14px;
+
+            display: block;
         }
 
 
@@ -3202,6 +3216,10 @@
     </div>
 
 
+    <!-- =====================================================
+         BİLDİRİŞ POP-UP ELEMENTİ (BAŞLIQ + TARİX + MƏTN)
+    ====================================================== -->
+
     <div class="site-notification-overlay" id="siteNotificationOverlay">
 
         <div class="site-notification-card">
@@ -3211,6 +3229,8 @@
             <div class="site-notification-icon">📢</div>
 
             <h3 class="site-notification-title" id="notificationTitle">Bildiriş</h3>
+
+            <span class="site-notification-date" id="notificationDate"></span>
 
             <div class="site-notification-message" id="notificationMessage"></div>
 
@@ -3267,7 +3287,7 @@
 
 
         /* =====================================================
-           BİLDİRİŞ SİSTEMİ (ZƏMANƏTLİ GÖSTƏRİLMƏ)
+           BİLDİRİŞ SİSTEMİ (BAŞLIQ + TARİX + HTML MƏTN)
         ====================================================== */
 
         function initNotificationListener() {
@@ -3284,17 +3304,32 @@
                 snapshot.forEach(function (doc) {
                     const data = doc.data();
                     if (data.isActive === true) {
+
+                        let formattedDate = "";
+                        const timestamp = data.updatedAt || data.createdAt;
+
+                        if (timestamp && typeof timestamp.toDate === "function") {
+                            formattedDate = timestamp.toDate().toLocaleString("az-AZ", {
+                                day: "2-digit",
+                                month: "2-digit",
+                                year: "numeric",
+                                hour: "2-digit",
+                                minute: "2-digit"
+                            });
+                        }
+
                         activeNotices.push({
                             id: doc.id,
                             title: data.title || "Xüsusi Bildiriş",
-                            message: data.message || ""
+                            message: data.message || "",
+                            date: formattedDate
                         });
                     }
                 });
 
                 if (activeNotices.length > 0) {
                     const notice = activeNotices[activeNotices.length - 1];
-                    showSiteNotification(notice.title, notice.message);
+                    showSiteNotification(notice.title, notice.message, notice.date);
                 } else {
                     hideSiteNotification();
                 }
@@ -3304,12 +3339,13 @@
             });
         }
 
-        function showSiteNotification(title, message) {
+        function showSiteNotification(title, message, date) {
 
             const overlay = document.getElementById("siteNotificationOverlay");
             if (!overlay) return;
 
             document.getElementById("notificationTitle").innerText = title;
+            document.getElementById("notificationDate").innerText = date || "";
             document.getElementById("notificationMessage").innerHTML = message;
             overlay.style.display = "flex";
         }
