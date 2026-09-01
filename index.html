@@ -14,6 +14,10 @@
           type="image/png"
           href="image/favicon.png">
 
+    <!-- =====================================================
+         PREMIUM ŞRİFTLƏR
+    ====================================================== -->
+
     <link rel="preconnect"
           href="https://fonts.googleapis.com">
 
@@ -1714,6 +1718,23 @@
             overflow-y: auto;
         }
 
+        .site-notification-message b,
+        .site-notification-message strong {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .site-notification-message a {
+            color: var(--primary-magic);
+            font-weight: 700;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+
+        .site-notification-message a:hover {
+            color: #312e81;
+        }
+
 
         .site-notification-btn {
 
@@ -3272,7 +3293,6 @@
                 });
 
                 if (activeNotices.length > 0) {
-                    // Ən sonuncu aktiv bildirişi ekrana veririk
                     const notice = activeNotices[activeNotices.length - 1];
                     showSiteNotification(notice.title, notice.message);
                 } else {
