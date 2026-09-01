@@ -1512,6 +1512,86 @@
 
             .portfolio-list-actions { width: 100%; justify-content: flex-start; flex-wrap: wrap; margin-top: 10px; border-top: 1px dashed rgba(15,26,92,.08); padding-top: 10px; }
 
+            /* BİLDİRİŞLƏRİN MOBİL GÖRÜNÜŞÜ (900px-dən aşağı) */
+            #notificationsAdminGrid .portfolio-list-item {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 12px !important;
+                padding: 18px !important;
+                background: white !important;
+                border: 1px solid rgba(15,26,92,.08) !important;
+                border-radius: var(--radius-md) !important;
+                box-shadow: var(--shadow-sm) !important;
+            }
+
+            #notificationsAdminGrid .portfolio-list-title {
+                font-size: 1.05rem !important;
+                padding-right: 0 !important;
+            }
+
+            #notificationsAdminGrid .portfolio-list-item > div:nth-child(2) {
+                padding-right: 0 !important;
+                font-size: 0.9rem !important;
+                color: var(--text-main) !important;
+                background: #F8FAFC !important;
+                padding: 10px 12px !important;
+                border-radius: 8px !important;
+            }
+
+            #notificationsAdminGrid .portfolio-list-actions {
+                display: flex !important;
+                width: 100% !important;
+                gap: 8px !important;
+                justify-content: flex-start !important;
+                margin-top: 5px !important;
+                border-top: 1px dashed rgba(15,26,92,.08) !important;
+                padding-top: 12px !important;
+            }
+
+            #notificationsAdminGrid .portfolio-action-btn {
+                flex: 1 !important;
+                text-align: center !important;
+                padding: 10px 8px !important;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+            .portfolio-toolbar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
+            }
+
+            .add-portfolio-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .portfolio-modal {
+                padding: 22px 18px;
+                border-radius: 18px;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .modal-btn {
+                width: 100%;
+            }
+
+            #notificationsAdminGrid .portfolio-list-actions {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr 1fr !important;
+                gap: 6px !important;
+            }
+
+            #notificationsAdminGrid .portfolio-action-btn {
+                width: 100% !important;
+                font-size: 0.72rem !important;
+                padding: 9px 4px !important;
+            }
         }
 
     </style>
@@ -1834,9 +1914,9 @@
 
             <div class="modal-actions">
 
-                <button class="modal-btn cancel-btn" onclick="closeNotificationModal()">Ləğv et</button>
+                <button class="modal-btn cancel-btn" onclick="closeNotificationModal()">Cancle</button>
 
-                <button class="modal-btn save-btn" id="saveNoticeBtn" onclick="saveNotification()">Yadda saxla</button>
+                <button class="modal-btn save-btn" id="saveNoticeBtn" onclick="saveNotification()">Save</button>
 
             </div>
 
@@ -2198,7 +2278,7 @@
 
                                             <svg class="eye-closed" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
 
-                                            <svg class="eye-open" viewBox="0 0 24 24" style="display:none"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/></svg>
+                                            <svg class="eye-open" viewBox="0 0 24 24" style="display:none"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-4.5c-5 0-9.27 3.11-11 7.5 1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z"/></svg>
 
                                         </button>
 
