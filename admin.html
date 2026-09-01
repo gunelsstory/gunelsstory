@@ -728,7 +728,7 @@
                     <input type="password" id="password" class="login-input" placeholder="••••••••">
                     <button type="button" onclick="togglePasswordVisibility()" class="toggle-password" id="togglePasswordBtn">
                         <svg id="eyeClosedIcon" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                        <svg id="eyeOpenIcon" viewBox="0 0 24 24" style="display:none"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-4.5c-5 0-9.27 3.11-11 7.5 1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z"/></svg>
+                        <svg id="eyeOpenIcon" viewBox="0 0 24 24" style="display:none"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5 5-2.24 5-5-5zm0-4.5c-5 0-9.27 3.11-11 7.5 1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5z"/></svg>
                     </button>
                 </div>
             </div>
@@ -1326,7 +1326,7 @@
         }
 
         /* =========================================================
-           BİLDİRİŞLƏR (NOTIFICATIONS) ARXİVİ VƏ İDARƏSİ
+           BİLDİRİŞLƏR (NOTIFICATIONS) ARXİVİ VƏ SİNXRON İDARƏSİ
         ========================================================= */
 
         function updateLivePreview() {
@@ -1368,6 +1368,17 @@
             window.scrollTo({ top: document.getElementById("notificationsSection").offsetTop - 20, behavior: 'smooth' });
         }
 
+        async function syncLiveSettings(isActive, icon, title, message) {
+            // Əsas səhifənin dərhal və etibarlı oxuması üçün settings/popupNotification sənədinə sinxron yazırıq
+            await db.collection("settings").doc("popupNotification").set({
+                active: isActive,
+                icon: icon || "📢",
+                title: title || "",
+                message: message || "",
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            }, { merge: true });
+        }
+
         async function saveNotification() {
             const title = document.getElementById("notifTitle").value.trim();
             const message = document.getElementById("notifMessage").value.trim();
@@ -1385,16 +1396,25 @@
             btn.innerText = "Saxlanılır...";
 
             try {
-                // Əgər aktiv edilirsə, digər bütün bildirişləri deaktiv edirik
+                // Əgər aktiv edilirsə, arxivdəki digər aktivləri deaktiv edirik
                 if (isActive) {
-                    const activeSnap = await db.collection("notifications").where("active", "==", true).get();
+                    const allSnap = await db.collection("notifications").get();
                     const batch = db.batch();
-                    activeSnap.forEach(doc => {
-                        if (doc.id !== docId) {
+                    allSnap.forEach(doc => {
+                        if (doc.id !== docId && doc.data().active === true) {
                             batch.update(doc.ref, { active: false });
                         }
                     });
                     await batch.commit();
+
+                    // settings-ə aktiv kimi yazırıq
+                    await syncLiveSettings(true, icon, title, message);
+                } else if (docId) {
+                    // Əgər hazırkı aktiv olanı redaktə edib deaktiv etdiksə, settings-i də söndürürük
+                    const currentDoc = await db.collection("notifications").doc(docId).get();
+                    if (currentDoc.exists && currentDoc.data().active === true) {
+                        await syncLiveSettings(false, icon, title, message);
+                    }
                 }
 
                 if (docId) {
@@ -1425,22 +1445,29 @@
             }
         }
 
-        async function toggleNotificationStatus(docId, currentStatus) {
+        async function toggleNotificationStatus(docId, currentStatus, icon, title, message) {
             try {
-                if (!currentStatus) {
-                    // Aktivləşdirilirsə digər aktivləri söndürürük
-                    const activeSnap = await db.collection("notifications").where("active", "==", true).get();
+                const newStatus = !currentStatus;
+
+                if (newStatus) {
+                    // Yeni bildiriş aktiv edilirsə, digərlərini söndürürük
+                    const allSnap = await db.collection("notifications").get();
                     const batch = db.batch();
-                    activeSnap.forEach(doc => {
-                        if (doc.id !== docId) {
+                    allSnap.forEach(doc => {
+                        if (doc.id !== docId && doc.data().active === true) {
                             batch.update(doc.ref, { active: false });
                         }
                     });
                     await batch.commit();
+
+                    await syncLiveSettings(true, icon, title, message);
+                } else {
+                    // Söndürülürsə, settings-də də deaktiv edirik
+                    await syncLiveSettings(false, icon, title, message);
                 }
 
                 await db.collection("notifications").doc(docId).update({
-                    active: !currentStatus,
+                    active: newStatus,
                     updatedAt: firebase.firestore.FieldValue.serverTimestamp()
                 });
             } catch (error) {
@@ -1448,9 +1475,12 @@
             }
         }
 
-        async function deleteNotification(docId, title) {
+        async function deleteNotification(docId, title, isActive) {
             if (!confirm(`"${title}" bildirişini silmək istəyirsiniz?`)) return;
             try {
+                if (isActive) {
+                    await syncLiveSettings(false, "📢", "", "");
+                }
                 await db.collection("notifications").doc(docId).delete();
                 alert("Bildiriş arxivdən silindi.");
                 if (document.getElementById("notifDocId").value === docId) {
@@ -1463,15 +1493,20 @@
 
         function startListeningNotifications() {
             const tbody = document.getElementById("notificationsTableBody");
-            db.collection("notifications").orderBy("createdAt", "desc").onSnapshot(function (snapshot) {
+            db.collection("notifications").onSnapshot(function (snapshot) {
                 tbody.innerHTML = "";
                 if (snapshot.empty) {
                     tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:40px; color:var(--text-muted);">Hələ heç bir bildiriş yaradılmayıb.</td></tr>`;
                     return;
                 }
-                snapshot.forEach(function (doc) {
-                    const data = doc.data();
-                    const id = doc.id;
+
+                const docs = [];
+                snapshot.forEach(doc => docs.push({ id: doc.id, data: doc.data() }));
+                docs.sort((a, b) => (b.data.createdAt?.toMillis?.() || 0) - (a.data.createdAt?.toMillis?.() || 0));
+
+                docs.forEach(function (item) {
+                    const data = item.data;
+                    const id = item.id;
                     const isActive = data.active === true;
                     let date = "Gözlənilir";
                     if (data.createdAt && typeof data.createdAt.toDate === "function") {
@@ -1493,13 +1528,13 @@
                         <td data-label="Tarix" style="font-size: 0.8rem; color: var(--text-muted);">${escapeHtml(date)}</td>
                         <td data-label="Əməliyyat">
                             <div class="action-container">
-                                <button type="button" class="status-btn ${isActive ? 'checked' : ''}" onclick="toggleNotificationStatus('${escapeAttribute(id)}', ${isActive})" title="${isActive ? 'Deaktiv et' : 'Yayımla'}">
+                                <button type="button" class="status-btn ${isActive ? 'checked' : ''}" onclick="toggleNotificationStatus('${escapeAttribute(id)}', ${isActive}, '${escapeAttribute(data.icon || '📢')}', '${escapeAttribute(data.title || '')}', '${escapeAttribute(data.message || '')}')" title="${isActive ? 'Deaktiv et' : 'Yayımla'}">
                                     ${isActive ? 'Dayandır' : 'Yayımla'}
                                 </button>
                                 <button type="button" class="portfolio-action-btn edit-portfolio-btn" onclick="editNotification('${escapeAttribute(id)}', '${escapeAttribute(data.icon || '📢')}', '${escapeAttribute(data.title || '')}', '${escapeAttribute(data.message || '')}', ${isActive})">
                                     Düzəliş et
                                 </button>
-                                <button type="button" class="delete-btn" onclick="deleteNotification('${escapeAttribute(id)}', '${escapeAttribute(data.title || '')}')" title="Sil">
+                                <button type="button" class="delete-btn" onclick="deleteNotification('${escapeAttribute(id)}', '${escapeAttribute(data.title || '')}', ${isActive})" title="Sil">
                                     <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
                                 </button>
                             </div>
