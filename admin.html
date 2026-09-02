@@ -1202,7 +1202,7 @@
 
 
 
-        /* MÜQAVİLƏ YARAT DÜYMƏSİ */
+        /* MÜQAVİLƏ DÜYMƏLƏRİ */
         .contract-btn {
             background: #4f46e5;
             color: white;
@@ -1217,6 +1217,18 @@
         .contract-btn:hover {
             background: #4338ca;
             transform: translateY(-1px);
+        }
+
+        .contract-exists-badge {
+            background: var(--success-bg);
+            color: var(--success);
+            padding: 8px 12px;
+            border-radius: 9px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
 
 
@@ -2902,7 +2914,61 @@
             cardElement.classList.toggle("open");
         }
 
-        /* SPONSORLUQ MÜQAVİLƏSİ YARATMAQ VƏ TARİXÇƏYƏ YAZMAQ */
+        // Mövcud müqavilələrin ID-lərini yadda saxlayırıq
+        let existingContractsSet = new Set();
+
+        function startListeningContracts() {
+            db.collection("contractsHistory").onSnapshot(function (snapshot) {
+                existingContractsSet.clear();
+                let tbody = document.getElementById("contractsTableBody");
+                tbody.innerHTML = "";
+
+                if (snapshot.empty) {
+                    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:50px; color:var(--text-muted);">Hələ heç bir müqavilə yaradılmayıb.</td></tr>`;
+                }
+
+                snapshot.forEach(function (doc) {
+                    const data = doc.data();
+                    const id = doc.id;
+                    const ticketId = data.ticketId || "TKT-XXXXX";
+                    existingContractsSet.add(ticketId);
+
+                    const name = data.name || "Qeyd edilməyib";
+                    const contact = data.contact || "Qeyd yoxdur";
+
+                    let date = "Gözlənilir";
+                    if (data.createdAt && typeof data.createdAt.toDate === "function") {
+                        date = data.createdAt.toDate().toLocaleString("az-AZ", {
+                            day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"
+                        });
+                    }
+
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = `
+                        <td data-label="Müqavilə No"><strong style="font-family:monospace; color:var(--primary-lux);">${escapeHtml(ticketId)}</strong></td>
+                        <td data-label="Sponsor" class="parent-name-cell">${escapeHtml(name)}</td>
+                        <td data-label="Əlaqə">${escapeHtml(contact)}</td>
+                        <td data-label="Tarix">${escapeHtml(date)}</td>
+                        <td data-label="Əməliyyat" style="text-align:right;">
+                            <button type="button" class="delete-btn" onclick="deleteContract('${escapeAttribute(id)}', '${escapeAttribute(ticketId)}')" title="Sil">
+                                <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                            </button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+
+                // Müraciətlər siyahısını yenidən yeniləyirik ki, düymələr dərhal "Müqavilə var" olsun
+                startListeningSponsorships();
+            });
+        }
+
+        function deleteContract(docId, ticketId) {
+            if (!confirm(`"${ticketId}" nömrəli müqavilə tarixçəsini silmək istədiyinizdən əminsiniz?`)) return;
+            db.collection("contractsHistory").doc(docId).delete();
+        }
+
+        /* SPONSORLUQ MÜQAVİLƏSİ YARATMAQ VƏ TARİXÇƏYƏ QEYD ETMƏK */
         function generateSponsorContract(name, contact, ticketId, createdAt) {
             let dateStr = "02 Sentyabr 2026";
             let rawDate = new Date();
@@ -3035,58 +3101,16 @@
             win.document.close();
         }
 
-        /* MÜQAVİLƏ TARİXÇƏSİ DİNLƏYİCİSİ */
-        function startListeningContracts() {
-            const tbody = document.getElementById("contractsTableBody");
-            db.collection("contractsHistory").orderBy("createdAt", "desc").onSnapshot(function (snapshot) {
-                tbody.innerHTML = "";
-                if (snapshot.empty) {
-                    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:50px; color:var(--text-muted);">Hələ heç bir müqavilə yaradılmayıb.</td></tr>`;
-                    return;
-                }
-
-                snapshot.forEach(function (doc) {
-                    const data = doc.data();
-                    const id = doc.id;
-                    const ticketId = data.ticketId || "TKT-XXXXX";
-                    const name = data.name || "Qeyd edilməyib";
-                    const contact = data.contact || "Qeyd yoxdur";
-
-                    let date = "Gözlənilir";
-                    if (data.createdAt && typeof data.createdAt.toDate === "function") {
-                        date = data.createdAt.toDate().toLocaleString("az-AZ", {
-                            day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"
-                        });
-                    }
-
-                    const tr = document.createElement("tr");
-                    tr.innerHTML = `
-                        <td data-label="Müqavilə No"><strong style="font-family:monospace; color:var(--primary-lux);">${escapeHtml(ticketId)}</strong></td>
-                        <td data-label="Sponsor" class="parent-name-cell">${escapeHtml(name)}</td>
-                        <td data-label="Əlaqə">${escapeHtml(contact)}</td>
-                        <td data-label="Tarix">${escapeHtml(date)}</td>
-                        <td data-label="Əməliyyat" style="text-align:right;">
-                            <button type="button" class="delete-btn" onclick="deleteContract('${escapeAttribute(id)}', '${escapeAttribute(ticketId)}')" title="Sil">
-                                <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-                            </button>
-                        </td>
-                    `;
-                    tbody.appendChild(tr);
-                });
-            });
-        }
-
-        function deleteContract(docId, ticketId) {
-            if (!confirm(`"${ticketId}" nömrəli müqavilə tarixçəsini silmək istədiyinizdən əminsiniz?`)) return;
-            db.collection("contractsHistory").doc.delete ? db.collection("contractsHistory").doc(docId).delete() : db.collection("contractsHistory").doc(docId).delete();
-        }
+        let sponsorshipsUnsubscribe = null;
 
         function startListeningSponsorships() {
             const tbody = document.getElementById("sponsorshipsTableBody");
             const mobileContainer = document.getElementById("mobileSponsorshipsView");
             const desktopView = document.getElementById("desktopSponsorshipsView");
 
-            db.collection("sponsorships").orderBy("createdAt", "desc").onSnapshot(function (snapshot) {
+            if (sponsorshipsUnsubscribe) sponsorshipsUnsubscribe();
+
+            sponsorshipsUnsubscribe = db.collection("sponsorships").orderBy("createdAt", "desc").onSnapshot(function (snapshot) {
                 tbody.innerHTML = "";
                 mobileContainer.innerHTML = "";
                 currentWaitingSponsors = 0;
@@ -3130,6 +3154,15 @@
                         });
                     }
 
+                    // Müqavilənin artıq yaradılıb-yaradılmadığını yoxlayırıq
+                    const hasContract = existingContractsSet.has(ticketId);
+                    let contractButtonHtml = '';
+                    if (hasContract) {
+                        contractButtonHtml = `<span class="contract-exists-badge">✓ Müqavilə var</span>`;
+                    } else {
+                        contractButtonHtml = `<button type="button" class="contract-btn" onclick="generateSponsorContract('${escapeAttribute(name)}', '${escapeAttribute(contact)}', '${escapeAttribute(ticketId)}', window.firebaseCreatedAt_${escapeAttribute(id)})" title="Müqavilə yarat">Müqavilə yarat</button>`;
+                    }
+
                     // Desktop Table Row
                     const tr = document.createElement("tr");
                     tr.className = viewed ? "status-viewed" : "status-waiting";
@@ -3141,7 +3174,7 @@
                         <td data-label="Tarix">${escapeHtml(date)}</td>
                         <td data-label="Əməliyyat">
                             <div class="action-container">
-                                <button type="button" class="contract-btn" onclick="generateSponsorContract('${escapeAttribute(name)}', '${escapeAttribute(contact)}', '${escapeAttribute(ticketId)}', window.firebaseCreatedAt_${escapeAttribute(id)})" title="Müqavilə yarat">Müqavilə yarat</button>
+                                ${contractButtonHtml}
                                 <button type="button" class="delete-btn" onclick="deleteSponsorship('${escapeAttribute(id)}', '${escapeAttribute(ticketId)}')" title="Sil">
                                     <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
                                 </button>
@@ -3173,7 +3206,7 @@
                             <div class="sponsor-field"><b>Müraciət Məzmunu:</b> ${escapeHtml(message)}</div>
                             <div class="sponsor-field"><b>Tarix:</b> ${escapeHtml(date)}</div>
                             <div style="display: flex; gap: 6px; margin-top: 12px; align-items: center; flex-wrap: wrap;">
-                                <button type="button" class="contract-btn" style="flex:1; padding: 8px 10px; font-size: 0.72rem;" onclick="generateSponsorContract('${escapeAttribute(name)}', '${escapeAttribute(contact)}', '${escapeAttribute(ticketId)}', window.firebaseCreatedAt_${escapeAttribute(id)})">Müqavilə yarat</button>
+                                ${hasContract ? `<span class="contract-exists-badge" style="flex:1; justify-content:center;">✓ Müqavilə var</span>` : `<button type="button" class="contract-btn" style="flex:1; padding: 8px 10px; font-size: 0.72rem;" onclick="generateSponsorContract('${escapeAttribute(name)}', '${escapeAttribute(contact)}', '${escapeAttribute(ticketId)}', window.firebaseCreatedAt_${escapeAttribute(id)})">Müqavilə yarat</button>`}
                                 <button type="button" class="status-btn ${viewed ? "checked" : ""}" style="flex:1; padding: 8px; font-size: 0.76rem;" onclick="toggleSponsorshipStatus('${escapeAttribute(id)}', ${viewed})">
                                     ${viewed ? "✓ Cavablandı" : "• Gözləyir"}
                                 </button>
