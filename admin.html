@@ -1813,7 +1813,8 @@
             }
 
             .portfolio-list { display: none !important; }
-            #portfolioAdminGrid { display: block !important; }
+            #desktopPortfolioView { display: none !important; }
+            #mobilePortfolioView { display: block !important; }
 
             /* BİLDİRİŞLƏRİN MOBİL GÖRÜNÜŞÜ */
             #notificationsAdminGrid .portfolio-list-item {
@@ -2176,11 +2177,11 @@
 
             </div>
 
-            <div id="portfolioAdminGrid">
+            <!-- Veb Görünüşü -->
+            <div id="desktopPortfolioView"></div>
 
-                <div class="loading-text">Portfolio yüklənir...</div>
-
-            </div>
+            <!-- Mobil Görünüşü (Akkordion Kartlar) -->
+            <div id="mobilePortfolioView" style="display: none;"></div>
 
         </section>
 
@@ -3185,7 +3186,7 @@
 
 
 
-        /* PORTFOLIO METODLARI */
+        /* PORTFOLIO METODLARI (Həm Veb, həm də Mobil üçün tam dəstək) */
 
         let portfolioUnsubscribe = null;
 
@@ -3225,6 +3226,7 @@
 
 
 
+            // Veb üçün cədvəl siyahısı
             const list = document.createElement("div");
 
             list.className = "portfolio-list";
