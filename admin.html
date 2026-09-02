@@ -1813,7 +1813,7 @@
             }
 
             .portfolio-list { display: none !important; }
-            #desktopPortfolioView { display: none !important; }
+            #portfolioAdminGrid { display: block !important; }
 
             /* BİLDİRİŞLƏRİN MOBİL GÖRÜNÜŞÜ */
             #notificationsAdminGrid .portfolio-list-item {
@@ -2176,11 +2176,11 @@
 
             </div>
 
-            <!-- Veb Görünüşü -->
-            <div id="desktopPortfolioView"></div>
+            <div id="portfolioAdminGrid">
 
-            <!-- Mobil Görünüşü (Akkordion Kartlar) -->
-            <div id="mobilePortfolioView" style="display: none;"></div>
+                <div class="loading-text">Portfolio yüklənir...</div>
+
+            </div>
 
         </section>
 
@@ -3185,7 +3185,7 @@
 
 
 
-        /* PORTFOLIO METODLARI (Təhlükəsiz oxuma üçün orderBy silindi) */
+        /* PORTFOLIO METODLARI */
 
         let portfolioUnsubscribe = null;
 
