@@ -1859,77 +1859,32 @@
             font-size: 0.86rem;
         }
 
-        /* FAQ - Ultra İncə və Minimalist Sətr Stili */
-        .faq-category-title {
-            font-family: 'Quicksand', sans-serif;
-            font-size: 0.74rem;
-            font-weight: 700;
-            color: var(--primary-magic);
-            margin: 10px 0 2px 2px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .faq-accordion-item {
-            background: transparent;
+        /* FAQ Tam Açıq Sadə Sətr Stili (Akkordeonsuz) */
+        .faq-item {
+            margin-bottom: 12px;
+            text-align: left;
             border-bottom: 1px solid #f1f5f9;
-            margin-bottom: 1px;
-            overflow: hidden;
-            text-align: left;
+            padding-bottom: 10px;
         }
 
-        .faq-accordion-item:last-child {
+        .faq-item:last-child {
             border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
-        .faq-accordion-header {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 6px 4px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-            font-size: 0.79rem;
+        .faq-question {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 0.84rem;
             color: var(--text-main);
-            text-align: left;
-            transition: color 0.2s;
+            margin-bottom: 3px;
         }
 
-        .faq-accordion-header:hover {
-            color: var(--primary-magic);
-        }
-
-        .faq-arrow {
-            font-size: 0.5rem;
+        .faq-answer {
+            font-size: 0.78rem;
             color: var(--text-sub);
-            transition: transform 0.25s ease, color 0.25s;
-            flex-shrink: 0;
-            margin-left: 8px;
-        }
-
-        .faq-accordion-item.active .faq-arrow {
-            transform: rotate(180deg);
-            color: var(--primary-magic);
-        }
-
-        .faq-accordion-body {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.25s ease, padding 0.25s ease;
-            padding: 0 4px;
-            font-size: 0.74rem;
-            color: var(--text-sub);
-            line-height: 1.35;
-            text-align: left;
-        }
-
-        .faq-accordion-item.active .faq-accordion-body {
-            max-height: 90px;
-            padding: 0 4px 6px 4px;
+            line-height: 1.4;
         }
 
 
@@ -3420,183 +3375,88 @@
                 </form>
             </div>
 
-            <!-- FAQ Bölməsi (16 Sual - Minimalist Sətr Stili) -->
+            <!-- FAQ Bölməsi (Tam açıq, ardıcıl nömrələnmiş 16 sual) -->
             <div class="modal-tab-content" id="tabContentFaq">
                 <div class="site-notification-message" style="max-height: 250px; padding-right: 4px;">
                     
-                    <!-- 📖 Kitab haqqında -->
-                    <div class="faq-category-title">📖 Kitab haqqında</div>
-
-                    <div class="faq-accordion-item">
-                        <button type="button" class="faq-accordion-header">
-                            <span>Gunel's Story kitabları nədir?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-accordion-body">
-                            Uşağınızın adına və xəyallarına özəl olaraq hazırlanan 100% fərdi uşaq hekayəsi kitablarıdır.
-                        </div>
+                    <div class="faq-item">
+                        <div class="faq-question">1. Gunel's Story kitabları nədir?</div>
+                        <div class="faq-answer">Uşağınızın adına və xəyallarına özəl olaraq hazırlanan 100% fərdi uşaq hekayəsi kitablarıdır.</div>
                     </div>
 
-                    <div class="faq-accordion-item">
-                        <button type="button" class="faq-accordion-header">
-                            <span>Kitab tam olaraq uşağıma özəldirmi?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-accordion-body">
-                            Bəli, hekayənin hər detalı birbaşa uşağınızın adına, yaşına və maraqlarına uyğun yazılır.
-                        </div>
+                    <div class="faq-item">
+                        <div class="faq-question">2. Kitab tam olaraq uşağıma özəldirmi?</div>
+                        <div class="faq-answer">Bəli, hekayənin hər detalı birbaşa uşağınızın adına, yaşına və maraqlarına uyğun yazılır.</div>
                     </div>
 
-                    <div class="faq-accordion-item">
-                        <button type="button" class="faq-accordion-header">
-                            <span>Kitab hansı yaş qrupuna uyğundur?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-accordion-body">
-                            Kitablar əsasən 2-10 yaş arası uşaqlar üçün xüsusi olaraq hazırlanır.
-                        </div>
+                    <div class="faq-item">
+                        <div class="faq-question">3. Kitab hansı yaş qrupuna uyğundur?</div>
+                        <div class="faq-answer">Kitablar əsasən 2-10 yaş arası uşaqlar üçün xüsusi olaraq hazırlanır.</div>
                     </div>
 
-                    <div class="faq-accordion-item">
-                        <button type="button" class="faq-accordion-header">
-                            <span>Uşağımın adı və maraqları necə istifadə olunur?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-accordion-body">
-                            Adı hekayənin baş qəhrəmanı kimi daxil edilir, sevdiyi personajlar və hobbiləri isə süjetə uyğunlaşdırılır.
-                        </div>
+                    <div class="faq-item">
+                        <div class="faq-question">4. Uşağımın adı və maraqları necə istifadə olunur?</div>
+                        <div class="faq-answer">Adı hekayənin baş qəhrəmanı kimi daxil edilir, sevdiyi personajlar və hobbiləri isə süjetə uyğunlaşdırılır.</div>
                     </div>
 
-
-                    <!-- 📸 Şəkil və dizayn -->
-                    <div class="faq-category-title">📸 Şəkil və dizayn</div>
-
-                    <div class="faq-accordion-item">
-                        <button type="button" class="faq-accordion-header">
-                            <span>Uşağımın şəkli kitabda istifadə olunurmu?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-accordion-body">
-                            Bəli, uşağın real şəkli səhifələrə peşəkar şəkildə inteqrasiya olunur.
-                        </div>
+                    <div class="faq-item">
+                        <div class="faq-question">5. Uşağımın şəkli kitabda istifadə olunurmu?</div>
+                        <div class="faq-answer">Bəli, uşağın real şəkli səhifələrə peşəkar şəkildə inteqrasiya olunur.</div>
                     </div>
 
-                    <div class="faq-accordion-item">
-                        <button type="button" class="faq-accordion-header">
-                            <span>Şəkli necə göndərirəm?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-accordion-body">
-                            Sifarişdən sonra sizinlə WhatsApp vasitəsilə əlaqə saxlanılır və foto oradan tələb olunur.
-                        </div>
+                    <div class="faq-item">
+                        <div class="faq-question">6. Şəkli necə göndərirəm?</div>
+                        <div class="faq-answer">Sifarişdən sonra sizinlə WhatsApp vasitəsilə əlaqə saxlanılır və foto oradan tələb olunur.</div>
                     </div>
 
-                    <div class="faq-accordion-item">
-                        <button type="button" class="faq-accordion-header">
-                            <span>Hansı şəkli göndərmək daha yaxşıdır?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-accordion-body">
-                            Üzün aydın göründüyü, işıqlı və təbii güldüyü portret şəkillər ən yaxşı nəticəni verir.
-                        </div>
+                    <div class="faq-item">
+                        <div class="faq-question">7. Hansı şəkli göndərmək daha yaxşıdır?</div>
+                        <div class="faq-answer">Üzün aydın göründüyü, işıqlı və təbii güldüyü portret şəkillər ən yaxşı nəticəni verir.</div>
                     </div>
 
-                    <div class="faq-accordion-item">
-                        <button type="button" class="faq-accordion-header">
-                            <span>Dizaynı əvvəlcədən görə bilərəmmi?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-accordion-body">
-                            Bəli, çap olunmamışdən öncə rəqəmsal eskiz təsdiq üçün sizə göndərilir.
-                        </div>
+                    <div class="faq-item">
+                        <div class="faq-question">8. Dizaynı əvvəlcədən görə bilərəmmi?</div>
+                        <div class="faq-answer">Bəli, çap olunmamışdən öncə rəqəmsal eskiz təsdiq üçün sizə göndərilir.</div>
                     </div>
 
-
-                    <!-- 🛒 Sifariş və qiymət -->
-                    <div class="faq-category-title">🛒 Sifariş və qiymət</div>
-
-                    <div class="faq-accordion-item">
-                        <button type="button" class="faq-accordion-header">
-                            <span>Sifarişi necə verə bilərəm?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-accordion-body">
-                            Saytdakı müraciət formasını doldurmaqla və ya WhatsApp ilə birbaşa əlaqə saxlayaraq sifariş edə bilərsiniz.
-                        </div>
+                    <div class="faq-item">
+                        <div class="faq-question">9. Sifarişi necə verə bilərəm?</div>
+                        <div class="faq-answer">Saytdakı müraciət formasını doldurmaqla və ya WhatsApp ilə birbaşa əlaqə saxlayaraq sifariş edə bilərsiniz.</div>
                     </div>
 
-                    <div class="faq-accordion-item">
-                        <button type="button" class="faq-accordion-header">
-                            <span>Qiymət nə qədərdir?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-accordion-body">
-                            Fərdi hekayə, dizayn, çap və hədiyyə qablaşdırması daxil olmaqla bir kitabın qiyməti 80 AZN-dir.
-                        </div>
+                    <div class="faq-item">
+                        <div class="faq-question">10. Qiymət nə qədərdir?</div>
+                        <div class="faq-answer">Fərdi hekayə, dizayn, çap və hədiyyə qablaşdırması daxil olmaqla bir kitabın qiyməti 80 AZN-dir.</div>
                     </div>
 
-                    <div class="faq-accordion-item">
-                        <button type="button" class="faq-accordion-header">
-                            <span>Sifarişdən sonra necə əlaqə saxlanılır?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-accordion-body">
-                            Qeyd etdiyiniz aktiv WhatsApp nömrəsi vasitəsilə sizinlə əlaqəyə keçirik.
-                        </div>
+                    <div class="faq-item">
+                        <div class="faq-question">11. Sifarişdən sonra necə əlaqə saxlanılır?</div>
+                        <div class="faq-answer">Qeyd etdiyiniz aktiv WhatsApp nömrəsi vasitəsilə sizinlə əlaqəyə keçirik.</div>
                     </div>
 
-                    <div class="faq-accordion-item">
-                        <button type="button" class="faq-accordion-header">
-                            <span>Düzəliş etmək mümkündürmü?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-accordion-body">
-                            Eskiz mərhələsində istədiyiniz kiçik düzəlişlərin edilməsi tamamilə mümkündür.
-                        </div>
+                    <div class="faq-item">
+                        <div class="faq-question">12. Düzəliş etmək mümkündürmü?</div>
+                        <div class="faq-answer">Eskiz mərhələsində istədiyiniz kiçik düzəlişlərin edilməsi tamamilə mümkündür.</div>
                     </div>
 
-
-                    <!-- 📦 Hazırlanma və təqdimat -->
-                    <div class="faq-category-title">📦 Hazırlanma və təqdimat</div>
-
-                    <div class="faq-accordion-item">
-                        <button type="button" class="faq-accordion-header">
-                            <span>Kitab neçə günə hazırlanır?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-accordion-body">
-                            Hazırlanma və çap prosesi adətən sifarişin təsdiqindən sonra bir neçə iş günü ərzində tamamlanır.
-                        </div>
+                    <div class="faq-item">
+                        <div class="faq-question">13. Kitab neçə günə hazırlanır?</div>
+                        <div class="faq-answer">Hazırlanma və çap prosesi adətən sifarişin təsdiqindən sonra bir neçə iş günü ərzində tamamlanır.</div>
                     </div>
 
-                    <div class="faq-accordion-item">
-                        <button type="button" class="faq-accordion-header">
-                            <span>Kitab necə təqdim olunur?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-accordion-body">
-                            Sifariş ünvanınıza zərif hədiyyə paketində təhlükəsiz şəkildə çatdırılır.
-                        </div>
+                    <div class="faq-item">
+                        <div class="faq-question">14. Kitab necə təqdim olunur?</div>
+                        <div class="faq-answer">Sifariş ünvanınıza zərif hədiyyə paketində təhlükəsiz şəkildə çatdırılır.</div>
                     </div>
 
-                    <div class="faq-accordion-item">
-                        <button type="button" class="faq-accordion-header">
-                            <span>Hədiyyə qablaşdırması varmı?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-accordion-body">
-                            Bəli, hər bir kitab xüsusi dizaynlı hədiyyə qablaşdırması ilə birlikdə təqdim olunur.
-                        </div>
+                    <div class="faq-item">
+                        <div class="faq-question">15. Hədiyyə qablaşdırması varmı?</div>
+                        <div class="faq-answer">Bəli, hər bir kitab xüsusi dizaynlı hədiyyə qablaşdırması ilə birlikdə təqdim olunur.</div>
                     </div>
 
-                    <div class="faq-accordion-item">
-                        <button type="button" class="faq-accordion-header">
-                            <span>Kitabı hədiyyə etmək olar?</span>
-                            <span class="faq-arrow">▼</span>
-                        </button>
-                        <div class="faq-accordion-body">
-                            Əlbəttə! Ad günü və ya digər özəl günlər üçün uşaqlar üçün unikal və unudulmaz hədiyyədir.
-                        </div>
+                    <div class="faq-item">
+                        <div class="faq-question">16. Kitabı hədiyyə etmək olar?</div>
+                        <div class="faq-answer">Əlbəttə! Ad günü və ya digər özəl günlər üçün uşaqlar üçün unikal və unudulmaz hədiyyədir.</div>
                     </div>
 
                 </div>
@@ -3799,17 +3659,6 @@
                 tabContentSponsor.classList.remove("active");
             });
         }
-
-        /* FAQ Accordion İdarəetməsi (Minimal) */
-        document.addEventListener("click", function(e) {
-            const header = e.target.closest(".faq-accordion-header");
-            if (!header) return;
-            
-            const item = header.parentElement;
-            const isActive = item.classList.contains("active");
-            
-            item.classList.toggle("active", !isActive);
-        });
 
         /* Sponsorluq Formunun Göndərilməsi (TicketID əlavə olunub) */
         const sponsorForm = document.getElementById("sponsorForm");
