@@ -3,8 +3,6 @@
 
 <head>
 
-    <head>
-
     <meta charset="UTF-8">
     <title>Gunel's Story - Uşağınız Hekayənin Baş Qəhrəmanıdır!</title>
     <meta name="description" content="Uşağınızın adına və şəklinə özəl 100% fərdi uşaq hekayəsi kitabları sifarişi.">
@@ -464,10 +462,49 @@
                 );
         }
 
+        /* ANİMASİYALI SPONSORLUQ / MESAJ İKONU */
+        .sponsor-nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-soft);
+            border: 1px solid rgba(79, 70, 229, 0.2);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            position: relative;
+            animation: pulseIcon 2s infinite;
+            transition: transform 0.2s;
+            text-decoration: none;
+        }
+
+        .sponsor-nav-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes pulseIcon {
+            0% {
+                box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(79, 70, 229, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(79, 70, 229, 0);
+            }
+        }
+
 
         /* =====================================================
-           HAMBURGER
+           HAMBURGER & MOBILE TOP BAR
         ====================================================== */
+        .mobile-top-bar {
+            display: none;
+            align-items: center;
+            gap: 12px;
+        }
 
         .hamburger {
 
@@ -1574,7 +1611,7 @@
 
 
         /* =====================================================
-           BİLDİRİŞ POP-UP MODALI (TARİX İLƏ BİRGƏ)
+           BİLDİRİŞ VƏ SPONSORLUQ MODALLARI
         ====================================================== */
 
         .site-notification-overlay {
@@ -1703,7 +1740,6 @@
             font-family: 'Quicksand', sans-serif;
         }
 
-        /* BİLDİRİŞ TARİXİ */
         .site-notification-date {
 
             font-size: 0.78rem;
@@ -1733,25 +1769,8 @@
             max-height: 250px;
 
             overflow-y: auto;
+            text-align: left;
         }
-
-        .site-notification-message b,
-        .site-notification-message strong {
-            color: var(--text-main);
-            font-weight: 700;
-        }
-
-        .site-notification-message a {
-            color: var(--primary-magic);
-            font-weight: 700;
-            text-decoration: underline;
-            transition: color 0.2s;
-        }
-
-        .site-notification-message a:hover {
-            color: #312e81;
-        }
-
 
         .site-notification-btn {
 
@@ -1786,6 +1805,64 @@
             background: #4338ca;
 
             transform: translateY(-1px);
+        }
+
+        /* SPONSORLUQ / FAQ MODAL STİLLƏRİ */
+        .modal-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            background: #f1f5f9;
+            padding: 4px;
+            border-radius: 12px;
+        }
+
+        .modal-tab-btn {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            background: transparent;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .modal-tab-btn.active {
+            background: #ffffff;
+            color: var(--primary-magic);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .modal-tab-content {
+            display: none;
+        }
+
+        .modal-tab-content.active {
+            display: block;
+        }
+
+        .faq-item {
+            margin-bottom: 12px;
+            text-align: left;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 10px;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .faq-answer {
+            font-size: 0.83rem;
+            color: var(--text-sub);
+            line-height: 1.4;
         }
 
 
@@ -1833,6 +1910,11 @@
 
                 display:
                     none;
+            }
+
+
+            .mobile-top-bar {
+                display: flex;
             }
 
 
@@ -2397,22 +2479,34 @@
                     ⚙️ ADMİN
                 </a>
 
+                <!-- Animasiyalı Mesaj/Sponsorluq İkonu (Desktop) -->
+                <button type="button" class="sponsor-nav-btn" id="openSponsorModalBtn" title="Təklif və FAQ">
+                    💬
+                </button>
+
             </div>
 
 
-            <button
-                class="hamburger"
-                id="hamburger"
-                aria-label="Menyu"
-                aria-expanded="false"
-                type="button"
-            >
+            <div class="mobile-top-bar">
+                <!-- Animasiyalı Mesaj/Sponsorluq İkonu (Mobil) -->
+                <button type="button" class="sponsor-nav-btn" id="openSponsorModalBtnMobile" title="Təklif və FAQ">
+                    💬
+                </button>
 
-                <span></span>
-                <span></span>
-                <span></span>
+                <button
+                    class="hamburger"
+                    id="hamburger"
+                    aria-label="Menyu"
+                    aria-expanded="false"
+                    type="button"
+                >
 
-            </button>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+            </div>
 
         </div>
 
@@ -3220,7 +3314,70 @@
 
 
     <!-- =====================================================
-         BİLDİRİŞ POP-UP ELEMENTİ (BAŞLIQ + TARİX + MƏTN)
+         TƏKLİF, SPONSORLUQ VƏ FAQ MODAL PƏNCƏRƏSİ
+    ====================================================== -->
+
+    <div class="site-notification-overlay" id="sponsorModalOverlay">
+
+        <div class="site-notification-card">
+
+            <button type="button" class="site-notification-close-x" id="closeSponsorModalX" aria-label="Bağla">×</button>
+
+            <div class="site-notification-icon">💬</div>
+
+            <h3 class="site-notification-title">Dəstək və Suallar</h3>
+            <span class="site-notification-date">Təklif, Sponsorluq və FAQ</span>
+
+            <!-- Tab Düymələri -->
+            <div class="modal-tabs">
+                <button type="button" class="modal-tab-btn active" id="tabBtnSponsor">Təklif yaz</button>
+                <button type="button" class="modal-tab-btn" id="tabBtnFaq">FAQ (Suallar)</button>
+            </div>
+
+            <!-- Təklif Formu Bölməsi -->
+            <div class="modal-tab-content active" id="tabContentSponsor">
+                <form id="sponsorForm">
+                    <div class="form-group" style="text-align: left;">
+                        <label for="sponsorName">Adınız və Soyadınız *</label>
+                        <input type="text" id="sponsorName" required placeholder="Nümunə: Anar Əliyev">
+                    </div>
+                    <div class="form-group" style="text-align: left;">
+                        <label for="sponsorContact">Əlaqə (E-poçt və ya Tel) *</label>
+                        <input type="text" id="sponsorContact" required placeholder="Nümunə: +994...">
+                    </div>
+                    <div class="form-group" style="text-align: left;">
+                        <label for="sponsorMessage">Təklif və ya Sponsorluq Mesajı *</label>
+                        <textarea id="sponsorMessage" rows="3" required placeholder="Fikirlərinizi yazın..."></textarea>
+                    </div>
+                    <button type="submit" class="site-notification-btn" id="sponsorSubmitBtn">Göndər</button>
+                </form>
+            </div>
+
+            <!-- FAQ Bölməsi -->
+            <div class="modal-tab-content" id="tabContentFaq">
+                <div class="site-notification-message" style="max-height: 220px;">
+                    <div class="faq-item">
+                        <div class="faq-question">1. Kitab neçə günə hazırlanır?</div>
+                        <div class="faq-answer">Hekayənin dizaynı və hazırlanması adətən 2-4 iş günü çəkir.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">2. Şəkil necə göndərilir?</div>
+                        <div class="faq-answer">Sifariş təsdiqləndikdən sonra menecerimiz sizinlə WhatsApp üzrə əlaqə saxlayıb şəkli alacaq.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">3. Çatdırılma mövcuddurmu?</div>
+                        <div class="faq-answer">Bəli, ölkədaxili çatdırılma xidmətimiz mövcuddur.</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         BİLDİRİŞ POP-UP ELEMENTİ (Köhnə bildirişlər üçün)
     ====================================================== -->
 
     <div class="site-notification-overlay" id="siteNotificationOverlay">
@@ -3290,7 +3447,7 @@
 
 
         /* =====================================================
-           BİLDİRİŞ SİSTEMİ (BAŞLIQ + TARİX + HTML MƏTN)
+           BİLDİRİŞ SİSTEMİ
         ====================================================== */
 
         function initNotificationListener() {
@@ -3368,6 +3525,80 @@
             document.getElementById("closeNotificationX").addEventListener("click", hideSiteNotification);
             document.getElementById("closeNotificationBtn").addEventListener("click", hideSiteNotification);
         });
+
+
+        /* =====================================================
+           SPONSORLUQ & FAQ MODAL İDARƏETMƏSİ
+        ====================================================== */
+
+        const sponsorOverlay = document.getElementById("sponsorModalOverlay");
+        const openSponsorBtn = document.getElementById("openSponsorModalBtn");
+        const openSponsorBtnMobile = document.getElementById("openSponsorModalBtnMobile");
+        const closeSponsorX = document.getElementById("closeSponsorModalX");
+
+        const tabBtnSponsor = document.getElementById("tabBtnSponsor");
+        const tabBtnFaq = document.getElementById("tabBtnFaq");
+        const tabContentSponsor = document.getElementById("tabContentSponsor");
+        const tabContentFaq = document.getElementById("tabContentFaq");
+
+        function openSponsorModal() {
+            if (sponsorOverlay) sponsorOverlay.style.display = "flex";
+        }
+
+        function closeSponsorModal() {
+            if (sponsorOverlay) sponsorOverlay.style.display = "none";
+        }
+
+        if (openSponsorBtn) openSponsorBtn.addEventListener("click", openSponsorModal);
+        if (openSponsorBtnMobile) openSponsorBtnMobile.addEventListener("click", openSponsorModal);
+        if (closeSponsorX) closeSponsorX.addEventListener("click", closeSponsorModal);
+
+        if (tabBtnSponsor && tabBtnFaq) {
+            tabBtnSponsor.addEventListener("click", function() {
+                tabBtnSponsor.classList.add("active");
+                tabBtnFaq.classList.remove("active");
+                tabContentSponsor.classList.add("active");
+                tabContentFaq.classList.remove("active");
+            });
+
+            tabBtnFaq.addEventListener("click", function() {
+                tabBtnFaq.classList.add("active");
+                tabBtnSponsor.classList.remove("active");
+                tabContentFaq.classList.add("active");
+                tabContentSponsor.classList.remove("active");
+            });
+        }
+
+        /* Sponsorluq Formunun Göndərilməsi */
+        const sponsorForm = document.getElementById("sponsorForm");
+        if (sponsorForm) {
+            sponsorForm.addEventListener("submit", function(e) {
+                e.preventDefault();
+                const btn = document.getElementById("sponsorSubmitBtn");
+                btn.disabled = true;
+                btn.innerText = "GÖNDƏRİLİR...";
+
+                db.collection("sponsorships").add({
+                    name: document.getElementById("sponsorName").value.trim(),
+                    contact: document.getElementById("sponsorContact").value.trim(),
+                    message: document.getElementById("sponsorMessage").value.trim(),
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                })
+                .then(function() {
+                    alert("Təklifiniz uğurla göndərildi! Təşəkkür edirik.");
+                    sponsorForm.reset();
+                    closeSponsorModal();
+                })
+                .catch(function(error) {
+                    console.error("Xəta:", error);
+                    alert("Xəta baş verdi: " + error.message);
+                })
+                .finally(function() {
+                    btn.disabled = false;
+                    btn.innerText = "Göndər";
+                });
+            });
+        }
 
 
         /* =====================================================
