@@ -437,9 +437,9 @@
 
             align-items: center;
 
-            padding-bottom: 30px;
+            padding-bottom: 25px;
 
-            margin-bottom: 30px;
+            margin-bottom: 25px;
 
             border-bottom: 1px solid rgba(15,26,92,.06);
 
@@ -451,7 +451,7 @@
 
             color: var(--primary-lux);
 
-            font-size: 2rem;
+            font-size: 1.8rem;
 
             font-weight: 800;
 
@@ -463,7 +463,7 @@
 
             border: none;
 
-            padding: 12px 20px;
+            padding: 10px 16px;
 
             border-radius: var(--radius-sm);
 
@@ -472,6 +472,8 @@
             color: var(--danger);
 
             font-weight: 700;
+
+            font-size: 0.85rem;
 
             cursor: pointer;
 
@@ -485,25 +487,29 @@
 
 
 
-        /* TABS */
+        /* MİNİMALİST TABS */
 
         .admin-tabs {
 
             display: flex;
 
-            gap: 10px;
+            gap: 6px;
 
-            margin-bottom: 30px;
+            margin-bottom: 25px;
 
-            padding: 6px;
+            padding: 4px;
 
-            background: #F8FAFC;
+            background: #F1F5F9;
 
-            border-radius: var(--radius-md);
+            border-radius: 12px;
 
             width: fit-content;
 
-            flex-wrap: wrap;
+            overflow-x: auto;
+
+            max-width: 100%;
+
+            -webkit-overflow-scrolling: touch;
 
         }
 
@@ -513,9 +519,9 @@
 
             border: none;
 
-            padding: 13px 22px;
+            padding: 9px 16px;
 
-            border-radius: 10px;
+            border-radius: 8px;
 
             background: transparent;
 
@@ -523,7 +529,11 @@
 
             font-weight: 700;
 
+            font-size: 0.82rem;
+
             cursor: pointer;
+
+            white-space: nowrap;
 
             transition: var(--transition);
 
@@ -537,7 +547,7 @@
 
             color: white;
 
-            box-shadow: 0 6px 15px rgba(15,26,92,.15);
+            box-shadow: 0 4px 12px rgba(15,26,92,.15);
 
         }
 
@@ -581,13 +591,13 @@
 
         th {
 
-            padding: 18px 20px;
+            padding: 16px 18px;
 
             background: #F8FAFC;
 
             color: var(--text-muted);
 
-            font-size: .75rem;
+            font-size: .72rem;
 
             font-weight: 700;
 
@@ -601,13 +611,13 @@
 
         td {
 
-            padding: 18px 20px;
+            padding: 16px 18px;
 
             border-top: 1px solid rgba(15,26,92,.04);
 
             vertical-align: middle;
 
-            font-size: .9rem;
+            font-size: .88rem;
 
         }
 
@@ -621,9 +631,9 @@
 
         .parent-name-cell { color: var(--primary-lux); font-weight: 700; }
 
-        .phone-container { display: flex; flex-direction: column; gap: 7px; }
+        .phone-container { display: flex; flex-direction: column; gap: 6px; }
 
-        .phone-wrapper { display: flex; align-items: center; gap: 7px; }
+        .phone-wrapper { display: flex; align-items: center; gap: 6px; }
 
         .phone-link { color: var(--text-main); text-decoration: none; font-weight: 600; }
 
@@ -631,7 +641,7 @@
 
         .toggle-blur-btn { border: none; background: none; color: var(--text-muted); cursor: pointer; }
 
-        .toggle-blur-btn svg { width: 18px; height: 18px; fill: currentColor; }
+        .toggle-blur-btn svg { width: 16px; height: 16px; fill: currentColor; }
 
 
 
@@ -641,13 +651,13 @@
 
             align-items: center;
 
-            gap: 6px;
+            gap: 5px;
 
             width: fit-content;
 
-            padding: 6px 11px;
+            padding: 5px 10px;
 
-            border-radius: 8px;
+            border-radius: 6px;
 
             background: var(--whatsapp-bg);
 
@@ -655,7 +665,7 @@
 
             text-decoration: none;
 
-            font-size: .75rem;
+            font-size: .72rem;
 
             font-weight: 700;
 
@@ -667,15 +677,15 @@
 
             display: inline-block;
 
-            padding: 6px 10px;
+            padding: 5px 9px;
 
-            border-radius: 8px;
+            border-radius: 6px;
 
             background: rgba(15,26,92,.05);
 
             color: var(--primary-lux);
 
-            font-size: .8rem;
+            font-size: .78rem;
 
             font-weight: 700;
 
@@ -693,15 +703,17 @@
 
             border: none;
 
-            padding: 8px 12px;
+            padding: 7px 11px;
 
-            border-radius: 9px;
+            border-radius: 8px;
 
             background: #FEF3C7;
 
             color: #D97706;
 
             font-weight: 700;
+
+            font-size: 0.8rem;
 
             cursor: pointer;
 
@@ -715,9 +727,9 @@
 
             border: 1px solid rgba(220,38,38,.15);
 
-            padding: 8px;
+            padding: 7px;
 
-            border-radius: 9px;
+            border-radius: 8px;
 
             background: transparent;
 
@@ -729,7 +741,7 @@
 
         .delete-btn:hover { background: var(--danger-bg); }
 
-        .delete-btn svg { width: 18px; height: 18px; fill: currentColor; }
+        .delete-btn svg { width: 16px; height: 16px; fill: currentColor; }
 
 
 
@@ -743,9 +755,9 @@
 
             align-items: center;
 
-            gap: 20px;
+            gap: 15px;
 
-            margin-bottom: 25px;
+            margin-bottom: 20px;
 
         }
 
@@ -755,7 +767,7 @@
 
             color: var(--primary-lux);
 
-            font-size: 1.5rem;
+            font-size: 1.35rem;
 
             font-weight: 800;
 
@@ -765,11 +777,11 @@
 
         .section-title p {
 
-            margin-top: 5px;
+            margin-top: 3px;
 
             color: var(--text-muted);
 
-            font-size: .85rem;
+            font-size: .8rem;
 
         }
 
@@ -781,9 +793,9 @@
 
             align-items: center;
 
-            gap: 8px;
+            gap: 6px;
 
-            padding: 13px 20px;
+            padding: 10px 16px;
 
             border: none;
 
@@ -794,6 +806,8 @@
             color: white;
 
             font-weight: 700;
+
+            font-size: 0.85rem;
 
             cursor: pointer;
 
@@ -807,7 +821,7 @@
 
             transform: translateY(-2px);
 
-            box-shadow: 0 10px 25px rgba(15,26,92,.18);
+            box-shadow: 0 8px 20px rgba(15,26,92,.18);
 
         }
 
@@ -839,19 +853,19 @@
 
             display: grid;
 
-            grid-template-columns: 90px minmax(200px, 1.4fr) minmax(180px, 1fr) 170px 190px;
+            grid-template-columns: 80px minmax(180px, 1.4fr) minmax(150px, 1fr) 150px 170px;
 
             align-items: center;
 
-            min-height: 52px;
+            min-height: 48px;
 
-            padding: 0 20px;
+            padding: 0 16px;
 
             background: #F8FAFC;
 
             color: var(--text-muted);
 
-            font-size: .72rem;
+            font-size: .7rem;
 
             font-weight: 800;
 
@@ -867,13 +881,13 @@
 
             display: grid;
 
-            grid-template-columns: 90px minmax(200px, 1.4fr) minmax(180px, 1fr) 170px 190px;
+            grid-template-columns: 80px minmax(180px, 1.4fr) minmax(150px, 1fr) 150px 170px;
 
             align-items: center;
 
-            min-height: 92px;
+            min-height: 84px;
 
-            padding: 10px 20px;
+            padding: 8px 16px;
 
             border-top: 1px solid rgba(15,26,92,.05);
 
@@ -889,21 +903,19 @@
 
         .portfolio-thumbnail {
 
-            width: 62px;
+            width: 54px;
 
-            height: 62px;
+            height: 54px;
 
             object-fit: cover;
 
             display: block;
 
-            border-radius: 10px;
+            border-radius: 8px;
 
             border: 1px solid rgba(15,26,92,.08);
 
             background: #F8FAFC;
-
-            box-shadow: 0 3px 10px rgba(15,26,92,.07);
 
         }
 
@@ -911,9 +923,9 @@
 
         .portfolio-no-image {
 
-            width: 62px;
+            width: 54px;
 
-            height: 62px;
+            height: 54px;
 
             display: flex;
 
@@ -921,13 +933,13 @@
 
             justify-content: center;
 
-            border-radius: 10px;
+            border-radius: 8px;
 
             background: #F1F5F9;
 
             color: var(--text-muted);
 
-            font-size: .65rem;
+            font-size: .6rem;
 
             text-align: center;
 
@@ -939,23 +951,23 @@
 
             color: var(--primary-lux);
 
-            font-size: .92rem;
+            font-size: .88rem;
 
             font-weight: 800;
 
-            line-height: 1.4;
+            line-height: 1.35;
 
-            padding-right: 15px;
+            padding-right: 12px;
 
         }
 
 
 
-        .portfolio-list-author { color: var(--accent-gold); font-size: .82rem; font-weight: 700; }
+        .portfolio-list-author { color: var(--accent-gold); font-size: .8rem; font-weight: 700; }
 
-        .portfolio-date { color: var(--text-muted); font-size: .78rem; line-height: 1.5; }
+        .portfolio-date { color: var(--text-muted); font-size: .75rem; line-height: 1.4; }
 
-        .portfolio-list-actions { display: flex; align-items: center; justify-content: flex-end; gap: 7px; }
+        .portfolio-list-actions { display: flex; align-items: center; justify-content: flex-end; gap: 6px; }
 
 
 
@@ -963,13 +975,13 @@
 
             border: none;
 
-            min-height: 38px;
+            min-height: 34px;
 
-            padding: 9px 12px;
+            padding: 7px 10px;
 
-            border-radius: 9px;
+            border-radius: 8px;
 
-            font-size: .76rem;
+            font-size: .74rem;
 
             font-weight: 700;
 
@@ -993,9 +1005,9 @@
 
             justify-content: center;
 
-            width: 38px;
+            width: 34px;
 
-            height: 38px;
+            height: 34px;
 
             padding: 0;
 
@@ -1007,7 +1019,7 @@
 
         .view-image-btn:hover { background: var(--primary-lux); color: white; }
 
-        .view-image-btn svg { width: 19px; height: 19px; fill: currentColor; }
+        .view-image-btn svg { width: 17px; height: 17px; fill: currentColor; }
 
 
 
@@ -1035,7 +1047,7 @@
 
         .empty-portfolio {
 
-            padding: 60px 20px;
+            padding: 40px 15px;
 
             text-align: center;
 
@@ -1047,6 +1059,8 @@
 
             background: white;
 
+            font-size: 0.88rem;
+
         }
 
 
@@ -1055,11 +1069,13 @@
 
             text-align: center;
 
-            padding: 50px;
+            padding: 40px;
 
             color: var(--text-muted);
 
             font-weight: 600;
+
+            font-size: 0.88rem;
 
         }
 
@@ -1073,15 +1089,15 @@
 
             align-items: center;
 
-            gap: 6px;
+            gap: 5px;
 
-            margin-bottom: 8px;
+            margin-bottom: 6px;
 
             background: #F1F5F9;
 
-            padding: 6px 10px;
+            padding: 5px 8px;
 
-            border-radius: 10px;
+            border-radius: 8px;
 
             border: 1px solid rgba(15,26,92,.08);
 
@@ -1097,11 +1113,11 @@
 
             border: 1px solid #CBD5E1;
 
-            border-radius: 6px;
+            border-radius: 5px;
 
-            padding: 4px 10px;
+            padding: 3px 8px;
 
-            font-size: 0.85rem;
+            font-size: 0.8rem;
 
             font-weight: 700;
 
@@ -1117,9 +1133,9 @@
 
             justify-content: center;
 
-            min-width: 32px;
+            min-width: 28px;
 
-            height: 30px;
+            height: 26px;
 
         }
 
@@ -1151,7 +1167,7 @@
 
             justify-content: center;
 
-            padding: 20px;
+            padding: 15px;
 
             background: rgba(5,10,40,.65);
 
@@ -1169,13 +1185,13 @@
 
             width: 100%;
 
-            max-width: 650px;
+            max-width: 580px;
 
             max-height: 92vh;
 
             overflow-y: auto;
 
-            padding: 30px;
+            padding: 24px;
 
             background: white;
 
@@ -1195,19 +1211,19 @@
 
             align-items: center;
 
-            margin-bottom: 25px;
+            margin-bottom: 20px;
 
         }
 
 
 
-        .modal-header h2 { color: var(--primary-lux); font-size: 1.4rem; }
+        .modal-header h2 { color: var(--primary-lux); font-size: 1.25rem; }
 
         .modal-close {
 
-            width: 38px;
+            width: 34px;
 
-            height: 38px;
+            height: 34px;
 
             border: none;
 
@@ -1217,7 +1233,7 @@
 
             color: var(--text-muted);
 
-            font-size: 1.3rem;
+            font-size: 1.1rem;
 
             cursor: pointer;
 
@@ -1225,17 +1241,17 @@
 
 
 
-        .form-group { margin-bottom: 18px; }
+        .form-group { margin-bottom: 14px; }
 
         .form-label {
 
             display: block;
 
-            margin-bottom: 8px;
+            margin-bottom: 6px;
 
             color: var(--primary-lux);
 
-            font-size: .8rem;
+            font-size: .76rem;
 
             font-weight: 700;
 
@@ -1243,7 +1259,7 @@
 
 
 
-        textarea.form-input { min-height: 100px; resize: vertical; }
+        textarea.form-input { min-height: 90px; resize: vertical; }
 
 
 
@@ -1259,9 +1275,9 @@
 
             justify-content: center;
 
-            min-height: 220px;
+            min-height: 180px;
 
-            padding: 20px;
+            padding: 15px;
 
             border: 2px dashed rgba(15,26,92,.15);
 
@@ -1281,17 +1297,17 @@
 
         .image-upload-area input { display: none; }
 
-        .upload-placeholder { text-align: center; color: var(--text-muted); }
+        .upload-placeholder { text-align: center; color: var(--text-muted); font-size: 0.82rem; }
 
-        .upload-placeholder strong { display: block; margin-bottom: 5px; color: var(--primary-lux); }
+        .upload-placeholder strong { display: block; margin-bottom: 4px; color: var(--primary-lux); }
 
-        #imagePreview { display: none; max-width: 100%; max-height: 300px; object-fit: contain; border-radius: 10px; }
+        #imagePreview { display: none; max-width: 100%; max-height: 240px; object-fit: contain; border-radius: 8px; }
 
 
 
-        .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 25px; }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px; }
 
-        .modal-btn { padding: 12px 20px; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; }
+        .modal-btn { padding: 10px 18px; border: none; border-radius: 8px; font-weight: 700; font-size: 0.85rem; cursor: pointer; }
 
         .cancel-btn { background: #F1F5F9; color: var(--text-muted); }
 
@@ -1315,7 +1331,7 @@
 
             justify-content: center;
 
-            padding: 30px;
+            padding: 20px;
 
             background: rgba(5,10,40,.72);
 
@@ -1339,7 +1355,7 @@
 
             position: relative;
 
-            max-width: min(1000px, 92vw);
+            max-width: min(900px, 92vw);
 
             max-height: 90vh;
 
@@ -1359,7 +1375,7 @@
 
             max-width: 100%;
 
-            max-height: 84vh;
+            max-height: 82vh;
 
             width: auto;
 
@@ -1367,11 +1383,11 @@
 
             object-fit: contain;
 
-            border-radius: 14px;
+            border-radius: 12px;
 
             background: white;
 
-            box-shadow: 0 30px 90px rgba(0,0,0,.35);
+            box-shadow: 0 20px 60px rgba(0,0,0,.35);
 
         }
 
@@ -1381,13 +1397,13 @@
 
             position: fixed;
 
-            top: 25px;
+            top: 20px;
 
-            right: 28px;
+            right: 20px;
 
-            width: 46px;
+            width: 40px;
 
-            height: 46px;
+            height: 40px;
 
             display: flex;
 
@@ -1403,7 +1419,7 @@
 
             color: white;
 
-            font-size: 28px;
+            font-size: 24px;
 
             line-height: 1;
 
@@ -1427,27 +1443,27 @@
 
             left: 50%;
 
-            bottom: 25px;
+            bottom: 20px;
 
             transform: translateX(-50%);
 
             max-width: 80%;
 
-            padding: 10px 18px;
+            padding: 8px 14px;
 
-            border-radius: 10px;
+            border-radius: 8px;
 
             background: rgba(255,255,255,.92);
 
             color: var(--primary-lux);
 
-            font-size: .82rem;
+            font-size: .78rem;
 
             font-weight: 700;
 
             text-align: center;
 
-            box-shadow: 0 10px 30px rgba(0,0,0,.15);
+            box-shadow: 0 8px 24px rgba(0,0,0,.15);
 
             backdrop-filter: blur(8px);
 
@@ -1459,8 +1475,8 @@
         .sponsor-mobile-card {
             background: white;
             border: 1px solid rgba(15,26,92,.08);
-            border-radius: var(--radius-md);
-            margin-bottom: 10px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 8px;
             overflow: hidden;
             box-shadow: var(--shadow-sm);
         }
@@ -1469,7 +1485,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 20px;
+            padding: 12px 16px;
             background: #F8FAFC;
             cursor: pointer;
             user-select: none;
@@ -1484,15 +1500,15 @@
             font-family: monospace;
             font-weight: 800;
             color: var(--primary-lux);
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             background: var(--primary-soft);
-            padding: 4px 8px;
-            border-radius: 6px;
+            padding: 3px 6px;
+            border-radius: 4px;
         }
 
         .sponsor-arrow {
             transition: transform 0.3s ease;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-muted);
             font-weight: bold;
         }
@@ -1503,7 +1519,7 @@
 
         .sponsor-mobile-body {
             display: none;
-            padding: 20px;
+            padding: 15px 16px;
             border-top: 1px solid rgba(15,26,92,.06);
             background: #ffffff;
         }
@@ -1513,17 +1529,17 @@
         }
 
         .sponsor-field {
-            margin-bottom: 12px;
-            font-size: 0.9rem;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
         }
 
         .sponsor-field b {
             color: var(--text-muted);
-            font-size: 0.78rem;
+            font-size: 0.72rem;
             text-transform: uppercase;
             display: block;
-            margin-bottom: 2px;
-            letter-spacing: 0.5px;
+            margin-bottom: 1px;
+            letter-spacing: 0.4px;
         }
 
 
@@ -1532,15 +1548,38 @@
 
         @media (max-width: 900px) {
 
-            body { padding: 0 10px 50px; }
+            body { padding: 0 6px 40px; }
 
-            .admin-container { margin-top: 10px; padding: 20px; border-radius: 18px; }
+            .admin-container { margin-top: 5px; padding: 14px; border-radius: 14px; }
 
-            .admin-header { align-items: flex-start; gap: 15px; flex-direction: column; }
+            .admin-header { align-items: flex-start; gap: 10px; flex-direction: column; padding-bottom: 15px; margin-bottom: 15px; }
 
-            .admin-tabs { width: 100%; }
+            .admin-header h1 { font-size: 1.4rem; }
 
-            .admin-tab { flex: 1; text-align: center; padding: 12px 10px; font-size: 0.85rem; }
+            .logout-btn { padding: 8px 12px; font-size: 0.78rem; }
+
+
+
+            /* Minimalist Sürüşdürülən Tablar (Menyu Barları) */
+            .admin-tabs {
+                width: 100%;
+                gap: 4px;
+                padding: 3px;
+                margin-bottom: 18px;
+                background: #F1F5F9;
+                border-radius: 10px;
+                display: flex;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            .admin-tab {
+                flex: 0 0 auto;
+                text-align: center;
+                padding: 8px 12px;
+                font-size: 0.76rem;
+                border-radius: 7px;
+            }
 
 
 
@@ -1548,19 +1587,19 @@
 
             thead { display: none; }
 
-            tr { margin-bottom: 20px; padding: 15px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+            tr { margin-bottom: 14px; padding: 12px; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); }
 
-            td { display: flex; justify-content: space-between; align-items: center; gap: 15px; padding: 12px 0; border-top: 1px dashed rgba(15,26,92,.08); text-align: right; }
+            td { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 0; border-top: 1px dashed rgba(15,26,92,.06); text-align: right; font-size: 0.84rem; }
 
             td:first-child { border-top: none; }
 
-            td::before { content: attr(data-label); flex-shrink: 0; color: var(--text-muted); font-size: .7rem; font-weight: 700; text-transform: uppercase; }
+            td::before { content: attr(data-label); flex-shrink: 0; color: var(--text-muted); font-size: .65rem; font-weight: 700; text-transform: uppercase; }
 
             .action-container { justify-content: flex-end; }
 
 
 
-            .portfolio-list { border: none; background: transparent; overflow: visible; gap: 12px; }
+            .portfolio-list { border: none; background: transparent; overflow: visible; gap: 10px; }
 
             .portfolio-list-header { display: none; }
 
@@ -1570,62 +1609,63 @@
 
                 flex-direction: column;
 
-                gap: 10px;
+                gap: 8px;
 
-                padding: 18px;
+                padding: 14px;
 
                 background: white;
 
                 border: 1px solid rgba(15,26,92,.07);
 
-                border-radius: var(--radius-md);
+                border-radius: var(--radius-sm);
 
                 box-shadow: var(--shadow-sm);
 
             }
 
-            .portfolio-list-actions { width: 100%; justify-content: flex-start; flex-wrap: wrap; margin-top: 10px; border-top: 1px dashed rgba(15,26,92,.08); padding-top: 10px; }
+            .portfolio-list-actions { width: 100%; justify-content: flex-start; flex-wrap: wrap; margin-top: 6px; border-top: 1px dashed rgba(15,26,92,.06); padding-top: 8px; }
 
-            /* BİLDİRİŞLƏRİN MOBİL GÖRÜNÜŞÜ (900px-dən aşağı) */
+            /* BİLDİRİŞLƏRİN MOBİL GÖRÜNÜŞÜ */
             #notificationsAdminGrid .portfolio-list-item {
                 display: flex !important;
                 flex-direction: column !important;
-                gap: 12px !important;
-                padding: 18px !important;
+                gap: 10px !important;
+                padding: 14px !important;
                 background: white !important;
-                border: 1px solid rgba(15,26,92,.08) !important;
-                border-radius: var(--radius-md) !important;
+                border: 1px solid rgba(15,26,92,.07) !important;
+                border-radius: var(--radius-sm) !important;
                 box-shadow: var(--shadow-sm) !important;
             }
 
             #notificationsAdminGrid .portfolio-list-title {
-                font-size: 1.05rem !important;
+                font-size: 0.95rem !important;
                 padding-right: 0 !important;
             }
 
             #notificationsAdminGrid .portfolio-list-item > div:nth-child(2) {
                 padding-right: 0 !important;
-                font-size: 0.9rem !important;
+                font-size: 0.84rem !important;
                 color: var(--text-main) !important;
                 background: #F8FAFC !important;
-                padding: 10px 12px !important;
-                border-radius: 8px !important;
+                padding: 8px 10px !important;
+                border-radius: 6px !important;
             }
 
             #notificationsAdminGrid .portfolio-list-actions {
                 display: flex !important;
                 width: 100% !important;
-                gap: 8px !important;
+                gap: 6px !important;
                 justify-content: flex-start !important;
-                margin-top: 5px !important;
-                border-top: 1px dashed rgba(15,26,92,.08) !important;
-                padding-top: 12px !important;
+                margin-top: 4px !important;
+                border-top: 1px dashed rgba(15,26,92,.06) !important;
+                padding-top: 10px !important;
             }
 
             #notificationsAdminGrid .portfolio-action-btn {
                 flex: 1 !important;
                 text-align: center !important;
-                padding: 10px 8px !important;
+                padding: 8px 6px !important;
+                font-size: 0.7rem !important;
             }
 
         }
@@ -1634,37 +1674,45 @@
             .portfolio-toolbar {
                 flex-direction: column;
                 align-items: stretch;
-                gap: 15px;
+                gap: 10px;
+                margin-bottom: 15px;
             }
+
+            .section-title h2 { font-size: 1.15rem; }
+            .section-title p { font-size: 0.75rem; }
 
             .add-portfolio-btn {
                 width: 100%;
                 justify-content: center;
+                padding: 10px;
+                font-size: 0.82rem;
             }
 
             .portfolio-modal {
-                padding: 22px 18px;
-                border-radius: 18px;
+                padding: 18px 14px;
+                border-radius: 14px;
             }
 
             .modal-actions {
                 flex-direction: column;
+                gap: 6px;
             }
 
             .modal-btn {
                 width: 100%;
+                padding: 10px;
             }
 
             #notificationsAdminGrid .portfolio-list-actions {
                 display: grid !important;
                 grid-template-columns: 1fr 1fr 1fr !important;
-                gap: 6px !important;
+                gap: 5px !important;
             }
 
             #notificationsAdminGrid .portfolio-action-btn {
                 width: 100% !important;
-                font-size: 0.72rem !important;
-                padding: 9px 4px !important;
+                font-size: 0.68rem !important;
+                padding: 8px 2px !important;
             }
         }
 
@@ -1748,11 +1796,11 @@
 
             <button class="admin-tab active" onclick="switchAdminTab('orders', this)">Sifarişlər</button>
 
-            <button class="admin-tab" onclick="switchAdminTab('sponsorships', this)">Müraciətlər & Sponsorluq</button>
+            <button class="admin-tab" onclick="switchAdminTab('sponsorships', this)">Müraciətlər</button>
 
             <button class="admin-tab" onclick="switchAdminTab('portfolio', this)">Portfolio</button>
 
-            <button class="admin-tab" onclick="switchAdminTab('notifications', this)">Notifications</button>
+            <button class="admin-tab" onclick="switchAdminTab('notifications', this)">Bildirişlər</button>
 
         </div>
 
@@ -1792,7 +1840,7 @@
 
                         <tr>
 
-                            <td colspan="7" style="text-align:center; padding:50px; color:var(--text-muted);">
+                            <td colspan="7" style="text-align:center; padding:40px; color:var(--text-muted);">
 
                                 Məlumatlar yüklənir...
 
@@ -1810,7 +1858,7 @@
 
 
 
-        <!-- SPONSORSHIPS SECTION (YENİ MÜRACİƏTLƏR BÖLMƏSİ) -->
+        <!-- SPONSORSHIPS SECTION -->
 
         <section class="admin-section" id="sponsorshipsSection">
 
@@ -1818,9 +1866,9 @@
 
                 <div class="section-title">
 
-                    <h2>Təklif və Sponsorluq Müraciətləri</h2>
+                    <h2>Təklif və Sponsorluq</h2>
 
-                    <p>İstifadəçilərin saytdan göndərdiyi dəstək və təklif mesajları.</p>
+                    <p>İstifadəçilərin saytdan göndərdiyi dəstək mesajları.</p>
 
                 </div>
 
@@ -1854,7 +1902,7 @@
 
                         <tr>
 
-                            <td colspan="6" style="text-align:center; padding:50px; color:var(--text-muted);">
+                            <td colspan="6" style="text-align:center; padding:40px; color:var(--text-muted);">
 
                                 Müraciətlər yüklənir...
 
@@ -1886,7 +1934,7 @@
 
                     <h2>Portfolio</h2>
 
-                    <p>Portfolioda olan kitabların idarəolunma mərkəzi.</p>
+                    <p>Portfoliodakı kitabların idarəolunma mərkəzi.</p>
 
                 </div>
 
@@ -1912,19 +1960,19 @@
 
                 <div class="section-title">
 
-                    <h2>Notification</h2>
+                    <h2>Bildirişlər</h2>
 
-                    <p>Control center for notifications displayed to users on the homepage.</p>
+                    <p>Ana səhifədə istifadəçilərə göstərilən bildirişlər.</p>
 
                 </div>
 
-                <button class="add-portfolio-btn" onclick="openNotificationModal()">+ New notification</button>
+                <button class="add-portfolio-btn" onclick="openNotificationModal()">+ Yeni bildiriş</button>
 
             </div>
 
             <div id="notificationsAdminGrid">
 
-                <div class="loading-text">Notifications are loading...</div>
+                <div class="loading-text">Bildirişlər yüklənir...</div>
 
             </div>
 
@@ -1990,9 +2038,9 @@
 
             <div class="modal-actions">
 
-                <button class="modal-btn cancel-btn" onclick="closePortfolioModal()">Cancle</button>
+                <button class="modal-btn cancel-btn" onclick="closePortfolioModal()">Ləğv et</button>
 
-                <button class="modal-btn save-btn" id="savePortfolioBtn" onclick="savePortfolio()">Save</button>
+                <button class="modal-btn save-btn" id="savePortfolioBtn" onclick="savePortfolio()">Yadda saxla</button>
 
             </div>
 
@@ -2045,9 +2093,9 @@
 
                 <label class="form-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
 
-                    <input type="checkbox" id="noticeIsActive" style="width: 18px; height: 18px; cursor: pointer;">
+                    <input type="checkbox" id="noticeIsActive" style="width: 16px; height: 16px; cursor: pointer;">
 
-                    Publish to site
+                    Saytda aktiv et (Publish)
 
                 </label>
 
@@ -2055,9 +2103,9 @@
 
             <div class="modal-actions">
 
-                <button class="modal-btn cancel-btn" onclick="closeNotificationModal()">Cancle</button>
+                <button class="modal-btn cancel-btn" onclick="closeNotificationModal()">Ləğv et</button>
 
-                <button class="modal-btn save-btn" id="saveNoticeBtn" onclick="saveNotification()">Save</button>
+                <button class="modal-btn save-btn" id="saveNoticeBtn" onclick="saveNotification()">Yadda saxla</button>
 
             </div>
 
@@ -2343,7 +2391,7 @@
 
                 if (snapshot.empty) {
 
-                    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:50px; color:var(--text-muted);">Hələ heç bir müraciət yoxdur.</td></tr>`;
+                    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:40px; color:var(--text-muted);">Hələ heç bir müraciət yoxdur.</td></tr>`;
 
                     return;
 
@@ -2502,13 +2550,12 @@
                 mobileContainer.innerHTML = "";
 
                 if (snapshot.empty) {
-                    const emptyMsg = `<tr><td colspan="6" style="text-align:center; padding:50px; color:var(--text-muted);">Hələ heç bir təklif və ya sponsorluq müraciəti yoxdur.</td></tr>`;
+                    const emptyMsg = `<tr><td colspan="6" style="text-align:center; padding:40px; color:var(--text-muted);">Hələ heç bir təklif və ya sponsorluq müraciəti yoxdur.</td></tr>`;
                     tbody.innerHTML = emptyMsg;
                     mobileContainer.innerHTML = `<div class="empty-portfolio"><strong>Müraciət yoxdur</strong></div>`;
                     return;
                 }
 
-                // Ekran ölçüsünə görə masaüstü və ya mobil görünüşü tənzimləyirik
                 function updateViewMode() {
                     if (window.innerWidth <= 900) {
                         desktopView.style.display = "none";
@@ -2564,12 +2611,12 @@
                     card.className = "sponsor-mobile-card " + (viewed ? "status-viewed" : "status-waiting");
                     card.innerHTML = `
                         <div class="sponsor-mobile-header" onclick="toggleMobileAccordion(this.parentElement)">
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <span class="sponsor-ticket-id">${escapeHtml(ticketId)}</span>
-                                <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-main);">${escapeHtml(name)}</span>
-                            </div>
                             <div style="display: flex; align-items: center; gap: 8px;">
-                                <span style="font-size: 0.72rem; font-weight: 700; color: ${viewed ? 'var(--success)' : '#D97706'}">${viewed ? 'Cavablandı' : 'Gözləyir'}</span>
+                                <span class="sponsor-ticket-id">${escapeHtml(ticketId)}</span>
+                                <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-main);">${escapeHtml(name)}</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <span style="font-size: 0.68rem; font-weight: 700; color: ${viewed ? 'var(--success)' : '#D97706'}">${viewed ? 'Cavablandı' : 'Gözləyir'}</span>
                                 <span class="sponsor-arrow">›</span>
                             </div>
                         </div>
@@ -2577,12 +2624,12 @@
                             <div class="sponsor-field"><b>Əlaqə Vasitəsi:</b> ${escapeHtml(contact)}</div>
                             <div class="sponsor-field"><b>Müraciət Məzmunu:</b> ${escapeHtml(message)}</div>
                             <div class="sponsor-field"><b>Tarix:</b> ${escapeHtml(date)}</div>
-                            <div style="display: flex; gap: 8px; margin-top: 15px;">
-                                <button type="button" class="status-btn ${viewed ? "checked" : ""}" style="flex:1; padding: 10px;" onclick="toggleSponsorshipStatus('${escapeAttribute(id)}', ${viewed})">
+                            <div style="display: flex; gap: 6px; margin-top: 12px;">
+                                <button type="button" class="status-btn ${viewed ? "checked" : ""}" style="flex:1; padding: 8px; font-size: 0.76rem;" onclick="toggleSponsorshipStatus('${escapeAttribute(id)}', ${viewed})">
                                     ${viewed ? "✓ Cavablandı" : "• Gözləyir"}
                                 </button>
-                                <button type="button" class="delete-btn" style="padding: 10px 14px;" onclick="deleteSponsorship('${escapeAttribute(id)}', '${escapeAttribute(ticketId)}')" title="Sil">
-                                    <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                                <button type="button" class="delete-btn" style="padding: 8px 12px;" onclick="deleteSponsorship('${escapeAttribute(id)}', '${escapeAttribute(ticketId)}')" title="Sil">
+                                    <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
                                 </button>
                             </div>
                         </div>
@@ -3072,7 +3119,7 @@
 
             list.innerHTML = `
 
-                <div class="portfolio-list-header" style="grid-template-columns: minmax(180px, 1.2fr) minmax(240px, 2fr) 140px 140px 200px;">
+                <div class="portfolio-list-header" style="grid-template-columns: minmax(160px, 1.2fr) minmax(220px, 2fr) 120px 130px 180px;">
 
                     <div>Başlıq</div>
 
@@ -3118,19 +3165,19 @@
 
                 itemElement.className = "portfolio-list-item";
 
-                itemElement.style.gridTemplateColumns = "minmax(180px, 1.2fr) minmax(240px, 2fr) 140px 140px 200px";
+                itemElement.style.gridTemplateColumns = "minmax(160px, 1.2fr) minmax(220px, 2fr) 120px 130px 180px";
 
 
 
                 itemElement.innerHTML = `
 
-                    <div class="portfolio-list-title" style="font-size: 1rem;">
+                    <div class="portfolio-list-title" style="font-size: 0.95rem;">
 
                         ${escapeHtml(data.title || "Adsız Bildiriş")}
 
                     </div>
 
-                    <div style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.4; padding-right: 15px;">
+                    <div style="color: var(--text-muted); font-size: 0.82rem; line-height: 1.35; padding-right: 12px;">
 
                         ${data.message || ""}
 
