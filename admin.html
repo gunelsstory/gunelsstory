@@ -994,7 +994,7 @@
 
 
 
-        /* PORTFOLIO LIST (DÜZGÜN SÜTUNLAR ÜÇÜN 5 SÜTUNLUQ GRID) */
+        /* PORTFOLIO LIST */
 
         .portfolio-list {
 
@@ -1227,6 +1227,26 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
+        }
+
+        .view-contract-btn {
+            background: #F1F5F9;
+            color: var(--primary-lux);
+            border: 1px solid rgba(15,26,92,0.1);
+            padding: 8px 12px;
+            border-radius: 9px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .view-contract-btn:hover {
+            background: var(--primary-lux);
+            color: white;
         }
 
 
@@ -2833,12 +2853,12 @@
             cardElement.classList.toggle("open");
         }
 
-        // Mövcud müqavilələrin ID-lərini yadda saxlayırıq
-        let existingContractsSet = new Set();
+        // Mövcud müqavilələrin ID-lərini və məlumatlarını yadda saxlayırıq
+        let existingContractsMap = new Map();
 
         function startListeningContracts() {
             db.collection("contractsHistory").onSnapshot(function (snapshot) {
-                existingContractsSet.clear();
+                existingContractsMap.clear();
                 let tbody = document.getElementById("contractsTableBody");
                 tbody.innerHTML = "";
 
@@ -2850,7 +2870,12 @@
                     const data = doc.data();
                     const id = doc.id;
                     const ticketId = data.ticketId || "TKT-XXXXX";
-                    existingContractsSet.add(ticketId);
+                    
+                    existingContractsMap.set(ticketId, {
+                        name: data.name || "Qeyd edilməyib",
+                        contact: data.contact || "Qeyd yoxdur",
+                        createdAt: data.createdAt
+                    });
 
                     const name = data.name || "Qeyd edilməyib";
                     const contact = data.contact || "Qeyd yoxdur";
@@ -2869,11 +2894,15 @@
                         <td data-label="Əlaqə">${escapeHtml(contact)}</td>
                         <td data-label="Tarix">${escapeHtml(date)}</td>
                         <td data-label="Əməliyyat" style="text-align:right;">
-                            <button type="button" class="delete-btn" onclick="deleteContract('${escapeAttribute(id)}', '${escapeAttribute(ticketId)}')" title="Sil">
-                                <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-                            </button>
+                            <div style="display:flex; justify-content:flex-end; gap:6px; align-items:center;">
+                                <button type="button" class="view-contract-btn" onclick="viewExistingContract('${escapeAttribute(name)}', '${escapeAttribute(contact)}', '${escapeAttribute(ticketId)}', window.contractCreatedAt_${escapeAttribute(id)})">Müqaviləyə bax</button>
+                                <button type="button" class="delete-btn" onclick="deleteContract('${escapeAttribute(id)}', '${escapeAttribute(ticketId)}')" title="Sil">
+                                    <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                                </button>
+                            </div>
                         </td>
                     `;
+                    window[`contractCreatedAt_${id}`] = data.createdAt;
                     tbody.appendChild(tr);
                 });
 
@@ -2886,7 +2915,7 @@
             db.collection("contractsHistory").doc(docId).delete();
         }
 
-        /* SPONSORLUQ MÜQAVİLƏSİ YARATMAQ VƏ TARİXÇƏYƏ QEYD ETMƏK */
+        /* SPONSORLUQ MÜQAVİLƏSİ YARATMAQ VƏ YA BAXMAQ */
         function generateSponsorContract(name, contact, ticketId, createdAt) {
             let dateStr = "02 Sentyabr 2026";
             let rawDate = new Date();
@@ -2897,15 +2926,32 @@
                 });
             }
 
-            db.collection("contractsHistory").add({
-                ticketId: ticketId,
-                name: name,
-                contact: contact,
-                createdAt: firebase.firestore.FieldValue.serverTimestamp()
-            }).then(() => {
-                startListeningContracts();
-            }).catch(err => console.log("Tarixçəyə yazılma xətası:", err));
+            // Əgər bazada yoxdursa tarixçəyə qeyd edirik
+            if (!existingContractsMap.has(ticketId)) {
+                db.collection("contractsHistory").add({
+                    ticketId: ticketId,
+                    name: name,
+                    contact: contact,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                }).then(() => {
+                    startListeningContracts();
+                }).catch(err => console.log("Tarixçəyə yazılma xətası:", err));
+            }
 
+            openContractWindow(name, contact, ticketId, dateStr);
+        }
+
+        function viewExistingContract(name, contact, ticketId, createdAt) {
+            let dateStr = "02 Sentyabr 2026";
+            if (createdAt && typeof createdAt.toDate === "function") {
+                dateStr = createdAt.toDate().toLocaleDateString("az-AZ", {
+                    day: "2-digit", month: "long", year: "numeric"
+                });
+            }
+            openContractWindow(name, contact, ticketId, dateStr);
+        }
+
+        function openContractWindow(name, contact, ticketId, dateStr) {
             let win = window.open('', '_blank');
             win.document.write(`
                 <!DOCTYPE html>
@@ -3020,16 +3066,12 @@
             win.document.close();
         }
 
-        let sponsorshipsUnsubscribe = null;
-
         function startListeningSponsorships() {
             const tbody = document.getElementById("sponsorshipsTableBody");
             const mobileContainer = document.getElementById("mobileSponsorshipsView");
             const desktopView = document.getElementById("desktopSponsorshipsView");
 
-            if (sponsorshipsUnsubscribe) sponsorshipsUnsubscribe();
-
-            sponsorshipsUnsubscribe = db.collection("sponsorships").orderBy("createdAt", "desc").onSnapshot(function (snapshot) {
+            db.collection("sponsorships").orderBy("createdAt", "desc").onSnapshot(function (snapshot) {
                 tbody.innerHTML = "";
                 mobileContainer.innerHTML = "";
                 currentWaitingSponsors = 0;
@@ -3073,10 +3115,10 @@
                         });
                     }
 
-                    const hasContract = existingContractsSet.has(ticketId);
+                    const hasContract = existingContractsMap.has(ticketId);
                     let contractButtonHtml = '';
                     if (hasContract) {
-                        contractButtonHtml = `<span class="contract-exists-badge">✓ Müqavilə var</span>`;
+                        contractButtonHtml = `<button type="button" class="view-contract-btn" onclick="viewExistingContract('${escapeAttribute(name)}', '${escapeAttribute(contact)}', '${escapeAttribute(ticketId)}', window.firebaseCreatedAt_${escapeAttribute(id)})">✓ Müqaviləyə bax</button>`;
                     } else {
                         contractButtonHtml = `<button type="button" class="contract-btn" onclick="generateSponsorContract('${escapeAttribute(name)}', '${escapeAttribute(contact)}', '${escapeAttribute(ticketId)}', window.firebaseCreatedAt_${escapeAttribute(id)})" title="Müqavilə yarat">Müqavilə yarat</button>`;
                     }
@@ -3124,7 +3166,7 @@
                             <div class="sponsor-field"><b>Müraciət Məzmunu:</b> ${escapeHtml(message)}</div>
                             <div class="sponsor-field"><b>Tarix:</b> ${escapeHtml(date)}</div>
                             <div style="display: flex; gap: 6px; margin-top: 12px; align-items: center; flex-wrap: wrap;">
-                                ${hasContract ? `<span class="contract-exists-badge" style="flex:1; justify-content:center;">✓ Müqavilə var</span>` : `<button type="button" class="contract-btn" style="flex:1; padding: 8px 10px; font-size: 0.72rem;" onclick="generateSponsorContract('${escapeAttribute(name)}', '${escapeAttribute(contact)}', '${escapeAttribute(ticketId)}', window.firebaseCreatedAt_${escapeAttribute(id)})">Müqavilə yarat</button>`}
+                                ${hasContract ? `<button type="button" class="view-contract-btn" style="flex:1; justify-content:center; padding:8px;" onclick="viewExistingContract('${escapeAttribute(name)}', '${escapeAttribute(contact)}', '${escapeAttribute(ticketId)}', window.firebaseCreatedAt_${escapeAttribute(id)})">✓ Müqaviləyə bax</button>` : `<button type="button" class="contract-btn" style="flex:1; padding: 8px 10px; font-size: 0.72rem;" onclick="generateSponsorContract('${escapeAttribute(name)}', '${escapeAttribute(contact)}', '${escapeAttribute(ticketId)}', window.firebaseCreatedAt_${escapeAttribute(id)})">Müqavilə yarat</button>`}
                                 <button type="button" class="status-btn ${viewed ? "checked" : ""}" style="flex:1; padding: 8px; font-size: 0.76rem;" onclick="toggleSponsorshipStatus('${escapeAttribute(id)}', ${viewed})">
                                     ${viewed ? "✓ Cavablandı" : "• Gözləyir"}
                                 </button>
@@ -3143,7 +3185,7 @@
 
 
 
-        /* PORTFOLIO METODLARI (Düzgün 5 Sütunlu Grid Strukturu ilə) */
+        /* PORTFOLIO METODLARI (Təhlükəsiz oxuma üçün orderBy silindi) */
 
         let portfolioUnsubscribe = null;
 
@@ -3151,7 +3193,7 @@
 
             if (portfolioUnsubscribe) portfolioUnsubscribe();
 
-            portfolioUnsubscribe = db.collection("portfolio").orderBy("createdAt", "desc").onSnapshot(function (snapshot) {
+            portfolioUnsubscribe = db.collection("portfolio").onSnapshot(function (snapshot) {
 
                 renderPortfolioAdmin(snapshot);
 
