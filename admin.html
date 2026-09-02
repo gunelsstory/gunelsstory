@@ -1200,6 +1200,25 @@
 
 
 
+        /* MÜQAVİLƏ YARAT DÜYMƏSİ */
+        .contract-btn {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 9px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .contract-btn:hover {
+            background: #4338ca;
+            transform: translateY(-1px);
+        }
+
+
+
         /* BİLDİRİŞ STATUS DÜYMƏLƏRİ */
 
         .publish-btn { background: var(--success-bg); color: var(--success); }
@@ -2816,6 +2835,129 @@
             cardElement.classList.toggle("open");
         }
 
+        /* SPONSORLUQ MÜQAVİLƏSİ YARATMAQ (Spesifik Mətnlə) */
+        function generateSponsorContract(name, ticketId, createdAt) {
+            let dateStr = "02 Sentyabr 2026";
+            if (createdAt && typeof createdAt.toDate === "function") {
+                dateStr = createdAt.toDate().toLocaleDateString("az-AZ", {
+                    day: "2-digit", month: "long", year: "numeric"
+                });
+            }
+
+            let win = window.open('', '_blank');
+            win.document.write(`
+                <!DOCTYPE html>
+                <html lang="az">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Sponsorluq Müqaviləsi - ${ticketId}</title>
+                    <style>
+                        body {
+                            font-family: 'Times New Roman', Times, serif;
+                            padding: 45px;
+                            color: #111;
+                            line-height: 1.6;
+                            max-width: 800px;
+                            margin: 0 auto;
+                            font-size: 1.05rem;
+                        }
+                        h2 { text-align: center; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+                        .sub-title { display: flex; justify-content: space-between; font-size: 0.95rem; color: #444; margin-bottom: 30px; border-bottom: 2px solid #111; padding-bottom: 8px; }
+                        .section { margin-bottom: 18px; text-align: justify; }
+                        .section p { margin-bottom: 8px; }
+                        .signatures {
+                            display: flex;
+                            justify-content: space-between;
+                            margin-top: 50px;
+                            page-break-inside: avoid;
+                        }
+                        .sig-box {
+                            width: 46%;
+                            line-height: 1.8;
+                        }
+                        .line { border-bottom: 1px solid #111; display: inline-block; width: 100%; min-height: 22px; }
+                        .print-area { text-align: center; margin-top: 40px; }
+                        .print-btn {
+                            padding: 12px 25px;
+                            background: #4f46e5;
+                            color: white;
+                            border: none;
+                            border-radius: 8px;
+                            cursor: pointer;
+                            font-size: 1rem;
+                            font-weight: bold;
+                        }
+                        @media print {
+                            .print-area { display: none; }
+                            body { padding: 20px; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h2>SPONSORLUQ MÜQAVİLƏSİ № ${ticketId}</h2>
+                    <div class="sub-title">
+                        <span>Bakı şəhəri</span>
+                        <span>Tarix: ${dateStr}</span>
+                    </div>
+
+                    <div class="section">
+                        <p>Bir tərəfdən <b>"Gunel's Story"</b> fərdi uşaq hekayəsi kitabları layihəsinin təsisçisi və rəhbəri <b>Günel Əbilova</b> (bundan sonra "Təşkilatçı" adlandırılacaq), digər tərəfdən isə layihəyə dəstək göstərən <span style="display:inline-block; border-bottom: 1px solid #111; width: 250px; text-align: center;"><b>${name || ''}</b></span> (bundan sonra "Sponsor" adlandırılacaq) aşağıdakı şərtlərlə bu müqaviləni bağlayırlar:</p>
+                    </div>
+
+                    <div class="section">
+                        <p><b>1. MÜQAVİLƏNİN PREDMETİ</b><br>
+                        1.1. Bu müqavilə "Gunel's Story" layihəsi çərçivəsində uşaqların maarikləndirilməsi, fərdi nağıl kitablarının hazırlanması və təqdimatı prosesində tərəflər arasındakı maliyyə, informasiya və təşkilati əməkdaşlıq münasibətlərini tənzimləyir.<br>
+                        1.2. Sponsor layihəyə öz fəaliyyət sahəsi üzrə dəstək göstərməyi, Təşkilatçı isə müqabilində sponsorun adının layihə materiallarında təbliğ olunmasını öhdəsinə götürür.</p>
+                    </div>
+
+                    <div class="section">
+                        <p><b>2. TƏRƏFLƏRİN HÜQUQ VƏ VƏZİFƏLƏRİ</b><br>
+                        <b>2.1. Təşkilatçının vəzifələri:</b><br>
+                        - Layihənin vaxtında və keyfiyyətli icrasını təmin etmək;<br>
+                        - Sponsorun brendini / adını razılaşdırılmış formatda təqdimatlarda və sosial media hesablarında işıqlandırmaq.<br>
+                        <b>2.2. Sponsorun vəzifələri:</b><br>
+                        - Razılaşdırılmış dəstək və ya töhfəni vaxtında təmin etmək;<br>
+                        - Layihənin imicinə zərər vura biləcək hərəkətlərdən çəkinmək.</p>
+                    </div>
+
+                    <div class="section">
+                        <p><b>3. MÜDDƏT VƏ XİTAM</b><br>
+                        3.1. Bu müqavilə tərəflər tərəfindən təsdiq edildiyi andan qüvvəyə minir və layihə çərçivəsindəki tədbirlər başa çatanadək qüvvədədir.<br>
+                        3.2. Müqavilə tərəflərin qarşılıqlı yazılı razılığı ilə vaxtından əvvəl ləğv edilə bilər.</p>
+                    </div>
+
+                    <div class="section">
+                        <p><b>4. YEKUN MÜDDƏALAR</b><br>
+                        4.1. Bu müqavilə ilə tənzimlənməyən məsələlər Azərbaycan Respublikasının qanunvericiliyinə uyğun olaraq həll edilir.<br>
+                        4.2. Müqavilə iki nüsxədə tərtib olunmuşdur.</p>
+                    </div>
+
+                    <div class="signatures">
+                        <div class="sig-box">
+                            <b>SPONSOR:</b><br>
+                            Ad, Soyad: <span class="line"></span><br>
+                            Şöbə / Vəzifə: <span class="line"></span><br>
+                            Əlaqə: <span class="line"></span><br>
+                            İmza: <span class="line" style="margin-top: 5px;"></span>
+                        </div>
+                        <div class="sig-box">
+                            <b>TƏŞKİLATÇI / BREND TƏSİSÇİSİ:</b><br>
+                            Ad, Soyad: <b>Günel Əbilova</b><br>
+                            Layihə: Gunel's Story<br>
+                            Əlaqə: info@gunelsstory.com<br>
+                            İmza: <span class="line" style="margin-top: 5px;"></span>
+                        </div>
+                    </div>
+
+                    <div class="print-area">
+                        <button class="print-btn" onclick="window.print()">Müqaviləni Çap Et / PDF Yadda Saxla</button>
+                    </div>
+                </body>
+                </html>
+            `);
+            win.document.close();
+        }
+
         function startListeningSponsorships() {
             const tbody = document.getElementById("sponsorshipsTableBody");
             const mobileContainer = document.getElementById("mobileSponsorshipsView");
@@ -2858,8 +3000,9 @@
                     const message = data.message || "Mətn yoxdur";
 
                     let date = "Gözlənilir";
-                    if (data.createdAt && typeof data.createdAt.toDate === "function") {
-                        date = data.createdAt.toDate().toLocaleString("az-AZ", {
+                    let rawCreatedAt = data.createdAt;
+                    if (rawCreatedAt && typeof rawCreatedAt.toDate === "function") {
+                        date = rawCreatedAt.toDate().toLocaleString("az-AZ", {
                             day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"
                         });
                     }
@@ -2875,6 +3018,7 @@
                         <td data-label="Tarix">${escapeHtml(date)}</td>
                         <td data-label="Əməliyyat">
                             <div class="action-container">
+                                <button type="button" class="contract-btn" onclick="generateSponsorContract('${escapeAttribute(name)}', '${escapeAttribute(ticketId)}', window.firebaseCreatedAt_${escapeAttribute(id)})" title="Müqavilə yarat">Müqavilə yarat</button>
                                 <button type="button" class="delete-btn" onclick="deleteSponsorship('${escapeAttribute(id)}', '${escapeAttribute(ticketId)}')" title="Sil">
                                     <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
                                 </button>
@@ -2884,6 +3028,8 @@
                             </div>
                         </td>
                     `;
+                    // Tarix obyektini funksiyaya ötürmək üçün global olaraq saxlayırıq
+                    window[`firebaseCreatedAt_${id}`] = rawCreatedAt;
                     tbody.appendChild(tr);
 
                     // Mobile Accordion Zolaq
@@ -2904,7 +3050,8 @@
                             <div class="sponsor-field"><b>Əlaqə Vasitəsi:</b> ${escapeHtml(contact)}</div>
                             <div class="sponsor-field"><b>Müraciət Məzmunu:</b> ${escapeHtml(message)}</div>
                             <div class="sponsor-field"><b>Tarix:</b> ${escapeHtml(date)}</div>
-                            <div style="display: flex; gap: 6px; margin-top: 12px;">
+                            <div style="display: flex; gap: 6px; margin-top: 12px; align-items: center;">
+                                <button type="button" class="contract-btn" style="padding: 8px 10px; font-size: 0.72rem;" onclick="generateSponsorContract('${escapeAttribute(name)}', '${escapeAttribute(ticketId)}', window.firebaseCreatedAt_${escapeAttribute(id)})">Müqavilə yarat</button>
                                 <button type="button" class="status-btn ${viewed ? "checked" : ""}" style="flex:1; padding: 8px; font-size: 0.76rem;" onclick="toggleSponsorshipStatus('${escapeAttribute(id)}', ${viewed})">
                                     ${viewed ? "✓ Cavablandı" : "• Gözləyir"}
                                 </button>
