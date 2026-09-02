@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="az">
 
 <head>
@@ -503,6 +502,8 @@
             border-radius: var(--radius-md);
 
             width: fit-content;
+
+            flex-wrap: wrap;
 
         }
 
@@ -1454,6 +1455,79 @@
 
 
 
+        /* MOBİL MÜRACİƏTLƏR AKKORDION VƏ ZOLAQ STİLİ */
+        .sponsor-mobile-card {
+            background: white;
+            border: 1px solid rgba(15,26,92,.08);
+            border-radius: var(--radius-md);
+            margin-bottom: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sponsor-mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: #F8FAFC;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+        }
+
+        .sponsor-mobile-header:hover {
+            background: #F1F5F9;
+        }
+
+        .sponsor-ticket-id {
+            font-family: monospace;
+            font-weight: 800;
+            color: var(--primary-lux);
+            font-size: 0.95rem;
+            background: var(--primary-soft);
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        .sponsor-arrow {
+            transition: transform 0.3s ease;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: bold;
+        }
+
+        .sponsor-mobile-card.open .sponsor-arrow {
+            transform: rotate(90deg);
+        }
+
+        .sponsor-mobile-body {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid rgba(15,26,92,.06);
+            background: #ffffff;
+        }
+
+        .sponsor-mobile-card.open .sponsor-mobile-body {
+            display: block;
+        }
+
+        .sponsor-field {
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .sponsor-field b {
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 2px;
+            letter-spacing: 0.5px;
+        }
+
+
+
         /* RESPONSIVE */
 
         @media (max-width: 900px) {
@@ -1674,6 +1748,8 @@
 
             <button class="admin-tab active" onclick="switchAdminTab('orders', this)">Sifarişlər</button>
 
+            <button class="admin-tab" onclick="switchAdminTab('sponsorships', this)">Müraciətlər & Sponsorluq</button>
+
             <button class="admin-tab" onclick="switchAdminTab('portfolio', this)">Portfolio</button>
 
             <button class="admin-tab" onclick="switchAdminTab('notifications', this)">Notifications</button>
@@ -1729,6 +1805,72 @@
                 </table>
 
             </div>
+
+        </section>
+
+
+
+        <!-- SPONSORSHIPS SECTION (YENİ MÜRACİƏTLƏR BÖLMƏSİ) -->
+
+        <section class="admin-section" id="sponsorshipsSection">
+
+            <div class="portfolio-toolbar">
+
+                <div class="section-title">
+
+                    <h2>Təklif və Sponsorluq Müraciətləri</h2>
+
+                    <p>İstifadəçilərin saytdan göndərdiyi dəstək və təklif mesajları.</p>
+
+                </div>
+
+            </div>
+
+            <div class="table-responsive" id="desktopSponsorshipsView">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Ticket ID</th>
+
+                            <th>Ad və Soyad</th>
+
+                            <th>Əlaqə Vasitəsi</th>
+
+                            <th>Müraciət Məzmunu</th>
+
+                            <th>Tarix</th>
+
+                            <th>Əməliyyat</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="sponsorshipsTableBody">
+
+                        <tr>
+
+                            <td colspan="6" style="text-align:center; padding:50px; color:var(--text-muted);">
+
+                                Müraciətlər yüklənir...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <!-- Mobil Üçün Akkordion Zolaq Görünüşü -->
+
+            <div id="mobileSponsorshipsView" style="display: none;"></div>
 
         </section>
 
@@ -1888,7 +2030,6 @@
 
                 <label class="form-label">Bildiriş Mətni *</label>
 
-                <!-- FORMATLAMA DÜYMƏLƏRİ -->
                 <div class="rich-toolbar">
                     <button type="button" class="rich-btn" onclick="formatNoticeText('b')" title="Qalın (Bold)"><b>B</b></button>
                     <button type="button" class="rich-btn" onclick="formatNoticeText('i')" title="Kursiv (Italic)"><i>I</i></button>
@@ -2026,6 +2167,8 @@
 
                 startListeningOrders();
 
+                startListeningSponsorships();
+
                 startListeningPortfolio();
 
                 startListeningNotifications();
@@ -2075,6 +2218,8 @@
                         document.getElementById("adminContainer").style.display = "block";
 
                         startListeningOrders();
+
+                        startListeningSponsorships();
 
                         startListeningPortfolio();
 
@@ -2332,6 +2477,123 @@
 
 
 
+        /* TƏKLİF VƏ SPONSORLUQ MÜRACİƏTLƏRİ */
+
+        function toggleSponsorshipStatus(docId, currentStatus) {
+            db.collection("sponsorships").doc(docId).update({ isViewed: !currentStatus });
+        }
+
+        function deleteSponsorship(docId, ticketId) {
+            if (!confirm(`"${ticketId}" nömrəli müraciəti silmək istədiyinizdən əminsiniz?`)) return;
+            db.collection("sponsorships").doc(docId).delete();
+        }
+
+        function toggleMobileAccordion(cardElement) {
+            cardElement.classList.toggle("open");
+        }
+
+        function startListeningSponsorships() {
+            const tbody = document.getElementById("sponsorshipsTableBody");
+            const mobileContainer = document.getElementById("mobileSponsorshipsView");
+            const desktopView = document.getElementById("desktopSponsorshipsView");
+
+            db.collection("sponsorships").orderBy("createdAt", "desc").onSnapshot(function (snapshot) {
+                tbody.innerHTML = "";
+                mobileContainer.innerHTML = "";
+
+                if (snapshot.empty) {
+                    const emptyMsg = `<tr><td colspan="6" style="text-align:center; padding:50px; color:var(--text-muted);">Hələ heç bir təklif və ya sponsorluq müraciəti yoxdur.</td></tr>`;
+                    tbody.innerHTML = emptyMsg;
+                    mobileContainer.innerHTML = `<div class="empty-portfolio"><strong>Müraciət yoxdur</strong></div>`;
+                    return;
+                }
+
+                // Ekran ölçüsünə görə masaüstü və ya mobil görünüşü tənzimləyirik
+                function updateViewMode() {
+                    if (window.innerWidth <= 900) {
+                        desktopView.style.display = "none";
+                        mobileContainer.style.display = "block";
+                    } else {
+                        desktopView.style.display = "block";
+                        mobileContainer.style.display = "none";
+                    }
+                }
+                updateViewMode();
+                window.addEventListener("resize", updateViewMode);
+
+                snapshot.forEach(function (doc) {
+                    const data = doc.data();
+                    const id = doc.id;
+                    const viewed = data.isViewed || false;
+                    const ticketId = data.ticketId || "TKT-XXXXX";
+                    const name = data.name || "Qeyd edilməyib";
+                    const contact = data.contact || "Qeyd yoxdur";
+                    const message = data.message || "Mətn yoxdur";
+
+                    let date = "Gözlənilir";
+                    if (data.createdAt && typeof data.createdAt.toDate === "function") {
+                        date = data.createdAt.toDate().toLocaleString("az-AZ", {
+                            day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"
+                        });
+                    }
+
+                    // Desktop Table Row
+                    const tr = document.createElement("tr");
+                    tr.className = viewed ? "status-viewed" : "status-waiting";
+                    tr.innerHTML = `
+                        <td data-label="Ticket ID"><strong style="font-family:monospace; color:var(--primary-lux);">${escapeHtml(ticketId)}</strong></td>
+                        <td data-label="Ad Soyad" class="parent-name-cell">${escapeHtml(name)}</td>
+                        <td data-label="Əlaqə">${escapeHtml(contact)}</td>
+                        <td data-label="Məzmun" class="interests-cell">${escapeHtml(message)}</td>
+                        <td data-label="Tarix">${escapeHtml(date)}</td>
+                        <td data-label="Əməliyyat">
+                            <div class="action-container">
+                                <button type="button" class="delete-btn" onclick="deleteSponsorship('${escapeAttribute(id)}', '${escapeAttribute(ticketId)}')" title="Sil">
+                                    <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                                </button>
+                                <button type="button" class="status-btn ${viewed ? "checked" : ""}" onclick="toggleSponsorshipStatus('${escapeAttribute(id)}', ${viewed})">
+                                    ${viewed ? "✓ Cavablandı" : "• Gözləyir"}
+                                </button>
+                            </div>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+
+                    // Mobile Accordion Zolaq
+                    const card = document.createElement("div");
+                    card.className = "sponsor-mobile-card " + (viewed ? "status-viewed" : "status-waiting");
+                    card.innerHTML = `
+                        <div class="sponsor-mobile-header" onclick="toggleMobileAccordion(this.parentElement)">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span class="sponsor-ticket-id">${escapeHtml(ticketId)}</span>
+                                <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-main);">${escapeHtml(name)}</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span style="font-size: 0.72rem; font-weight: 700; color: ${viewed ? 'var(--success)' : '#D97706'}">${viewed ? 'Cavablandı' : 'Gözləyir'}</span>
+                                <span class="sponsor-arrow">›</span>
+                            </div>
+                        </div>
+                        <div class="sponsor-mobile-body">
+                            <div class="sponsor-field"><b>Əlaqə Vasitəsi:</b> ${escapeHtml(contact)}</div>
+                            <div class="sponsor-field"><b>Müraciət Məzmunu:</b> ${escapeHtml(message)}</div>
+                            <div class="sponsor-field"><b>Tarix:</b> ${escapeHtml(date)}</div>
+                            <div style="display: flex; gap: 8px; margin-top: 15px;">
+                                <button type="button" class="status-btn ${viewed ? "checked" : ""}" style="flex:1; padding: 10px;" onclick="toggleSponsorshipStatus('${escapeAttribute(id)}', ${viewed})">
+                                    ${viewed ? "✓ Cavablandı" : "• Gözləyir"}
+                                </button>
+                                <button type="button" class="delete-btn" style="padding: 10px 14px;" onclick="deleteSponsorship('${escapeAttribute(id)}', '${escapeAttribute(ticketId)}')" title="Sil">
+                                    <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    mobileContainer.appendChild(card);
+                });
+            });
+        }
+
+
+
         /* PORTFOLIO METODLARI */
 
         let portfolioUnsubscribe = null;
@@ -2448,7 +2710,7 @@
 
                             <button type="button" class="portfolio-action-btn view-image-btn" title="Şəkilə bax" onclick="openImageViewer('${escapeAttribute(imageUrl)}', '${escapeAttribute(title)}')">
 
-                                <svg viewBox="0 0 24 24"><path d="M12 5c-5 0-9.27 3.11-11 7 1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7zm0 12c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="M12 5c-5 0-9.27 3.11-11 7 1.73 3.89 6 7 11 7s9.27-3.11 11-7-1.73-3.89-6-7-11-7zm0 12c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
 
                             </button>
 
@@ -2771,8 +3033,6 @@
                 renderNotificationsAdmin(snapshot);
 
             }, function (err) {
-
-                // Əgər createdAt index-i hələ yaranmayıbsa sadə query ilə oxuyuruq
 
                 db.collection("notifications").onSnapshot(renderNotificationsAdmin);
 
@@ -3172,7 +3432,7 @@
 
                 .replace(/'/g, "&#039;");
 
-        }
+            }
 
 
 
