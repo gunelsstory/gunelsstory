@@ -994,7 +994,7 @@
 
 
 
-        /* PORTFOLIO LIST */
+        /* PORTFOLIO LİSTƏSİ VƏ 5 SÜTUNLUQ GRID */
 
         .portfolio-list {
 
@@ -1685,7 +1685,7 @@
 
 
 
-        /* MOBİL MÜRACİƏTLƏR & PORTFOLIO AKKORDION */
+        /* MOBİL MÜRACİƏTLƏR VƏ PORTFOLIO ÜÇÜN AKKORDION KARTLAR */
         .sponsor-mobile-card, .portfolio-mobile-card {
             background: white;
             border: 1px solid rgba(15,26,92,.08);
@@ -1812,9 +1812,9 @@
                 border-radius: 8px;
             }
 
+            /* Veb cədvəlini gizlət, mobil akkordion listini göstər */
             .portfolio-list { display: none !important; }
-            #desktopPortfolioView { display: none !important; }
-            #mobilePortfolioView { display: block !important; }
+            .portfolio-mobile-list { display: flex !important; flex-direction: column; gap: 8px; }
 
             /* BİLDİRİŞLƏRİN MOBİL GÖRÜNÜŞÜ */
             #notificationsAdminGrid .portfolio-list-item {
@@ -1847,6 +1847,11 @@
                 font-size: 0.7rem !important;
             }
 
+        }
+
+        /* Veb üçün mobil portfolio siyahısını gizlət */
+        @media (min-width: 901px) {
+            .portfolio-mobile-list { display: none !important; }
         }
 
     </style>
@@ -2177,11 +2182,11 @@
 
             </div>
 
-            <!-- Veb Görünüşü -->
-            <div id="desktopPortfolioView"></div>
+            <div id="portfolioAdminGrid">
 
-            <!-- Mobil Görünüşü (Akkordion Kartlar) -->
-            <div id="mobilePortfolioView" style="display: none;"></div>
+                <div class="loading-text">Portfolio yüklənir...</div>
+
+            </div>
 
         </section>
 
@@ -3186,7 +3191,7 @@
 
 
 
-        /* PORTFOLIO METODLARI (Həm Veb, həm də Mobil üçün tam dəstək) */
+        /* PORTFOLIO METODLARI (Həm veb cədvəl, həm də mobil kartlar dəstəyi ilə) */
 
         let portfolioUnsubscribe = null;
 
@@ -3226,7 +3231,7 @@
 
 
 
-            // Veb üçün cədvəl siyahısı
+            // 1. Veb üçün cədvəl formatı
             const list = document.createElement("div");
 
             list.className = "portfolio-list";
@@ -3251,15 +3256,18 @@
 
 
 
+            // 2. Mobil üçün akkordion kart formatı
+            const mobileList = document.createElement("div");
+            mobileList.className = "portfolio-mobile-list";
+            if (window.innerWidth > 900) {
+                mobileList.style.display = "none";
+            }
+
+
+
             docs.forEach(function (item) {
 
                 const data = item.data;
-
-                const itemElement = document.createElement("div");
-
-                itemElement.className = "portfolio-list-item";
-
-
 
                 let date = "Tarix yoxdur";
 
@@ -3282,6 +3290,11 @@
                 const imageUrl = data.imageUrl || "";
 
 
+
+                // Veb sətri
+                const itemElement = document.createElement("div");
+
+                itemElement.className = "portfolio-list-item";
 
                 itemElement.innerHTML = `
 
@@ -3319,10 +3332,50 @@
 
                 list.appendChild(itemElement);
 
+
+
+                // Mobil kart
+                const mobCard = document.createElement("div");
+                mobCard.className = "portfolio-mobile-card";
+                mobCard.innerHTML = `
+                    <div class="portfolio-mobile-header" onclick="toggleMobileAccordion(this.parentElement)">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            ${imageUrl ? `<img src="${escapeAttribute(imageUrl)}" style="width:40px; height:40px; object-fit:cover; border-radius:6px;" alt="">` : `<div style="width:40px; height:40px; background:#f1f5f9; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.55rem;">Yoxdur</div>`}
+                            <div>
+                                <div style="font-size: 0.85rem; font-weight: 800; color: var(--primary-lux);">${escapeHtml(title)}</div>
+                                <div style="font-size: 0.75rem; color: var(--accent-gold); font-weight: 700;">${escapeHtml(author)}</div>
+                            </div>
+                        </div>
+                        <span class="portfolio-arrow">›</span>
+                    </div>
+                    <div class="portfolio-mobile-body">
+                        <div class="sponsor-field"><b>Yaradılma Tarixi:</b> ${escapeHtml(date)}</div>
+                        <div style="display: flex; gap: 6px; margin-top: 12px; align-items: center;">
+                            ${imageUrl ? `<button type="button" class="portfolio-action-btn view-image-btn" style="width:36px; height:36px;" onclick="openImageViewer('${escapeAttribute(imageUrl)}', '${escapeAttribute(title)}')"><svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M12 5c-5 0-9.27 3.11-11 7 1.73 3.89 6 7 11 7s9.27-3.11 11-7-1.73-3.89-6-7-11-7zm0 12c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg></button>` : ""}
+                            <button type="button" class="portfolio-action-btn edit-portfolio-btn" style="flex:1;" onclick="editPortfolio('${escapeAttribute(item.id)}')">Redaktə</button>
+                            <button type="button" class="portfolio-action-btn delete-portfolio-btn" style="flex:1;" onclick="deletePortfolio('${escapeAttribute(item.id)}', '${escapeAttribute(title)}')">Sil</button>
+                        </div>
+                    </div>
+                `;
+                mobileList.appendChild(mobCard);
+
             });
 
-            container.appendChild(list);
 
+
+            // Ekran genişliyinə uyğun olaraq uyğun siyahını əsas konteynerə əlavə edirik
+            if (window.innerWidth <= 900) {
+                container.appendChild(mobileList);
+            } else {
+                container.appendChild(list);
+            }
+
+            // Ekran ölçüsü dəyişdikdə avtomatik yenilənsin deyə
+            window.onresize = function() {
+                if (document.getElementById("portfolioSection").classList.contains("active")) {
+                    renderPortfolioAdmin(snapshot);
+                }
+            };
         }
 
 
