@@ -541,19 +541,23 @@
 
 
 
-        /* MOBİL SAĞ SİDEBAR MENYU ÜÇÜN DÜYMƏ VƏ OVERLAY */
+        /* MOBİL SAĞ SİDEBAR MENYU ÜÇÜN İKON DÜYMƏ VƏ OVERLAY */
         .mobile-menu-toggle {
             display: none;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
             background: var(--primary-soft);
             color: var(--primary-lux);
             border: 1px solid rgba(79, 70, 229, 0.2);
-            padding: 8px 14px;
+            width: 40px;
+            height: 40px;
             border-radius: 10px;
-            font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 1.2rem;
             cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .mobile-menu-toggle:hover {
+            transform: scale(1.05);
         }
 
         .mobile-sidebar-overlay {
@@ -1641,13 +1645,13 @@
 
             body { padding: 0 10px 50px; }
 
-            .admin-container { margin-top: 10px; padding: 20px; border-radius: 18px; }
+            .admin-container { margin-top: 10px; padding: 16px; border-radius: 16px; }
 
-            .admin-header { align-items: center; gap: 12px; flex-direction: row; }
+            .admin-header { align-items: center; gap: 12px; flex-direction: row; padding-bottom: 15px; margin-bottom: 15px; }
 
-            .admin-header h1 { font-size: 1.4rem; }
+            .admin-header h1 { font-size: 1.35rem; }
 
-            /* Desktop tabları gizlət, mobil menyu düyməsini göstər */
+            /* Desktop tabları gizlət, mobil menyu ikonunu göstər */
             .admin-tabs { display: none; }
             .mobile-menu-toggle { display: inline-flex; }
 
@@ -1657,124 +1661,147 @@
 
             thead { display: none; }
 
-            tr { margin-bottom: 20px; padding: 15px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+            tr { margin-bottom: 14px; padding: 12px; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); }
 
-            td { display: flex; justify-content: space-between; align-items: center; gap: 15px; padding: 12px 0; border-top: 1px dashed rgba(15,26,92,.08); text-align: right; }
+            td { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 0; border-top: 1px dashed rgba(15,26,92,.06); text-align: right; font-size: 0.84rem; }
 
             td:first-child { border-top: none; }
 
-            td::before { content: attr(data-label); flex-shrink: 0; color: var(--text-muted); font-size: .7rem; font-weight: 700; text-transform: uppercase; }
+            td::before { content: attr(data-label); flex-shrink: 0; color: var(--text-muted); font-size: .65rem; font-weight: 700; text-transform: uppercase; }
 
             .action-container { justify-content: flex-end; }
 
 
 
-            .portfolio-list { border: none; background: transparent; overflow: visible; gap: 12px; }
+            /* PORTFOLIO MOBİL MİNİMAL KARTLAR */
+            .portfolio-toolbar {
+                margin-bottom: 15px;
+                gap: 10px;
+            }
+
+            .section-title h2 {
+                font-size: 1.15rem;
+            }
+
+            .section-title p {
+                font-size: 0.75rem;
+            }
+
+            .add-portfolio-btn {
+                padding: 10px 14px;
+                font-size: 0.78rem;
+                border-radius: 8px;
+            }
+
+            .portfolio-list {
+                border: none;
+                background: transparent;
+                overflow: visible;
+                gap: 8px;
+            }
 
             .portfolio-list-header { display: none; }
 
             .portfolio-list-item {
-
                 display: flex;
-
-                flex-direction: column;
-
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
                 gap: 10px;
-
-                padding: 18px;
-
+                padding: 10px 12px;
                 background: white;
-
                 border: 1px solid rgba(15,26,92,.07);
-
-                border-radius: var(--radius-md);
-
+                border-radius: var(--radius-sm);
                 box-shadow: var(--shadow-sm);
-
+                min-height: auto;
             }
 
-            .portfolio-list-actions { width: 100%; justify-content: flex-start; flex-wrap: wrap; margin-top: 10px; border-top: 1px dashed rgba(15,26,92,.08); padding-top: 10px; }
+            .portfolio-thumbnail-wrap {
+                flex-shrink: 0;
+            }
 
-            /* BİLDİRİŞLƏRİN MOBİL GÖRÜNÜŞÜ (900px-dən aşağı) */
+            .portfolio-thumbnail, .portfolio-no-image {
+                width: 44px;
+                height: 44px;
+                border-radius: 6px;
+                font-size: 0.55rem;
+            }
+
+            .portfolio-list-title {
+                font-size: 0.85rem;
+                font-weight: 700;
+                padding-right: 0;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .portfolio-list-author {
+                font-size: 0.72rem;
+            }
+
+            .portfolio-date {
+                display: none; /* Mobildə təmizlik üçün tarixi gizlədirik ki, ultra minimal olsun */
+            }
+
+            .portfolio-list-actions {
+                width: auto;
+                justify-content: flex-end;
+                gap: 4px;
+                margin-top: 0;
+                border-top: none;
+                padding-top: 0;
+            }
+
+            .portfolio-action-btn {
+                min-height: 30px;
+                padding: 5px 8px;
+                font-size: 0.7rem;
+                border-radius: 6px;
+            }
+
+            .view-image-btn {
+                width: 30px;
+                height: 30px;
+            }
+
+            .view-image-btn svg {
+                width: 15px;
+                height: 15px;
+            }
+
+            /* BİLDİRİŞLƏRİN MOBİL GÖRÜNÜŞÜ */
             #notificationsAdminGrid .portfolio-list-item {
                 display: flex !important;
                 flex-direction: column !important;
-                gap: 12px !important;
-                padding: 18px !important;
-                background: white !important;
-                border: 1px solid rgba(15,26,92,.08) !important;
-                border-radius: var(--radius-md) !important;
-                box-shadow: var(--shadow-sm) !important;
+                gap: 8px !important;
+                padding: 12px !important;
             }
 
             #notificationsAdminGrid .portfolio-list-title {
-                font-size: 1.05rem !important;
-                padding-right: 0 !important;
+                font-size: 0.9rem !important;
             }
 
             #notificationsAdminGrid .portfolio-list-item > div:nth-child(2) {
-                padding-right: 0 !important;
-                font-size: 0.9rem !important;
-                color: var(--text-main) !important;
-                background: #F8FAFC !important;
-                padding: 10px 12px !important;
-                border-radius: 8px !important;
+                font-size: 0.82rem !important;
+                padding: 6px 8px !important;
             }
 
             #notificationsAdminGrid .portfolio-list-actions {
                 display: flex !important;
                 width: 100% !important;
-                gap: 8px !important;
-                justify-content: flex-start !important;
-                margin-top: 5px !important;
-                border-top: 1px dashed rgba(15,26,92,.08) !important;
-                padding-top: 12px !important;
+                gap: 5px !important;
+                border-top: 1px dashed rgba(15,26,92,.06) !important;
+                padding-top: 8px !important;
             }
 
             #notificationsAdminGrid .portfolio-action-btn {
                 flex: 1 !important;
-                text-align: center !important;
-                padding: 10px 8px !important;
+                padding: 7px 4px !important;
+                font-size: 0.7rem !important;
             }
 
-        }
-
-        @media (max-width: 600px) {
-            .portfolio-toolbar {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 15px;
-            }
-
-            .add-portfolio-btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .portfolio-modal {
-                padding: 22px 18px;
-                border-radius: 18px;
-            }
-
-            .modal-actions {
-                flex-direction: column;
-            }
-
-            .modal-btn {
-                width: 100%;
-            }
-
-            #notificationsAdminGrid .portfolio-list-actions {
-                display: grid !important;
-                grid-template-columns: 1fr 1fr 1fr !important;
-                gap: 6px !important;
-            }
-
-            #notificationsAdminGrid .portfolio-action-btn {
-                width: 100% !important;
-                font-size: 0.72rem !important;
-                padding: 9px 4px !important;
-            }
         }
 
     </style>
@@ -1845,10 +1872,10 @@
 
             <h1>İdarəetmə Paneli</h1>
 
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <!-- MOBİL ÜÇÜN MENYU DÜYMƏSİ (SAĞ TƏRƏFDƏ) -->
-                <button type="button" class="mobile-menu-toggle" onclick="toggleMobileSidebar()">
-                    Menyu ☰
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <!-- MOBİL ÜÇÜN MENYU İKONU (SÖZ SİLİNDİ, YALNIZ İKON QALDI) -->
+                <button type="button" class="mobile-menu-toggle" onclick="toggleMobileSidebar()" title="Menyu">
+                    ☰
                 </button>
                 <button onclick="logoutAdmin()" class="logout-btn">Çıxış</button>
             </div>
@@ -2426,15 +2453,12 @@
         }
 
         function switchMobileTab(section, button) {
-            // Aktiv sinifləri yenilə
             document.querySelectorAll(".mobile-sidebar-tab").forEach(tab => tab.classList.remove("active"));
             button.classList.add("active");
 
-            // Bölmələri dəyiş
             document.querySelectorAll(".admin-section").forEach(s => s.classList.remove("active"));
             document.getElementById(section + "Section").classList.add("active");
 
-            // Menyunu bağla
             toggleMobileSidebar();
         }
 
@@ -2860,9 +2884,10 @@
 
                     </div>
 
-                    <div class="portfolio-list-title">${escapeHtml(title)}</div>
-
-                    <div class="portfolio-list-author">${escapeHtml(author)}</div>
+                    <div>
+                        <div class="portfolio-list-title">${escapeHtml(title)}</div>
+                        <div class="portfolio-list-author">${escapeHtml(author)}</div>
+                    </div>
 
                     <div class="portfolio-date">${escapeHtml(date)}</div>
 
@@ -3569,8 +3594,6 @@
                 closeImageViewer();
 
                 closePortfolioModal();
-
-                closeNotificationModal();
 
             }
 
