@@ -462,7 +462,7 @@
                 );
         }
 
-        /* ANİMASİYALI SPONSORLUQ / MESAJ İKONU (DESKTOP) */
+        /* ANİMASİYALI SPONSORLUQ / MESAJ İKONU */
         .sponsor-nav-btn {
             display: flex;
             align-items: center;
@@ -478,6 +478,7 @@
             animation: pulseIcon 2s infinite;
             transition: transform 0.2s;
             text-decoration: none;
+            flex-shrink: 0;
         }
 
         .sponsor-nav-btn:hover {
@@ -494,6 +495,16 @@
             100% {
                 box-shadow: 0 0 0 0 rgba(79, 70, 229, 0);
             }
+        }
+
+
+        /* =====================================================
+           MOBİL SAĞ HİSSƏ (İkon + Hamburger)
+        ====================================================== */
+        .mobile-top-actions {
+            display: none;
+            align-items: center;
+            gap: 10px;
         }
 
 
@@ -607,12 +618,10 @@
         }
 
 
-        .mobile-menu a, .mobile-menu button.mobile-sponsor-link {
+        .mobile-menu a {
 
             display:
                 block;
-            width: 100%;
-            text-align: left;
 
             text-decoration:
                 none;
@@ -641,9 +650,6 @@
             border-radius:
                 12px;
 
-            cursor: pointer;
-            font-family: inherit;
-
             transition:
                 background 0.2s ease,
                 color 0.2s ease,
@@ -651,7 +657,7 @@
         }
 
 
-        .mobile-menu a:hover, .mobile-menu button.mobile-sponsor-link:hover {
+        .mobile-menu a:hover {
 
             color:
                 var(--primary-magic);
@@ -688,12 +694,6 @@
 
             border-color:
                 var(--primary-magic);
-        }
-
-        .mobile-menu .mobile-sponsor-link {
-            background: var(--primary-soft);
-            color: var(--primary-magic);
-            border-color: rgba(79, 70, 229, 0.2);
         }
 
 
@@ -1610,7 +1610,7 @@
 
 
         /* =====================================================
-           BİLDİRİŞ VƏ SPONSORLUQ MODALLARI
+           BİLDİRİŞ VƏ MİNİMALİST SPONSORLUQ MODALLARI
         ====================================================== */
 
         .site-notification-overlay {
@@ -1643,19 +1643,19 @@
 
             width: 100%;
 
-            max-width: 440px;
+            max-width: 400px;
 
             background: #ffffff;
 
-            border-radius: 24px;
+            border-radius: 20px;
 
-            padding: 35px 26px 26px;
+            padding: 28px 20px 20px;
 
             text-align: center;
 
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
 
-            border: 1px solid rgba(79, 70, 229, 0.15);
+            border: 1px solid rgba(79, 70, 229, 0.1);
 
             animation: popupAppear 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
@@ -1676,17 +1676,17 @@
 
             position: absolute;
 
-            top: 15px;
+            top: 12px;
 
-            right: 15px;
+            right: 12px;
 
             background: #f1f5f9;
 
             border: none;
 
-            width: 34px;
+            width: 30px;
 
-            height: 34px;
+            height: 30px;
 
             border-radius: 50%;
 
@@ -1696,7 +1696,7 @@
 
             justify-content: center;
 
-            font-size: 1.4rem;
+            font-size: 1.2rem;
 
             line-height: 1;
 
@@ -1718,9 +1718,9 @@
 
         .site-notification-icon {
 
-            font-size: 3rem;
+            font-size: 2.2rem;
 
-            margin-bottom: 12px;
+            margin-bottom: 8px;
 
             display: inline-block;
         }
@@ -1728,26 +1728,26 @@
 
         .site-notification-title {
 
-            font-size: 1.35rem;
+            font-size: 1.2rem;
 
             font-weight: 700;
 
             color: var(--text-main);
 
-            margin-bottom: 4px;
+            margin-bottom: 2px;
 
             font-family: 'Quicksand', sans-serif;
         }
 
         .site-notification-date {
 
-            font-size: 0.78rem;
+            font-size: 0.74rem;
 
             font-weight: 600;
 
             color: var(--text-sub);
 
-            margin-bottom: 14px;
+            margin-bottom: 10px;
 
             display: block;
         }
@@ -1755,17 +1755,17 @@
 
         .site-notification-message {
 
-            font-size: 0.95rem;
+            font-size: 0.9rem;
 
             color: var(--text-sub);
 
-            line-height: 1.6;
+            line-height: 1.5;
 
-            margin-bottom: 24px;
+            margin-bottom: 16px;
 
             white-space: pre-line;
 
-            max-height: 250px;
+            max-height: 220px;
 
             overflow-y: auto;
             text-align: left;
@@ -1781,19 +1781,19 @@
 
             border: none;
 
-            padding: 14px;
+            padding: 12px;
 
-            border-radius: 12px;
+            border-radius: 10px;
 
             font-weight: 700;
 
-            font-size: 0.95rem;
+            font-size: 0.9rem;
 
             font-family: 'Quicksand', sans-serif;
 
             cursor: pointer;
 
-            box-shadow: 0 6px 18px rgba(79, 70, 229, 0.25);
+            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.2);
 
             transition: transform 0.2s ease, background 0.2s ease;
         }
@@ -1806,24 +1806,24 @@
             transform: translateY(-1px);
         }
 
-        /* SPONSORLUQ / FAQ MODAL STİLLƏRİ */
+        /* MİNİMALİST MODAL İÇİ TABLARI VƏ FORMLARI */
         .modal-tabs {
             display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
+            gap: 6px;
+            margin-bottom: 14px;
             background: #f1f5f9;
-            padding: 4px;
-            border-radius: 12px;
+            padding: 3px;
+            border-radius: 10px;
         }
 
         .modal-tab-btn {
             flex: 1;
-            padding: 8px;
+            padding: 7px;
             border: none;
             background: transparent;
             font-family: 'Quicksand', sans-serif;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-sub);
             border-radius: 8px;
             cursor: pointer;
@@ -1833,7 +1833,7 @@
         .modal-tab-btn.active {
             background: #ffffff;
             color: var(--primary-magic);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
         }
 
         .modal-tab-content {
@@ -1844,24 +1844,39 @@
             display: block;
         }
 
+        .modal-tab-content .form-group {
+            margin-bottom: 10px;
+        }
+
+        .modal-tab-content .form-group label {
+            font-size: 0.76rem;
+            margin-bottom: 4px;
+        }
+
+        .modal-tab-content .form-group input,
+        .modal-tab-content .form-group textarea {
+            padding: 9px 11px;
+            font-size: 0.86rem;
+        }
+
         .faq-item {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             text-align: left;
             border-bottom: 1px solid #f1f5f9;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
         }
 
         .faq-question {
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.86rem;
             color: var(--text-main);
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .faq-answer {
-            font-size: 0.83rem;
+            font-size: 0.8rem;
             color: var(--text-sub);
-            line-height: 1.4;
+            line-height: 1.35;
         }
 
 
@@ -1909,6 +1924,11 @@
 
                 display:
                     none;
+            }
+
+
+            .mobile-top-actions {
+                display: flex;
             }
 
 
@@ -2481,19 +2501,26 @@
             </div>
 
 
-            <button
-                class="hamburger"
-                id="hamburger"
-                aria-label="Menyu"
-                aria-expanded="false"
-                type="button"
-            >
+            <div class="mobile-top-actions">
+                <!-- Animasiyalı Mesaj/Sponsorluq İkonu (Mobil - Hamburgerin solunda) -->
+                <button type="button" class="sponsor-nav-btn" id="openSponsorModalBtnMobile" title="Təklif və FAQ" style="width: 36px; height: 36px; font-size: 1rem;">
+                    💬
+                </button>
 
-                <span></span>
-                <span></span>
-                <span></span>
+                <button
+                    class="hamburger"
+                    id="hamburger"
+                    aria-label="Menyu"
+                    aria-expanded="false"
+                    type="button"
+                >
 
-            </button>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+            </div>
 
         </div>
 
@@ -2502,10 +2529,6 @@
             class="mobile-menu"
             id="mobileMenu"
         >
-            <!-- Minimalist Mobil Sürətli Keçid (Təklif və FAQ) -->
-            <button type="button" class="mobile-sponsor-link" id="openSponsorModalBtnMobile">
-                💬 Təklif, Sponsorluq və FAQ
-            </button>
 
             <a href="haqqimizda.html">
                 HAQQIMIZDA
@@ -3305,7 +3328,7 @@
 
 
     <!-- =====================================================
-         TƏKLİF, SPONSORLUQ VƏ FAQ MODAL PƏNCƏRƏSİ
+         MİNİMALİST TƏKLİF, SPONSORLUQ VƏ FAQ MODAL PƏNCƏRƏSİ
     ====================================================== -->
 
     <div class="site-notification-overlay" id="sponsorModalOverlay">
@@ -3329,16 +3352,16 @@
             <div class="modal-tab-content active" id="tabContentSponsor">
                 <form id="sponsorForm">
                     <div class="form-group" style="text-align: left;">
-                        <label for="sponsorName">Adınız və Soyadınız *</label>
+                        <label for="sponsorName">Ad və Soyad *</label>
                         <input type="text" id="sponsorName" required placeholder="Nümunə: Anar Əliyev">
                     </div>
                     <div class="form-group" style="text-align: left;">
-                        <label for="sponsorContact">Əlaqə (E-poçt və ya Tel) *</label>
+                        <label for="sponsorContact">Əlaqə (Tel / E-poçt) *</label>
                         <input type="text" id="sponsorContact" required placeholder="Nümunə: +994...">
                     </div>
                     <div class="form-group" style="text-align: left;">
-                        <label for="sponsorMessage">Təklif və ya Sponsorluq Mesajı *</label>
-                        <textarea id="sponsorMessage" rows="3" required placeholder="Fikirlərinizi yazın..."></textarea>
+                        <label for="sponsorMessage">Mesajınız *</label>
+                        <textarea id="sponsorMessage" rows="2" required placeholder="Təklifinizi yazın..."></textarea>
                     </div>
                     <button type="submit" class="site-notification-btn" id="sponsorSubmitBtn">Göndər</button>
                 </form>
@@ -3346,18 +3369,18 @@
 
             <!-- FAQ Bölməsi -->
             <div class="modal-tab-content" id="tabContentFaq">
-                <div class="site-notification-message" style="max-height: 220px;">
+                <div class="site-notification-message" style="max-height: 180px;">
                     <div class="faq-item">
                         <div class="faq-question">1. Kitab neçə günə hazırlanır?</div>
-                        <div class="faq-answer">Hekayənin dizaynı və hazırlanması adətən 2-4 iş günü çəkir.</div>
+                        <div class="faq-answer">Hekayənin dizaynı 2-4 iş günü çəkir.</div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">2. Şəkil necə göndərilir?</div>
-                        <div class="faq-answer">Sifariş təsdiqləndikdən sonra menecerimiz sizinlə WhatsApp üzrə əlaqə saxlayıb şəkli alacaq.</div>
+                        <div class="faq-answer">Sifarişdən sonra menecerimiz WhatsApp-la əlaqə saxlayacaq.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-question">3. Çatdırılma mövcuddurmu?</div>
-                        <div class="faq-answer">Bəli, ölkədaxili çatdırılma xidmətimiz mövcuddur.</div>
+                        <div class="faq-question">3. Çatdırılma varmı?</div>
+                        <div class="faq-answer">Bəli, ölkədaxili çatdırılma mövcuddur.</div>
                     </div>
                 </div>
             </div>
@@ -3541,14 +3564,7 @@
         }
 
         if (openSponsorBtn) openSponsorBtn.addEventListener("click", openSponsorModal);
-        if (openSponsorBtnMobile) {
-            openSponsorBtnMobile.addEventListener("click", function() {
-                hamburger.classList.remove("active");
-                mobileMenu.classList.remove("show");
-                hamburger.setAttribute("aria-expanded", "false");
-                openSponsorModal();
-            });
-        }
+        if (openSponsorBtnMobile) openSponsorBtnMobile.addEventListener("click", openSponsorModal);
         if (closeSponsorX) closeSponsorX.addEventListener("click", closeSponsorModal);
 
         if (tabBtnSponsor && tabBtnFaq) {
@@ -3567,7 +3583,7 @@
             });
         }
 
-        /* Sponsorluq Formunun Göndərilməsi (TicketID əlavə olundu) */
+        /* Sponsorluq Formunun Göndərilməsi (TicketID əlavə olunub) */
         const sponsorForm = document.getElementById("sponsorForm");
         if (sponsorForm) {
             sponsorForm.addEventListener("submit", function(e) {
@@ -3576,7 +3592,6 @@
                 btn.disabled = true;
                 btn.innerText = "GÖNDƏRİLİR...";
 
-                // Unikal TicketID generasiyası (məsələn: TKT-83492)
                 const randomNum = Math.floor(10000 + Math.random() * 90000);
                 const ticketId = "TKT-" + randomNum;
 
@@ -3725,7 +3740,7 @@
 
 
         /* =====================================================
-           MOBİL FORMUN FIREBASE-A GÖNDƏRİLMƏSİ
+           MOBİL FORMun FIREBASE-A GÖNDƏRİLMƏSİ
         ====================================================== */
 
         const mobileSubmitBtn =
