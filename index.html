@@ -462,7 +462,7 @@
                 );
         }
 
-        /* ANİMASİYALI SPONSORLUQ / MESAJ İKONU */
+        /* ANİMASİYALI SPONSORLUQ / MESAJ İKONU (DESKTOP) */
         .sponsor-nav-btn {
             display: flex;
             align-items: center;
@@ -498,13 +498,8 @@
 
 
         /* =====================================================
-           HAMBURGER & MOBILE TOP BAR
+           HAMBURGER
         ====================================================== */
-        .mobile-top-bar {
-            display: none;
-            align-items: center;
-            gap: 12px;
-        }
 
         .hamburger {
 
@@ -612,10 +607,12 @@
         }
 
 
-        .mobile-menu a {
+        .mobile-menu a, .mobile-menu button.mobile-sponsor-link {
 
             display:
                 block;
+            width: 100%;
+            text-align: left;
 
             text-decoration:
                 none;
@@ -644,6 +641,9 @@
             border-radius:
                 12px;
 
+            cursor: pointer;
+            font-family: inherit;
+
             transition:
                 background 0.2s ease,
                 color 0.2s ease,
@@ -651,17 +651,10 @@
         }
 
 
-        .mobile-menu a:hover {
+        .mobile-menu a:hover, .mobile-menu button.mobile-sponsor-link:hover {
 
             color:
                 var(--primary-magic);
-        }
-
-
-        .mobile-menu a:active {
-
-            transform:
-                scale(0.98);
         }
 
 
@@ -695,6 +688,12 @@
 
             border-color:
                 var(--primary-magic);
+        }
+
+        .mobile-menu .mobile-sponsor-link {
+            background: var(--primary-soft);
+            color: var(--primary-magic);
+            border-color: rgba(79, 70, 229, 0.2);
         }
 
 
@@ -1913,11 +1912,6 @@
             }
 
 
-            .mobile-top-bar {
-                display: flex;
-            }
-
-
             .hamburger {
 
                 display:
@@ -2487,26 +2481,19 @@
             </div>
 
 
-            <div class="mobile-top-bar">
-                <!-- Animasiyalı Mesaj/Sponsorluq İkonu (Mobil) -->
-                <button type="button" class="sponsor-nav-btn" id="openSponsorModalBtnMobile" title="Təklif və FAQ">
-                    💬
-                </button>
+            <button
+                class="hamburger"
+                id="hamburger"
+                aria-label="Menyu"
+                aria-expanded="false"
+                type="button"
+            >
 
-                <button
-                    class="hamburger"
-                    id="hamburger"
-                    aria-label="Menyu"
-                    aria-expanded="false"
-                    type="button"
-                >
+                <span></span>
+                <span></span>
+                <span></span>
 
-                    <span></span>
-                    <span></span>
-                    <span></span>
-
-                </button>
-            </div>
+            </button>
 
         </div>
 
@@ -2515,6 +2502,10 @@
             class="mobile-menu"
             id="mobileMenu"
         >
+            <!-- Minimalist Mobil Sürətli Keçid (Təklif və FAQ) -->
+            <button type="button" class="mobile-sponsor-link" id="openSponsorModalBtnMobile">
+                💬 Təklif, Sponsorluq və FAQ
+            </button>
 
             <a href="haqqimizda.html">
                 HAQQIMIZDA
@@ -3550,7 +3541,14 @@
         }
 
         if (openSponsorBtn) openSponsorBtn.addEventListener("click", openSponsorModal);
-        if (openSponsorBtnMobile) openSponsorBtnMobile.addEventListener("click", openSponsorModal);
+        if (openSponsorBtnMobile) {
+            openSponsorBtnMobile.addEventListener("click", function() {
+                hamburger.classList.remove("active");
+                mobileMenu.classList.remove("show");
+                hamburger.setAttribute("aria-expanded", "false");
+                openSponsorModal();
+            });
+        }
         if (closeSponsorX) closeSponsorX.addEventListener("click", closeSponsorModal);
 
         if (tabBtnSponsor && tabBtnFaq) {
@@ -3569,7 +3567,7 @@
             });
         }
 
-        /* Sponsorluq Formunun Göndərilməsi */
+        /* Sponsorluq Formunun Göndərilməsi (TicketID əlavə olundu) */
         const sponsorForm = document.getElementById("sponsorForm");
         if (sponsorForm) {
             sponsorForm.addEventListener("submit", function(e) {
@@ -3578,14 +3576,19 @@
                 btn.disabled = true;
                 btn.innerText = "GÖNDƏRİLİR...";
 
+                // Unikal TicketID generasiyası (məsələn: TKT-83492)
+                const randomNum = Math.floor(10000 + Math.random() * 90000);
+                const ticketId = "TKT-" + randomNum;
+
                 db.collection("sponsorships").add({
+                    ticketId: ticketId,
                     name: document.getElementById("sponsorName").value.trim(),
                     contact: document.getElementById("sponsorContact").value.trim(),
                     message: document.getElementById("sponsorMessage").value.trim(),
                     createdAt: firebase.firestore.FieldValue.serverTimestamp()
                 })
                 .then(function() {
-                    alert("Təklifiniz uğurla göndərildi! Təşəkkür edirik.");
+                    alert("Təklifiniz uğurla göndərildi! (Müraciət nömrəniz: " + ticketId + ")");
                     sponsorForm.reset();
                     closeSponsorModal();
                 })
