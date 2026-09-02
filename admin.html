@@ -1685,7 +1685,7 @@
 
 
 
-        /* MOBİL MÜRACİƏTLƏR & PORTFOLIO AKKORDION */
+        /* MOBİL MÜRACİƏTLƏR VƏ PORTFOLIO ÜÇÜN AKKORDION KARTLAR */
         .sponsor-mobile-card, .portfolio-mobile-card {
             background: white;
             border: 1px solid rgba(15,26,92,.08);
@@ -1792,7 +1792,7 @@
 
 
 
-            /* PORTFOLIO MOBİL GÖRÜNÜŞ (AKKORDION KARTLAR) */
+            /* PORTFOLIO & NOTIFICATION MOBİL GÖRÜNÜŞ (AKKORDION KARTLAR) */
             .portfolio-toolbar {
                 margin-bottom: 15px;
                 gap: 10px;
@@ -1812,44 +1812,16 @@
                 border-radius: 8px;
             }
 
-            /* Mobildə veb cədvəlini gizlət, mobil akkordion listini göstər */
             .portfolio-list { display: none !important; }
             .portfolio-mobile-list { display: flex !important; flex-direction: column; gap: 8px; }
 
-            /* BİLDİRİŞLƏRİN MOBİL GÖRÜNÜŞÜ */
-            #notificationsAdminGrid .portfolio-list-item {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 8px !important;
-                padding: 12px !important;
-            }
-
-            #notificationsAdminGrid .portfolio-list-title {
-                font-size: 0.9rem !important;
-            }
-
-            #notificationsAdminGrid .portfolio-list-item > div:nth-child(2) {
-                font-size: 0.82rem !important;
-                padding: 6px 8px !important;
-            }
-
-            #notificationsAdminGrid .portfolio-list-actions {
-                display: flex !important;
-                width: 100% !important;
-                gap: 5px !important;
-                border-top: 1px dashed rgba(15,26,92,.06) !important;
-                padding-top: 8px !important;
-            }
-
-            #notificationsAdminGrid .portfolio-action-btn {
-                flex: 1 !important;
-                padding: 7px 4px !important;
-                font-size: 0.7rem !important;
-            }
+            /* BİLDİRİŞLƏRİN MOBİL GÖRÜNÜŞÜ (CARD FORMATI) */
+            #notificationsAdminGrid .portfolio-list { display: none !important; }
+            #notificationsAdminGrid .portfolio-mobile-list { display: flex !important; flex-direction: column; gap: 8px; }
 
         }
 
-        /* Veb üçün mobil portfolio siyahısını gizlət */
+        /* Veb üçün mobil portfolio və bildiriş siyahılarını gizlət */
         @media (min-width: 901px) {
             .portfolio-mobile-list { display: none !important; }
         }
@@ -3191,7 +3163,7 @@
 
 
 
-        /* PORTFOLIO METODLARI (Həm Veb, həm də Mobil üçün tam işlək) */
+        /* PORTFOLIO METODLARI (Veb və Mobil üçün ayrı uyğunlaşdırma ilə) */
 
         let portfolioUnsubscribe = null;
 
@@ -3231,7 +3203,7 @@
 
 
 
-            // 1. Veb üçün cədvət siyahısı
+            // 1. Veb üçün cədvəl siyahısı
             const list = document.createElement("div");
 
             list.className = "portfolio-list desktop-portfolio-table";
@@ -3258,6 +3230,7 @@
 
             // 2. Mobil üçün akkordion kart formatı
             const mobileList = document.createElement("div");
+
             mobileList.className = "portfolio-mobile-list";
 
 
@@ -3333,7 +3306,9 @@
 
                 // Mobil kart
                 const mobCard = document.createElement("div");
+
                 mobCard.className = "sponsor-mobile-card portfolio-mobile-card";
+
                 mobCard.innerHTML = `
                     <div class="sponsor-mobile-header portfolio-mobile-header" onclick="toggleMobileAccordion(this.parentElement)">
                         <div style="display: flex; align-items: center; gap: 10px;">
@@ -3354,15 +3329,17 @@
                         </div>
                     </div>
                 `;
+
                 mobileList.appendChild(mobCard);
 
             });
 
 
 
-            // Hər iki siyahını konteynerə əlavə edirik (CSS vasitəsilə ekrana görə avtomatik gizlənib-görünəcək)
             container.appendChild(list);
+
             container.appendChild(mobileList);
+
         }
 
 
@@ -3699,9 +3676,10 @@
 
 
 
+            // 1. Veb üçün cədvəl siyahısı
             const list = document.createElement("div");
 
-            list.className = "portfolio-list";
+            list.className = "portfolio-list desktop-portfolio-table";
 
             list.innerHTML = `
 
@@ -3720,6 +3698,13 @@
                 </div>
 
             `;
+
+
+
+            // 2. Mobil üçün kart formatı
+            const mobileList = document.createElement("div");
+
+            mobileList.className = "portfolio-mobile-list";
 
 
 
@@ -3747,6 +3732,7 @@
 
 
 
+                // Veb sətri
                 const itemElement = document.createElement("div");
 
                 itemElement.className = "portfolio-list-item";
@@ -3807,9 +3793,51 @@
 
                 list.appendChild(itemElement);
 
+
+
+                // Mobil kart
+                const mobCard = document.createElement("div");
+
+                mobCard.className = "sponsor-mobile-card portfolio-mobile-card";
+
+                mobCard.innerHTML = `
+                    <div class="sponsor-mobile-header portfolio-mobile-header" onclick="toggleMobileAccordion(this.parentElement)">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div>
+                                <div style="font-size: 0.9rem; font-weight: 800; color: var(--primary-lux);">${escapeHtml(data.title || "Adsız Bildiriş")}</div>
+                                <span class="age-badge" style="margin-top:4px; font-size: 0.65rem; background: ${isActive ? 'var(--success-bg)' : 'var(--danger-bg)'}; color: ${isActive ? 'var(--success)' : 'var(--danger)'};">
+                                    ${isActive ? "● PUBLISH" : "○ UNPUBLISH"}
+                                </span>
+                            </div>
+                        </div>
+                        <span class="sponsor-arrow portfolio-arrow">›</span>
+                    </div>
+                    <div class="sponsor-mobile-body portfolio-mobile-body">
+                        <div class="sponsor-field"><b>Məzmun:</b> ${data.message || ""}</div>
+                        <div class="sponsor-field"><b>Tarix:</b> ${escapeHtml(date)}</div>
+                        <div style="display: flex; gap: 5px; margin-top: 12px; align-items: center;">
+                            <button type="button" class="portfolio-action-btn ${isActive ? 'unpublish-btn' : 'publish-btn'}" style="flex:1; padding:7px 4px; font-size:0.7rem;" onclick="toggleNotificationStatus('${escapeAttribute(id)}', ${isActive})">
+                                ${isActive ? "Stop" : "Publish"}
+                            </button>
+                            <button type="button" class="portfolio-action-btn edit-portfolio-btn" style="flex:1; padding:7px 4px; font-size:0.7rem;" onclick="editNotification('${escapeAttribute(id)}')">
+                                Edit
+                            </button>
+                            <button type="button" class="portfolio-action-btn delete-portfolio-btn" style="flex:1; padding:7px 4px; font-size:0.7rem;" onclick="deleteNotification('${escapeAttribute(id)}')">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                mobileList.appendChild(mobCard);
+
             });
 
+
+
             container.appendChild(list);
+
+            container.appendChild(mobileList);
 
         }
 
