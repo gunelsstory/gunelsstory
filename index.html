@@ -1610,7 +1610,7 @@
 
 
         /* =====================================================
-           BİLDİRİŞ VƏ MİNİMALİST SPONSORLUQ MODALLARI
+           BİLDİRİŞ VƏ SPONSORLUQ MODALLARI
         ====================================================== */
 
         .site-notification-overlay {
@@ -1806,41 +1806,8 @@
             transform: translateY(-1px);
         }
 
-        /* MİNİMALİST MODAL İÇİ TABLARI VƏ FORMLARI */
-        .modal-tabs {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 14px;
-            background: #f1f5f9;
-            padding: 3px;
-            border-radius: 10px;
-        }
-
-        .modal-tab-btn {
-            flex: 1;
-            padding: 7px;
-            border: none;
-            background: transparent;
-            font-family: 'Quicksand', sans-serif;
-            font-weight: 700;
-            font-size: 0.8rem;
-            color: var(--text-sub);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .modal-tab-btn.active {
-            background: #ffffff;
-            color: var(--primary-magic);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-        }
-
+        /* Təklif Formu Stili */
         .modal-tab-content {
-            display: none;
-        }
-
-        .modal-tab-content.active {
             display: block;
         }
 
@@ -1857,34 +1824,6 @@
         .modal-tab-content .form-group textarea {
             padding: 9px 11px;
             font-size: 0.86rem;
-        }
-
-        /* FAQ Tam Açıq Sadə Sətr Stili (Akkordeonsuz) */
-        .faq-item {
-            margin-bottom: 12px;
-            text-align: left;
-            border-bottom: 1px solid #f1f5f9;
-            padding-bottom: 10px;
-        }
-
-        .faq-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .faq-question {
-            font-family: 'Quicksand', sans-serif;
-            font-weight: 700;
-            font-size: 0.84rem;
-            color: var(--text-main);
-            margin-bottom: 3px;
-        }
-
-        .faq-answer {
-            font-size: 0.78rem;
-            color: var(--text-sub);
-            line-height: 1.4;
         }
 
 
@@ -2501,8 +2440,8 @@
                     ⚙️ ADMİN
                 </a>
 
-                <!-- Animasiyalı Mesaj/Sponsorluq İkonu (Desktop) -->
-                <button type="button" class="sponsor-nav-btn" id="openSponsorModalBtn" title="Təklif və FAQ">
+                <!-- Təklif/Mesaj İkonu (Desktop) -->
+                <button type="button" class="sponsor-nav-btn" id="openSponsorModalBtn" title="Təklif yaz">
                     💬
                 </button>
 
@@ -2510,8 +2449,8 @@
 
 
             <div class="mobile-top-actions">
-                <!-- Animasiyalı Mesaj/Sponsorluq İkonu (Mobil - Hamburgerin solunda) -->
-                <button type="button" class="sponsor-nav-btn" id="openSponsorModalBtnMobile" title="Təklif və FAQ" style="width: 36px; height: 36px; font-size: 1rem;">
+                <!-- Təklif/Mesaj İkonu (Mobil) -->
+                <button type="button" class="sponsor-nav-btn" id="openSponsorModalBtnMobile" title="Təklif yaz" style="width: 36px; height: 36px; font-size: 1rem;">
                     💬
                 </button>
 
@@ -3336,7 +3275,7 @@
 
 
     <!-- =====================================================
-         MİNİMALİST TƏKLİF, SPONSORLUQ VƏ FAQ MODAL PƏNCƏRƏSİ
+         MİNİMALİST SPONSORLUQ VƏ TƏKLİF MODAL PƏNCƏRƏSİ
     ====================================================== -->
 
     <div class="site-notification-overlay" id="sponsorModalOverlay">
@@ -3347,17 +3286,11 @@
 
             <div class="site-notification-icon">💬</div>
 
-            <h3 class="site-notification-title">Sponsorluq, Təklif və FAQ</h3>
-            <span class="site-notification-date">Təklif, Sponsorluq və FAQ</span>
-
-            <!-- Tab Düymələri -->
-            <div class="modal-tabs">
-                <button type="button" class="modal-tab-btn active" id="tabBtnSponsor">Təklif yaz</button>
-                <button type="button" class="modal-tab-btn" id="tabBtnFaq">FAQ</button>
-            </div>
+            <h3 class="site-notification-title">Sponsorluq və Təklif</h3>
+            <span class="site-notification-date">Fikir və təkliflərinizi bizə yazın</span>
 
             <!-- Təklif Formu Bölməsi -->
-            <div class="modal-tab-content active" id="tabContentSponsor">
+            <div class="modal-tab-content" id="tabContentSponsor">
                 <form id="sponsorForm">
                     <div class="form-group" style="text-align: left;">
                         <label for="sponsorName">Ad və Soyad *</label>
@@ -3369,97 +3302,10 @@
                     </div>
                     <div class="form-group" style="text-align: left;">
                         <label for="sponsorMessage">Mesajınız *</label>
-                        <textarea id="sponsorMessage" rows="2" required placeholder="Təklifinizi yazın..."></textarea>
+                        <textarea id="sponsorMessage" rows="3" required placeholder="Təklifinizi yazın..."></textarea>
                     </div>
                     <button type="submit" class="site-notification-btn" id="sponsorSubmitBtn">Göndər</button>
                 </form>
-            </div>
-
-            <!-- FAQ Bölməsi (Tam açıq, ardıcıl nömrələnmiş 16 sual) -->
-            <div class="modal-tab-content" id="tabContentFaq">
-                <div class="site-notification-message" style="max-height: 250px; padding-right: 4px;">
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">1. Gunel's Story kitabları nədir?</div>
-                        <div class="faq-answer">Uşağınızın adına və xəyallarına özəl olaraq hazırlanan 100% fərdi uşaq hekayəsi kitablarıdır.</div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">2. Kitab tam olaraq uşağıma özəldirmi?</div>
-                        <div class="faq-answer">Bəli, hekayənin hər detalı birbaşa uşağınızın adına, yaşına və maraqlarına uyğun yazılır.</div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">3. Kitab hansı yaş qrupuna uyğundur?</div>
-                        <div class="faq-answer">Kitablar əsasən 2-10 yaş arası uşaqlar üçün xüsusi olaraq hazırlanır.</div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">4. Uşağımın adı və maraqları necə istifadə olunur?</div>
-                        <div class="faq-answer">Adı hekayənin baş qəhrəmanı kimi daxil edilir, sevdiyi personajlar və hobbiləri isə süjetə uyğunlaşdırılır.</div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">5. Uşağımın şəkli kitabda istifadə olunurmu?</div>
-                        <div class="faq-answer">Bəli, uşağın real şəkli səhifələrə peşəkar şəkildə inteqrasiya olunur.</div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">6. Şəkli necə göndərirəm?</div>
-                        <div class="faq-answer">Sifarişdən sonra sizinlə WhatsApp vasitəsilə əlaqə saxlanılır və foto oradan tələb olunur.</div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">7. Hansı şəkli göndərmək daha yaxşıdır?</div>
-                        <div class="faq-answer">Üzün aydın göründüyü, işıqlı və təbii güldüyü portret şəkillər ən yaxşı nəticəni verir.</div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">8. Dizaynı əvvəlcədən görə bilərəmmi?</div>
-                        <div class="faq-answer">Bəli, çap olunmamışdən öncə rəqəmsal eskiz təsdiq üçün sizə göndərilir.</div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">9. Sifarişi necə verə bilərəm?</div>
-                        <div class="faq-answer">Saytdakı müraciət formasını doldurmaqla və ya WhatsApp ilə birbaşa əlaqə saxlayaraq sifariş edə bilərsiniz.</div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">10. Qiymət nə qədərdir?</div>
-                        <div class="faq-answer">Fərdi hekayə, dizayn, çap və hədiyyə qablaşdırması daxil olmaqla bir kitabın qiyməti 80 AZN-dir.</div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">11. Sifarişdən sonra necə əlaqə saxlanılır?</div>
-                        <div class="faq-answer">Qeyd etdiyiniz aktiv WhatsApp nömrəsi vasitəsilə sizinlə əlaqəyə keçirik.</div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">12. Düzəliş etmək mümkündürmü?</div>
-                        <div class="faq-answer">Eskiz mərhələsində istədiyiniz kiçik düzəlişlərin edilməsi tamamilə mümkündür.</div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">13. Kitab neçə günə hazırlanır?</div>
-                        <div class="faq-answer">Hazırlanma və çap prosesi adətən sifarişin təsdiqindən sonra bir neçə iş günü ərzində tamamlanır.</div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">14. Kitab necə təqdim olunur?</div>
-                        <div class="faq-answer">Sifariş ünvanınıza zərif hədiyyə paketində təhlükəsiz şəkildə çatdırılır.</div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">15. Hədiyyə qablaşdırması varmı?</div>
-                        <div class="faq-answer">Bəli, hər bir kitab xüsusi dizaynlı hədiyyə qablaşdırması ilə birlikdə təqdim olunur.</div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">16. Kitabı hədiyyə etmək olar?</div>
-                        <div class="faq-answer">Əlbəttə! Ad günü və ya digər özəl günlər üçün uşaqlar üçün unikal və unudulmaz hədiyyədir.</div>
-                    </div>
-
-                </div>
             </div>
 
         </div>
@@ -3619,18 +3465,13 @@
 
 
         /* =====================================================
-           SPONSORLUQ & FAQ MODAL İDARƏETMƏSİ
+           SPONSORLUQ MODAL İDARƏETMƏSİ
         ====================================================== */
 
         const sponsorOverlay = document.getElementById("sponsorModalOverlay");
         const openSponsorBtn = document.getElementById("openSponsorModalBtn");
         const openSponsorBtnMobile = document.getElementById("openSponsorModalBtnMobile");
         const closeSponsorX = document.getElementById("closeSponsorModalX");
-
-        const tabBtnSponsor = document.getElementById("tabBtnSponsor");
-        const tabBtnFaq = document.getElementById("tabBtnFaq");
-        const tabContentSponsor = document.getElementById("tabContentSponsor");
-        const tabContentFaq = document.getElementById("tabContentFaq");
 
         function openSponsorModal() {
             if (sponsorOverlay) sponsorOverlay.style.display = "flex";
@@ -3644,23 +3485,7 @@
         if (openSponsorBtnMobile) openSponsorBtnMobile.addEventListener("click", openSponsorModal);
         if (closeSponsorX) closeSponsorX.addEventListener("click", closeSponsorModal);
 
-        if (tabBtnSponsor && tabBtnFaq) {
-            tabBtnSponsor.addEventListener("click", function() {
-                tabBtnSponsor.classList.add("active");
-                tabBtnFaq.classList.remove("active");
-                tabContentSponsor.classList.add("active");
-                tabContentFaq.classList.remove("active");
-            });
-
-            tabBtnFaq.addEventListener("click", function() {
-                tabBtnFaq.classList.add("active");
-                tabBtnSponsor.classList.remove("active");
-                tabContentFaq.classList.add("active");
-                tabContentSponsor.classList.remove("active");
-            });
-        }
-
-        /* Sponsorluq Formunun Göndərilməsi (TicketID əlavə olunub) */
+        /* Sponsorluq Formunun Göndərilməsi */
         const sponsorForm = document.getElementById("sponsorForm");
         if (sponsorForm) {
             sponsorForm.addEventListener("submit", function(e) {
