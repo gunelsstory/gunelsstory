@@ -3143,7 +3143,7 @@
 
 
 
-        /* PORTFOLIO METODLARI (Düzgün Sütun Strukturu ilə) */
+        /* PORTFOLIO METODLARI (Düzgün 5 Sütunlu Grid Strukturu ilə) */
 
         let portfolioUnsubscribe = null;
 
@@ -3163,110 +3163,122 @@
 
         function renderPortfolioAdmin(snapshot) {
 
-            const desktopContainer = document.getElementById("desktopPortfolioView");
-            const mobileContainer = document.getElementById("mobilePortfolioView");
+            const container = document.getElementById("portfolioAdminGrid");
 
-            desktopContainer.innerHTML = "";
-            mobileContainer.innerHTML = "";
+            container.innerHTML = "";
 
             if (snapshot.empty) {
-                const emptyHtml = `<div class="empty-portfolio"><strong>Portfolio boşdur</strong><br><br>İlk kitabı əlavə etmək üçün yuxarıdakı düymədən istifadə edin.</div>`;
-                desktopContainer.innerHTML = emptyHtml;
-                mobileContainer.innerHTML = emptyHtml;
+
+                container.innerHTML = `<div class="empty-portfolio"><strong>Portfolio boşdur</strong><br><br>İlk kitabı əlavə etmək üçün yuxarıdakı düymədən istifadə edin.</div>`;
+
                 return;
+
             }
+
+
 
             const docs = [];
+
             snapshot.forEach(doc => docs.push({ id: doc.id, data: doc.data() }));
 
-            // --- Veb üçün Cədvəl Siyahısı (5 Sütunlu Grid: Şəkil, Kitab, Müəllif, Tarix, Əməliyyat) ---
+
+
             const list = document.createElement("div");
+
             list.className = "portfolio-list";
+
             list.innerHTML = `
+
                 <div class="portfolio-list-header">
+
                     <div>Şəkil</div>
+
                     <div>Kitab / Hekayə</div>
+
                     <div>Müəllif</div>
+
                     <div>Tarix</div>
+
                     <div style="text-align:right">Əməliyyat</div>
+
                 </div>
+
             `;
 
-            // --- Mobil üçün Akkordion Kartlar ---
-            const mobileList = document.createElement("div");
-            mobileList.className = "portfolio-mobile-list";
+
 
             docs.forEach(function (item) {
+
                 const data = item.data;
-                const title = data.title || "Adsız portfolio";
-                const author = data.author || "Müəllif qeyd edilməyib";
-                const imageUrl = data.imageUrl || "";
+
+                const itemElement = document.createElement("div");
+
+                itemElement.className = "portfolio-list-item";
+
+
 
                 let date = "Tarix yoxdur";
+
                 if (data.createdAt && typeof data.createdAt.toDate === "function") {
+
                     date = data.createdAt.toDate().toLocaleString("az-AZ", {
+
                         day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"
+
                     });
+
                 }
 
-                // 1. Veb Sətri (Kitab adı və müəllif tam ayrı sütunlarda)
-                const itemElement = document.createElement("div");
-                itemElement.className = "portfolio-list-item";
+
+
+                const title = data.title || "Adsız portfolio";
+
+                const author = data.author || "Müəllif qeyd edilməyib";
+
+                const imageUrl = data.imageUrl || "";
+
+
+
                 itemElement.innerHTML = `
+
                     <div class="portfolio-thumbnail-wrap">
+
                         ${imageUrl ? `<img src="${escapeAttribute(imageUrl)}" class="portfolio-thumbnail" alt="${escapeAttribute(title)}">` : `<div class="portfolio-no-image">Şəkil yoxdur</div>`}
+
                     </div>
+
                     <div class="portfolio-list-title">${escapeHtml(title)}</div>
+
                     <div class="portfolio-list-author">${escapeHtml(author)}</div>
+
                     <div class="portfolio-date">${escapeHtml(date)}</div>
+
                     <div class="portfolio-list-actions">
+
                         ${imageUrl ? `
+
                             <button type="button" class="portfolio-action-btn view-image-btn" title="Şəkilə bax" onclick="openImageViewer('${escapeAttribute(imageUrl)}', '${escapeAttribute(title)}')">
+
                                 <svg viewBox="0 0 24 24"><path d="M12 5c-5 0-9.27 3.11-11 7 1.73 3.89 6 7 11 7s9.27-3.11 11-7-1.73-3.89-6-7-11-7zm0 12c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+
                             </button>
+
                         ` : ""}
+
                         <button type="button" class="portfolio-action-btn edit-portfolio-btn" onclick="editPortfolio('${escapeAttribute(item.id)}')">Redaktə</button>
+
                         <button type="button" class="portfolio-action-btn delete-portfolio-btn" onclick="deletePortfolio('${escapeAttribute(item.id)}', '${escapeAttribute(title)}')">Sil</button>
+
                     </div>
+
                 `;
+
                 list.appendChild(itemElement);
 
-                // 2. Mobil Akkordion Kart
-                const mobCard = document.createElement("div");
-                mobCard.className = "portfolio-mobile-card";
-                mobCard.innerHTML = `
-                    <div class="portfolio-mobile-header" onclick="toggleMobileAccordion(this.parentElement)">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            ${imageUrl ? `<img src="${escapeAttribute(imageUrl)}" style="width:40px; height:40px; object-fit:cover; border-radius:6px;" alt="">` : `<div style="width:40px; height:40px; background:#f1f5f9; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.55rem;">Yoxdur</div>`}
-                            <div>
-                                <div style="font-size: 0.85rem; font-weight: 800; color: var(--primary-lux);">${escapeHtml(title)}</div>
-                                <div style="font-size: 0.75rem; color: var(--accent-gold); font-weight: 700;">${escapeHtml(author)}</div>
-                            </div>
-                        </div>
-                        <span class="portfolio-arrow">›</span>
-                    </div>
-                    <div class="portfolio-mobile-body">
-                        <div class="sponsor-field"><b>Yaradılma Tarixi:</b> ${escapeHtml(date)}</div>
-                        <div style="display: flex; gap: 6px; margin-top: 12px; align-items: center;">
-                            ${imageUrl ? `<button type="button" class="portfolio-action-btn view-image-btn" style="width:36px; height:36px;" onclick="openImageViewer('${escapeAttribute(imageUrl)}', '${escapeAttribute(title)}')"><svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M12 5c-5 0-9.27 3.11-11 7 1.73 3.89 6 7 11 7s9.27-3.11 11-7-1.73-3.89-6-7-11-7zm0 12c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg></button>` : ""}
-                            <button type="button" class="portfolio-action-btn edit-portfolio-btn" style="flex:1;" onclick="editPortfolio('${escapeAttribute(item.id)}')">Redaktə</button>
-                            <button type="button" class="portfolio-action-btn delete-portfolio-btn" style="flex:1;" onclick="deletePortfolio('${escapeAttribute(item.id)}', '${escapeAttribute(title)}')">Sil</button>
-                        </div>
-                    </div>
-                `;
-                mobileList.appendChild(mobCard);
             });
 
-            desktopContainer.appendChild(list);
-            mobileContainer.appendChild(mobileList);
+            container.appendChild(list);
 
-            if (window.innerWidth <= 900) {
-                desktopContainer.style.display = "none";
-                mobileContainer.style.display = "block";
-            } else {
-                desktopContainer.style.display = "block";
-                mobileContainer.style.display = "none";
-            }
         }
 
 
