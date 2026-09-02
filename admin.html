@@ -994,7 +994,7 @@
 
 
 
-        /* PORTFOLIO LIST */
+        /* PORTFOLIO LIST (DÜZGÜN SÜTUNLAR ÜÇÜN 5 SÜTUNLUQ GRID) */
 
         .portfolio-list {
 
@@ -1020,7 +1020,7 @@
 
             display: grid;
 
-            grid-template-columns: 90px minmax(200px, 1.4fr) minmax(180px, 1fr) 170px 190px;
+            grid-template-columns: 90px minmax(200px, 1.5fr) minmax(180px, 1fr) 170px 190px;
 
             align-items: center;
 
@@ -1048,7 +1048,7 @@
 
             display: grid;
 
-            grid-template-columns: 90px minmax(200px, 1.4fr) minmax(180px, 1fr) 170px 190px;
+            grid-template-columns: 90px minmax(200px, 1.5fr) minmax(180px, 1fr) 170px 190px;
 
             align-items: center;
 
@@ -1126,13 +1126,11 @@
 
             line-height: 1.4;
 
-            padding-right: 15px;
-
         }
 
 
 
-        .portfolio-list-author { color: var(--accent-gold); font-size: .82rem; font-weight: 700; }
+        .portfolio-list-author { color: var(--accent-gold); font-size: .82rem; font-weight: 700; margin-top: 3px; }
 
         .portfolio-date { color: var(--text-muted); font-size: .78rem; line-height: 1.5; }
 
@@ -1667,8 +1665,8 @@
 
 
 
-        /* MOBİL MÜRACİƏTLƏR AKKORDION VƏ ZOLAQ STİLİ */
-        .sponsor-mobile-card {
+        /* MOBİL MÜRACİƏTLƏR & PORTFOLIO AKKORDION */
+        .sponsor-mobile-card, .portfolio-mobile-card {
             background: white;
             border: 1px solid rgba(15,26,92,.08);
             border-radius: var(--radius-md);
@@ -1677,7 +1675,7 @@
             box-shadow: var(--shadow-sm);
         }
 
-        .sponsor-mobile-header {
+        .sponsor-mobile-header, .portfolio-mobile-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -1688,7 +1686,7 @@
             transition: background 0.2s;
         }
 
-        .sponsor-mobile-header:hover {
+        .sponsor-mobile-header:hover, .portfolio-mobile-header:hover {
             background: #F1F5F9;
         }
 
@@ -1702,25 +1700,25 @@
             border-radius: 6px;
         }
 
-        .sponsor-arrow {
+        .sponsor-arrow, .portfolio-arrow {
             transition: transform 0.3s ease;
             font-size: 1.1rem;
             color: var(--text-muted);
             font-weight: bold;
         }
 
-        .sponsor-mobile-card.open .sponsor-arrow {
+        .sponsor-mobile-card.open .sponsor-arrow, .portfolio-mobile-card.open .portfolio-arrow {
             transform: rotate(90deg);
         }
 
-        .sponsor-mobile-body {
+        .sponsor-mobile-body, .portfolio-mobile-body {
             display: none;
             padding: 20px;
             border-top: 1px solid rgba(15,26,92,.06);
             background: #ffffff;
         }
 
-        .sponsor-mobile-card.open .sponsor-mobile-body {
+        .sponsor-mobile-card.open .sponsor-mobile-body, .portfolio-mobile-card.open .portfolio-mobile-body {
             display: block;
         }
 
@@ -1774,7 +1772,7 @@
 
 
 
-            /* PORTFOLIO MOBİL MİNİMAL KARTLAR */
+            /* PORTFOLIO MOBİL GÖRÜNÜŞ (AKKORDION KARTLAR) */
             .portfolio-toolbar {
                 margin-bottom: 15px;
                 gap: 10px;
@@ -1794,83 +1792,8 @@
                 border-radius: 8px;
             }
 
-            .portfolio-list {
-                border: none;
-                background: transparent;
-                overflow: visible;
-                gap: 8px;
-            }
-
-            .portfolio-list-header { display: none; }
-
-            .portfolio-list-item {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-                gap: 10px;
-                padding: 10px 12px;
-                background: white;
-                border: 1px solid rgba(15,26,92,.07);
-                border-radius: var(--radius-sm);
-                box-shadow: var(--shadow-sm);
-                min-height: auto;
-            }
-
-            .portfolio-thumbnail-wrap {
-                flex-shrink: 0;
-            }
-
-            .portfolio-thumbnail, .portfolio-no-image {
-                width: 44px;
-                height: 44px;
-                border-radius: 6px;
-                font-size: 0.55rem;
-            }
-
-            .portfolio-list-title {
-                font-size: 0.85rem;
-                font-weight: 700;
-                padding-right: 0;
-                display: -webkit-box;
-                -webkit-line-clamp: 1;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
-
-            .portfolio-list-author {
-                font-size: 0.72rem;
-            }
-
-            .portfolio-date {
-                display: none;
-            }
-
-            .portfolio-list-actions {
-                width: auto;
-                justify-content: flex-end;
-                gap: 4px;
-                margin-top: 0;
-                border-top: none;
-                padding-top: 0;
-            }
-
-            .portfolio-action-btn {
-                min-height: 30px;
-                padding: 5px 8px;
-                font-size: 0.7rem;
-                border-radius: 6px;
-            }
-
-            .view-image-btn {
-                width: 30px;
-                height: 30px;
-            }
-
-            .view-image-btn svg {
-                width: 15px;
-                height: 15px;
-            }
+            .portfolio-list { display: none !important; }
+            #desktopPortfolioView { display: none !important; }
 
             /* BİLDİRİŞLƏRİN MOBİL GÖRÜNÜŞÜ */
             #notificationsAdminGrid .portfolio-list-item {
@@ -2233,11 +2156,11 @@
 
             </div>
 
-            <div id="portfolioAdminGrid">
+            <!-- Veb Görünüşü -->
+            <div id="desktopPortfolioView"></div>
 
-                <div class="loading-text">Portfolio yüklənir...</div>
-
-            </div>
+            <!-- Mobil Görünüşü (Akkordion Kartlar) -->
+            <div id="mobilePortfolioView" style="display: none;"></div>
 
         </section>
 
@@ -2506,9 +2429,7 @@
 
                 startListeningOrders();
 
-                startListeningSponsorships();
                 startListeningContracts();
-
                 startListeningPortfolio();
 
                 startListeningNotifications();
@@ -2559,9 +2480,7 @@
 
                         startListeningOrders();
 
-                        startListeningSponsorships();
                         startListeningContracts();
-
                         startListeningPortfolio();
 
                         startListeningNotifications();
@@ -2958,7 +2877,6 @@
                     tbody.appendChild(tr);
                 });
 
-                // Müraciətlər siyahısını yenidən yeniləyirik ki, düymələr dərhal "Müqavilə var" olsun
                 startListeningSponsorships();
             });
         }
@@ -2979,12 +2897,13 @@
                 });
             }
 
-            // Müqaviləni firebase tarixçəsinə qeyd edirik
             db.collection("contractsHistory").add({
                 ticketId: ticketId,
                 name: name,
                 contact: contact,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                startListeningContracts();
             }).catch(err => console.log("Tarixçəyə yazılma xətası:", err));
 
             let win = window.open('', '_blank');
@@ -3154,7 +3073,6 @@
                         });
                     }
 
-                    // Müqavilənin artıq yaradılıb-yaradılmadığını yoxlayırıq
                     const hasContract = existingContractsSet.has(ticketId);
                     let contractButtonHtml = '';
                     if (hasContract) {
@@ -3225,7 +3143,7 @@
 
 
 
-        /* PORTFOLIO METODLARI */
+        /* PORTFOLIO METODLARI (Düzgün Sütun Strukturu ilə) */
 
         let portfolioUnsubscribe = null;
 
@@ -3245,123 +3163,110 @@
 
         function renderPortfolioAdmin(snapshot) {
 
-            const container = document.getElementById("portfolioAdminGrid");
+            const desktopContainer = document.getElementById("desktopPortfolioView");
+            const mobileContainer = document.getElementById("mobilePortfolioView");
 
-            container.innerHTML = "";
+            desktopContainer.innerHTML = "";
+            mobileContainer.innerHTML = "";
 
             if (snapshot.empty) {
-
-                container.innerHTML = `<div class="empty-portfolio"><strong>Portfolio boşdur</strong><br><br>İlk kitabı əlavə etmək üçün yuxarıdakı düymədən istifadə edin.</div>`;
-
+                const emptyHtml = `<div class="empty-portfolio"><strong>Portfolio boşdur</strong><br><br>İlk kitabı əlavə etmək üçün yuxarıdakı düymədən istifadə edin.</div>`;
+                desktopContainer.innerHTML = emptyHtml;
+                mobileContainer.innerHTML = emptyHtml;
                 return;
-
             }
 
-
-
             const docs = [];
-
             snapshot.forEach(doc => docs.push({ id: doc.id, data: doc.data() }));
 
-
-
+            // --- Veb üçün Cədvəl Siyahısı (5 Sütunlu Grid: Şəkil, Kitab, Müəllif, Tarix, Əməliyyat) ---
             const list = document.createElement("div");
-
             list.className = "portfolio-list";
-
             list.innerHTML = `
-
                 <div class="portfolio-list-header">
-
                     <div>Şəkil</div>
-
                     <div>Kitab / Hekayə</div>
-
                     <div>Müəllif</div>
-
                     <div>Tarix</div>
-
                     <div style="text-align:right">Əməliyyat</div>
-
                 </div>
-
             `;
 
-
+            // --- Mobil üçün Akkordion Kartlar ---
+            const mobileList = document.createElement("div");
+            mobileList.className = "portfolio-mobile-list";
 
             docs.forEach(function (item) {
-
                 const data = item.data;
-
-                const itemElement = document.createElement("div");
-
-                itemElement.className = "portfolio-list-item";
-
-
-
-                let date = "Tarix yoxdur";
-
-                if (data.createdAt && typeof data.createdAt.toDate === "function") {
-
-                    date = data.createdAt.toDate().toLocaleString("az-AZ", {
-
-                        day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"
-
-                    });
-
-                }
-
-
-
                 const title = data.title || "Adsız portfolio";
-
                 const author = data.author || "Müəllif qeyd edilməyib";
-
                 const imageUrl = data.imageUrl || "";
 
+                let date = "Tarix yoxdur";
+                if (data.createdAt && typeof data.createdAt.toDate === "function") {
+                    date = data.createdAt.toDate().toLocaleString("az-AZ", {
+                        day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"
+                    });
+                }
 
-
+                // 1. Veb Sətri (Kitab adı və müəllif tam ayrı sütunlarda)
+                const itemElement = document.createElement("div");
+                itemElement.className = "portfolio-list-item";
                 itemElement.innerHTML = `
-
                     <div class="portfolio-thumbnail-wrap">
-
                         ${imageUrl ? `<img src="${escapeAttribute(imageUrl)}" class="portfolio-thumbnail" alt="${escapeAttribute(title)}">` : `<div class="portfolio-no-image">Şəkil yoxdur</div>`}
-
                     </div>
-
-                    <div>
-                        <div class="portfolio-list-title">${escapeHtml(title)}</div>
-                        <div class="portfolio-list-author">${escapeHtml(author)}</div>
-                    </div>
-
+                    <div class="portfolio-list-title">${escapeHtml(title)}</div>
+                    <div class="portfolio-list-author">${escapeHtml(author)}</div>
                     <div class="portfolio-date">${escapeHtml(date)}</div>
-
                     <div class="portfolio-list-actions">
-
                         ${imageUrl ? `
-
                             <button type="button" class="portfolio-action-btn view-image-btn" title="Şəkilə bax" onclick="openImageViewer('${escapeAttribute(imageUrl)}', '${escapeAttribute(title)}')">
-
                                 <svg viewBox="0 0 24 24"><path d="M12 5c-5 0-9.27 3.11-11 7 1.73 3.89 6 7 11 7s9.27-3.11 11-7-1.73-3.89-6-7-11-7zm0 12c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-
                             </button>
-
                         ` : ""}
-
                         <button type="button" class="portfolio-action-btn edit-portfolio-btn" onclick="editPortfolio('${escapeAttribute(item.id)}')">Redaktə</button>
-
                         <button type="button" class="portfolio-action-btn delete-portfolio-btn" onclick="deletePortfolio('${escapeAttribute(item.id)}', '${escapeAttribute(title)}')">Sil</button>
-
                     </div>
-
                 `;
-
                 list.appendChild(itemElement);
 
+                // 2. Mobil Akkordion Kart
+                const mobCard = document.createElement("div");
+                mobCard.className = "portfolio-mobile-card";
+                mobCard.innerHTML = `
+                    <div class="portfolio-mobile-header" onclick="toggleMobileAccordion(this.parentElement)">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            ${imageUrl ? `<img src="${escapeAttribute(imageUrl)}" style="width:40px; height:40px; object-fit:cover; border-radius:6px;" alt="">` : `<div style="width:40px; height:40px; background:#f1f5f9; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.55rem;">Yoxdur</div>`}
+                            <div>
+                                <div style="font-size: 0.85rem; font-weight: 800; color: var(--primary-lux);">${escapeHtml(title)}</div>
+                                <div style="font-size: 0.75rem; color: var(--accent-gold); font-weight: 700;">${escapeHtml(author)}</div>
+                            </div>
+                        </div>
+                        <span class="portfolio-arrow">›</span>
+                    </div>
+                    <div class="portfolio-mobile-body">
+                        <div class="sponsor-field"><b>Yaradılma Tarixi:</b> ${escapeHtml(date)}</div>
+                        <div style="display: flex; gap: 6px; margin-top: 12px; align-items: center;">
+                            ${imageUrl ? `<button type="button" class="portfolio-action-btn view-image-btn" style="width:36px; height:36px;" onclick="openImageViewer('${escapeAttribute(imageUrl)}', '${escapeAttribute(title)}')"><svg viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M12 5c-5 0-9.27 3.11-11 7 1.73 3.89 6 7 11 7s9.27-3.11 11-7-1.73-3.89-6-7-11-7zm0 12c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg></button>` : ""}
+                            <button type="button" class="portfolio-action-btn edit-portfolio-btn" style="flex:1;" onclick="editPortfolio('${escapeAttribute(item.id)}')">Redaktə</button>
+                            <button type="button" class="portfolio-action-btn delete-portfolio-btn" style="flex:1;" onclick="deletePortfolio('${escapeAttribute(item.id)}', '${escapeAttribute(title)}')">Sil</button>
+                        </div>
+                    </div>
+                `;
+                mobileList.appendChild(mobCard);
             });
 
-            container.appendChild(list);
+            desktopContainer.appendChild(list);
+            mobileContainer.appendChild(mobileList);
 
+            if (window.innerWidth <= 900) {
+                desktopContainer.style.display = "none";
+                mobileContainer.style.display = "block";
+            } else {
+                desktopContainer.style.display = "block";
+                mobileContainer.style.display = "none";
+            }
         }
 
 
