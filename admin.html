@@ -1826,6 +1826,93 @@
             .portfolio-mobile-list { display: none !important; }
         }
 
+        /* DAXİLİ MÜQAVİLƏ MODALININ STİLLƏRİ */
+        .contract-view-modal {
+            max-width: 850px;
+            width: 100%;
+            background: #ffffff;
+            font-family: 'Times New Roman', Times, serif;
+            color: #111;
+            padding: 35px;
+            border-radius: var(--radius-md);
+            max-height: 92vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        .contract-view-content {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        .contract-view-content h2 {
+            text-align: center;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .contract-view-content .sub-title {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            color: #444;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #111;
+            padding-bottom: 8px;
+        }
+        .contract-view-content .section {
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+        .contract-view-content .center-title {
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+        .contract-view-content .signatures {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        .contract-view-content .sig-box {
+            width: 46%;
+            line-height: 1.8;
+        }
+        .contract-view-content .line {
+            border-bottom: 1px solid #111;
+            display: inline-block;
+            width: 100%;
+            min-height: 22px;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #contractModal, #contractModal * {
+                visibility: visible;
+            }
+            #contractModal {
+                position: absolute;
+                inset: 0;
+                background: white !important;
+                display: block !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .contract-view-modal {
+                box-shadow: none !important;
+                max-width: 100% !important;
+                max-height: none !important;
+                padding: 10px !important;
+                overflow: visible !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+
     </style>
 
 </head>
@@ -2341,6 +2428,24 @@
 
         <div id="viewerTitle" class="image-viewer-title"></div>
 
+    </div>
+
+
+    <!-- DAXİLİ MÜQAVİLƏ MODAL PƏNCƏRƏSİ -->
+    <div class="modal-overlay" id="contractModal" style="z-index: 25000;">
+        <div class="contract-view-modal">
+            <div class="modal-header no-print">
+                <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.2rem; color: var(--primary-lux);">Sponsorluq Müqaviləsi</h2>
+                <button class="modal-close" onclick="closeContractModal()">×</button>
+            </div>
+            
+            <div id="contractModalBody" class="contract-view-content"></div>
+
+            <div class="modal-actions no-print" style="margin-top: 30px; justify-content: space-between; border-top: 1px solid #e2e8f0; padding-top: 20px;">
+                <button class="modal-btn cancel-btn" onclick="closeContractModal()">Bağla</button>
+                <button class="modal-btn" style="background: #4f46e5; color: white;" onclick="window.print()">Müqaviləni Çap Et / PDF Yadda Saxla</button>
+            </div>
+        </div>
     </div>
 
 
@@ -2929,126 +3034,77 @@
             openContractWindow(name, contact, ticketId, dateStr);
         }
 
+        function closeContractModal() {
+            document.getElementById("contractModal").classList.remove("active");
+            document.body.style.overflow = "";
+        }
+
         function openContractWindow(name, contact, ticketId, dateStr) {
-            let win = window.open('', '_blank');
-            win.document.write(`
-                <!DOCTYPE html>
-                <html lang="az">
-                <head>
-                    <meta charset="UTF-8">
-                    <title>Sponsorluq Müqaviləsi - ${ticketId}</title>
-                    <style>
-                        body {
-                            font-family: 'Times New Roman', Times, serif;
-                            padding: 45px;
-                            color: #111;
-                            line-height: 1.6;
-                            max-width: 800px;
-                            margin: 0 auto;
-                            font-size: 1.05rem;
-                        }
-                        h2 { text-align: center; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
-                        .sub-title { display: flex; justify-content: space-between; font-size: 0.95rem; color: #444; margin-bottom: 30px; border-bottom: 2px solid #111; padding-bottom: 8px; }
-                        .section { margin-bottom: 18px; text-align: justify; }
-                        .section p { margin-bottom: 8px; }
-                        .center-title { text-align: center; font-weight: bold; text-transform: uppercase; margin-top: 15px; margin-bottom: 5px; }
-                        .signatures {
-                            display: flex;
-                            justify-content: space-between;
-                            margin-top: 50px;
-                            page-break-inside: avoid;
-                        }
-                        .sig-box {
-                            width: 46%;
-                            line-height: 1.8;
-                        }
-                        .line { border-bottom: 1px solid #111; display: inline-block; width: 100%; min-height: 22px; }
-                        .print-area { text-align: center; margin-top: 40px; }
-                        .print-btn {
-                            padding: 12px 25px;
-                            background: #4f46e5;
-                            color: white;
-                            border: none;
-                            border-radius: 8px;
-                            cursor: pointer;
-                            font-size: 1rem;
-                            font-weight: bold;
-                        }
-                        @media print {
-                            .print-area { display: none; }
-                            body { padding: 20px; }
-                        }
-                    </style>
-                </head>
-                <body>
-                    <h2>MÜQAVİLƏ № ${ticketId}</h2>
-                    <div class="sub-title">
-                        <span>Naxçıvan şəhəri</span>
-                        <span>Tarix: ${dateStr}</span>
-                    </div>
+            const contractHtml = `
+                <h2>MÜQAVİLƏ № ${escapeHtml(ticketId)}</h2>
+                <div class="sub-title">
+                    <span>Naxçıvan şəhəri</span>
+                    <span>Tarix: ${escapeHtml(dateStr)}</span>
+                </div>
 
-                    <div class="section">
-                        <p>Bir tərəfdən <b>"Gunel's Story"</b> fərdi uşaq hekayəsi kitabları layihəsinin təsisçisi və rəhbəri <b>Günel Əbilova</b> (bundan sonra "Təşkilatçı" adlandırılacaq), digər tərəfdən isə layihəyə dəstək göstərən <span style="display:inline-block; border-bottom: 1px solid #111; width: 250px; text-align: center;"><b>${name || ''}</b></span> (bundan sonra "Sponsor" adlandırılacaq) aşağıdakı şərtlərlə bu müqaviləni bağlayırlar:</p>
-                    </div>
+                <div class="section">
+                    <p>Bir tərəfdən <b>"Gunel's Story"</b> fərdi uşaq hekayəsi kitabları layihəsinin təsisçisi və rəhbəri <b>Günel Əbilova</b> (bundan sonra "Təşkilatçı" adlandırılacaq), digər tərəfdən isə layihəyə dəstək göstərən <span style="display:inline-block; border-bottom: 1px solid #111; width: 250px; text-align: center;"><b>${escapeHtml(name || '')}</b></span> (bundan sonra "Sponsor" adlandırılacaq) aşağıdakı şərtlərlə bu müqaviləni bağlayırlar:</p>
+                </div>
 
-                    <div class="section">
-                        <div class="center-title">1. MÜQAVİLƏNİN PREDMETİ</div>
-                        <p>1.1. Bu müqavilə "Gunel's Story" layihəsi çərçivəsində uşaqların maariFləndirilməsi, fərdi nağıl kitablarının hazırlanması və təqdimatı prosesində tərəflər arasındakı maliyyə təşkilati əməkdaşlıq münasibətlərini tənzimləyir.<br>
-                        1.2. Sponsor layihəyə, başladılmış aksiya çərçivəsində maliyyə dəstəyi göstərməyi, Təşkilatçı isə müqabilində sponsorun razılığı ilə adının layihə materiallarında təbliğ olunmasını öhdəsinə götürür.</p>
-                    </div>
+                <div class="section">
+                    <div class="center-title">1. MÜQAVİLƏNİN PREDMETİ</div>
+                    <p>1.1. Bu müqavilə "Gunel's Story" layihəsi çərçivəsində uşaqların maarifləndirilməsi, fərdi nağıl kitablarının hazırlanması və təqdimatı prosesində tərəflər arasındakı maliyyə təşkilati əməkdaşlıq münasibətlərini tənzimləyir.<br>
+                    1.2. Sponsor layihəyə, başladılmış aksiya çərçivəsində maliyyə dəstəyi göstərməyi, Təşkilatçı isə müqabilində sponsorun razılığı ilə adının layihə materiallarında təbliğ olunmasını öhdəsinə götürür.</p>
+                </div>
 
-                    <div class="section">
-                        <div class="center-title">2. TƏRƏFLƏRİN HÜQUQ VƏ VƏZİFƏLƏRİ</div>
-                        <p><b>2.1. Təşkilatçının vəzifələri:</b><br>
-                        - Layihənin vaxtında və keyfiyyətli icrasını təmin etmək;<br>
-                        - Sponsorun adını razılaşdırılmış formatda təqdimatlarda və sosial media hesablarında işıqlandırmaq.<br>
-                        <b>2.2. Sponsorun vəzifələri:</b><br>
-                        - Razılaşdırılmış dəstəyi vaxtında təmin etmək;<br>
-                        - Layihənin imicinə zərər vura biləcək hərəkətlərdən çəkinmək.</p>
-                    </div>
+                <div class="section">
+                    <div class="center-title">2. TƏRƏFLƏRİN HÜQUQ VƏ VƏZİFƏLƏRİ</div>
+                    <p><b>2.1. Təşkilatçının vəzifələri:</b><br>
+                    - Layihənin vaxtında və keyfiyyətli icrasını təmin etmək;<br>
+                    - Sponsorun adını razılaşdırılmış formatda təqdimatlarda və sosial media hesablarında işıqlandırmaq.<br>
+                    <b>2.2. Sponsorun vəzifələri:</b><br>
+                    - Razılaşdırılmış dəstəyi vaxtında təmin etmək;<br>
+                    - Layihənin imicinə zərər vura biləcək hərəkətlərdən çəkinmək.</p>
+                </div>
 
-                    <div class="section">
-                        <div class="center-title">3. MALİYYƏ DƏSTƏYİ</div>
-                        <p>3.1.Dəstəkçi bu aksiyaya könüllü olaraq 80.0 AZN (bir səksən manat sıfır qəpik) məbləğində vəsaitlə qatılır (Bu məbləğə 1 ədəd fərdi kitabın xərcləri qarşılanır). <br>
-                        3.2. Vəsait Təşkilatçının razılaşdırılmış kart hesabına köçürülür.
-                        3.3. Ayrılan məbləğ sırf kitabların hazırlanması və uşaqlara çatdırılması üçün istifadə olunur, kitablar təhvil verildikdə dəstəkçiyə foto təsdiq göndərilir.</p>
-                    </div>
-                    
-                    <div class="section">
-                        <div class="center-title">3. MÜDDƏT VƏ XİTAM</div>
-                        <p>3.1. Bu müqavilə tərəflər tərəfindən təsdiq edildiyi andan qüvvəyə minir və layihə çərçivəsindəki tədbirlər başa çatanadək qüvvədədir.<br>
-                        3.2. Müqavilə tərəflərin qarşılıqlı yazılı razılığı ilə vaxtından əvvəl ləğv edilə bilər.</p>
-                    </div>
+                <div class="section">
+                    <div class="center-title">3. MALİYYƏ DƏSTƏYİ</div>
+                    <p>3.1. Dəstəkçi bu aksiyaya könüllü olaraq 80.0 AZN (bir səksən manat sıfır qəpik) məbləğində vəsaitlə qatılır (Bu məbləğə 1 ədəd fərdi kitabın xərcləri qarşılanır). <br>
+                    3.2. Vəsait Təşkilatçının razılaşdırılmış kart hesabına köçürülür.<br>
+                    3.3. Ayrılan məbləğ sırf kitabların hazırlanması və uşaqlara çatdırılması üçün istifadə olunur, kitablar təhvil verildikdə dəstəkçiyə foto təsdiq göndərilir.</p>
+                </div>
+                
+                <div class="section">
+                    <div class="center-title">4. MÜDDƏT VƏ XİTAM</div>
+                    <p>4.1. Bu müqavilə tərəflər tərəfindən təsdiq edildiyi andan qüvvəyə minir və layihə çərçivəsindəki tədbirlər başa çatanadək qüvvədədir.<br>
+                    4.2. Müqavilə tərəflərin qarşılıqlı yazılı razılığı ilə vaxtından əvvəl ləğv edilə bilər.</p>
+                </div>
 
-                    <div class="section">
-                        <div class="center-title">4. YEKUN MÜDDƏALAR</div>
-                        <p>4.1. Bu müqavilə ilə tənzimlənməyən məsələlər Azərbaycan Respublikasının qanunvericiliyinə uyğun olaraq həll edilir.<br>
-                        4.2. Müqavilə iki nüsxədə tərtib olunmuşdur.</p>
-                    </div>
+                <div class="section">
+                    <div class="center-title">5. YEKUN MÜDDƏALAR</div>
+                    <p>5.1. Bu müqavilə ilə tənzimlənməyən məsələlər Azərbaycan Respublikasının qanunvericiliyinə uyğun olaraq həll edilir.<br>
+                    5.2. Müqavilə iki nüsxədə tərtib olunmuşdur.</p>
+                </div>
 
-                    <div class="signatures">
-                        <div class="sig-box">
-                            <b>SPONSOR:</b><br>
-                            Ad, Soyad: <b>${name || ''}</b><br>
-                            Əlaqə: <b>${contact || ''}</b><br>
-                            İmza: <span class="line" style="margin-top: 15px;"></span>
-                        </div>
-                        <div class="sig-box">
-                            <b>TƏŞKİLATÇI / BREND TƏSİSÇİSİ:</b><br>
-                            Ad, Soyad: <b>Günel Əbilova</b><br>
-                            Layihə: Gunels Story<br>
-                            E-poçt: gunelsstory@gmail.com<br>
-                            İmza: <span class="line" style="margin-top: 5px;"></span>
-                        </div>
+                <div class="signatures">
+                    <div class="sig-box">
+                        <b>SPONSOR:</b><br>
+                        Ad, Soyad: <b>${escapeHtml(name || '')}</b><br>
+                        Əlaqə: <b>${escapeHtml(contact || '')}</b><br>
+                        İmza: <span class="line" style="margin-top: 15px;"></span>
                     </div>
-
-                    <div class="print-area">
-                        <button class="print-btn" onclick="window.print()">Müqaviləni Çap Et / PDF Yadda Saxla</button>
+                    <div class="sig-box">
+                        <b>TƏŞKİLATÇI / BREND TƏSİSÇİSİ:</b><br>
+                        Ad, Soyad: <b>Günel Əbilova</b><br>
+                        Layihə: Gunels Story<br>
+                        E-poçt: gunelsstory@gmail.com<br>
+                        İmza: <span class="line" style="margin-top: 5px;"></span>
                     </div>
-                </body>
-                </html>
-            `);
-            win.document.close();
+                </div>
+            `;
+            document.getElementById("contractModalBody").innerHTML = contractHtml;
+            document.getElementById("contractModal").classList.add("active");
+            document.body.style.overflow = "hidden";
         }
 
         function startListeningSponsorships() {
@@ -4077,6 +4133,8 @@
                 closePortfolioModal();
 
                 closeNotificationModal();
+
+                closeContractModal();
 
             }
 
