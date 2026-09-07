@@ -19,6 +19,8 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- HTML2PDF KİTABXANASI (WebView daxilində birbaşa PDF yükləməsi üçün) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 
     <style>
@@ -2511,7 +2513,7 @@
 
             <div class="modal-actions no-print" style="margin-top: 30px; justify-content: space-between; border-top: 1px solid #e2e8f0; padding-top: 20px;">
                 <button class="modal-btn cancel-btn" onclick="closeContractModal()">Bağla</button>
-                <button class="modal-btn" style="background: #4f46e5; color: white;" onclick="window.print()">Müqaviləni Çap Et / PDF Yadda Saxla</button>
+                <button class="modal-btn" id="downloadPdfBtn" style="background: #4f46e5; color: white;" onclick="downloadContractPDF()">Müqaviləni PDF Yadda Saxla</button>
             </div>
         </div>
     </div>
@@ -3107,7 +3109,10 @@
             document.body.style.overflow = "";
         }
 
+        let currentActiveTicketId = "Muqavile";
+
         function openContractWindow(name, contact, ticketId, dateStr) {
+            currentActiveTicketId = ticketId || "Muqavile";
             const contractHtml = `
                 <h2>MÜQAVİLƏ № ${escapeHtml(ticketId)}</h2>
                 <div class="sub-title">
@@ -3173,6 +3178,33 @@
             document.getElementById("contractModalBody").innerHTML = contractHtml;
             document.getElementById("contractModal").classList.add("active");
             document.body.style.overflow = "hidden";
+        }
+
+        /* HTML2PDF İLƏ BİRBAŞA YÜKLƏMƏ FUNKSİYASI */
+        function downloadContractPDF() {
+            const element = document.getElementById("contractModalBody");
+            const btn = document.getElementById("downloadPdfBtn");
+
+            btn.innerText = "PDF hazırlanır...";
+            btn.disabled = true;
+
+            const opt = {
+                margin: [12, 12, 12, 12],
+                filename: `Muqavile_${currentActiveTicketId}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                btn.innerText = "Müqaviləni PDF Yadda Saxla";
+                btn.disabled = false;
+            }).catch(err => {
+                console.error("PDF xətası:", err);
+                btn.innerText = "Müqaviləni PDF Yadda Saxla";
+                btn.disabled = false;
+                window.print();
+            });
         }
 
         function startListeningSponsorships() {
