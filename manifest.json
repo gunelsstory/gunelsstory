@@ -1,0 +1,27 @@
+{
+  "background_color": "#ffffff",
+  "description": "Uşağınızın adına və şəklinə özəl 100% fərdi uşaq hekayəsi kitabları sifarişi.",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Gunel's Story",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "GS Admin",
+  "start_url": "/https://gunelsstory.com/index.html",
+  "theme_color": "#0f1a5c",
+  "icons": [
+    {
+      "src": "https://gunelsstory.com/image/favicon.png",
+      "type": "image/png",
+      "sizes": "267x378",
+      "isSquare": false,
+      "isPng": true,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 267,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    }
+  ]
+}
