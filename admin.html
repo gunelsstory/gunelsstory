@@ -1886,6 +1886,64 @@
             min-height: 22px;
         }
 
+        /* MOBİL ÜÇÜN MÜQAVİLƏ OPTİMALLAŞDIRILMASI */
+        @media (max-width: 900px) {
+            #contractModal {
+                padding: 10px;
+            }
+            .contract-view-modal {
+                padding: 16px 14px;
+                border-radius: 12px;
+                max-height: 94vh;
+            }
+            .contract-view-content {
+                font-size: 0.82rem;
+                line-height: 1.45;
+            }
+            .contract-view-content h2 {
+                font-size: 1rem;
+                margin-bottom: 4px;
+            }
+            .contract-view-content .sub-title {
+                font-size: 0.74rem;
+                margin-bottom: 14px;
+                padding-bottom: 4px;
+            }
+            .contract-view-content .section {
+                margin-bottom: 12px;
+            }
+            .contract-view-content .center-title {
+                font-size: 0.84rem;
+                margin-top: 10px;
+                margin-bottom: 3px;
+            }
+            .contract-view-content .signatures {
+                flex-direction: column;
+                gap: 16px;
+                margin-top: 20px;
+            }
+            .contract-view-content .sig-box {
+                width: 100%;
+                line-height: 1.5;
+                font-size: 0.82rem;
+            }
+            .contract-view-content .line {
+                min-height: 16px;
+            }
+            #contractModal .modal-actions {
+                flex-direction: column-reverse;
+                gap: 8px;
+                margin-top: 15px;
+                padding-top: 12px;
+            }
+            #contractModal .modal-btn {
+                width: 100%;
+                text-align: center;
+                padding: 10px;
+                font-size: 0.8rem;
+            }
+        }
+
         @media print {
             body * {
                 visibility: hidden;
@@ -1907,6 +1965,16 @@
                 max-height: none !important;
                 padding: 10px !important;
                 overflow: visible !important;
+            }
+            .contract-view-content {
+                font-size: 1rem !important;
+                line-height: 1.5 !important;
+            }
+            .contract-view-content .signatures {
+                flex-direction: row !important;
+            }
+            .contract-view-content .sig-box {
+                width: 46% !important;
             }
             .no-print {
                 display: none !important;
