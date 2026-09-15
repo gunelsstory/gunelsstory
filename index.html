@@ -3939,7 +3939,58 @@
             }
         );
 
+/* =====================================================
+            YENİ SİFARİŞ SƏSLİ BİLDİRİŞ DİNLƏYİCİSİ
+        ===================================================== */
+        function initOrderAudioNotifier() {
+            let isFirstLoad = true;
 
+            db.collection("orders").orderBy("createdAt", "desc").onSnapshot(function(snapshot) {
+                if (snapshot.empty) return;
+
+                // İlk açılışda köhnə sifarişlərə görə səs çalmasın deyə yoxlayırıq
+                if (isFirstLoad) {
+                    isFirstLoad = false;
+                    return;
+                }
+
+                snapshot.docChanges().forEach(function(change) {
+                    if (change.type === "added") {
+                        // Yeni sifariş daxil olduqda çalınacaq səs (Zəng səsi)
+                        playNotificationSound();
+                        
+                        const orderData = change.doc.data();
+                        console.log("Yeni sifariş gəldi:", orderData.childName);
+                    }
+                });
+            });
+        }
+
+        function playNotificationSound() {
+            // Veb səhifə daxilində qısa bip və ya xəbərdarlıq səsi yaratmaq üçün Web Audio API
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+
+                oscillator.type = "sine";
+                oscillator.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5 notu
+                gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime);
+
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+
+                oscillator.start();
+                oscillator.stop(audioCtx.currentTime + 0.3); // 0.3 saniyə davam edən səs
+            } catch (e) {
+                console.log("Səs çalınmadı:", e);
+            }
+        }
+
+        // Səhifə yüklənəndə dinləyicini işə salırıq
+        window.addEventListener("DOMContentLoaded", function () {
+            initOrderAudioNotifier();
+        });
         /* =====================================================
             MOBİL QİYMƏT → SİFARİŞ
         ====================================================== */
